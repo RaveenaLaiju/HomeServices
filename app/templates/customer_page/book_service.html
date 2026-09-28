@@ -1,0 +1,515 @@
+
+{% extends 'customer_page/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="bsp101-page">
+
+    <section class="bsp102-hero">
+
+        <img
+            src="{% static 'customer_page/img/book.jpg' %}"
+            class="bsp104-hero-image"
+            alt="Book home service"
+        >
+
+        <div class="bsp103-hero-overlay"></div>
+
+        <div class="container bsp105-hero-content">
+
+            <div class="bsp106-hero-inner">
+
+                <span class="bsp107-eyebrow">
+                    ✦ Premium Home Services
+                </span>
+
+                <h1 class="bsp108-hero-title">
+                    Book Service
+                </h1>
+
+                <p class="bsp109-hero-text">
+                    Connect with trusted professionals and schedule
+                    reliable home services designed around your needs.
+                </p>
+
+                <div class="bsp110-stat-row">
+
+                    <span class="bsp111-stat">
+                        ✓ Verified Providers
+                    </span>
+
+                    <span class="bsp111-stat">
+                        ✓ Convenient Booking
+                    </span>
+
+                    <span class="bsp111-stat">
+                        ✓ Reliable Service
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BOOKING SECTION
+    ====================================================== -->
+
+    <section class="bsp112-booking-area">
+
+        <div class="container-fluid">
+
+            <div class="bsp113-booking-card">
+
+                <form
+                    method="POST"
+                    action="{% url 'book_service' %}"
+                    id="bspBookingForm"
+                >
+
+                    {% csrf_token %}
+
+                    <input
+                        type="hidden"
+                        name="service_id"
+                        value="{{ selected_service.id }}"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="location"
+                        value="{{ selected_location }}"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="type"
+                        value="{{ booking_type }}"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="date"
+                        value="{{ date|date:'Y-m-d' }}"
+                    >
+
+
+                    <!-- BOOKING HEADER -->
+
+                    <div class="bsp114-booking-header">
+
+                        <div class="bsp115-heading-wrap">
+
+                            <h2>
+                                Confirm Your Service
+                            </h2>
+
+                            <p>
+                                Review your details and choose your preferred provider.
+                            </p>
+
+                        </div>
+
+                        <span class="bsp117-secure-badge">
+                            🔒 Secure Booking
+                        </span>
+
+                    </div>
+
+
+                    <!-- BOOKING SUMMARY -->
+
+                    <div class="bsp118-summary">
+
+                        <div class="row g-3">
+
+                            <div class="col-lg-3 col-md-6 col-12">
+
+                                <div class="bsp119-summary-item">
+
+                                    <span class="bsp120-summary-label">
+                                        Service
+                                    </span>
+
+                                    <span class="bsp121-summary-value">
+                                        {{ selected_service }}
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-lg-3 col-md-6 col-12">
+
+                                <div class="bsp119-summary-item">
+
+                                    <span class="bsp120-summary-label">
+                                        Location
+                                    </span>
+
+                                    <span class="bsp121-summary-value">
+                                        {{ selected_location }}
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-lg-3 col-md-6 col-12">
+
+                                <div class="bsp119-summary-item">
+
+                                    <span class="bsp120-summary-label">
+                                        Service Type
+                                    </span>
+
+                                    <span class="bsp121-summary-value">
+                                        {{ booking_type|title }}
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-lg-3 col-md-6 col-12">
+
+                                <div class="bsp119-summary-item">
+
+                                    <span class="bsp120-summary-label">
+                                        Selected Date
+                                    </span>
+
+                                    <span class="bsp121-summary-value">
+
+                                        {% if date %}
+                                            {{ date|date:'Y-m-d' }}
+                                        {% else %}
+                                            Not specified
+                                        {% endif %}
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PROVIDERS -->
+
+                    <div class="bsp122-provider-heading">
+
+                        <div>
+
+                            <h3>
+                                Choose Your Provider
+                            </h3>
+
+                        </div>
+
+                        <span class="bsp124-provider-count">
+                            {{ providers|length }} Available
+                        </span>
+
+                    </div>
+
+
+                    {% if providers %}
+
+                    <div class="swiper bsp142-slider">
+
+                        <div class="swiper-wrapper">
+
+                            {% for i in providers %}
+
+                            <div class="swiper-slide bsp143-slide">
+
+                                <article class="bsp125-provider-card">
+
+                                    <!-- PROVIDER HEADER -->
+
+                                    <div class="bsp126-provider-top">
+
+                                        <div class="bsp127-provider-identity">
+
+                                            <h4 class="bsp128-provider-name">
+                                                {{ i.user_profile.user.first_name }}
+                                                {{ i.user_profile.user.last_name }}
+                                            </h4>
+
+                                            <span class="bsp129-provider-experience">
+                                                {{ i.experience_years }} years experience
+                                            </span>
+
+                                        </div>
+
+                                        <span class="bsp130-service-badge">
+                                            {{ i.service }}
+                                        </span>
+
+                                    </div>
+
+
+                                    <!-- PROVIDER PHOTO -->
+
+                                    <div class="bsp131-photo-wrapper">
+
+                                        <img
+                                            src="{{ i.photo.url }}"
+                                            alt="Provider photo"
+                                            class="bsp132-provider-photo"
+                                        >
+
+                                        <span class="bsp133-photo-overlay">
+                                            ✓ Professional Provider
+                                        </span>
+
+                                    </div>
+
+
+                                    <!-- PROVIDER DETAILS -->
+
+                                    <div class="bsp134-details">
+
+                                        <div class="bsp135-detail">
+
+                                            <span class="bsp136-detail-icon">
+                                                📍
+                                            </span>
+
+                                            <span class="bsp137-detail-text">
+                                                {{ i.location }}
+                                            </span>
+
+                                        </div>
+
+
+                                        <div class="bsp135-detail">
+
+                                            <span class="bsp136-detail-icon">
+                                                📞
+                                            </span>
+
+                                            <span class="bsp137-detail-text">
+                                                {{ i.user_profile.phone }}
+                                            </span>
+
+                                        </div>
+
+
+                                        <div class="bsp135-detail">
+
+                                            <span class="bsp136-detail-icon">
+                                                ✉
+                                            </span>
+
+                                            <span class="bsp137-detail-text">
+                                                {{ i.user_profile.user.email }}
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- SELECT PROVIDER -->
+
+                                    <label class="bsp138-select-box">
+
+                                        <input
+                                            type="radio"
+                                            name="provider"
+                                            value="{{ i.id }}"
+                                            required
+                                            class="bsp139-select-input"
+                                        >
+
+                                        <span class="bsp140-select-content">
+
+                                            <span class="bsp141-radio-dot"></span>
+
+                                            Select This Provider
+
+                                        </span>
+
+                                    </label>
+
+                                </article>
+
+                            </div>
+
+                            {% endfor %}
+
+                        </div>
+
+
+                        <div class="swiper-pagination bsp144-swiper-pagination"></div>
+
+                        <div class="swiper-button-next bsp145-next"></div>
+
+                        <div class="swiper-button-prev bsp146-prev"></div>
+
+                    </div>
+
+                    {% else %}
+
+                    <div class="bsp151-empty">
+
+                        <div class="bsp152-empty-icon">
+                            🔍
+                        </div>
+
+                        <div class="bsp153-empty-title">
+                            No Providers Available
+                        </div>
+
+                        <p class="bsp154-empty-text">
+                            We couldn't find an available provider for your selected service and location.
+                        </p>
+
+                    </div>
+
+                    {% endif %}
+
+
+                    <!-- SUBMIT -->
+
+                    {% if providers %}
+
+                    <div class="bsp147-submit-area">
+
+                        <button
+                            type="submit"
+                            class="bsp148-submit-button"
+                            id="bspSubmitButton"
+                        >
+
+                            <span class="bsp149-button-content">
+
+                                <span>
+                                    Book Service
+                                </span>
+
+                                <span>
+                                    →
+                                </span>
+
+                                <span
+                                    id="bsp150Spinner"
+                                    class="bsp150-spinner"
+                                ></span>
+
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                    {% endif %}
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- =========================================================
+     PAGE JAVASCRIPT
+========================================================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* -------------------------------------------------------
+       SWIPER
+    ------------------------------------------------------- */
+
+    if (typeof Swiper !== "undefined") {
+
+        new Swiper(".bsp142-slider", {
+
+            slidesPerView: 1,
+
+            spaceBetween: 18,
+
+            loop: false,
+
+            pagination: {
+                el: ".bsp144-swiper-pagination",
+                clickable: true
+            },
+
+            navigation: {
+                nextEl: ".bsp145-next",
+                prevEl: ".bsp146-prev"
+            },
+
+            breakpoints: {
+
+                576: {
+                    slidesPerView: 1
+                },
+
+                768: {
+                    slidesPerView: 2
+                },
+
+                992: {
+                    slidesPerView: 2
+                },
+
+                1200: {
+                    slidesPerView: 3
+                }
+
+            }
+
+        });
+
+    }
+
+
+    /* -------------------------------------------------------
+       SUBMIT SPINNER
+    ------------------------------------------------------- */
+
+    const bookingForm = document.getElementById("bspBookingForm");
+    const submitButton = document.getElementById("bspSubmitButton");
+    const spinner = document.getElementById("bspSpinner");
+
+    if (bookingForm && submitButton && spinner) {
+
+        bookingForm.addEventListener("submit", function () {
+
+            submitButton.disabled = true;
+
+            spinner.style.display = "inline-block";
+
+        });
+
+    }
+
+});
+
+</script>
+
+{% endblock %}
+

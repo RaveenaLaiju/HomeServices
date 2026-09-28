@@ -1,0 +1,159 @@
+{% extends 'provider_page/base.html' %}
+
+{% block title %}Providers - Noah's Ark Services{% endblock %}
+
+{% block content %}
+<div class="main-panel">
+<div class="content-wrapper">
+
+
+<section class="provider-section">
+<div class="container-lg">
+
+<div class="table-section card p-4 shadow-sm rounded-4">
+<h3 class="text-center text-primary mb-4">Customer Booking Requests</h3>
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success text-center">{{ message }}</div>
+{% endfor %}
+{% endif %}
+
+<div class="table-responsive">
+<table class="table table-striped table-bordered text-center align-middle">
+<thead class="table-primary">
+<tr>
+<th>Customer</th>
+<th>Service</th>
+<th>Date</th>
+<th>Type</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody class="text-white">
+{% for booking in booking_requests %}
+<tr class="text-white">
+<td>{{ booking.customer.user_profile.user.first_name }}</td>
+<td>{{ booking.service.service_name }}</td>
+<td>{{ booking.date }}</td>
+<td>
+{% if booking.type == 'emergency' %}
+<span class="badge bg-danger">Emergency</span>
+{% else %}
+<span class="badge bg-secondary">Normal</span>
+{% endif %}
+</td>
+
+<!-- STATUS -->
+<td>
+{% if booking.status == "pending" %}
+<span class="badge bg-warning text-dark">Pending</span>
+{% elif booking.status == "accepted" %}
+<span class="badge bg-primary">Accepted</span>
+{% elif booking.status == "completed" %}
+<span class="badge bg-success">Completed</span>
+{% elif booking.status == "rework_pending" %}
+<span class="badge bg-info text-dark">Rework Requested</span>
+{% elif booking.status == "rework_accepted" %}
+<span class="badge bg-primary">Rework Accepted</span>
+{% elif booking.status == "rework_completed" %}
+<span class="badge bg-success">Rework Completed</span>
+{% else %}
+<span class="badge bg-dark">{{ booking.status|title }}</span>
+{% endif %}
+</td>
+
+<!-- ACTIONS -->
+<td>
+{% if booking.status == "pending" %}
+<!-- Accept -->
+<form method="post" action="{% url 'provider_bookings' %}" class="d-inline">
+{% csrf_token %}
+<input type="hidden" name="booking_id" value="{{ booking.id }}">
+<button type="submit" name="action" value="accept" class="btn btn-success btn-sm">Accept</button>
+</form>
+
+{% elif booking.status == "accepted" %}
+{% if booking.booking and booking.booking.is_paid %}
+<!-- Mark Completed -->
+<form method="post" action="{% url 'provider_bookings' %}" class="d-inline">
+{% csrf_token %}
+<input type="hidden" name="booking_id" value="{{ booking.id }}">
+<button type="submit" name="action" value="complete" class="btn btn-primary btn-sm">Mark Completed</button>
+</form>
+{% else %}
+<span class="badge bg-info text-dark">Waiting for Payment</span>
+{% endif %}
+
+{% elif booking.status == "rework_pending" %}
+<!-- Rework Modal Button -->
+<button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#reworkModal{{ booking.id }}">View Rework</button>
+
+{% elif booking.status == "rework_accepted" %}
+<!-- Mark Rework Done -->
+<form method="post" action="{% url 'provider_bookings' %}" class="d-inline">
+{% csrf_token %}
+<input type="hidden" name="booking_id" value="{{ booking.id }}">
+<button type="submit" name="action" value="rework_done" class="btn btn-success btn-sm">Mark Rework Done</button>
+</form>
+
+{% else %}
+<span class="badge bg-secondary">No Action</span>
+{% endif %}
+</td>
+</tr>
+
+<!-- REWORK MODAL -->
+{% if booking.status == "rework_pending" or booking.status == "rework_accepted" %}
+<div class="modal fade" id="reworkModal{{ booking.id }}" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content rounded-3">
+<div class="modal-header bg-warning text-dark">
+<h5 class="modal-title">Rework Request</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body">
+<p><strong>Message:</strong> {{ booking.rework_message|default:"No message provided" }}</p>
+</div>
+<div class="modal-footer">
+{% if booking.status == "rework_pending" %}
+<form method="post" action="{% url 'provider_bookings' %}" class="d-inline">
+{% csrf_token %}
+<input type="hidden" name="booking_id" value="{{ booking.id }}">
+<button type="submit" name="action" value="accept_rework" class="btn btn-primary btn-sm">Accept Rework</button>
+</form>
+{% endif %}
+<button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+{% endif %}
+{% empty %}
+<tr><td colspan="6" class="text-muted text-center">No bookings found.</td></tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<!-- partial -->
+<!-- main-panel ends -->
+{% endblock %}
+</div>

@@ -1,0 +1,30 @@
+{% extends 'admin_page/base.html' %}
+
+{% block title %}Providers - Noah's Ark Services{% endblock %}
+
+{% block content %}
+<div class="main-panel">
+  <div class="content-wrapper">
+
+    <h2 class="text-black mb-4">Providers for {{ service.service_name }}</h2>
+
+    {% if providers %}
+      <ol type="1" class="text-black">
+        {% for provider in providers %}
+          <li>
+            
+               <a href="{% url 'admin_provider_view' provider.user_profile.id %}" >
+              <strong class="text-black">{{ provider.user_profile.user.first_name }} {{ provider.user_profile.user.last_name }}</strong>  
+              <small class="text-black">({{ provider.location }})</small>
+              </a>
+          
+          </li>
+        {% endfor %}
+      </ol>
+    {% else %}
+      <p class="text-muted">No providers available for this service.</p>
+    {% endif %}
+
+  </div>
+{% endblock %}
+</div>

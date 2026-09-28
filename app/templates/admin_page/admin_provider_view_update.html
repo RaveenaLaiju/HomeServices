@@ -1,0 +1,358 @@
+{% extends 'admin_page/base.html' %}
+
+{% block title %}Edit Provider - Noah's Ark Services{% endblock %}
+
+{% block content %}
+
+
+
+<div class="npu501-page">
+
+    <div class="container-fluid">
+
+
+        <section class="npu502-hero">
+
+            <div class="row align-items-center g-4 npu503-hero-content">
+
+
+                <div class="col-12 col-lg-8">
+
+                    <span class="npu504-eyebrow">
+
+                        <i class="fa fa-pencil"></i>
+
+                        Provider Management
+
+                    </span>
+
+
+                    <h1 class="npu505-title">
+
+                        Edit Provider
+
+                    </h1>
+
+
+                    <p class="npu506-subtitle">
+
+                        Update the provider's profile, service,
+                        experience and profile photo.
+
+                    </p>
+
+                </div>
+
+
+                <div class="col-12 col-lg-4 text-lg-end">
+
+                    <a
+                        href="{% url 'admin_provider_view' id=provider.user_profile.id %}"
+                        class="npu507-back"
+                    >
+
+                        <i class="fa fa-arrow-left"></i>
+
+                        Back to Profile
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             UPDATE FORM
+
+             ONLY ONE FORM ON THIS PAGE
+             ===================================================== -->
+
+        <form
+            action=""
+            method="POST"
+            enctype="multipart/form-data"
+        >
+
+            {% csrf_token %}
+
+
+            <section class="npu508-card">
+
+
+                <!-- HEADER -->
+
+                <div class="npu509-card-header">
+
+                    <h2 class="npu510-header-title">
+
+                        Provider Information
+
+                    </h2>
+
+                    <p class="npu511-header-text">
+
+                        Make the required changes and save the profile.
+
+                    </p>
+
+                </div>
+
+
+                <!-- BODY -->
+
+                <div class="npu512-body">
+
+                    <div class="row g-4">
+
+
+                        <!-- =================================================
+                             LEFT FORM
+                             ================================================= -->
+
+                        <div class="col-12 col-lg-7">
+
+
+                            <!-- LOCATION -->
+
+                            <div class="npu513-field">
+
+                                <label
+                                    for="npuLocation"
+                                    class="npu514-label"
+                                >
+
+                                    <i class="fa fa-map-marker me-1"></i>
+
+                                    Location
+
+                                </label>
+
+
+                                <input
+                                    type="text"
+                                    id="npuLocation"
+                                    name="location"
+                                    class="form-control npu515-input"
+                                    value="{{ provider.location }}"
+                                    placeholder="Enter provider location"
+                                >
+
+                            </div>
+
+
+                            <!-- EXPERIENCE -->
+
+                            <div class="npu513-field">
+
+                                <label
+                                    for="npuExperience"
+                                    class="npu514-label"
+                                >
+
+                                    <i class="fa fa-briefcase me-1"></i>
+
+                                    Experience
+
+                                </label>
+
+
+                                <input
+                                    type="number"
+                                    id="npuExperience"
+                                    name="experience_years"
+                                    class="form-control npu515-input"
+                                    value="{{ provider.experience_years }}"
+                                    placeholder="Years of experience"
+                                    min="0"
+                                >
+
+                            </div>
+
+
+                            <!-- SERVICE -->
+
+                            <div class="npu513-field">
+
+                                <label
+                                    for="npuService"
+                                    class="npu514-label"
+                                >
+
+                                    <i class="fa fa-wrench me-1"></i>
+
+                                    Service
+
+                                </label>
+
+
+                                <select
+                                    id="npuService"
+                                    name="service"
+                                    class="form-select npu516-select"
+                                >
+
+                                    <option value="">
+
+                                        -- Select Service --
+
+                                    </option>
+
+
+                                    {% for service in services %}
+
+                                        <option
+                                            value="{{ service.id }}"
+                                            {% if provider.service and provider.service.id == service.id %}
+                                                selected
+                                            {% endif %}
+                                        >
+
+                                            {{ service.service_name }}
+
+                                        </option>
+
+                                    {% endfor %}
+
+
+                                </select>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <!-- =================================================
+                             PHOTO
+                             ================================================= -->
+
+                        <div class="col-12 col-lg-5">
+
+                            <div class="npu517-photo-panel">
+
+
+                                <h3 class="npu518-photo-title">
+
+                                    <i class="fa fa-camera me-1"></i>
+
+                                    Profile Photo
+
+                                </h3>
+
+
+                                <div class="npu519-photo-wrapper">
+
+
+                                    {% if provider.photo %}
+
+                                        <img
+                                            src="{{ provider.photo.url }}"
+                                            alt="Provider Photo"
+                                            class="npu520-photo"
+                                        >
+
+                                    {% else %}
+
+                                        <div class="npu521-avatar">
+
+                                            <i class="fa fa-user"></i>
+
+                                        </div>
+
+                                    {% endif %}
+
+
+                                </div>
+
+
+                                <input
+                                    type="file"
+                                    name="photo"
+                                    id="npuPhoto"
+                                    class="form-control npu522-file"
+                                    accept="image/*"
+                                >
+
+
+                                <p class="npu523-help">
+
+                                    Select a new image to replace
+                                    the current provider photo.
+
+                                </p>
+
+
+                                {% if provider.photo %}
+
+                                    <div class="npu524-current">
+
+                                        <i class="fa fa-check-circle me-1"></i>
+
+                                        Current profile photo is available.
+
+                                    </div>
+
+                                {% endif %}
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================================
+                     FOOTER
+                     ===================================================== -->
+
+                <div class="npu525-footer">
+
+
+                    <a
+                        href="{% url 'admin_provider_view' id=provider.user_profile.id %}"
+                        class="npu526-cancel"
+                    >
+
+                        <i class="fa fa-times"></i>
+
+                        Cancel
+
+                    </a>
+
+
+                    <button
+                        type="submit"
+                        class="btn npu527-submit"
+                        name="update"
+                        value="{{ provider.id }}"
+                    >
+
+                        <i class="fa fa-check me-1"></i>
+
+                        Update Profile
+
+                    </button>
+
+
+                </div>
+
+
+            </section>
+
+
+        </form>
+
+
+    </div>
+
+</div>
+
+{% endblock %}

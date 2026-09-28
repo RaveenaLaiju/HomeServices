@@ -1,0 +1,1097 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}
+            Noah's Ark Home Services
+        {% endblock %}
+    </title>
+
+
+    <!-- ============================================================
+         GOOGLE FONT
+         ============================================================ -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- ============================================================
+         BOOTSTRAP 5
+         ============================================================ -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- ============================================================
+         FONT AWESOME
+         ============================================================ -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- ============================================================
+         ADMIN CSS
+         ============================================================ -->
+
+    <link
+        rel="stylesheet"
+        href="{% static 'admin_page/css/admin_style.css' %}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{% static 'admin_page/css/admin_style1.css' %}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{% static 'admin_page/css/admin_style2.css' %}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{% static 'admin_page/css/admin_style3.css' %}"
+    >
+    <link
+        rel="stylesheet"
+        href="{% static 'admin_page/css/admin_style4.css' %}"
+    >
+
+
+    {% block extra_css %}{% endblock %}
+
+</head>
+
+
+<body>
+
+
+<!-- ================================================================
+     ADMIN APPLICATION WRAPPER
+     ================================================================ -->
+
+<div class="naad-201-admin-wrapper">
+
+
+    <!-- ============================================================
+         SIDEBAR OVERLAY
+         ============================================================ -->
+
+    <div
+        class="naad-2001-sidebar-overlay"
+        id="naadSidebarOverlay"
+    ></div>
+
+
+    <!-- ============================================================
+         SIDEBAR
+         ============================================================ -->
+
+    <aside
+        class="naad-301-sidebar"
+        id="naadSidebar"
+    >
+
+
+        <!-- ========================================================
+             BRAND
+             ======================================================== -->
+
+        <div class="naad-401-sidebar-brand">
+
+            <div class="naad-402-brand-icon">
+
+                <i class="fa fa-ship"></i>
+
+            </div>
+
+
+            <h1 class="naad-403-brand-title">
+                Noah's Ark
+            </h1>
+
+
+            <p class="naad-404-brand-subtitle">
+                Home Services
+            </p>
+
+        </div>
+
+
+        <!-- ========================================================
+             ADMIN PROFILE
+             ======================================================== -->
+
+        <div class="naad-501-sidebar-profile">
+
+            <div class="naad-502-profile-icon">
+
+                <i class="fa fa-user"></i>
+
+            </div>
+
+
+            <div class="naad-503-profile-content">
+
+                <p class="naad-504-profile-name">
+
+                    {% if user.is_authenticated %}
+
+                        {% if user.first_name %}
+
+                            {{ user.first_name }}
+                            {{ user.last_name }}
+
+                        {% elif user.username %}
+
+                            {{ user.username }}
+
+                        {% else %}
+
+                            Noah's Ark
+
+                        {% endif %}
+
+                    {% else %}
+
+                        Noah's Ark
+
+                    {% endif %}
+
+                </p>
+
+
+                <p class="naad-505-profile-role">
+                    Administration
+                </p>
+
+
+                <div class="naad-506-online">
+
+                    <span class="naad-507-online-dot"></span>
+
+                    Online
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================================
+             NAVIGATION CATEGORY
+             ======================================================== -->
+
+        <div class="naad-601-sidebar-category">
+            Main Navigation
+        </div>
+
+
+        <!-- ========================================================
+             NAVIGATION
+             ======================================================== -->
+
+        <ul class="naad-701-sidebar-nav">
+
+
+            <!-- ====================================================
+                 DASHBOARD
+                 ==================================================== -->
+
+            <li class="naad-702-sidebar-item">
+
+                <a
+                    href="{% url 'dashboard' %}"
+                    class="naad-703-sidebar-link"
+                    data-naad-path="/dashboard/"
+                >
+
+                    <span class="naad-704-sidebar-icon">
+
+                        <i class="fa fa-chart-pie"></i>
+
+                    </span>
+
+
+                    <span class="naad-705-sidebar-text">
+                        Dashboard
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- ====================================================
+                 SERVICES
+                 ==================================================== -->
+
+            <li class="naad-702-sidebar-item">
+
+                <a
+                    href="/admin_services/"
+                    class="naad-703-sidebar-link"
+                    data-naad-path="/admin_services/"
+                >
+
+                    <span class="naad-704-sidebar-icon">
+
+                        <i class="fa fa-screwdriver-wrench"></i>
+
+                    </span>
+
+
+                    <span class="naad-705-sidebar-text">
+                        Services
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- ====================================================
+                 PROVIDERS
+                 ==================================================== -->
+
+            <li class="naad-702-sidebar-item">
+
+                <a
+                    href="/admin_provider/"
+                    class="naad-703-sidebar-link"
+                    data-naad-path="/admin_provider/"
+                >
+
+                    <span class="naad-704-sidebar-icon">
+
+                        <i class="fa fa-user-tie"></i>
+
+                    </span>
+
+
+                    <span class="naad-705-sidebar-text">
+                        Providers
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- ====================================================
+                 BOOKINGS
+                 ==================================================== -->
+
+            <li class="naad-702-sidebar-item">
+
+                <a
+                    href="{% url 'admin_booking_list' %}"
+                    class="naad-703-sidebar-link"
+                    data-naad-path="/admin_booking"
+                >
+
+                    <span class="naad-704-sidebar-icon">
+
+                        <i class="fa fa-calendar-check"></i>
+
+                    </span>
+
+
+                    <span class="naad-705-sidebar-text">
+                        Bookings
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- ====================================================
+                 CUSTOMERS
+                 ==================================================== -->
+
+            <li class="naad-702-sidebar-item">
+
+                <a
+                    href="{% url 'admin_customer_list' %}"
+                    class="naad-703-sidebar-link"
+                    data-naad-path="/admin_customer"
+                >
+
+                    <span class="naad-704-sidebar-icon">
+
+                        <i class="fa fa-users"></i>
+
+                    </span>
+
+
+                    <span class="naad-705-sidebar-text">
+                        Customers
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- ====================================================
+                 ENQUIRIES
+                 ==================================================== -->
+
+            <li class="naad-702-sidebar-item">
+
+                <a
+                    href="{% url 'admin_enquiry_list' %}"
+                    class="naad-703-sidebar-link"
+                    data-naad-path="/admin_enquiry"
+                >
+
+                    <span class="naad-704-sidebar-icon">
+
+                        <i class="fa fa-comments"></i>
+
+                    </span>
+
+
+                    <span class="naad-705-sidebar-text">
+                        Enquiries
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- ====================================================
+                 PAYMENTS
+                 ==================================================== -->
+
+            <li class="naad-702-sidebar-item">
+
+                <a
+                    href="{% url 'admin_payment_list' %}"
+                    class="naad-703-sidebar-link"
+                    data-naad-path="/admin_payment"
+                >
+
+                    <span class="naad-704-sidebar-icon">
+
+                        <i class="fa fa-credit-card"></i>
+
+                    </span>
+
+
+                    <span class="naad-705-sidebar-text">
+                        Payments
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- ====================================================
+                 REVIEWS
+                 ==================================================== -->
+
+            <li class="naad-702-sidebar-item">
+
+                <a
+                    href="{% url 'review_list' %}"
+                    class="naad-703-sidebar-link"
+                    data-naad-path="/review"
+                >
+
+                    <span class="naad-704-sidebar-icon">
+
+                        <i class="fa fa-star"></i>
+
+                    </span>
+
+
+                    <span class="naad-705-sidebar-text">
+                        Reviews
+                    </span>
+
+                </a>
+
+            </li>
+
+
+        </ul>
+
+
+        <!-- ========================================================
+             SIDEBAR DIVIDER
+             ======================================================== -->
+
+        <div class="naad-801-sidebar-divider"></div>
+
+
+        <!-- ========================================================
+             LOGOUT
+             ======================================================== -->
+
+        <a
+            href="{% url 'admin_logout' %}"
+            class="naad-802-logout-link"
+        >
+
+            <span class="naad-803-logout-icon">
+
+                <i class="fa fa-right-from-bracket"></i>
+
+            </span>
+
+
+            <span>
+                Logout
+            </span>
+
+        </a>
+
+
+    </aside>
+
+
+    <!-- ============================================================
+         MAIN WRAPPER
+         ============================================================ -->
+
+    <div class="naad-901-main-wrapper">
+
+
+        <!-- ========================================================
+             NAVBAR
+             ======================================================== -->
+
+        <header class="naad-1001-navbar">
+
+
+            <!-- ====================================================
+                 SIDEBAR TOGGLE
+                 ==================================================== -->
+
+            <button
+                type="button"
+                class="naad-1101-toggle"
+                id="naadSidebarToggle"
+                aria-label="Toggle navigation"
+            >
+
+                <i class="fa fa-bars"></i>
+
+            </button>
+
+
+            <!-- ====================================================
+                 MOBILE BRAND
+                 ==================================================== -->
+
+            <div class="naad-1201-mobile-brand">
+
+                <span class="naad-1202-mobile-brand-icon">
+
+                    <i class="fa fa-ship"></i>
+
+                </span>
+
+
+                <span>
+                    Noah's Ark
+                </span>
+
+            </div>
+
+
+            <!-- ====================================================
+                 NAVBAR RIGHT
+                 ==================================================== -->
+
+            <div class="naad-1301-navbar-right">
+
+
+                <!-- =================================================
+                     ADMIN STATUS
+                     ================================================= -->
+
+                <div class="naad-1401-status">
+
+                    <span class="naad-1402-status-dot"></span>
+
+                    Admin Panel
+
+                </div>
+
+
+                <!-- =================================================
+                     PROFILE DROPDOWN
+                     ================================================= -->
+
+                <div class="dropdown">
+
+
+                    <button
+                        type="button"
+                        class="naad-1501-profile-button dropdown-toggle"
+                        id="naadProfileDropdown"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+
+                        <span class="naad-1502-profile-icon">
+
+                            <i class="fa fa-user"></i>
+
+                        </span>
+
+
+                        <span class="naad-1503-profile-info">
+
+                            <span class="naad-1504-profile-name">
+
+                                {% if user.is_authenticated %}
+
+                                    {% if user.first_name %}
+
+                                        {{ user.first_name }}
+                                        {{ user.last_name }}
+
+                                    {% elif user.username %}
+
+                                        {{ user.username }}
+
+                                    {% else %}
+
+                                        Noah's Ark
+
+                                    {% endif %}
+
+                                {% else %}
+
+                                    Noah's Ark
+
+                                {% endif %}
+
+                            </span>
+
+
+                            <span class="naad-1505-profile-role">
+                                Administrator
+                            </span>
+
+                        </span>
+
+
+                        <i
+                            class="fa fa-chevron-down naad-1506-profile-arrow"
+                        ></i>
+
+                    </button>
+
+
+                    <!-- =================================================
+                         DROPDOWN
+                         ================================================= -->
+
+                    <ul
+                        class="dropdown-menu dropdown-menu-end naad-1601-dropdown"
+                        aria-labelledby="naadProfileDropdown"
+                    >
+
+                        <li>
+
+                            <a
+                                class="naad-1602-dropdown-item"
+                                href="{% url 'dashboard' %}"
+                            >
+
+                                <i
+                                    class="fa fa-chart-pie naad-1603-dropdown-icon"
+                                ></i>
+
+                                Dashboard
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <hr class="dropdown-divider">
+
+                        </li>
+
+
+                        <li>
+
+                            <a
+                                class="naad-1602-dropdown-item"
+                                href="{% url 'admin_logout' %}"
+                            >
+
+                                <i
+                                    class="fa fa-right-from-bracket naad-1603-dropdown-icon"
+                                ></i>
+
+                                Logout
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+        <!-- ========================================================
+             PAGE CONTENT
+             ======================================================== -->
+
+        <main class="naad-1701-content">
+
+            <div class="naad-1702-content-container">
+
+                {% block content %}
+                {% endblock %}
+
+            </div>
+
+        </main>
+
+
+        <!-- ========================================================
+             FOOTER
+             ======================================================== -->
+
+        <footer class="naad-1901-footer">
+
+            <p class="naad-1902-footer-left">
+
+                © 2025 Noah's Ark Home Services.
+                All Right Reserved.
+
+            </p>
+
+
+            <p class="naad-1903-footer-right">
+
+                Admin Management System
+
+                <span>•</span>
+
+                <span class="naad-1904-footer-brand">
+                    Noah's Ark
+                </span>
+
+            </p>
+
+        </footer>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+></script>
+
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const adminWrapper =
+            document.querySelector(
+                ".naad-201-admin-wrapper"
+            );
+
+        const sidebar =
+            document.getElementById(
+                "naadSidebar"
+            );
+
+        const toggle =
+            document.getElementById(
+                "naadSidebarToggle"
+            );
+
+        const overlay =
+            document.getElementById(
+                "naadSidebarOverlay"
+            );
+
+        const navLinks =
+            document.querySelectorAll(
+                ".naad-703-sidebar-link"
+            );
+
+
+        /* ========================================================
+           MOBILE OPEN
+           ======================================================== */
+
+        function naadOpenSidebar() {
+
+            if (!sidebar) {
+                return;
+            }
+
+            sidebar.classList.add(
+                "naad-3002-sidebar-open"
+            );
+
+            if (overlay) {
+
+                overlay.classList.add(
+                    "naad-2002-show"
+                );
+
+            }
+
+            document.body.style.overflow =
+                "hidden";
+
+        }
+
+
+        /* ========================================================
+           MOBILE CLOSE
+           ======================================================== */
+
+        function naadCloseSidebar() {
+
+            if (!sidebar) {
+                return;
+            }
+
+            sidebar.classList.remove(
+                "naad-3002-sidebar-open"
+            );
+
+            if (overlay) {
+
+                overlay.classList.remove(
+                    "naad-2002-show"
+                );
+
+            }
+
+            document.body.style.overflow =
+                "";
+
+        }
+
+
+        /* ========================================================
+           DESKTOP TOGGLE
+           ======================================================== */
+
+        function naadToggleDesktop() {
+
+            if (!adminWrapper) {
+                return;
+            }
+
+            adminWrapper.classList.toggle(
+                "naad-3003-sidebar-collapsed"
+            );
+
+        }
+
+
+        /* ========================================================
+           MAIN TOGGLE BUTTON
+           ======================================================== */
+
+        if (toggle) {
+
+            toggle.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+                    event.stopPropagation();
+
+
+                    /* --------------------------------------------
+                       MOBILE / TABLET
+                       -------------------------------------------- */
+
+                    if (
+                        window.innerWidth <= 991
+                    ) {
+
+                        if (
+                            sidebar &&
+                            sidebar.classList.contains(
+                                "naad-3002-sidebar-open"
+                            )
+                        ) {
+
+                            naadCloseSidebar();
+
+                        } else {
+
+                            naadOpenSidebar();
+
+                        }
+
+                        return;
+
+                    }
+
+
+                    /* --------------------------------------------
+                       DESKTOP
+                       -------------------------------------------- */
+
+                    naadToggleDesktop();
+
+                }
+            );
+
+        }
+
+
+        /* ========================================================
+           OVERLAY CLICK
+           ======================================================== */
+
+        if (overlay) {
+
+            overlay.addEventListener(
+                "click",
+                function () {
+
+                    naadCloseSidebar();
+
+                }
+            );
+
+        }
+
+
+        /* ========================================================
+           MOBILE NAVIGATION CLOSE
+           ======================================================== */
+
+        navLinks.forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        if (
+                            window.innerWidth <= 991
+                        ) {
+
+                            naadCloseSidebar();
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* ========================================================
+           ACTIVE NAVIGATION
+           ======================================================== */
+
+        const currentPath =
+            window.location.pathname;
+
+
+        navLinks.forEach(
+            function (link) {
+
+                const targetPath =
+                    link.getAttribute(
+                        "data-naad-path"
+                    );
+
+
+                if (!targetPath) {
+                    return;
+                }
+
+
+                if (
+                    currentPath === targetPath ||
+                    (
+                        targetPath !== "/dashboard/" &&
+                        currentPath.startsWith(
+                            targetPath
+                        )
+                    )
+                ) {
+
+                    link.classList.add(
+                        "naad-706-active"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* ========================================================
+           DASHBOARD EXACT MATCH
+           ======================================================== */
+
+        if (
+            currentPath === "/dashboard/" ||
+            currentPath === "/dashboard"
+        ) {
+
+            navLinks.forEach(
+                function (link) {
+
+                    const path =
+                        link.getAttribute(
+                            "data-naad-path"
+                        );
+
+
+                    if (
+                        path === "/dashboard/"
+                    ) {
+
+                        link.classList.add(
+                            "naad-706-active"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* ========================================================
+           WINDOW RESIZE
+           ======================================================== */
+
+        window.addEventListener(
+            "resize",
+            function () {
+
+                if (
+                    window.innerWidth > 991
+                ) {
+
+                    /* Close mobile state */
+
+                    naadCloseSidebar();
+
+                } else {
+
+                    /* Remove desktop collapsed state */
+
+                    if (adminWrapper) {
+
+                        adminWrapper.classList.remove(
+                            "naad-3003-sidebar-collapsed"
+                        );
+
+                    }
+
+                }
+
+            }
+        );
+
+
+        /* ========================================================
+           ESCAPE KEY
+           ======================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    naadCloseSidebar();
+
+
+                    if (adminWrapper) {
+
+                        adminWrapper.classList.remove(
+                            "naad-3003-sidebar-collapsed"
+                        );
+
+                    }
+
+                }
+
+            }
+        );
+
+    }
+
+);
+
+</script>
+
+
+{% block extra_js %}{% endblock %}
+
+
+</body>
+
+</html>

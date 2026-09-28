@@ -1,0 +1,392 @@
+<!-- =========================================================
+     ADD SERVICE SECTION MODAL
+     admin_service_section_add.html
+     ========================================================= -->
+
+<style>
+.nas641-add-modal {
+    z-index: 99999 !important;
+}
+
+.nas641-add-modal .modal-dialog {
+    max-width: 540px;
+    margin: 1.75rem auto;
+}
+
+.nas641-add-modal .modal-content {
+    overflow: hidden;
+    border: 0;
+    border-radius: 25px;
+    background: #ffffff;
+    box-shadow: 0 35px 100px rgba(0,0,0,0.30);
+}
+
+.nas642-add-header {
+    position: relative;
+    padding: 24px 25px;
+    background:
+        radial-gradient(circle at 100% 0%, rgba(0,255,170,0.18), transparent 35%),
+        linear-gradient(135deg, #061417, #071c1b);
+    border: 0;
+}
+
+.nas643-add-header-inner {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nas644-add-modal-icon {
+    width: 52px;
+    height: 52px;
+    flex: 0 0 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: rgba(0,255,170,0.12);
+    color: #00e0a0;
+    font-size: 20px;
+}
+
+.nas645-add-modal-title {
+    margin: 0;
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.nas646-add-modal-subtitle {
+    margin: 4px 0 0;
+    color: rgba(255,255,255,0.52);
+    font-size: 12px;
+}
+
+.nas647-add-close {
+    position: absolute;
+    top: 21px;
+    right: 21px;
+    padding: 10px;
+    border-radius: 10px;
+    filter: invert(1);
+    opacity: .65;
+}
+
+.nas648-add-body {
+    padding: 28px 25px 24px;
+}
+
+.nas649-service-preview {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 23px;
+    padding: 14px;
+    border-radius: 16px;
+    background: #f5f8f7;
+    border: 1px solid #e9efed;
+}
+
+.nas650-preview-icon {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(0,217,154,0.12);
+    color: #009f75;
+}
+
+.nas651-preview-label {
+    display: block;
+    color: #9ca3af;
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nas652-preview-value {
+    display: block;
+    margin-top: 2px;
+    color: #17201e;
+    font-size: 14px;
+    font-weight: 800;
+    word-break: break-word;
+}
+
+.nas653-field-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #1f2937;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.nas654-field-wrapper {
+    position: relative;
+}
+
+.nas655-field-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #00a878;
+    z-index: 2;
+}
+
+.nas656-title-input {
+    width: 100%;
+    min-height: 52px;
+    padding: 12px 15px 12px 44px;
+    border-radius: 14px;
+    border: 1px solid #dce4e1;
+    background: #ffffff;
+    color: #111827;
+    outline: none;
+    font-size: 14px;
+    transition: all .2s ease;
+}
+
+.nas656-title-input:focus {
+    border-color: #00c991;
+    box-shadow: 0 0 0 4px rgba(0,201,145,0.10);
+}
+
+.nas657-help {
+    margin: 8px 0 0;
+    color: #9ca3af;
+    font-size: 11px;
+}
+
+.nas658-add-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 18px 25px 22px;
+    border-top: 1px solid #edf1ef;
+    background: #fbfcfc;
+}
+
+.nas659-cancel {
+    min-height: 44px;
+    padding: 10px 18px;
+    border: 1px solid #dfe6e3;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #5f6b66;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.nas659-cancel:hover {
+    background: #f2f5f4;
+}
+
+.nas660-submit {
+    min-height: 44px;
+    padding: 10px 19px;
+    border: 0;
+    border-radius: 12px;
+    background: #00c991;
+    color: #032117;
+    font-size: 13px;
+    font-weight: 800;
+    transition: all .2s ease;
+}
+
+.nas660-submit:hover {
+    background: #00b984;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 575.98px) {
+
+    .nas641-add-modal .modal-dialog {
+        margin: 12px;
+    }
+
+    .nas648-add-body {
+        padding: 22px 18px;
+    }
+
+    .nas642-add-header {
+        padding: 20px 18px;
+    }
+
+    .nas658-add-footer {
+        padding: 15px 18px 18px;
+        flex-direction: column-reverse;
+    }
+
+    .nas659-cancel,
+    .nas660-submit {
+        width: 100%;
+    }
+}
+</style>
+
+
+<!-- =========================================================
+     ADD MODAL
+     ========================================================= -->
+
+<div
+    class="modal fade nas640-modal nas641-add-modal"
+    id="nas641AddSectionModal"
+    tabindex="-1"
+    aria-labelledby="nas641AddSectionModalLabel"
+    aria-hidden="true"
+    data-bs-backdrop="static"
+    data-bs-keyboard="true"
+>
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <!-- FORM IS INSIDE THE MODAL -->
+        <form
+            action=""
+            method="POST"
+            class="w-100"
+            autocomplete="off"
+        >
+
+            {% csrf_token %}
+
+            <div class="modal-content">
+
+                <div class="modal-header nas642-add-header">
+
+                    <div class="nas643-add-header-inner">
+
+                        <div class="nas644-add-modal-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+
+                        <div>
+                            <h5
+                                class="nas645-add-modal-title"
+                                id="nas641AddSectionModalLabel"
+                            >
+                                Add Service Section
+                            </h5>
+
+                            <p class="nas646-add-modal-subtitle">
+                                Create a new section for this service
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="btn-close nas647-add-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    ></button>
+
+                </div>
+
+
+                <div class="modal-body nas648-add-body">
+
+                    <!-- SERVICE -->
+                    <div class="nas649-service-preview">
+
+                        <div class="nas650-preview-icon">
+                            <i class="fa fa-cog"></i>
+                        </div>
+
+                        <div>
+
+                            <span class="nas651-preview-label">
+                                Current Service
+                            </span>
+
+                            <span class="nas652-preview-value">
+                                {{ data }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- IMPORTANT:
+                         Keep this hidden backend field.
+                    -->
+                    <input
+                        type="hidden"
+                        name="service"
+                        value="{{ data }}"
+                    >
+
+
+                    <!-- TITLE -->
+                    <div>
+
+                        <label
+                            for="nas656AddTitleInput"
+                            class="nas653-field-label"
+                        >
+                            Service Section Title
+                        </label>
+
+                        <div class="nas654-field-wrapper">
+
+                            <i class="fa fa-pencil nas655-field-icon"></i>
+
+                            <input
+                                type="text"
+                                id="nas656AddTitleInput"
+                                name="title"
+                                class="nas656-title-input"
+                                placeholder="Enter service section title"
+                                maxlength="255"
+                                required
+                            >
+
+                        </div>
+
+                        <p class="nas657-help">
+                            Example: Description, Service Procedure,
+                            Our Equipment, Benefits, etc.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer nas658-add-footer">
+
+                    <button
+                        type="button"
+                        class="nas659-cancel"
+                        data-bs-dismiss="modal"
+                    >
+                        <i class="fa fa-times me-1"></i>
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="nas660-submit"
+                        name="save"
+                    >
+                        <i class="fa fa-check me-1"></i>
+                        Create Section
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

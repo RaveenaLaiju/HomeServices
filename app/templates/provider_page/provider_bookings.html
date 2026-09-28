@@ -1,0 +1,681 @@
+{% extends 'provider_page/base.html' %}
+
+{% block title %}Booking Requests - Noah's Ark Services{% endblock %}
+
+{% block content %}
+
+
+<div class="main-panel">
+
+    <div class="content-wrapper pbk900-wrapper">
+
+        <div class="pbk901-page">
+
+            <div class="container-fluid px-3 px-md-4 pbk902-container">
+
+
+
+                <section class="pbk903-header">
+
+                    <div class="pbk904-header-content">
+
+                        <div class="row align-items-center g-3">
+
+                            <div class="col-12 col-md">
+
+                                <div class="d-flex align-items-center gap-3">
+
+                                    <div class="pbk905-icon-box">
+
+                                        <i class="fa fa-book"></i>
+
+                                    </div>
+
+                                    <div>
+
+                                        <h1 class="pbk906-title">
+                                            Customer Booking Requests
+                                        </h1>
+
+                                        <p class="pbk907-subtitle">
+                                            Review and manage your incoming service bookings
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-12 col-md-auto">
+
+                                <div class="pbk908-count">
+
+                                    <i class="fa fa-inbox"></i>
+
+                                    <span>
+                                        {{ booking_requests|length }}
+                                        Request{{ booking_requests|length|pluralize }}
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =====================================================
+                     MESSAGES
+                ====================================================== -->
+
+                {% if messages %}
+
+                    {% for message in messages %}
+
+                        <div
+                            class="alert alert-success alert-dismissible fade show pbk909-alert"
+                            role="alert"
+                        >
+
+                            <div class="d-flex align-items-center gap-2">
+
+                                <i class="fa fa-check-circle"></i>
+
+                                <span>
+                                    {{ message }}
+                                </span>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="alert"
+                                aria-label="Close"
+                            ></button>
+
+                        </div>
+
+                    {% endfor %}
+
+                {% endif %}
+
+
+                <!-- =====================================================
+                     BOOKING ACTIVITY
+                ====================================================== -->
+
+                <section class="pbk910-card">
+
+
+                    <div class="pbk911-card-top">
+
+                        <div class="d-flex align-items-center justify-content-between">
+
+                            <div>
+
+                                <h2 class="pbk912-section-title">
+
+                                    <i class="fa fa-list-alt text-success me-2"></i>
+
+                                    Booking Activity
+
+                                </h2>
+
+                                <div class="pbk913-section-label">
+
+                                    Manage customer requests, payments and rework
+
+                                </div>
+
+                            </div>
+
+                           
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="pbk914-table-wrapper">
+
+                        <table class="table pbk915-table text-center align-middle mb-0">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        <i class="fa fa-user me-1"></i>
+                                        Customer
+                                    </th>
+
+                                    <th>
+                                        <i class="fa fa-wrench me-1"></i>
+                                        Service
+                                    </th>
+
+                                    <th>
+                                        <i class="fa fa-calendar me-1"></i>
+                                        Date
+                                    </th>
+
+                                    <th>
+                                        <i class="fa fa-bolt me-1"></i>
+                                        Type
+                                    </th>
+
+                                    <th>
+                                        <i class="fa fa-info-circle me-1"></i>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        <i class="fa fa-cogs me-1"></i>
+                                        Action
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                {% for booking in booking_requests %}
+
+                                    <tr class="pbk916-row">
+
+
+                                        <!-- CUSTOMER -->
+
+                                        <td>
+
+                                            <div class="pbk917-customer">
+
+                                                <div class="pbk918-avatar">
+
+                                                    <i class="fa fa-user"></i>
+
+                                                </div>
+
+                                                <span class="pbk919-customer-name">
+
+                                                    {{ booking.customer.user_profile.user.first_name }}
+
+                                                </span>
+
+                                            </div>
+
+                                        </td>
+
+
+                                        <!-- SERVICE -->
+
+                                        <td>
+
+                                            <div class="pbk920-service">
+
+                                                <i class="fa fa-home pbk921-service-icon"></i>
+
+                                                <span>
+                                                    {{ booking.service.service_name }}
+                                                </span>
+
+                                            </div>
+
+                                        </td>
+
+
+                                        <!-- DATE -->
+
+                                        <td>
+
+                                            <span class="pbk922-date">
+
+                                                <i class="fa fa-calendar-o pbk923-date-icon"></i>
+
+                                                {{ booking.date }}
+
+                                            </span>
+
+                                        </td>
+
+
+                                        <!-- TYPE -->
+
+                                        <td>
+
+                                            {% if booking.type == 'emergency' %}
+
+                                                <span class="pbk924-badge pbk925-emergency">
+
+                                                    <i class="fa fa-bolt"></i>
+
+                                                    Emergency
+
+                                                </span>
+
+                                            {% else %}
+
+                                                <span class="pbk924-badge pbk926-normal">
+
+                                                    <i class="fa fa-calendar-check-o"></i>
+
+                                                    Normal
+
+                                                </span>
+
+                                            {% endif %}
+
+                                        </td>
+
+
+                                        <!-- STATUS -->
+
+                                        <td>
+
+                                            {% if booking.status == "pending" %}
+
+                                                <span class="pbk924-badge pbk927-pending">
+
+                                                    <i class="fa fa-clock-o"></i>
+
+                                                    Pending
+
+                                                </span>
+
+                                            {% elif booking.status == "accepted" %}
+
+                                                <span class="pbk924-badge pbk928-accepted">
+
+                                                    <i class="fa fa-check"></i>
+
+                                                    Accepted
+
+                                                </span>
+
+                                            {% elif booking.status == "completed" %}
+
+                                                <span class="pbk924-badge pbk929-completed">
+
+                                                    <i class="fa fa-check-circle"></i>
+
+                                                    Completed
+
+                                                </span>
+
+                                            {% elif booking.status == "rework_pending" %}
+
+                                                <span class="pbk924-badge pbk930-rework">
+
+                                                    <i class="fa fa-refresh"></i>
+
+                                                    Rework Requested
+
+                                                </span>
+
+                                            {% elif booking.status == "rework_accepted" %}
+
+                                                <span class="pbk924-badge pbk928-accepted">
+
+                                                    <i class="fa fa-check"></i>
+
+                                                    Rework Accepted
+
+                                                </span>
+
+                                            {% elif booking.status == "rework_completed" %}
+
+                                                <span class="pbk924-badge pbk929-completed">
+
+                                                    <i class="fa fa-check-circle"></i>
+
+                                                    Rework Completed
+
+                                                </span>
+
+                                            {% else %}
+
+                                                <span class="pbk924-badge pbk931-dark">
+
+                                                    <i class="fa fa-circle"></i>
+
+                                                    {{ booking.status|title }}
+
+                                                </span>
+
+                                            {% endif %}
+
+                                        </td>
+
+
+                                        <!-- ACTION -->
+
+                                        <td>
+
+                                            <div class="pbk932-actions">
+
+
+                                                {% if booking.status == "pending" %}
+
+                                                    <form
+                                                        method="post"
+                                                        action="{% url 'provider_bookings' %}"
+                                                        class="d-inline"
+                                                    >
+
+                                                        {% csrf_token %}
+
+                                                        <input
+                                                            type="hidden"
+                                                            name="booking_id"
+                                                            value="{{ booking.id }}"
+                                                        >
+
+                                                        <button
+                                                            type="submit"
+                                                            name="action"
+                                                            value="accept"
+                                                            class="btn btn-success pbk933-btn"
+                                                        >
+
+                                                            <i class="fa fa-check"></i>
+
+                                                            Accept
+
+                                                        </button>
+
+                                                    </form>
+
+
+                                                {% elif booking.status == "accepted" %}
+
+                                                    {% if booking.booking and booking.booking.is_paid %}
+
+                                                        <form
+                                                            method="post"
+                                                            action="{% url 'provider_bookings' %}"
+                                                            class="d-inline"
+                                                        >
+
+                                                            {% csrf_token %}
+
+                                                            <input
+                                                                type="hidden"
+                                                                name="booking_id"
+                                                                value="{{ booking.id }}"
+                                                            >
+
+                                                            <button
+                                                                type="submit"
+                                                                name="action"
+                                                                value="complete"
+                                                                class="btn btn-primary pbk933-btn"
+                                                            >
+
+                                                                <i class="fa fa-check-circle"></i>
+
+                                                                Mark Completed
+
+                                                            </button>
+
+                                                        </form>
+
+                                                    {% else %}
+
+                                                        <span class="pbk934-payment">
+
+                                                            <i class="fa fa-credit-card"></i>
+
+                                                            Waiting for Payment
+
+                                                        </span>
+
+                                                    {% endif %}
+
+
+                                                {% elif booking.status == "rework_pending" %}
+
+                                                    <button
+                                                        type="button"
+                                                        class="btn btn-warning pbk933-btn"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#reworkModal{{ booking.id }}"
+                                                    >
+
+                                                        <i class="fa fa-eye"></i>
+
+                                                        View Rework
+
+                                                    </button>
+
+
+                                                {% elif booking.status == "rework_accepted" %}
+
+                                                    <form
+                                                        method="post"
+                                                        action="{% url 'provider_bookings' %}"
+                                                        class="d-inline"
+                                                    >
+
+                                                        {% csrf_token %}
+
+                                                        <input
+                                                            type="hidden"
+                                                            name="booking_id"
+                                                            value="{{ booking.id }}"
+                                                        >
+
+                                                        <button
+                                                            type="submit"
+                                                            name="action"
+                                                            value="rework_done"
+                                                            class="btn btn-success pbk933-btn"
+                                                        >
+
+                                                            <i class="fa fa-check-circle"></i>
+
+                                                            Mark Rework Done
+
+                                                        </button>
+
+                                                    </form>
+
+
+                                                {% else %}
+
+                                                    <span class="pbk934-payment">
+
+                                                        <i class="fa fa-check-circle"></i>
+
+                                                        No Action
+
+                                                    </span>
+
+                                                {% endif %}
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+
+                                    <!-- =================================================
+                                         REWORK MODAL
+                                    ================================================== -->
+
+                                    {% if booking.status == "rework_pending" or booking.status == "rework_accepted" %}
+
+                                        <div
+                                            class="modal fade pbk939-modal"
+                                            id="reworkModal{{ booking.id }}"
+                                            tabindex="-1"
+                                            aria-hidden="true"
+                                        >
+
+                                            <div class="modal-dialog modal-dialog-centered">
+
+                                                <div class="modal-content">
+
+
+                                                    <div class="modal-header pbk940-modal-header">
+
+                                                        <h5 class="pbk941-modal-title">
+
+                                                            <i class="fa fa-refresh text-warning"></i>
+
+                                                            Rework Request
+
+                                                        </h5>
+
+                                                        <button
+                                                            type="button"
+                                                            class="btn-close"
+                                                            data-bs-dismiss="modal"
+                                                            aria-label="Close"
+                                                        ></button>
+
+                                                    </div>
+
+
+                                                    <div class="modal-body pbk942-modal-body">
+
+                                                        <div class="pbk943-message-box">
+
+                                                            <span class="pbk944-message-label">
+
+                                                                <i class="fa fa-commenting me-1"></i>
+
+                                                                Customer Message
+
+                                                            </span>
+
+                                                            {{ booking.rework_message|default:"No message provided" }}
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <div class="modal-footer pbk945-modal-footer">
+
+                                                        {% if booking.status == "rework_pending" %}
+
+                                                            <form
+                                                                method="post"
+                                                                action="{% url 'provider_bookings' %}"
+                                                                class="d-inline"
+                                                            >
+
+                                                                {% csrf_token %}
+
+                                                                <input
+                                                                    type="hidden"
+                                                                    name="booking_id"
+                                                                    value="{{ booking.id }}"
+                                                                >
+
+                                                                <button
+                                                                    type="submit"
+                                                                    name="action"
+                                                                    value="accept_rework"
+                                                                    class="btn btn-primary pbk933-btn"
+                                                                >
+
+                                                                    <i class="fa fa-check"></i>
+
+                                                                    Accept Rework
+
+                                                                </button>
+
+                                                            </form>
+
+                                                        {% endif %}
+
+                                                        <button
+                                                            type="button"
+                                                            class="btn btn-secondary pbk933-btn"
+                                                            data-bs-dismiss="modal"
+                                                        >
+
+                                                            <i class="fa fa-times"></i>
+
+                                                            Close
+
+                                                        </button>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    {% endif %}
+
+
+                                {% empty %}
+
+
+                                    <!-- EMPTY -->
+
+                                    <tr>
+
+                                        <td
+                                            colspan="6"
+                                            class="pbk935-empty"
+                                        >
+
+                                            <div class="pbk936-empty-icon">
+
+                                                <i class="fa fa-calendar-times-o"></i>
+
+                                            </div>
+
+                                            <h3 class="pbk937-empty-title">
+
+                                                No Booking Requests
+
+                                            </h3>
+
+                                            <p class="pbk938-empty-text">
+
+                                                New customer service requests will appear here.
+
+                                            </p>
+
+                                        </td>
+
+                                    </tr>
+
+
+                                {% endfor %}
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% endblock %}

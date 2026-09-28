@@ -1,0 +1,42 @@
+{% extends 'customer_page/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h2>Processing your payment...</h2>
+
+    <form id="paymentForm" method="POST">
+        {% csrf_token %}
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+            var options = {
+                "key": "{{ razorpay_key }}",
+                "amount": "{{ amount }}", // already in paise from views
+                "currency": "INR",
+                "name": "{{ booking.booking_request.customer.user_profile.user.first_name }}",
+                "description": "Service Payment",
+                "order_id": "{{ payment.provider_order_id }}", // correct order id from Payment model
+                "callback_url": "http://127.0.0.1:8000/payment_callback/",  // LOCAL URL (no ngrok)
+                "redirect": true, // redirects after payment
+                "prefill": {
+                    "name": "{{ booking.booking_request.customer.user_profile.user.first_name }}",
+                    "email": "{{ booking.booking_request.customer.user_profile.user.email }}",
+                    "contact": "{{ booking.booking_request.customer.phone }}"
+                },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            };
+
+            var rzp1 = new Razorpay(options);
+
+            rzp1.on('payment.failed', function (response) {
+                alert("❌ Payment failed: " + response.error.description);
+                window.location.href = "/bookings/";
+            });
+
+            window.onload = function() {
+                rzp1.open();
+            };
+        </script>
+    </form>
+{% endblock %}

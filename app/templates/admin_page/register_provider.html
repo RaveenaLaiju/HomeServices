@@ -1,0 +1,479 @@
+
+
+<button
+    type="button"
+    class="npa901-trigger"
+    data-bs-toggle="modal"
+    data-bs-target="#npaAddProviderModal"
+>
+    <i class="fa fa-plus"></i>
+    <span>Add Provider</span>
+</button>
+
+
+
+<div
+    class="modal fade"
+    id="npaAddProviderModal"
+    tabindex="-1"
+    aria-labelledby="npaAddProviderModalLabel"
+    aria-hidden="true"
+    data-bs-backdrop="true"
+    data-bs-keyboard="true"
+>
+
+    <div
+        class="modal-dialog modal-dialog-centered"
+    >
+
+        <div class="modal-content">
+
+            <!-- ==================================================
+                 FORM
+                 ================================================== -->
+
+            <form
+                method="POST"
+                action=""
+            >
+
+                {% csrf_token %}
+
+
+                <!-- ==================================================
+                     MODAL HEADER
+                     ================================================== -->
+
+                <div class="npa902-header">
+
+                    <div class="npa903-header-inner">
+
+                        <div class="npa904-header-icon">
+
+                            <i class="fa fa-user-plus"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h1
+                                class="npa905-title"
+                                id="npaAddProviderModalLabel"
+                            >
+                                Add New Provider
+                            </h1>
+
+                            <p class="npa906-subtitle">
+                                Create a new Noah's Ark service provider account
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="npa907-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        >
+                            <i class="fa fa-times"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================================
+                     MODAL BODY
+                     ================================================== -->
+
+                <div class="npa908-body">
+
+
+                    <!-- INFORMATION -->
+
+                    <div class="npa909-info">
+
+                        <i class="fa fa-info-circle"></i>
+
+                        <span>
+                            Enter the provider's basic account details.
+                            Their username and password will be generated
+                            automatically after registration and sent to
+                            the provided email address.
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="row g-3">
+
+
+                        <!-- ==================================================
+                             FIRST NAME
+                             ================================================== -->
+
+                        <div class="col-md-6">
+
+                            <div class="npa910-field mb-0">
+
+                                <label
+                                    for="npaProviderFirstName"
+                                    class="npa911-label"
+                                >
+                                    First Name
+                                    <span class="npa912-required">*</span>
+                                </label>
+
+
+                                <div class="npa913-input-wrapper">
+
+                                    <i
+                                        class="fa fa-user npa914-input-icon"
+                                    ></i>
+
+                                    <input
+                                        type="text"
+                                        id="npaProviderFirstName"
+                                        class="npa915-control"
+                                        name="first_name"
+                                        placeholder="Enter first name"
+                                        autocomplete="given-name"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- ==================================================
+                             LAST NAME
+                             ================================================== -->
+
+                        <div class="col-md-6">
+
+                            <div class="npa910-field mb-0">
+
+                                <label
+                                    for="npaProviderLastName"
+                                    class="npa911-label"
+                                >
+                                    Last Name
+                                    <span class="npa912-required">*</span>
+                                </label>
+
+
+                                <div class="npa913-input-wrapper">
+
+                                    <i
+                                        class="fa fa-user npa914-input-icon"
+                                    ></i>
+
+                                    <input
+                                        type="text"
+                                        id="npaProviderLastName"
+                                        class="npa915-control"
+                                        name="last_name"
+                                        placeholder="Enter last name"
+                                        autocomplete="family-name"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- ==================================================
+                             EMAIL
+                             ================================================== -->
+
+                        <div class="col-md-6">
+
+                            <div class="npa910-field mb-0">
+
+                                <label
+                                    for="npaProviderEmail"
+                                    class="npa911-label"
+                                >
+                                    Provider Email
+                                    <span class="npa912-required">*</span>
+                                </label>
+
+
+                                <div class="npa913-input-wrapper">
+
+                                    <i
+                                        class="fa fa-envelope npa914-input-icon"
+                                    ></i>
+
+                                    <input
+                                        type="email"
+                                        id="npaProviderEmail"
+                                        class="npa915-control"
+                                        name="email"
+                                        placeholder="provider@example.com"
+                                        autocomplete="email"
+                                        pattern="[a-z].*[a-z0-9]@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                                        title="Please enter a valid email address"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- ==================================================
+                             PHONE
+                             ================================================== -->
+
+                        <div class="col-md-6">
+
+                            <div class="npa910-field mb-0">
+
+                                <label
+                                    for="npaProviderPhone"
+                                    class="npa911-label"
+                                >
+                                    Phone Number
+                                    <span class="npa912-required">*</span>
+                                </label>
+
+
+                                <div class="npa913-input-wrapper">
+
+                                    <i
+                                        class="fa fa-phone npa914-input-icon"
+                                    ></i>
+
+                                    <input
+                                        type="text"
+                                        id="npaProviderPhone"
+                                        class="npa915-control"
+                                        name="phone"
+                                        placeholder="+xx xxxx xxxxxx"
+                                        pattern="\+[0-9]{2} [0-9]{4} [0-9]{6}"
+                                        title="Please enter your phone number in the format: +xx xxxx xxxxxx"
+                                        autocomplete="tel"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <span class="npa916-help">
+                                    Format: +xx xxxx xxxxxx
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- ==================================================
+                             STATUS
+                             ================================================== -->
+
+                        <div class="col-12">
+
+                            <div class="npa910-field mb-0">
+
+                                <label class="npa911-label">
+                                    Account Status
+                                </label>
+
+
+                                <div class="npa917-status">
+
+                                    <input
+                                        type="checkbox"
+                                        class="npa918-checkbox"
+                                        id="npaProviderStatus"
+                                        name="status"
+                                        checked
+                                    >
+
+
+                                    <label
+                                        for="npaProviderStatus"
+                                        class="npa919-status-label"
+                                    >
+
+                                        <span class="npa920-status-title">
+                                            Active Status
+                                        </span>
+
+                                        <span class="npa921-status-description">
+                                            Activate this provider account
+                                            immediately after registration.
+                                        </span>
+
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================================
+                     MODAL FOOTER
+                     ================================================== -->
+
+                <div class="npa922-footer">
+
+                    <button
+                        type="button"
+                        class="npa923-cancel"
+                        data-bs-dismiss="modal"
+                    >
+                        <i class="fa fa-times me-1"></i>
+                        Close
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        name="save_provider"
+                        class="npa924-submit"
+                    >
+                        <i class="fa fa-user-plus me-1"></i>
+                        Create Provider
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ============================================================
+     MODAL ISOLATION
+     
+     Moves modal directly under BODY.
+     This prevents parent elements such as:
+     
+     .main-panel
+     .content-wrapper
+     .sidebar
+     .container
+     .card
+     
+     from affecting Bootstrap's modal stacking.
+     ============================================================ -->
+
+<script>
+
+(function () {
+
+    function npaMoveProviderModal() {
+
+        var modal =
+            document.getElementById(
+                "npaAddProviderModal"
+            );
+
+        if (
+            modal &&
+            modal.parentElement !== document.body
+        ) {
+
+            document.body.appendChild(modal);
+
+        }
+
+    }
+
+
+    function npaBindProviderModal() {
+
+        var modal =
+            document.getElementById(
+                "npaAddProviderModal"
+            );
+
+
+        if (!modal) {
+            return;
+        }
+
+
+        modal.addEventListener(
+            "show.bs.modal",
+            function () {
+
+                document.body.classList.add(
+                    "npa-modal-active"
+                );
+
+            }
+        );
+
+
+        modal.addEventListener(
+            "hidden.bs.modal",
+            function () {
+
+                document.body.classList.remove(
+                    "npa-modal-active"
+                );
+
+            }
+        );
+
+    }
+
+
+    if (
+        document.readyState === "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                npaMoveProviderModal();
+                npaBindProviderModal();
+
+            }
+        );
+
+    } else {
+
+        npaMoveProviderModal();
+        npaBindProviderModal();
+
+    }
+
+})();
+
+</script>

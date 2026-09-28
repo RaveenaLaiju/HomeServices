@@ -1,0 +1,618 @@
+
+
+<div
+    class="modal fade nac750-modal nac752-update-modal"
+    id="nac752UpdateContentModal"
+    tabindex="-1"
+    aria-labelledby="nac752UpdateContentModalLabel"
+    aria-hidden="true"
+>
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <form
+            action=""
+            method="POST"
+            enctype="multipart/form-data"
+            id="nac819UpdateForm"
+            class="w-100"
+        >
+
+            {% csrf_token %}
+
+            <div class="modal-content">
+
+                <div class="modal-header nac788-modal-header">
+
+                    <div class="nac789-header-content">
+
+                        <div class="nac790-header-icon">
+                            <i class="fa fa-pencil"></i>
+                        </div>
+
+                        <div>
+
+                            <h5
+                                class="nac791-modal-title"
+                                id="nac752UpdateContentModalLabel"
+                            >
+                                Update Content
+                            </h5>
+
+                            <p class="nac792-modal-subtitle">
+                                Modify the selected section content
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="btn-close nac793-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    ></button>
+
+                </div>
+
+
+                <div class="modal-body nac794-body">
+
+                    <!-- CURRENT TITLE -->
+
+                    <div class="nac795-current">
+
+                        <span class="nac796-current-label">
+                            Editing Content
+                        </span>
+
+                        <span
+                            class="nac797-current-title"
+                            id="nac820CurrentTitle"
+                        >
+                        </span>
+
+                    </div>
+
+
+                    <!-- TITLE -->
+
+                    <div class="nac798-field">
+
+                        <label
+                            for="nac821UpdateTitle"
+                            class="nac799-label"
+                        >
+                            Title
+                        </label>
+
+                        <div class="nac800-wrapper">
+
+                            <i class="fa fa-pencil nac801-icon"></i>
+
+                            <input
+                                type="text"
+                                id="nac821UpdateTitle"
+                                name="title"
+                                class="nac802-input"
+                                maxlength="255"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="nac798-field">
+
+                        <label
+                            for="nac822UpdateDescription"
+                            class="nac799-label"
+                        >
+                            Description
+                        </label>
+
+                        <div class="nac800-wrapper">
+
+                            <i class="fa fa-align-left nac801-icon"></i>
+
+                            <textarea
+                                id="nac822UpdateDescription"
+                                name="description"
+                                class="nac803-textarea"
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ICON -->
+
+                    <div class="nac798-field">
+
+                        <label
+                            for="nac823UpdateIcon"
+                            class="nac799-label"
+                        >
+                            Icon Class
+                        </label>
+
+                        <div class="nac800-wrapper">
+
+                            <i class="fa fa-star nac801-icon"></i>
+
+                            <input
+                                type="text"
+                                id="nac823UpdateIcon"
+                                name="icon"
+                                class="nac802-input"
+                                placeholder="Example: fa fa-home"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ORDER -->
+
+                    <div class="nac798-field">
+
+                        <label
+                            for="nac824UpdateOrder"
+                            class="nac799-label"
+                        >
+                            Display Order
+                        </label>
+
+                        <div class="nac800-wrapper">
+
+                            <i class="fa fa-sort-numeric-asc nac801-icon"></i>
+
+                            <input
+                                type="number"
+                                id="nac824UpdateOrder"
+                                name="order"
+                                class="nac802-input"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- IMAGE -->
+
+                    <div class="nac798-field mb-0">
+
+                        <label
+                            for="nac825UpdateImage"
+                            class="nac799-label"
+                        >
+                            Replace Image
+                        </label>
+
+                        <input
+                            type="file"
+                            id="nac825UpdateImage"
+                            name="image"
+                            class="nac804-file"
+                            accept="image/*"
+                        >
+
+
+                        <div
+                            class="nac805-current-image"
+                            id="nac826CurrentImageWrapper"
+                            style="display:none;"
+                        >
+
+                            <span class="nac806-current-image-label">
+                                Current Image
+                            </span>
+
+                            <img
+                                id="nac827CurrentImage"
+                                class="nac807-image"
+                                src=""
+                                alt="Current image"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!--
+                        Backend:
+                        name="update"
+                        value="{{ item.id }}"
+                    -->
+
+                    <input
+                        type="hidden"
+                        id="nac828UpdateId"
+                        name="content_id"
+                    >
+
+                </div>
+
+
+                <div class="modal-footer nac808-footer">
+
+                    <button
+                        type="button"
+                        class="nac809-cancel"
+                        data-bs-dismiss="modal"
+                    >
+                        <i class="fa fa-times me-1"></i>
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="nac810-update-submit"
+                        name="update"
+                        id="nac829UpdateSubmit"
+                    >
+                        <i class="fa fa-check me-1"></i>
+                        Update Content
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     DELETE MODAL
+     ========================================================= -->
+
+<div
+    class="modal fade nac750-modal nac753-delete-modal"
+    id="nac753DeleteContentModal"
+    tabindex="-1"
+    aria-labelledby="nac753DeleteContentModalLabel"
+    aria-hidden="true"
+    data-bs-backdrop="static"
+>
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <form
+            action=""
+            method="POST"
+            id="nac830DeleteForm"
+            class="w-100"
+        >
+
+            {% csrf_token %}
+
+            <div class="modal-content">
+
+                <div class="nac811-delete-body">
+
+                    <div class="nac812-delete-icon">
+                        <i class="fa fa-trash"></i>
+                    </div>
+
+                    <h5
+                        class="nac813-delete-title"
+                        id="nac753DeleteContentModalLabel"
+                    >
+                        Delete Content?
+                    </h5>
+
+                    <p class="nac814-delete-text">
+                        Are you sure you want to delete this content?
+                        This action cannot be undone.
+                    </p>
+
+                    <span
+                        class="nac815-delete-name"
+                        id="nac831DeleteTitle"
+                    >
+                    </span>
+
+                </div>
+
+
+                <input
+                    type="hidden"
+                    name="id"
+                    id="nac832DeleteId"
+                >
+
+
+                <div class="nac816-delete-footer">
+
+                    <button
+                        type="button"
+                        class="nac817-delete-cancel"
+                        data-bs-dismiss="modal"
+                    >
+                        <i class="fa fa-times me-1"></i>
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="nac818-delete-submit"
+                        name="delete"
+                        id="nac833DeleteSubmit"
+                    >
+                        <i class="fa fa-trash me-1"></i>
+                        Delete Content
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script>
+(function () {
+
+    /* =====================================================
+       UPDATE MODAL
+       ===================================================== */
+
+    function nac834InitUpdateButtons() {
+
+        var buttons = document.querySelectorAll(
+            '.nac734-update'
+        );
+
+        buttons.forEach(function (button) {
+
+            button.addEventListener(
+                'click',
+                function () {
+
+                    var id =
+                        this.getAttribute(
+                            'data-content-id'
+                        );
+
+                    var title =
+                        this.getAttribute(
+                            'data-content-title'
+                        ) || '';
+
+                    var description =
+                        this.getAttribute(
+                            'data-content-description'
+                        ) || '';
+
+                    var icon =
+                        this.getAttribute(
+                            'data-content-icon'
+                        ) || '';
+
+                    var order =
+                        this.getAttribute(
+                            'data-content-order'
+                        ) || '';
+
+
+                    document.getElementById(
+                        'nac828UpdateId'
+                    ).value = id;
+
+
+                    document.getElementById(
+                        'nac829UpdateSubmit'
+                    ).value = id;
+
+
+                    document.getElementById(
+                        'nac820CurrentTitle'
+                    ).textContent = title;
+
+
+                    document.getElementById(
+                        'nac821UpdateTitle'
+                    ).value = title;
+
+
+                    document.getElementById(
+                        'nac822UpdateDescription'
+                    ).value = description;
+
+
+                    document.getElementById(
+                        'nac823UpdateIcon'
+                    ).value = icon;
+
+
+                    document.getElementById(
+                        'nac824UpdateOrder'
+                    ).value = order;
+
+
+                    /*
+                     * The image URL cannot safely be generated
+                     * through a data attribute because the item
+                     * may not contain an image.
+                     *
+                     * The current image preview is therefore
+                     * hidden here. The uploaded replacement is
+                     * still fully functional.
+                     */
+                    document.getElementById(
+                        'nac826CurrentImageWrapper'
+                    ).style.display = 'none';
+
+                }
+            );
+
+        });
+
+    }
+
+
+    /* =====================================================
+       DELETE MODAL
+       ===================================================== */
+
+    function nac835InitDeleteButtons() {
+
+        var buttons = document.querySelectorAll(
+            '.nac735-delete'
+        );
+
+        buttons.forEach(function (button) {
+
+            button.addEventListener(
+                'click',
+                function () {
+
+                    var id =
+                        this.getAttribute(
+                            'data-content-id'
+                        );
+
+                    var title =
+                        this.getAttribute(
+                            'data-content-title'
+                        ) || 'this content';
+
+
+                    document.getElementById(
+                        'nac832DeleteId'
+                    ).value = id;
+
+
+                    document.getElementById(
+                        'nac833DeleteSubmit'
+                    ).value = id;
+
+
+                    document.getElementById(
+                        'nac831DeleteTitle'
+                    ).textContent = title;
+
+                }
+            );
+
+        });
+
+    }
+
+
+    /* =====================================================
+       MOVE MODALS DIRECTLY UNDER BODY
+       ===================================================== */
+
+    function nac836MoveModalsToBody() {
+
+        var modalIds = [
+            'nac751AddContentModal',
+            'nac752UpdateContentModal',
+            'nac753DeleteContentModal'
+        ];
+
+        modalIds.forEach(function (id) {
+
+            var modal =
+                document.getElementById(id);
+
+            if (
+                modal &&
+                modal.parentElement !== document.body
+            ) {
+
+                document.body.appendChild(modal);
+
+            }
+
+        });
+
+    }
+
+
+    /* =====================================================
+       BOOTSTRAP BACKDROP
+       ===================================================== */
+
+    function nac837FixBootstrapBackdrop() {
+
+        document.addEventListener(
+            'shown.bs.modal',
+            function (event) {
+
+                var modal = event.target;
+
+                if (
+                    !modal.classList.contains(
+                        'nac750-modal'
+                    )
+                ) {
+                    return;
+                }
+
+                modal.style.zIndex = '99999';
+
+                var backdrops =
+                    document.querySelectorAll(
+                        '.modal-backdrop'
+                    );
+
+                backdrops.forEach(function (backdrop) {
+
+                    backdrop.style.zIndex = '99990';
+
+                });
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       INITIALIZE
+       ===================================================== */
+
+    document.addEventListener(
+        'DOMContentLoaded',
+        function () {
+
+            nac836MoveModalsToBody();
+
+            nac834InitUpdateButtons();
+
+            nac835InitDeleteButtons();
+
+            nac837FixBootstrapBackdrop();
+
+            /*
+             * Extra protection against dashboard
+             * overflow/stacking containers.
+             */
+            setTimeout(
+                nac836MoveModalsToBody,
+                100
+            );
+
+        }
+    );
+
+})();
+</script>

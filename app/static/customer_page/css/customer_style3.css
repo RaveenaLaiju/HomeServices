@@ -1,0 +1,973 @@
+/* Login */
+
+    .hs101-login-page {
+        min-height: calc(100vh - 80px);
+        position: relative;
+        overflow: hidden;
+        padding: 50px 0;
+        background:
+            linear-gradient(135deg, rgba(7, 20, 38, 0.96), rgba(18, 48, 70, 0.88)),
+            url("{% static 'customer_page/img/back.jpg' %}") center/cover no-repeat;
+        isolation: isolate;
+    }
+
+    .hs102-login-page::before {
+        content: "";
+        position: absolute;
+        width: 420px;
+        height: 420px;
+        border-radius: 50%;
+        background: rgba(52, 211, 153, 0.12);
+        filter: blur(10px);
+        top: -180px;
+        left: -150px;
+        z-index: -1;
+    }
+
+    .hs103-login-page::after {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background: rgba(59, 130, 246, 0.12);
+        filter: blur(20px);
+        right: -220px;
+        bottom: -220px;
+        z-index: -1;
+    }
+
+    .hs104-wrapper {
+        width: 100%;
+        max-width: 1180px;
+        margin: 0 auto;
+    }
+
+    .hs105-main-card {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.10);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+
+    /* LEFT PANEL */
+
+    .hs106-brand-panel {
+        min-height: 650px;
+        position: relative;
+        padding: 55px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background:
+            linear-gradient(
+                145deg,
+                rgba(5, 25, 43, 0.94),
+                rgba(9, 63, 82, 0.76)
+            );
+    }
+
+    .hs107-brand-panel::after {
+        content: "";
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 50%;
+        right: -100px;
+        top: -100px;
+    }
+
+    .hs108-mini-brand {
+        position: relative;
+        z-index: 2;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .hs109-brand-dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: #42e8a0;
+        box-shadow: 0 0 18px rgba(66, 232, 160, 0.9);
+    }
+
+    .hs110-copy-area {
+        position: relative;
+        z-index: 2;
+    }
+
+    .hs111-main-heading {
+        color: #ffffff;
+        font-size: clamp(2.3rem, 4vw, 4.3rem);
+        line-height: 1.05;
+        font-weight: 800;
+        letter-spacing: -2px;
+        margin-bottom: 22px;
+    }
+
+    .hs112-highlight {
+        color: #53e6a4;
+    }
+
+    .hs113-description {
+        max-width: 460px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    .hs114-image-frame {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 440px;
+        margin-top: 35px;
+        border-radius: 24px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .hs115-service-image {
+        display: block;
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .hs114-image-frame:hover .hs115-service-image {
+        transform: scale(1.04);
+    }
+
+    .hs116-image-overlay {
+        position: absolute;
+        inset: auto 0 0 0;
+        padding: 25px 22px 20px;
+        background: linear-gradient(
+            transparent,
+            rgba(0, 0, 0, 0.8)
+        );
+    }
+
+    .hs117-image-title {
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .hs118-image-subtitle {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 12px;
+        margin: 5px 0 0;
+    }
+
+    /* RIGHT PANEL */
+
+    .hs119-form-panel {
+        min-height: 650px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px;
+        background: rgba(255, 255, 255, 0.94);
+    }
+
+    .hs120-form-wrapper {
+        width: 100%;
+        max-width: 430px;
+    }
+
+    .hs121-form-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 50px;
+        background: #e9faf2;
+        color: #168a5c;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    .hs122-badge-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #18b875;
+    }
+
+    .hs123-form-heading {
+        color: #122033;
+        font-size: clamp(2rem, 3vw, 2.8rem);
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin-bottom: 10px;
+    }
+
+    .hs124-form-description {
+        color: #718096;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 32px;
+    }
+
+    .hs125-input-group {
+        margin-bottom: 20px;
+    }
+
+    .hs126-input-label {
+        display: block;
+        color: #25364d;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hs127-input-shell {
+        position: relative;
+    }
+
+    .hs128-input-icon {
+        position: absolute;
+        left: 17px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #8a98aa;
+        font-size: 15px;
+        z-index: 2;
+    }
+
+    .hs129-login-input {
+        width: 100%;
+        min-height: 54px;
+        padding: 13px 16px 13px 46px;
+        border: 1px solid #dce4ec;
+        border-radius: 14px;
+        outline: none;
+        background: #f8fafc;
+        color: #172337;
+        font-size: 14px;
+        transition: all 0.25s ease;
+    }
+
+    .hs129-login-input::placeholder {
+        color: #9aa7b6;
+    }
+
+    .hs129-login-input:focus {
+        border-color: #35c98b;
+        background: #ffffff;
+        box-shadow: 0 0 0 4px rgba(53, 201, 139, 0.11);
+    }
+
+    .hs130-login-button {
+        width: 100%;
+        min-height: 56px;
+        border: 0;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #19b878, #31d696);
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.4px;
+        box-shadow: 0 12px 25px rgba(25, 184, 120, 0.24);
+        transition: all 0.3s ease;
+    }
+
+    .hs130-login-button:hover {
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 16px 30px rgba(25, 184, 120, 0.32);
+    }
+
+    .hs131-button-arrow {
+        margin-left: 8px;
+        transition: transform 0.25s ease;
+    }
+
+    .hs130-login-button:hover .hs131-button-arrow {
+        transform: translateX(4px);
+    }
+
+    .hs132-register-area {
+        text-align: center;
+        margin-top: 25px;
+        padding-top: 22px;
+        border-top: 1px solid #edf0f4;
+    }
+
+    .hs133-register-text {
+        color: #8290a0;
+        font-size: 13px;
+        margin: 0;
+    }
+
+    .hs134-register-link {
+        color: #149e67;
+        font-weight: 800;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .hs134-register-link:hover {
+        color: #08794d;
+        text-decoration: underline;
+    }
+
+    .hs135-security-note {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 7px;
+        color: #99a4b1;
+        font-size: 11px;
+        margin-top: 20px;
+    }
+
+    .hs136-message-box {
+        margin-bottom: 20px;
+        border-radius: 12px;
+    }
+
+    /* =========================================================
+       BOOTSTRAP RESPONSIVE BREAKPOINTS
+       ========================================================= */
+
+    @media (max-width: 991.98px) {
+        .hs101-login-page {
+            padding: 35px 15px;
+        }
+
+        .hs106-brand-panel {
+            min-height: auto;
+            padding: 40px;
+        }
+
+        .hs119-form-panel {
+            min-height: auto;
+            padding: 45px 35px;
+        }
+
+        .hs111-main-heading {
+            font-size: clamp(2.4rem, 7vw, 3.6rem);
+        }
+
+        .hs114-image-frame {
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .hs101-login-page {
+            min-height: 100vh;
+            padding: 20px 12px;
+        }
+
+        .hs105-main-card {
+            border-radius: 22px;
+        }
+
+        .hs106-brand-panel {
+            padding: 32px 25px;
+        }
+
+        .hs108-mini-brand {
+            margin-bottom: 35px;
+        }
+
+        .hs111-main-heading {
+            font-size: 2.45rem;
+            letter-spacing: -1px;
+        }
+
+        .hs113-description {
+            font-size: 14px;
+        }
+
+        .hs115-service-image {
+            height: 200px;
+        }
+
+        .hs119-form-panel {
+            padding: 35px 25px;
+        }
+
+        .hs123-form-heading {
+            font-size: 2rem;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        .hs101-login-page {
+            padding: 12px 8px;
+        }
+
+        .hs105-main-card {
+            border-radius: 18px;
+        }
+
+        .hs106-brand-panel {
+            padding: 28px 20px;
+        }
+
+        .hs111-main-heading {
+            font-size: 2.15rem;
+        }
+
+        .hs114-image-frame {
+            margin-top: 25px;
+            border-radius: 18px;
+        }
+
+        .hs115-service-image {
+            height: 175px;
+        }
+
+        .hs119-form-panel {
+            padding: 30px 20px;
+        }
+
+        .hs123-form-heading {
+            font-size: 1.85rem;
+        }
+
+        .hs124-form-description {
+            margin-bottom: 25px;
+        }
+
+        .hs129-login-input {
+            min-height: 52px;
+        }
+
+        .hs130-login-button {
+            min-height: 54px;
+        }
+    }
+
+/* Register */
+
+    .nhs101-register-page {
+        position: relative;
+        min-height: calc(100vh - 80px);
+        padding: 50px 15px;
+        overflow: hidden;
+        background:
+            linear-gradient(135deg, rgba(8, 28, 35, 0.94), rgba(11, 55, 62, 0.88)),
+            url("{% static 'customer_page/img/back.jpg' %}") center center / cover no-repeat;
+    }
+
+    .nhs102-register-page::before {
+        content: "";
+        position: absolute;
+        width: 420px;
+        height: 420px;
+        top: -180px;
+        left: -150px;
+        border-radius: 50%;
+        background: rgba(49, 194, 180, 0.16);
+        filter: blur(10px);
+        pointer-events: none;
+    }
+
+    .nhs103-register-page::after {
+        content: "";
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        right: -120px;
+        bottom: -150px;
+        border-radius: 50%;
+        background: rgba(255, 193, 7, 0.13);
+        filter: blur(15px);
+        pointer-events: none;
+    }
+
+    .nhs104-register-wrapper {
+        position: relative;
+        z-index: 2;
+        max-width: 1180px;
+        margin: 0 auto;
+    }
+
+    .nhs105-register-card {
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.10);
+        box-shadow:
+            0 25px 70px rgba(0, 0, 0, 0.35),
+            inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+
+    /* LEFT VISUAL PANEL */
+
+    .nhs106-visual-panel {
+        position: relative;
+        min-height: 650px;
+        overflow: hidden;
+        background:
+            linear-gradient(
+                145deg,
+                rgba(7, 34, 40, 0.72),
+                rgba(10, 80, 83, 0.45)
+            ),
+            url("{% static 'customer_page/img/Picture1.jpg' %}") center / cover no-repeat;
+    }
+
+    .nhs107-visual-panel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0.05) 20%,
+                rgba(0, 0, 0, 0.78) 100%
+            );
+    }
+
+    .nhs108-visual-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100%;
+        padding: 55px;
+    }
+
+    .nhs109-brand-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        width: fit-content;
+        margin-bottom: 22px;
+        padding: 9px 17px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 50px;
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.8px;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.11);
+        backdrop-filter: blur(10px);
+    }
+
+    .nhs110-brand-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #43e6ca;
+        box-shadow: 0 0 15px rgba(67, 230, 202, 0.9);
+    }
+
+    .nhs111-main-heading {
+        margin: 0;
+        color: #ffffff;
+        font-size: clamp(2.1rem, 4vw, 3.7rem);
+        font-weight: 800;
+        line-height: 1.08;
+        letter-spacing: -1.5px;
+    }
+
+    .nhs112-main-heading span {
+        color: #58e5d0;
+    }
+
+    .nhs113-main-description {
+        max-width: 520px;
+        margin: 20px 0 0;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 16px;
+        line-height: 1.75;
+    }
+
+    .nhs114-feature-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 30px;
+    }
+
+    .nhs115-feature-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+        padding: 13px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 14px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 13px;
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .nhs116-feature-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 30px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        color: #082c31;
+        font-size: 14px;
+        font-weight: 900;
+        background: #58e5d0;
+    }
+
+    /* FORM PANEL */
+
+    .nhs117-form-panel {
+        display: flex;
+        align-items: center;
+        min-height: 650px;
+        padding: 55px;
+        background: rgba(255, 255, 255, 0.96);
+    }
+
+    .nhs118-form-content {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .nhs119-form-label {
+        display: block;
+        margin-bottom: 8px;
+        color: #27464b;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+    }
+
+    .nhs120-form-title {
+        margin: 0;
+        color: #17383d;
+        font-size: clamp(2rem, 4vw, 2.7rem);
+        font-weight: 800;
+        letter-spacing: -1px;
+    }
+
+    .nhs121-form-subtitle {
+        margin: 10px 0 30px;
+        color: #718387;
+        font-size: 14px;
+        line-height: 1.65;
+    }
+
+    .nhs122-field-group {
+        position: relative;
+        margin-bottom: 18px;
+    }
+
+    .nhs123-input {
+        width: 100%;
+        min-height: 52px;
+        padding: 13px 16px;
+        border: 1px solid #dce5e5;
+        border-radius: 13px;
+        outline: none;
+        color: #203c40;
+        font-size: 14px;
+        background: #f7fafa;
+        box-shadow: none;
+        transition:
+            border-color 0.25s ease,
+            box-shadow 0.25s ease,
+            background 0.25s ease;
+    }
+
+    .nhs123-input::placeholder {
+        color: #9baeb0;
+    }
+
+    .nhs123-input:focus {
+        border-color: #38cdb8;
+        background: #ffffff;
+        box-shadow: 0 0 0 4px rgba(56, 205, 184, 0.12);
+    }
+
+    .nhs124-password-wrap {
+        position: relative;
+    }
+
+    .nhs125-password-toggle {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        border: 0;
+        padding: 4px;
+        color: #799092;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    .nhs125-password-toggle:hover {
+        color: #19ae9a;
+    }
+
+    .nhs126-submit-button {
+        position: relative;
+        width: 100%;
+        min-height: 55px;
+        margin-top: 8px;
+        overflow: hidden;
+        border: 0;
+        border-radius: 14px;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, #168f83, #35cbb7);
+        box-shadow: 0 12px 25px rgba(27, 160, 145, 0.25);
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+    .nhs126-submit-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 30px rgba(27, 160, 145, 0.32);
+    }
+
+    .nhs126-submit-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 70%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.25),
+            transparent
+        );
+        transform: skewX(-20deg);
+        transition: left 0.6s ease;
+    }
+
+    .nhs126-submit-button:hover::before {
+        left: 130%;
+    }
+
+    .nhs127-login-divider {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin: 27px 0 18px;
+        color: #a1afb0;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .nhs127-login-divider::before,
+    .nhs127-login-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #e3eaea;
+    }
+
+    .nhs128-login-link {
+        display: block;
+        text-align: center;
+        color: #168f83;
+        font-size: 14px;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .nhs128-login-link:hover {
+        color: #0d655d;
+    }
+
+    .nhs129-security-note {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 7px;
+        margin-top: 18px;
+        color: #8a9b9d;
+        font-size: 11px;
+    }
+
+    .nhs130-security-icon {
+        font-size: 13px;
+    }
+
+    /* MESSAGE ALERT */
+
+    .nhs131-message-container {
+        position: fixed;
+        z-index: 9999;
+        top: 20px;
+        right: 20px;
+        width: min(400px, calc(100% - 40px));
+    }
+
+    .nhs132-message {
+        margin-bottom: 10px;
+        border: 0;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 991.98px) {
+        .nhs101-register-page {
+            min-height: auto;
+            padding: 30px 12px;
+        }
+
+        .nhs105-register-card {
+            border-radius: 24px;
+        }
+
+        .nhs106-visual-panel {
+            min-height: 430px;
+        }
+
+        .nhs108-visual-content {
+            padding: 40px;
+        }
+
+        .nhs117-form-panel {
+            min-height: auto;
+            padding: 45px 35px;
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .nhs101-register-page {
+            padding: 20px 10px;
+        }
+
+        .nhs105-register-card {
+            border-radius: 20px;
+        }
+
+        .nhs106-visual-panel {
+            min-height: 390px;
+        }
+
+        .nhs108-visual-content {
+            padding: 30px 25px;
+        }
+
+        .nhs111-main-heading {
+            font-size: 2.15rem;
+        }
+
+        .nhs113-main-description {
+            font-size: 14px;
+        }
+
+        .nhs114-feature-list {
+            grid-template-columns: 1fr;
+            gap: 9px;
+            margin-top: 22px;
+        }
+
+        .nhs115-feature-item {
+            padding: 10px 12px;
+        }
+
+        .nhs117-form-panel {
+            padding: 35px 22px;
+        }
+
+        .nhs120-form-title {
+            font-size: 2rem;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        .nhs101-register-page {
+            padding: 12px 7px;
+        }
+
+        .nhs105-register-card {
+            border-radius: 17px;
+        }
+
+        .nhs106-visual-panel {
+            min-height: 350px;
+        }
+
+        .nhs108-visual-content {
+            padding: 25px 20px;
+        }
+
+        .nhs109-brand-badge {
+            margin-bottom: 15px;
+            padding: 7px 12px;
+            font-size: 10px;
+        }
+
+        .nhs111-main-heading {
+            font-size: 1.85rem;
+            letter-spacing: -0.8px;
+        }
+
+        .nhs113-main-description {
+            margin-top: 13px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .nhs115-feature-item {
+            font-size: 12px;
+        }
+
+        .nhs117-form-panel {
+            padding: 30px 16px;
+        }
+
+        .nhs120-form-title {
+            font-size: 1.8rem;
+        }
+
+        .nhs121-form-subtitle {
+            margin-bottom: 24px;
+        }
+
+        .nhs123-input {
+            min-height: 50px;
+            font-size: 13px;
+        }
+
+        .nhs126-submit-button {
+            min-height: 52px;
+        }
+    }
+

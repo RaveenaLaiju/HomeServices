@@ -1,0 +1,548 @@
+{% extends 'admin_page/base.html' %}
+
+{% block title %}Enquiry Detail - Noah's Ark Services{% endblock %}
+
+{% block content %}
+
+<div class="main-panel">
+    <div class="content-wrapper p-0">
+
+    <div class="nae731-page">
+
+        
+        <div class="nae731-topbar">
+
+            <div class="nae731-heading-area">
+
+                <div class="nae731-eyebrow">
+                    <span class="nae731-eyebrow-dot"></span>
+                    CUSTOMER ENQUIRY
+                </div>
+
+                <h1 class="nae731-title">
+                    Enquiry Details
+                </h1>
+
+                <p class="nae731-subtitle">
+                    Review customer information and respond to their enquiry.
+                </p>
+
+            </div>
+
+            <div class="nae731-top-actions">
+
+                <a
+                    href="{% url 'admin_enquiry_list' %}"
+                    class="nae731-back-link"
+                >
+                    <span class="nae731-back-icon">
+                        <i class="fa fa-arrow-left"></i>
+                    </span>
+
+                    <span>Back to Enquiries</span>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             ENQUIRY HERO CARD
+             ===================================================== -->
+        <section class="nae731-hero-card">
+
+            <div class="nae731-hero-glow"></div>
+
+            <div class="nae731-hero-inner">
+
+                <div class="nae731-avatar-wrap">
+
+                    <div class="nae731-avatar">
+                        <i class="fa fa-user"></i>
+                    </div>
+
+                    <span class="nae731-status-dot"></span>
+
+                </div>
+
+
+                <div class="nae731-hero-content">
+
+                    <div class="nae731-hero-meta">
+                        <span class="nae731-meta-badge">
+                            <i class="fa fa-envelope-open"></i>
+                            ENQUIRY
+                        </span>
+
+                        <span class="nae731-meta-id">
+                            #{{ enquiry.id }}
+                        </span>
+                    </div>
+
+                    <h2 class="nae731-customer-name">
+                        {{ enquiry.name }}
+                    </h2>
+
+                    <p class="nae731-hero-description">
+                        Customer enquiry received through Noah's Ark Services.
+                    </p>
+
+                </div>
+
+
+                <div class="nae731-date-block">
+
+                    <span class="nae731-date-label">
+                        RECEIVED
+                    </span>
+
+                    <strong class="nae731-date-value">
+                        {{ enquiry.created_at|date:"d M Y" }}
+                    </strong>
+
+                    <span class="nae731-time-value">
+                        {{ enquiry.created_at|date:"H:i" }}
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             MAIN CONTENT
+             ===================================================== -->
+        <div class="row g-4">
+
+
+            <!-- =================================================
+                 LEFT COLUMN
+                 ================================================= -->
+            <div class="col-12 col-xl-8">
+
+                <!-- CUSTOMER INFORMATION -->
+                <section class="nae731-panel">
+
+                    <div class="nae731-panel-header">
+
+                        <div class="nae731-panel-heading">
+
+                            <div class="nae731-panel-icon">
+                                <i class="fa fa-address-card"></i>
+                            </div>
+
+                            <div>
+                                <h3 class="nae731-panel-title">
+                                    Customer Information
+                                </h3>
+
+                                <p class="nae731-panel-subtitle">
+                                    Contact details associated with this enquiry.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="nae731-panel-body">
+
+                        <div class="row g-3">
+
+
+                            <!-- NAME -->
+                            <div class="col-12 col-md-6">
+
+                                <div class="nae731-detail-item">
+
+                                    <div class="nae731-detail-icon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+
+                                    <div class="nae731-detail-content">
+
+                                        <span class="nae731-detail-label">
+                                            CUSTOMER NAME
+                                        </span>
+
+                                        <strong class="nae731-detail-value">
+                                            {{ enquiry.name }}
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- EMAIL -->
+                            <div class="col-12 col-md-6">
+
+                                <div class="nae731-detail-item">
+
+                                    <div class="nae731-detail-icon">
+                                        <i class="fa fa-envelope"></i>
+                                    </div>
+
+                                    <div class="nae731-detail-content">
+
+                                        <span class="nae731-detail-label">
+                                            EMAIL ADDRESS
+                                        </span>
+
+                                        {% if enquiry.email %}
+
+                                            <a
+                                                href="mailto:{{ enquiry.email }}"
+                                                class="nae731-detail-link"
+                                            >
+                                                {{ enquiry.email }}
+                                            </a>
+
+                                        {% else %}
+
+                                            <strong class="nae731-detail-value">
+                                                Not provided
+                                            </strong>
+
+                                        {% endif %}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- PHONE -->
+                            <div class="col-12 col-md-6">
+
+                                <div class="nae731-detail-item">
+
+                                    <div class="nae731-detail-icon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+
+                                    <div class="nae731-detail-content">
+
+                                        <span class="nae731-detail-label">
+                                            PHONE NUMBER
+                                        </span>
+
+                                        {% if enquiry.phone %}
+
+                                            <strong class="nae731-detail-value">
+                                                {{ enquiry.phone }}
+                                            </strong>
+
+                                        {% else %}
+
+                                            <strong class="nae731-detail-value nae731-muted">
+                                                Not provided
+                                            </strong>
+
+                                        {% endif %}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- ENQUIRY ID -->
+                            <div class="col-12 col-md-6">
+
+                                <div class="nae731-detail-item">
+
+                                    <div class="nae731-detail-icon">
+                                        <i class="fa fa-hashtag"></i>
+                                    </div>
+
+                                    <div class="nae731-detail-content">
+
+                                        <span class="nae731-detail-label">
+                                            ENQUIRY ID
+                                        </span>
+
+                                        <strong class="nae731-detail-value">
+                                            #{{ enquiry.id }}
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- CUSTOMER MESSAGE -->
+                <section class="nae731-panel nae731-message-panel">
+
+                    <div class="nae731-panel-header">
+
+                        <div class="nae731-panel-heading">
+
+                            <div class="nae731-panel-icon nae731-message-icon">
+                                <i class="fa fa-commenting"></i>
+                            </div>
+
+                            <div>
+                                <h3 class="nae731-panel-title">
+                                    Customer Message
+                                </h3>
+
+                                <p class="nae731-panel-subtitle">
+                                    The message submitted by the customer.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="nae731-message-area">
+
+                        <div class="nae731-quote-mark">
+                            <i class="fa fa-quote-left"></i>
+                        </div>
+
+                        <div class="nae731-message-content">
+
+                            <p class="nae731-message-text">
+                                {{ enquiry.message }}
+                            </p>
+
+                        </div>
+
+                        <div class="nae731-message-footer">
+
+                            <span>
+                                <i class="fa fa-clock-o"></i>
+                                Received {{ enquiry.created_at|date:"d M Y, H:i" }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- =================================================
+                 RIGHT COLUMN
+                 ================================================= -->
+            <div class="col-12 col-xl-4">
+
+                <div class="nae731-side-stack">
+
+
+                    <!-- ENQUIRY SUMMARY -->
+                    <section class="nae731-summary-card">
+
+                        <div class="nae731-summary-top">
+
+                            <div class="nae731-summary-icon">
+                                <i class="fa fa-envelope"></i>
+                            </div>
+
+                            <div>
+
+                                <span class="nae731-summary-label">
+                                    ENQUIRY
+                                </span>
+
+                                <h3 class="nae731-summary-title">
+                                    Contact Request
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="nae731-summary-divider"></div>
+
+
+                        <div class="nae731-summary-row">
+
+                            <span>
+                                <i class="fa fa-calendar"></i>
+                                Submitted
+                            </span>
+
+                            <strong>
+                                {{ enquiry.created_at|date:"d M Y" }}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="nae731-summary-row">
+
+                            <span>
+                                <i class="fa fa-clock-o"></i>
+                                Time
+                            </span>
+
+                            <strong>
+                                {{ enquiry.created_at|date:"H:i" }}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="nae731-summary-row">
+
+                            <span>
+                                <i class="fa fa-user"></i>
+                                Customer
+                            </span>
+
+                            <strong>
+                                {{ enquiry.name }}
+                            </strong>
+
+                        </div>
+
+
+                    </section>
+
+
+                    <!-- CONTACT ACTIONS -->
+                    <section class="nae731-action-card">
+
+                        <div class="nae731-action-heading">
+
+                            <div class="nae731-action-icon">
+                                <i class="fa fa-paper-plane"></i>
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Quick Actions
+                                </h3>
+
+                                <p>
+                                    Continue the conversation with the customer.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="nae731-action-buttons">
+
+                            {% if enquiry.email %}
+
+                            <a
+                                href="https://mail.google.com/mail/?view=cm&fs=1&to={{ enquiry.email }}&su=Reply%20to%20your%20Enquiry&body=Dear%20{{ enquiry.name }},%0A%0A"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="nae731-primary-action"
+                            >
+
+                                <span class="nae731-action-button-icon">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+
+                                <span class="nae731-action-button-text">
+                                    <strong>Reply via Gmail</strong>
+                                    <small>Open a new reply</small>
+                                </span>
+
+                                <i class="fa fa-external-link nae731-external"></i>
+
+                            </a>
+
+                            {% else %}
+
+                            <div class="nae731-no-email">
+
+                                <div class="nae731-no-email-icon">
+                                    <i class="fa fa-envelope-o"></i>
+                                </div>
+
+                                <div>
+                                    <strong>Email unavailable</strong>
+                                    <span>No email address was provided.</span>
+                                </div>
+
+                            </div>
+
+                            {% endif %}
+
+
+                            <a
+                                href="{% url 'admin_enquiry_list' %}"
+                                class="nae731-secondary-action"
+                            >
+
+                                <span class="nae731-secondary-icon">
+                                    <i class="fa fa-arrow-left"></i>
+                                </span>
+
+                                <span>
+                                    Back to Enquiry List
+                                </span>
+
+                            </a>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- SERVICE BRAND CARD -->
+                    <section class="nae731-brand-card">
+
+                        <div class="nae731-brand-decoration nae731-decoration-one"></div>
+                        <div class="nae731-brand-decoration nae731-decoration-two"></div>
+
+                        <div class="nae731-brand-icon">
+                            <i class="fa fa-home"></i>
+                        </div>
+
+                        <h3>
+                            Noah's Ark Services
+                        </h3>
+
+                        <p>
+                            Professional home services with care,
+                            reliability and quality.
+                        </p>
+
+                    </section>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+{% endblock %}

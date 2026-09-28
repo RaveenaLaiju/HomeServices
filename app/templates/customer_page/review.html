@@ -1,0 +1,479 @@
+{% extends 'customer_page/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="hsr-page">
+
+<section class="hsr-hero">
+
+    <div class="container hsr-hero-container">
+
+        <div class="row align-items-center g-4">
+
+            <!-- HERO CONTENT -->
+
+            <div class="col-lg-7">
+
+                <div class="hsr-breadcrumb">
+                    Home Services
+                    <span>•</span>
+                    {{ service.service_name }}
+                    <span>•</span>
+                    Reviews
+                </div>
+
+                <h1 class="hsr-hero-title">
+                    Real experiences.
+                    <br>
+                    <span>Real reviews.</span>
+                </h1>
+
+                <p class="hsr-hero-description">
+                    Discover what customers are saying about their
+                    {{ service.service_name }} experience and share
+                    your own experience with our service community.
+                </p>
+
+                <div class="hsr-hero-badge">
+                    ★ Trusted customer feedback
+                </div>
+
+            </div>
+
+
+            <!-- HERO IMAGE -->
+
+            <div class="col-lg-5">
+
+                <div class="hsr-hero-image-wrapper">
+
+                    <img
+                        src="{% static 'customer_page/img/review.jpg' %}"
+                        alt="Customer Reviews"
+                        class="hsr-hero-image"
+                    >
+
+                    <div class="hsr-floating-card">
+
+                        <strong>Customer Voice</strong>
+
+                        <small>
+                            Your experience matters
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MAIN CONTENT
+====================================================== -->
+
+<main class="hsr-content">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <!-- =================================================
+                 LEFT COLUMN
+            ================================================== -->
+
+            <div class="col-lg-4">
+
+                <!-- PROVIDER CARD -->
+
+                <div class="hsr-card hsr-provider-card mb-4">
+
+                    <div class="hsr-card-title mb-3">
+                        Your Service Provider
+                    </div>
+
+                    <div class="hsr-provider-profile">
+
+                        {% if provider.photo %}
+
+                            <img
+                                src="{{ provider.photo.url }}"
+                                class="hsr-provider-photo"
+                                alt="Provider Photo"
+                            >
+
+                        {% else %}
+
+                            <div class="hsr-provider-placeholder">
+                                {{ provider.user_profile.user.first_name|first|upper }}
+                            </div>
+
+                        {% endif %}
+
+
+                        <div>
+
+                            <div class="hsr-provider-name">
+                                {{ provider.user_profile.user.first_name }}
+                                {{ provider.user_profile.user.last_name }}
+                            </div>
+
+                            <div class="hsr-provider-role">
+                                Professional Service Provider
+                            </div>
+
+                            <div class="hsr-verified">
+                                ✓ Verified Provider
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RATING SUMMARY -->
+
+                    <div class="hsr-rating-summary">
+
+                        <div class="d-flex align-items-center gap-3">
+
+                            <div>
+
+                                <div class="hsr-rating-number">
+                                    {% if reviews %}
+                                        {{ reviews|length }}
+                                    {% else %}
+                                        0
+                                    {% endif %}
+                                </div>
+
+                                <div class="hsr-rating-label">
+                                    Customer Reviews
+                                </div>
+
+                            </div>
+
+                            <div>
+
+                                <div class="hsr-stars">
+                                    ★★★★★
+                                </div>
+
+                                <div class="hsr-rating-label">
+                                    Customer feedback
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SERVICE INFO CARD -->
+
+                <div class="hsr-card">
+
+                    <div class="hsr-card-title">
+                        About this service
+                    </div>
+
+                    <p class="hsr-card-subtitle mt-2 mb-0">
+                        You're reviewing your experience with
+                        <strong>{{ service.service_name }}</strong>.
+                        Your feedback helps other customers make
+                        informed decisions.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 RIGHT COLUMN
+            ================================================== -->
+
+            <div class="col-lg-8">
+
+                <!-- REVIEW FORM -->
+
+                <div class="hsr-card mb-4">
+
+                    <div class="mb-4">
+
+                        <div class="hsr-card-title">
+                            Share your experience
+                        </div>
+
+                        <div class="hsr-card-subtitle">
+                            Tell us how your {{ service.service_name }}
+                            experience was.
+                        </div>
+
+                    </div>
+
+
+                    <form
+                        method="POST"
+                        action="{% url 'leave_review' booking_request.id %}"
+                    >
+
+                        {% csrf_token %}
+
+                        <input
+                            type="hidden"
+                            name="service_id"
+                            value="{{ service.id }}"
+                        >
+
+                        <input
+                            type="hidden"
+                            name="booking_id"
+                            value="{{ booking.id }}"
+                        >
+
+                        <input
+                            type="hidden"
+                            name="provider_id"
+                            value="{{ provider.id }}"
+                        >
+
+
+                        <!-- RATING -->
+
+                        <div class="hsr-form-group">
+
+                            <label class="hsr-form-label">
+                                How would you rate your experience?
+                            </label>
+
+                            <div class="hsr-rating-input">
+
+                                <input
+                                    type="radio"
+                                    name="rating"
+                                    id="hsr-star5"
+                                    value="5"
+                                    required
+                                >
+                                <label for="hsr-star5">★</label>
+
+                                <input
+                                    type="radio"
+                                    name="rating"
+                                    id="hsr-star4"
+                                    value="4"
+                                >
+                                <label for="hsr-star4">★</label>
+
+                                <input
+                                    type="radio"
+                                    name="rating"
+                                    id="hsr-star3"
+                                    value="3"
+                                >
+                                <label for="hsr-star3">★</label>
+
+                                <input
+                                    type="radio"
+                                    name="rating"
+                                    id="hsr-star2"
+                                    value="2"
+                                >
+                                <label for="hsr-star2">★</label>
+
+                                <input
+                                    type="radio"
+                                    name="rating"
+                                    id="hsr-star1"
+                                    value="1"
+                                >
+                                <label for="hsr-star1">★</label>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- COMMENT -->
+
+                        <div class="hsr-form-group">
+
+                            <label
+                                for="hsr-comment"
+                                class="hsr-form-label"
+                            >
+                                Tell us about your experience
+                            </label>
+
+                            <textarea
+                                id="hsr-comment"
+                                name="comment"
+                                class="hsr-comment"
+                                placeholder="What did you like? How was the service? Share your experience with other customers..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="hsr-submit"
+                        >
+                            Submit Your Review
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- REVIEWS LIST -->
+
+                <div class="hsr-card">
+
+                    <div class="hsr-reviews-header">
+
+                        <div>
+
+                            <div class="hsr-card-title">
+                                Customer Reviews
+                            </div>
+
+                            <div class="hsr-card-subtitle">
+                                What customers are saying about
+                                {{ service.service_name }}
+                            </div>
+
+                        </div>
+
+                        {% if reviews %}
+
+                            <div class="hsr-review-count">
+                                {{ reviews|length }} Review{{ reviews|length|pluralize }}
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    {% if reviews %}
+
+                        {% for review in reviews %}
+
+                            <div class="hsr-review-item">
+
+                                <div class="hsr-review-top">
+
+                                    <div class="hsr-reviewer">
+
+                                        <div class="hsr-review-avatar">
+
+                                            {{ review.customer.user_profile.user.first_name|first|upper }}
+
+                                        </div>
+
+                                        <div>
+
+                                            <div class="hsr-reviewer-name">
+
+                                                {{ review.customer.user_profile.user.first_name }}
+                                                {{ review.customer.user_profile.user.last_name }}
+
+                                            </div>
+
+                                            <span class="hsr-review-date">
+
+                                                {{ review.created_at|date:"M d, Y" }}
+
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- STARS -->
+
+                                    <div class="hsr-review-stars">
+
+                                        {% for i in "12345"|make_list %}
+
+                                            {% if forloop.counter <= review.rating %}
+
+                                                ★
+
+                                            {% else %}
+
+                                                ☆
+
+                                            {% endif %}
+
+                                        {% endfor %}
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- COMMENT -->
+
+                                <p class="hsr-review-comment mb-0">
+
+                                    {{ review.comment }}
+
+                                </p>
+
+                            </div>
+
+                        {% endfor %}
+
+                    {% else %}
+
+                        <div class="hsr-empty">
+
+                            <div class="hsr-empty-icon">
+                                ★
+                            </div>
+
+                            <div class="hsr-empty-title">
+                                No reviews yet
+                            </div>
+
+                            <p class="mb-0">
+                                Be the first customer to share your
+                                experience with this service.
+                            </p>
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+</div>
+
+{% endblock %}

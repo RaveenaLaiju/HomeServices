@@ -1,0 +1,11 @@
+{% if status == "Success" %}
+<script>
+    alert("✅ Payment Successful! Your booking is confirmed.");
+    window.location.href = "/";  // change redirect if needed
+</script>
+{% else %}
+<script>
+    alert("❌ Payment Failed! Please try again.");
+    window.location.href = "/";  // change redirect if needed
+</script>
+{% endif %}

@@ -1,0 +1,567 @@
+{% extends 'provider_page/base.html' %}
+
+{% block title %}Customer Reviews{% endblock %}
+
+{% block content %}
+
+<div class="main-panel prv902-main-panel">
+
+    <div class="content-wrapper p-0 prv902-content-wrapper">
+
+        <div class="prv902-reviews-page">
+
+            <section class="prv902-header">
+
+                <div class="container-fluid px-3 px-md-4">
+
+                    <div class="row align-items-center g-3">
+
+                        <!-- Heading -->
+                        <div class="col-12 col-md-8">
+
+                            <div class="prv902-heading">
+
+                                <div class="prv902-heading-icon">
+                                    <i class="fa fa-star"></i>
+                                </div>
+
+                                <div class="prv902-heading-content">
+
+                                    <h2 class="prv902-title">
+                                        Customer Reviews
+                                    </h2>
+
+                                    <p class="prv902-subtitle">
+                                        View feedback and ratings from your customers
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Total Reviews -->
+                        <div class="col-12 col-md-4">
+
+                            <div class="prv902-review-summary">
+
+                                <div class="prv902-summary-icon">
+                                    <i class="fa fa-comments"></i>
+                                </div>
+
+                                <div class="prv902-summary-content">
+
+                                    <span class="prv902-summary-label">
+                                        Total Reviews
+                                    </span>
+
+                                    <strong class="prv902-summary-count">
+                                        {{ reviews|length }}
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==========================================
+                 REVIEWS TABLE CARD
+                 ========================================== -->
+
+            <section class="prv902-table-card">
+
+                <!-- Table Header -->
+                <div class="prv902-table-head">
+
+                    <div class="prv902-table-heading">
+
+                        <h5 class="prv902-table-title">
+
+                            <i class="fa fa-list-alt"></i>
+
+                            Recent Customer Feedback
+
+                        </h5>
+
+                        <p class="prv902-table-description">
+                            Ratings and comments submitted by your customers
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Table -->
+                <div class="table-responsive prv902-table-wrapper">
+
+                    <table class="table prv902-review-table align-middle mb-0">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Customer
+                                </th>
+
+                                <th>
+                                    Service
+                                </th>
+
+                                <th>
+                                    Rating
+                                </th>
+
+                                <th>
+                                    Comment
+                                </th>
+
+                                <th>
+                                    Date
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            {% for r in reviews %}
+
+                            <tr>
+
+                                <!-- ==================================
+                                     CUSTOMER
+                                     ================================== -->
+
+                                <td>
+
+                                    <div class="prv902-customer">
+
+                                        <div class="prv902-avatar">
+
+                                            {{ r.customer.user_profile.user.first_name|first|upper }}
+
+                                        </div>
+
+
+                                        <div class="prv902-customer-info">
+
+                                            <strong>
+
+                                                {{ r.customer.user_profile.user.first_name }}
+
+                                                {{ r.customer.user_profile.user.last_name }}
+
+                                            </strong>
+
+                                            <span>
+                                                Customer
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <!-- ==================================
+                                     SERVICE
+                                     ================================== -->
+
+                                <td>
+
+                                    <div class="prv902-service">
+
+                                        <span class="prv902-service-icon">
+
+                                            <i class="fa fa-wrench"></i>
+
+                                        </span>
+
+                                        <span class="prv902-service-name">
+
+                                            {{ r.service.service_name }}
+
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+                                <!-- ==================================
+                                     RATING
+                                     ================================== -->
+
+                                <td>
+
+                                    <div class="prv902-rating">
+
+                                        <div class="prv902-stars">
+
+                                            {% for i in "12345"|slice:":r.rating"|make_list %}
+
+                                                <i class="fa fa-star"></i>
+
+                                            {% endfor %}
+
+
+                                            {% for i in "12345"|slice:"r.rating:"|make_list %}
+
+                                                <i class="fa fa-star-o prv902-empty-star"></i>
+
+                                            {% endfor %}
+
+                                        </div>
+
+
+                                        <span class="prv902-rating-number">
+
+                                            {{ r.rating }}/5
+
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+                                <!-- ==================================
+                                     COMMENT BUTTON
+                                     ================================== -->
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="prv902-view-btn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#prv902CommentModal{{ r.id }}"
+                                    >
+
+                                        <i class="fa fa-eye"></i>
+
+                                        <span>
+                                            View Comment
+                                        </span>
+
+                                    </button>
+
+                                </td>
+
+
+                                <!-- ==================================
+                                     DATE
+                                     ================================== -->
+
+                                <td>
+
+                                    <div class="prv902-date">
+
+                                        <i class="fa fa-calendar-o"></i>
+
+                                        <span>
+
+                                            {{ r.created_at|date:"M d, Y" }}
+
+                                            <small>
+                                                {{ r.created_at|date:"h:i A" }}
+                                            </small>
+
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                            {% empty %}
+
+                            <!-- ==================================
+                                 EMPTY STATE
+                                 ================================== -->
+
+                            <tr>
+
+                                <td colspan="5">
+
+                                    <div class="prv902-empty">
+
+                                        <div class="prv902-empty-icon">
+
+                                            <i class="fa fa-star-o"></i>
+
+                                        </div>
+
+
+                                        <h5>
+                                            No Reviews Yet
+                                        </h5>
+
+
+                                        <p>
+                                            Customer reviews will appear here once they are submitted.
+                                        </p>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==========================================================
+     REVIEW MODALS
+     IMPORTANT:
+     Modals are intentionally outside the table/tbody.
+     ========================================================== -->
+
+{% for r in reviews %}
+
+<div
+    class="modal fade prv902-review-modal"
+    id="prv902CommentModal{{ r.id }}"
+    tabindex="-1"
+    aria-labelledby="prv902CommentModalLabel{{ r.id }}"
+    aria-hidden="true"
+>
+
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+
+        <div class="modal-content prv902-modal-content">
+
+
+            <!-- ==========================================
+                 MODAL HEADER
+                 ========================================== -->
+
+            <div class="modal-header prv902-modal-header">
+
+                <div class="prv902-modal-heading">
+
+                    <div class="prv902-modal-icon">
+
+                        <i class="fa fa-commenting"></i>
+
+                    </div>
+
+
+                    <div class="prv902-modal-title-area">
+
+                        <h5
+                            class="prv902-modal-title"
+                            id="prv902CommentModalLabel{{ r.id }}"
+                        >
+                            Customer Review
+                        </h5>
+
+                        <span class="prv902-modal-service">
+
+                            {{ r.service.service_name }}
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn-close prv902-modal-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+
+            </div>
+
+
+            <!-- ==========================================
+                 MODAL BODY
+                 ========================================== -->
+
+            <div class="modal-body prv902-modal-body">
+
+
+                <!-- Customer -->
+                <div class="prv902-modal-customer">
+
+                    <div class="prv902-modal-avatar">
+
+                        {{ r.customer.user_profile.user.first_name|first|upper }}
+
+                    </div>
+
+
+                    <div class="prv902-modal-customer-info">
+
+                        <strong>
+
+                            {{ r.customer.user_profile.user.first_name }}
+
+                            {{ r.customer.user_profile.user.last_name }}
+
+                        </strong>
+
+                        <span>
+                            Customer
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Rating -->
+                <div class="prv902-modal-rating">
+
+                    <div class="prv902-modal-stars">
+
+                        {% for i in "12345"|slice:":r.rating"|make_list %}
+
+                            <i class="fa fa-star"></i>
+
+                        {% endfor %}
+
+
+                        {% for i in "12345"|slice:"r.rating:"|make_list %}
+
+                            <i class="fa fa-star-o"></i>
+
+                        {% endfor %}
+
+                    </div>
+
+
+                    <span class="prv902-rating-text">
+
+                        {{ r.rating }} out of 5
+
+                    </span>
+
+                </div>
+
+
+                <!-- Comment -->
+                <div class="prv902-comment-box">
+
+                    <div class="prv902-comment-label">
+
+                        <i class="fa fa-quote-left"></i>
+
+                        <span>
+                            Customer Comment
+                        </span>
+
+                    </div>
+
+
+                    <div class="prv902-comment-text">
+
+                        {% if r.comment %}
+
+                            {{ r.comment }}
+
+                        {% else %}
+
+                            <span class="prv902-no-comment">
+
+                                No comment was provided by this customer.
+
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- Date -->
+                <div class="prv902-modal-date">
+
+                    <i class="fa fa-clock-o"></i>
+
+                    <span>
+                        Submitted on
+                    </span>
+
+                    <strong>
+                        {{ r.created_at|date:"M d, Y" }}
+                    </strong>
+
+                    <span>
+                        at
+                    </span>
+
+                    <strong>
+                        {{ r.created_at|date:"h:i A" }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==========================================
+                 MODAL FOOTER
+                 ========================================== -->
+
+            <div class="modal-footer prv902-modal-footer">
+
+                <button
+                    type="button"
+                    class="prv902-close-btn"
+                    data-bs-dismiss="modal"
+                >
+
+                    <i class="fa fa-times"></i>
+
+                    Close
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+
+{% endblock %}

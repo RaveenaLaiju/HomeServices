@@ -1,0 +1,384 @@
+{% extends 'admin_page/base.html' %}
+
+{% block title %}Customers - Noah's Ark Services{% endblock %}
+
+{% block content %}
+
+<div class="main-panel">
+    <div class="content-wrapper p-0">
+
+        <div class="ncs820-page">
+
+
+            <div class="ncs820-topbar">
+
+                <div class="ncs820-breadcrumb">
+                    <i class="fa fa-home"></i>
+                    <span>Dashboard</span>
+                    <i class="fa fa-angle-right"></i>
+                    <span class="ncs820-breadcrumb-current">
+                        Customers
+                    </span>
+                </div>
+
+                <h1 class="ncs820-main-heading">
+                    Customer Management
+                </h1>
+
+                <p class="ncs820-main-description">
+                    Manage registered customers, contact details,
+                    booking activity and account status from one
+                    centralized workspace.
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 STATISTICS
+                 ================================================= -->
+
+            <div class="row g-3">
+
+                <div class="col-12 col-sm-6 col-lg-4">
+
+                    <div class="ncs820-stat-card">
+
+                        <div class="ncs820-stat-icon">
+                            <i class="fa fa-users"></i>
+                        </div>
+
+                        <div class="ncs820-stat-label">
+                            Registered Customers
+                        </div>
+
+                        <div class="ncs820-stat-value">
+                            {{ customers|length }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 col-sm-6 col-lg-4">
+
+                    <div class="ncs820-stat-card">
+
+                        <div class="ncs820-stat-icon">
+                            <i class="fa fa-user-circle"></i>
+                        </div>
+
+                        <div class="ncs820-stat-label">
+                            Customer Directory
+                        </div>
+
+                        <div class="ncs820-stat-value">
+                            Active
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 col-sm-12 col-lg-4">
+
+                    <div class="ncs820-stat-card">
+
+                        <div class="ncs820-stat-icon">
+                            <i class="fa fa-calendar-check-o"></i>
+                        </div>
+
+                        <div class="ncs820-stat-label">
+                            Service Platform
+                        </div>
+
+                        <div class="ncs820-stat-value">
+                            Noah's Ark
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 CUSTOMER DIRECTORY
+                 ================================================= -->
+
+            <section class="ncs820-directory">
+
+                <div class="ncs820-directory-head">
+
+                    <div class="ncs820-directory-title-row">
+
+                        <div class="ncs820-directory-title-box">
+
+                            <div class="ncs820-directory-icon">
+                                <i class="fa fa-address-book"></i>
+                            </div>
+
+                            <div>
+
+                                <h2 class="ncs820-directory-title">
+                                    Registered Customers
+                                </h2>
+
+                                <p class="ncs820-directory-subtitle">
+                                    Customer accounts and service activity
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="ncs820-total-pill">
+
+                            <i class="fa fa-users"></i>
+
+                            {{ customers|length }} Customers
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     CUSTOMER TABLE
+                     ================================================= -->
+
+                <div class="ncs820-table-area">
+
+                    <table class="ncs820-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    #
+                                </th>
+
+                                <th>
+                                    Customer
+                                </th>
+
+                                <th>
+                                    Username
+                                </th>
+
+                                <th>
+                                    Email
+                                </th>
+
+                                <th>
+                                    Phone
+                                </th>
+
+                                <th>
+                                    Bookings
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            {% for customer in customers %}
+
+                            <tr>
+
+                                <!-- ID -->
+
+                                <td data-label="ID">
+
+                                    <span class="ncs820-customer-id">
+                                        {{ forloop.counter }}
+                                    </span>
+
+                                </td>
+
+
+                                <!-- CUSTOMER -->
+
+                                <td data-label="Customer">
+
+                                    <div class="ncs820-profile">
+
+                                        <div class="ncs820-avatar">
+
+                                            <i class="fa fa-user"></i>
+
+                                        </div>
+
+                                        <div>
+
+                                            <div class="ncs820-profile-name">
+
+                                                {{ customer.user_profile.user.first_name }}
+                                                {{ customer.user_profile.user.last_name }}
+
+                                            </div>
+
+                                            <div class="ncs820-profile-role">
+
+                                                Registered Customer
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <!-- USERNAME -->
+
+                                <td data-label="Username">
+
+                                    <span class="ncs820-username">
+
+                                        <i class="fa fa-at"></i>
+
+                                        {{ customer.user_profile.user.username }}
+
+                                    </span>
+
+                                </td>
+
+
+                                <!-- EMAIL -->
+
+                                <td data-label="Email">
+
+                                    <div class="ncs820-contact ncs820-email">
+
+                                        <i class="fa fa-envelope"></i>
+
+                                        <span>
+                                            {{ customer.user_profile.user.email }}
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+                                <!-- PHONE -->
+
+                                <td data-label="Phone">
+
+                                    <div class="ncs820-contact">
+
+                                        <i class="fa fa-phone"></i>
+
+                                        <span>
+                                            {{ customer.user_profile.phone|default:"-" }}
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+                                <!-- BOOKINGS -->
+
+                                <td data-label="Bookings">
+
+                                    <span class="ncs820-bookings">
+
+                                        <i class="fa fa-calendar-check-o"></i>
+
+                                        {{ customer.total_bookings }}
+
+                                    </span>
+
+                                </td>
+
+
+                                <!-- STATUS -->
+
+                                <td data-label="Status">
+
+                                    {% if customer.user_profile.status %}
+
+                                        <span class="ncs820-status ncs820-status-active">
+
+                                            <span class="ncs820-status-dot"></span>
+
+                                            Active
+
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="ncs820-status ncs820-status-inactive">
+
+                                            <span class="ncs820-status-dot"></span>
+
+                                            Inactive
+
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+                            </tr>
+
+
+                            {% empty %}
+
+                            <tr>
+
+                                <td colspan="7" class="ncs820-empty">
+
+                                    <div class="ncs820-empty-icon">
+
+                                        <i class="fa fa-users"></i>
+
+                                    </div>
+
+                                    <h3 class="ncs820-empty-title">
+                                        No Customers Found
+                                    </h3>
+
+                                    <p class="ncs820-empty-text">
+                                        There are currently no registered
+                                        customers available in the system.
+                                    </p>
+
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

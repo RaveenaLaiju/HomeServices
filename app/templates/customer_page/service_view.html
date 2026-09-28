@@ -1,0 +1,1444 @@
+
+{% extends 'customer_page/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="hsp101">
+
+<section class="hsp102 position-relative">
+
+    <div class="hsp103"></div>
+    <div class="hsp104"></div>
+
+    <div class="container-fluid px-0">
+
+        <div class="container hsp105">
+
+            <div class="row align-items-center g-0">
+
+                <!-- TEXT -->
+
+                <div class="col-12 col-lg-6">
+
+                    <div class="hsp106">
+
+                        <div class="hsp107">
+                            ✦ Premium Home Service
+                        </div>
+
+                        <h1 class="hsp108">
+                            {{ service.service_name }}
+                        </h1>
+
+                        <p class="hsp109">
+                            Professional, reliable and convenient home
+                            services delivered by experienced service
+                            providers.
+                        </p>
+
+                        <div class="hsp110">
+
+                            <button
+                                type="button"
+                                class="btn btn-primary rounded-pill hsp111"
+                                data-bs-toggle="modal"
+                                data-bs-target="#hspServiceModal"
+                                data-service="{{ service.service_name }}">
+
+                                Book This Service
+
+                            </button>
+
+                            <a
+                                href="#hspServiceDetails"
+                                class="btn rounded-pill hsp112">
+
+                                Explore Service
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE -->
+
+                <div class="col-12 col-lg-6">
+
+                    <div class="hsp113">
+
+                        <div class="hsp114">
+
+                            {% if service.image %}
+
+                            <img
+                                src="{{ service.image.url }}"
+                                alt="{{ service.service_name }}"
+                                class="hsp115">
+
+                            {% endif %}
+
+                            <div class="hsp116">
+
+                                <div class="hsp117">
+                                    ✓
+                                </div>
+
+                                <div>
+
+                                    <div class="hsp118">
+                                        Trusted Professionals
+                                    </div>
+
+                                    <div class="hsp119">
+                                        Quality Service
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     QUICK INFO
+====================================================== -->
+
+<section class="hsp120">
+
+    <div class="container hsp121">
+
+        <div class="row g-2 g-md-3">
+
+            <div class="col-6 col-lg-3">
+
+                <div class="hsp122">
+
+                    <div class="hsp123">
+                        ✓
+                    </div>
+
+                    <div class="min-w-0">
+
+                        <div class="hsp124">
+                            SERVICE QUALITY
+                        </div>
+
+                        <div class="hsp125">
+                            Professional
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="hsp122">
+
+                    <div class="hsp123">
+                        ★
+                    </div>
+
+                    <div class="min-w-0">
+
+                        <div class="hsp124">
+                            EXPERIENCE
+                        </div>
+
+                        <div class="hsp125">
+                            Highly Rated
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="hsp122">
+
+                    <div class="hsp123">
+                        ⌁
+                    </div>
+
+                    <div class="min-w-0">
+
+                        <div class="hsp124">
+                            AVAILABILITY
+                        </div>
+
+                        <div class="hsp125">
+                            Flexible Booking
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="hsp122">
+
+                    <div class="hsp123">
+                        ♢
+                    </div>
+
+                    <div class="min-w-0">
+
+                        <div class="hsp124">
+                            SERVICE TYPE
+                        </div>
+
+                        <div class="hsp125">
+                            Home Service
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TABS
+====================================================== -->
+
+<section class="hsp126">
+
+    <div class="container">
+
+        <ul
+            class="nav nav-tabs hsp127"
+            id="hspServiceTabs"
+            role="tablist">
+
+            <li class="nav-item flex-fill" role="presentation">
+
+                <button
+                    class="nav-link hsp128 active w-100"
+                    id="hspHomeTab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#hspHomeContent"
+                    type="button">
+
+                    Overview
+
+                </button>
+
+            </li>
+
+            <li class="nav-item flex-fill" role="presentation">
+
+                <button
+                    class="nav-link hsp128 w-100"
+                    id="hspProviderTab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#hspProviderContent"
+                    type="button">
+
+                    Providers
+
+                </button>
+
+            </li>
+
+            <li class="nav-item flex-fill" role="presentation">
+
+                <button
+                    class="nav-link hsp128 w-100"
+                    id="hspReviewTab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#hspReviewContent"
+                    type="button">
+
+                    Reviews
+
+                </button>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+<div class="tab-content">
+
+
+<!-- =====================================================
+     OVERVIEW
+====================================================== -->
+
+<div
+    class="tab-pane fade show active"
+    id="hspHomeContent">
+
+    <section
+        class="hsp129"
+        id="hspServiceDetails">
+
+        <div class="container">
+
+            <div class="row g-4">
+
+
+                <!-- LEFT -->
+
+                <div class="col-12 col-lg-8">
+
+                    <div class="hsp130">
+
+                        {% for section in sections %}
+
+
+                        {% if section.title == "Frequently Asked Questions (FAQs)" %}
+
+                        <div class="hsp131">
+
+                            <h2 class="hsp132">
+                                {{ section.title }}
+                            </h2>
+
+                            <div
+                                class="accordion"
+                                id="hspFaq{{ section.id }}">
+
+                                {% for item in section.items.all %}
+
+                                <div class="accordion-item hsp141">
+
+                                    <h2 class="accordion-header">
+
+                                        <button
+                                            class="accordion-button collapsed hsp142"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#hspCollapse{{ item.id }}">
+
+                                            {{ item.title }}
+
+                                        </button>
+
+                                    </h2>
+
+                                    <div
+                                        id="hspCollapse{{ item.id }}"
+                                        class="accordion-collapse collapse"
+                                        data-bs-parent="#hspFaq{{ section.id }}">
+
+                                        <div class="accordion-body hsp143">
+
+                                            {{ item.description }}
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                {% endfor %}
+
+                            </div>
+
+                        </div>
+
+
+                        {% elif section.title == "Description" %}
+
+                        <div class="hsp131">
+
+                            <h2 class="hsp132">
+                                {{ section.title }}
+                            </h2>
+
+                            {% for item in section.items.all %}
+
+                            <p class="hsp133 mb-3">
+
+                                {% if item.title %}
+                                    <strong>{{ item.title }}</strong>
+                                {% endif %}
+
+                                {% if item.description %}
+                                    {{ item.description }}
+                                {% endif %}
+
+                            </p>
+
+                            {% endfor %}
+
+                        </div>
+
+
+                        {% elif section.title == "Service Procedure" %}
+
+                        <div class="hsp131">
+
+                            <h2 class="hsp132">
+                                {{ section.title }}
+                            </h2>
+
+                            <ul class="hsp134">
+
+                                {% for item in section.items.all %}
+
+                                <li class="hsp137">
+
+                                    {% if item.title %}
+                                        <strong>{{ item.title }}</strong>
+                                    {% endif %}
+
+                                    {% if item.description %}
+                                        — {{ item.description }}
+                                    {% endif %}
+
+                                </li>
+
+                                {% endfor %}
+
+                            </ul>
+
+                        </div>
+
+
+                        {% elif section.title == "Our Equipments" %}
+
+                        <div class="hsp131">
+
+                            <h2 class="hsp132">
+                                {{ section.title }}
+                            </h2>
+
+                            <div class="row g-3">
+
+                                {% for item in section.items.all %}
+
+                                    {% if item.image %}
+
+                                    <div class="col-6 col-sm-4">
+
+                                        <div class="hsp138">
+
+                                            <img
+                                                src="{{ item.image.url }}"
+                                                alt="{{ item.title }}"
+                                                class="hsp139">
+
+                                            {% if item.title %}
+
+                                            <div class="hsp140">
+                                                {{ item.title }}
+                                            </div>
+
+                                            {% endif %}
+
+                                        </div>
+
+                                    </div>
+
+                                    {% endif %}
+
+                                {% endfor %}
+
+                            </div>
+
+                        </div>
+
+
+                        {% elif section.title == "What is Covered" %}
+
+                        <div class="hsp131">
+
+                            <h2 class="hsp132">
+                                {{ section.title }}
+                            </h2>
+
+                            <ul class="hsp134">
+
+                                {% for item in section.items.all %}
+
+                                <li class="hsp135">
+
+                                    {% if item.title %}
+                                        <strong>{{ item.title }}</strong>
+                                    {% endif %}
+
+                                    {% if item.description %}
+                                        {{ item.description }}
+                                    {% endif %}
+
+                                </li>
+
+                                {% endfor %}
+
+                            </ul>
+
+                        </div>
+
+
+                        {% elif section.title == "What Is Not Covered" %}
+
+                        <div class="hsp131">
+
+                            <h2 class="hsp132">
+                                {{ section.title }}
+                            </h2>
+
+                            <ul class="hsp134">
+
+                                {% for item in section.items.all %}
+
+                                <li class="hsp136">
+
+                                    {% if item.title %}
+                                        <strong>{{ item.title }}</strong>
+                                    {% endif %}
+
+                                    {% if item.description %}
+                                        {{ item.description }}
+                                    {% endif %}
+
+                                </li>
+
+                                {% endfor %}
+
+                            </ul>
+
+                        </div>
+
+
+                        {% elif section.title == "What We Will Need From You" %}
+
+                        <div class="hsp131">
+
+                            <h2 class="hsp132">
+                                {{ section.title }}
+                            </h2>
+
+                            <ul class="hsp134">
+
+                                {% for item in section.items.all %}
+
+                                <li class="hsp137">
+
+                                    {% if item.title %}
+                                        <strong>{{ item.title }}</strong>
+                                    {% endif %}
+
+                                    {% if item.description %}
+                                        {{ item.description }}
+                                    {% endif %}
+
+                                </li>
+
+                                {% endfor %}
+
+                            </ul>
+
+                        </div>
+
+
+                        {% else %}
+
+                        <div class="hsp131">
+
+                            <h2 class="hsp132">
+                                {{ section.title }}
+                            </h2>
+
+                            <ul class="hsp134">
+
+                                {% for item in section.items.all %}
+
+                                <li class="hsp137">
+
+                                    {% if item.title %}
+                                        <strong>{{ item.title }}</strong>
+                                    {% endif %}
+
+                                    {% if item.description %}
+
+                                    <p class="mb-0 mt-1">
+                                        {{ item.description }}
+                                    </p>
+
+                                    {% endif %}
+
+                                </li>
+
+                                {% endfor %}
+
+                            </ul>
+
+                        </div>
+
+                        {% endif %}
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT ENQUIRY -->
+
+                <div class="col-12 col-lg-4">
+
+                    <div class="hsp144">
+
+                        <div class="hsp145"></div>
+
+                        <div class="hsp146">
+
+                            <h2 class="hsp147">
+                                Need Help?
+                            </h2>
+
+                            <p class="hsp148">
+                                Have questions about this service?
+                                Send us an enquiry and our team will
+                                get back to you.
+                            </p>
+
+
+                            {% if messages %}
+
+                                {% for message in messages %}
+
+                                <div class="alert alert-success py-2">
+                                    <strong>
+                                        {{ message }}
+                                    </strong>
+                                </div>
+
+                                {% endfor %}
+
+                            {% endif %}
+
+
+                            <form method="POST">
+
+                                {% csrf_token %}
+
+                                <input
+                                    type="text"
+                                    name="name"
+                                    class="form-control hsp149 mb-3"
+                                    placeholder="Your Name"
+                                    required>
+
+                                <input
+                                    type="email"
+                                    name="email"
+                                    class="form-control hsp149 mb-3"
+                                    placeholder="Email Address"
+                                    required>
+
+                                <input
+                                    type="tel"
+                                    name="phone"
+                                    class="form-control hsp149 mb-3"
+                                    placeholder="Phone Number"
+                                    required>
+
+                                <textarea
+                                    name="message"
+                                    rows="5"
+                                    class="form-control hsp149 mb-3"
+                                    placeholder="Tell us how we can help..."
+                                    required></textarea>
+
+                                <button
+                                    type="submit"
+                                    name="save"
+                                    id="hspSubmitButton"
+                                    class="hsp150">
+
+                                    Send Enquiry
+
+                                    <span
+                                        id="hspButtonSpinner"
+                                        class="hsp172">
+                                    </span>
+
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- =====================================================
+     PROVIDERS
+====================================================== -->
+
+<div
+    class="tab-pane fade"
+    id="hspProviderContent">
+
+    <section class="hsp151">
+
+        <div class="container">
+
+            <div class="text-center mb-5">
+
+                <div class="hsp107">
+                    Trusted Professionals
+                </div>
+
+                <h2 class="display-6 fw-bold">
+                    Meet Our Service Providers
+                </h2>
+
+                <p class="text-muted mx-auto"
+                   style="max-width:600px;">
+
+                    Experienced professionals ready to provide
+                    reliable service at your preferred location.
+
+                </p>
+
+            </div>
+
+
+            <div class="row g-3 g-md-4">
+
+                {% for i in providers %}
+
+                <div class="col-12 col-sm-6 col-lg-4">
+
+                    <article class="hsp152">
+
+                        <div class="hsp153">
+
+                            <div class="min-w-0">
+
+                                <div class="hsp154">
+
+                                    {{ i.user_profile.user.first_name }}
+                                    {{ i.user_profile.user.last_name }}
+
+                                </div>
+
+                                <div class="hsp155">
+                                    {{ i.experience_years }}
+                                    years experience
+                                </div>
+
+                            </div>
+
+                            <span class="hsp156">
+                                {{ i.service }}
+                            </span>
+
+                        </div>
+
+
+                        {% if i.photo %}
+
+                        <img
+                            src="{{ i.photo.url }}"
+                            alt="Provider photo"
+                            class="hsp157">
+
+                        {% endif %}
+
+
+                        <div class="hsp158">
+
+                            <div class="hsp159">
+                                📍 {{ i.location }}
+                            </div>
+
+                            <div class="hsp159">
+                                📞 {{ i.user_profile.phone }}
+                            </div>
+
+                            <div class="hsp159">
+                                ✉ {{ i.user_profile.user.email }}
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                {% empty %}
+
+                <div class="col-12">
+
+                    <div class="text-center py-5 text-muted">
+                        No service providers available currently.
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- =====================================================
+     REVIEWS
+====================================================== -->
+
+<div
+    class="tab-pane fade"
+    id="hspReviewContent">
+
+    <section class="hsp160">
+
+        <div class="container">
+
+            <div class="text-center mb-5">
+
+                <div class="hsp107">
+                    Customer Feedback
+                </div>
+
+                <h2 class="display-6 fw-bold">
+                    Customer Reviews
+                </h2>
+
+            </div>
+
+
+            <!-- FILTER -->
+
+            <div class="hsp166 mb-4">
+
+                <form
+                    method="get"
+                    id="hspFilterForm"
+                    class="row g-3 align-items-end">
+
+                    <input
+                        type="hidden"
+                        name="tab"
+                        value="hspReviewContent">
+
+
+                    <div class="col-12 col-md-6">
+
+                        <label class="form-label fw-bold">
+                            Filter by Provider
+                        </label>
+
+                        <select
+                            name="provider"
+                            class="form-select">
+
+                            <option value="">
+                                All Providers
+                            </option>
+
+                            {% for p in providers %}
+
+                            <option
+                                value="{{ p.id }}"
+                                {% if selected_provider == p.id|stringformat:"s" %}
+                                    selected
+                                {% endif %}>
+
+                                {{ p.user_profile.user.first_name }}
+                                {{ p.user_profile.user.last_name }}
+
+                            </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-12 col-md-auto">
+
+                        <button
+                            type="submit"
+                            class="hsp167">
+
+                            Filter Reviews
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- REVIEWS -->
+
+            {% for review in reviews %}
+
+            <div class="hsp161 mb-3">
+
+                <div class="row g-3">
+
+                    <div class="col-12">
+
+                        <div class="d-flex flex-wrap justify-content-between gap-2">
+
+                            <div>
+
+                                <div class="hsp162 mb-2">
+                                    {{ review.rating }} ★
+                                </div>
+
+                                <p class="hsp163 mb-2">
+                                    {{ review.comment }}
+                                </p>
+
+                            </div>
+
+                            <div class="hsp165">
+                                {{ review.created_at|date:"M d, Y" }}
+                            </div>
+
+                        </div>
+
+
+                        <div class="hsp164">
+
+                            <strong>
+                                {{ review.customer.user_profile.user.first_name }}
+                                {{ review.customer.user_profile.user.last_name }}
+                            </strong>
+
+                            <br>
+
+                            Service:
+                            <strong>
+                                {{ review.service.service_name }}
+                            </strong>
+
+                            <br>
+
+                            Provider:
+                            <strong>
+                                {{ review.provider.user_profile.user.first_name }}
+                                {{ review.provider.user_profile.user.last_name }}
+                            </strong>
+
+                            <br>
+
+                            {% if review.provider.location %}
+
+                            Location:
+                            <strong>
+                                {{ review.provider.location }}
+                            </strong>
+
+                            {% elif review.service.location %}
+
+                            Location:
+                            <strong>
+                                {{ review.service.location }}
+                            </strong>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="text-center text-muted py-5">
+                No reviews found.
+            </div>
+
+            {% endfor %}
+
+
+            <!-- PAGINATION -->
+
+            {% if reviews.has_other_pages %}
+
+            <nav class="mt-4">
+
+                <ul class="pagination justify-content-center flex-wrap">
+
+                    {% if reviews.has_previous %}
+
+                    <li class="page-item">
+
+                        <a
+                            class="page-link"
+                            href="?tab=hspReviewContent&page={{ reviews.previous_page_number }}{% if selected_provider %}&provider={{ selected_provider }}{% endif %}">
+
+                            Previous
+
+                        </a>
+
+                    </li>
+
+                    {% endif %}
+
+
+                    {% for num in reviews.paginator.page_range %}
+
+                        {% if num == reviews.number %}
+
+                        <li class="page-item active">
+
+                            <span class="page-link">
+                                {{ num }}
+                            </span>
+
+                        </li>
+
+                        {% elif num > reviews.number|add:'-3' and num < reviews.number|add:'3' %}
+
+                        <li class="page-item">
+
+                            <a
+                                class="page-link"
+                                href="?tab=hspReviewContent&page={{ num }}{% if selected_provider %}&provider={{ selected_provider }}{% endif %}">
+
+                                {{ num }}
+
+                            </a>
+
+                        </li>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+
+                    {% if reviews.has_next %}
+
+                    <li class="page-item">
+
+                        <a
+                            class="page-link"
+                            href="?tab=hspReviewContent&page={{ reviews.next_page_number }}{% if selected_provider %}&provider={{ selected_provider }}{% endif %}">
+
+                            Next
+
+                        </a>
+
+                    </li>
+
+                    {% endif %}
+
+                </ul>
+
+            </nav>
+
+            {% endif %}
+
+        </div>
+
+    </section>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     BOOKING MODAL
+====================================================== -->
+
+<div
+    class="modal fade"
+    id="hspServiceModal"
+    tabindex="-1"
+    aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+
+        <div class="modal-content hsp168">
+
+            <div class="modal-header hsp169">
+
+                <div>
+
+                    <small class="text-white-50">
+                        BOOK SERVICE
+                    </small>
+
+                    <h5 class="modal-title">
+                        Check Availability
+                    </h5>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+
+            <form
+                method="POST"
+                action="{% url 'check_availability' %}">
+
+                {% csrf_token %}
+
+                <div class="modal-body p-3 p-md-4">
+
+
+                    <div class="mb-3">
+
+                        <label class="form-label fw-bold">
+                            Service
+                        </label>
+
+                        <input
+                            type="text"
+                            id="hspSelectedService"
+                            name="service_name"
+                            class="form-control hsp170"
+                            value="{{ service.service_name }}"
+                            readonly>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="form-label fw-bold">
+                            Location
+                        </label>
+
+                        <select
+                            name="location"
+                            class="form-select hsp170"
+                            required>
+
+                            <option value="">
+                                Select Location
+                            </option>
+
+                            {% for location in locations %}
+
+                            <option value="{{ location }}">
+                                {{ location }}
+                            </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="form-label fw-bold">
+                            Booking Type
+                        </label>
+
+                        <select
+                            name="booking_type"
+                            id="hspBookingType"
+                            class="form-select hsp170"
+                            required>
+
+                            <option value="">
+                                Select Booking Type
+                            </option>
+
+                            <option value="normal">
+                                Normal Booking
+                            </option>
+
+                            <option value="emergency">
+                                Emergency Booking
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div
+                        class="mb-2"
+                        id="hspDateField">
+
+                        <label class="form-label fw-bold">
+                            Preferred Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="hspDate"
+                            name="date"
+                            class="form-control hsp170">
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer flex-wrap border-0 p-3 p-md-4">
+
+                    <button
+                        type="button"
+                        class="btn btn-light rounded-pill px-4"
+                        data-bs-dismiss="modal">
+
+                        Cancel
+
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="hsp171 rounded-pill">
+
+                        Check Availability
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* =====================================================
+       BOOKING TYPE
+    ===================================================== */
+
+    const hspBookingType =
+        document.getElementById("hspBookingType");
+
+    const hspDateField =
+        document.getElementById("hspDateField");
+
+    const hspDate =
+        document.getElementById("hspDate");
+
+
+    function hspToggleDate() {
+
+        if (!hspBookingType || !hspDateField) {
+            return;
+        }
+
+        if (hspBookingType.value === "emergency") {
+
+            hspDateField.style.display = "none";
+
+            if (hspDate) {
+                hspDate.removeAttribute("required");
+            }
+
+        } else {
+
+            hspDateField.style.display = "block";
+
+            if (hspDate) {
+                hspDate.setAttribute("required", "required");
+            }
+
+        }
+
+    }
+
+
+    if (hspBookingType) {
+
+        hspBookingType.addEventListener(
+            "change",
+            hspToggleDate
+        );
+
+        hspToggleDate();
+
+    }
+
+
+    /* =====================================================
+       SERVICE MODAL
+    ===================================================== */
+
+    const hspServiceModal =
+        document.getElementById("hspServiceModal");
+
+
+    if (hspServiceModal) {
+
+        hspServiceModal.addEventListener(
+            "show.bs.modal",
+            function (event) {
+
+                const button =
+                    event.relatedTarget;
+
+                if (!button) {
+                    return;
+                }
+
+                const serviceName =
+                    button.getAttribute("data-service");
+
+                const serviceInput =
+                    document.getElementById(
+                        "hspSelectedService"
+                    );
+
+                if (serviceInput && serviceName) {
+
+                    serviceInput.value =
+                        serviceName;
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       ENQUIRY SPINNER
+    ===================================================== */
+
+    const hspSubmit =
+        document.getElementById("hspSubmitButton");
+
+    const hspSpinner =
+        document.getElementById("hspButtonSpinner");
+
+
+    if (hspSubmit) {
+
+        hspSubmit.addEventListener(
+            "click",
+            function () {
+
+                if (hspSpinner) {
+
+                    hspSpinner.style.display =
+                        "inline-block";
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       KEEP TAB OPEN AFTER RELOAD
+    ===================================================== */
+
+    const hspParams =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const hspActiveTab =
+        hspParams.get("tab");
+
+
+    if (hspActiveTab) {
+
+        const hspTrigger =
+            document.querySelector(
+                '[data-bs-target="#' +
+                hspActiveTab +
+                '"]'
+            );
+
+        if (hspTrigger) {
+
+            const hspTab =
+                new bootstrap.Tab(hspTrigger);
+
+            hspTab.show();
+
+        }
+
+    }
+
+});
+
+</script>
+
+{% endblock %}
+

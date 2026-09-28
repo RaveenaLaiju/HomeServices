@@ -1,0 +1,699 @@
+<!-- =========================================================
+     REUSABLE SERVICE SECTION MODALS
+     admin_service_section_modals.html
+     ========================================================= -->
+
+<style>
+
+/* =========================================================
+   UPDATE MODAL
+   ========================================================= */
+
+.nas642-update-modal,
+.nas643-delete-modal {
+    z-index: 99999 !important;
+}
+
+.nas642-update-modal .modal-dialog {
+    max-width: 540px;
+}
+
+.nas642-update-modal .modal-content,
+.nas643-delete-modal .modal-content {
+    overflow: hidden;
+    border: 0;
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow: 0 35px 100px rgba(0,0,0,0.30);
+}
+
+.nas665-modal-header {
+    position: relative;
+    padding: 23px 25px;
+    background:
+        radial-gradient(circle at 100% 0%, rgba(0,255,170,0.17), transparent 35%),
+        linear-gradient(135deg, #061417, #071c1b);
+    border: 0;
+}
+
+.nas666-modal-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.nas667-modal-icon {
+    width: 50px;
+    height: 50px;
+    flex: 0 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: rgba(0,255,170,0.12);
+    color: #00e0a0;
+    font-size: 19px;
+}
+
+.nas668-modal-title {
+    margin: 0;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.nas669-modal-subtitle {
+    margin: 3px 0 0;
+    color: rgba(255,255,255,0.50);
+    font-size: 11px;
+}
+
+.nas670-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    filter: invert(1);
+    opacity: .65;
+}
+
+.nas671-modal-body {
+    padding: 27px 25px;
+}
+
+.nas672-current-section {
+    margin-bottom: 21px;
+    padding: 13px 15px;
+    border-radius: 14px;
+    background: #f5f8f7;
+    border: 1px solid #e7efeb;
+}
+
+.nas673-current-label {
+    display: block;
+    margin-bottom: 4px;
+    color: #9ca3af;
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nas674-current-title {
+    display: block;
+    color: #1f2937;
+    font-size: 14px;
+    font-weight: 800;
+    word-break: break-word;
+}
+
+.nas675-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #1f2937;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.nas676-input-wrapper {
+    position: relative;
+}
+
+.nas677-input-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    z-index: 2;
+    transform: translateY(-50%);
+    color: #00a878;
+}
+
+.nas678-input {
+    width: 100%;
+    min-height: 52px;
+    padding: 12px 15px 12px 44px;
+    border-radius: 14px;
+    border: 1px solid #dce4e1;
+    outline: none;
+    color: #111827;
+    background: #ffffff;
+    font-size: 14px;
+    transition: all .2s ease;
+}
+
+.nas678-input:focus {
+    border-color: #00c991;
+    box-shadow: 0 0 0 4px rgba(0,201,145,0.10);
+}
+
+.nas679-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 17px 25px 21px;
+    background: #fbfcfc;
+    border-top: 1px solid #edf1ef;
+}
+
+.nas680-cancel {
+    min-height: 43px;
+    padding: 9px 17px;
+    border-radius: 11px;
+    border: 1px solid #dfe6e3;
+    background: #ffffff;
+    color: #5f6b66;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.nas681-update-submit {
+    min-height: 43px;
+    padding: 9px 18px;
+    border: 0;
+    border-radius: 11px;
+    background: #00c991;
+    color: #032117;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   DELETE MODAL
+   ========================================================= */
+
+.nas643-delete-modal .modal-dialog {
+    max-width: 470px;
+}
+
+.nas682-delete-body {
+    padding: 32px 28px 24px;
+    text-align: center;
+}
+
+.nas683-delete-icon {
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background: rgba(220,53,69,0.09);
+    color: #dc3545;
+    font-size: 25px;
+}
+
+.nas684-delete-title {
+    margin: 0;
+    color: #111827;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.nas685-delete-text {
+    margin: 9px auto 0;
+    max-width: 370px;
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.nas686-delete-name {
+    display: inline-block;
+    margin-top: 7px;
+    padding: 7px 12px;
+    max-width: 100%;
+    border-radius: 9px;
+    background: #fff2f3;
+    color: #c52d3d;
+    font-size: 13px;
+    font-weight: 800;
+    word-break: break-word;
+}
+
+.nas687-delete-footer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 17px 25px 22px;
+    border-top: 1px solid #edf1ef;
+    background: #fbfcfc;
+}
+
+.nas688-delete-cancel {
+    min-height: 43px;
+    padding: 9px 19px;
+    border-radius: 11px;
+    border: 1px solid #dfe6e3;
+    background: #ffffff;
+    color: #5f6b66;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.nas689-delete-submit {
+    min-height: 43px;
+    padding: 9px 19px;
+    border: 0;
+    border-radius: 11px;
+    background: #dc3545;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.nas689-delete-submit:hover {
+    background: #c82333;
+}
+
+@media (max-width: 575.98px) {
+
+    .nas642-update-modal .modal-dialog,
+    .nas643-delete-modal .modal-dialog {
+        margin: 12px;
+    }
+
+    .nas671-modal-body {
+        padding: 22px 18px;
+    }
+
+    .nas665-modal-header {
+        padding: 20px 18px;
+    }
+
+    .nas679-modal-footer,
+    .nas687-delete-footer {
+        padding: 15px 18px 18px;
+        flex-direction: column-reverse;
+    }
+
+    .nas680-cancel,
+    .nas681-update-submit,
+    .nas688-delete-cancel,
+    .nas689-delete-submit {
+        width: 100%;
+    }
+
+}
+
+</style>
+
+
+<!-- =========================================================
+     UPDATE MODAL
+     ========================================================= -->
+
+<div
+    class="modal fade nas640-modal nas642-update-modal"
+    id="nas642UpdateSectionModal"
+    tabindex="-1"
+    aria-labelledby="nas642UpdateSectionModalLabel"
+    aria-hidden="true"
+>
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <form
+            action=""
+            method="POST"
+            id="nas690UpdateForm"
+            class="w-100"
+            autocomplete="off"
+        >
+
+            {% csrf_token %}
+
+            <div class="modal-content">
+
+                <div class="modal-header nas665-modal-header">
+
+                    <div class="nas666-modal-heading">
+
+                        <div class="nas667-modal-icon">
+                            <i class="fa fa-pencil"></i>
+                        </div>
+
+                        <div>
+
+                            <h5
+                                class="nas668-modal-title"
+                                id="nas642UpdateSectionModalLabel"
+                            >
+                                Update Section
+                            </h5>
+
+                            <p class="nas669-modal-subtitle">
+                                Modify the selected service section
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="btn-close nas670-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    ></button>
+
+                </div>
+
+
+                <div class="modal-body nas671-modal-body">
+
+                    <div class="nas672-current-section">
+
+                        <span class="nas673-current-label">
+                            Editing Section
+                        </span>
+
+                        <span
+                            class="nas674-current-title"
+                            id="nas691CurrentTitle"
+                        >
+                        </span>
+
+                    </div>
+
+
+                    <input
+                        type="hidden"
+                        name="service"
+                        value="{{ data }}"
+                    >
+
+
+                    <!-- This is filled by JavaScript -->
+                    <input
+                        type="hidden"
+                        name="id"
+                        id="nas692UpdateId"
+                    >
+
+
+                    <label
+                        for="nas693UpdateTitle"
+                        class="nas675-label"
+                    >
+                        Service Section Title
+                    </label>
+
+
+                    <div class="nas676-input-wrapper">
+
+                        <i class="fa fa-pencil nas677-input-icon"></i>
+
+                        <input
+                            type="text"
+                            name="title"
+                            id="nas693UpdateTitle"
+                            class="nas678-input"
+                            placeholder="Enter section title"
+                            maxlength="255"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer nas679-modal-footer">
+
+                    <button
+                        type="button"
+                        class="nas680-cancel"
+                        data-bs-dismiss="modal"
+                    >
+                        <i class="fa fa-times me-1"></i>
+                        Cancel
+                    </button>
+
+                    <!-- IMPORTANT:
+                         Existing backend expects name="update"
+                    -->
+                    <button
+                        type="submit"
+                        class="nas681-update-submit"
+                        name="update"
+                        id="nas694UpdateSubmit"
+                    >
+                        <i class="fa fa-check me-1"></i>
+                        Update Section
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     DELETE MODAL
+     ========================================================= -->
+
+<div
+    class="modal fade nas640-modal nas643-delete-modal"
+    id="nas643DeleteSectionModal"
+    tabindex="-1"
+    aria-labelledby="nas643DeleteSectionModalLabel"
+    aria-hidden="true"
+    data-bs-backdrop="static"
+>
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <form
+            action=""
+            method="POST"
+            id="nas695DeleteForm"
+            class="w-100"
+        >
+
+            {% csrf_token %}
+
+            <div class="modal-content">
+
+                <div class="nas682-delete-body">
+
+                    <div class="nas683-delete-icon">
+                        <i class="fa fa-trash"></i>
+                    </div>
+
+                    <h5
+                        class="nas684-delete-title"
+                        id="nas643DeleteSectionModalLabel"
+                    >
+                        Delete Section?
+                    </h5>
+
+                    <p class="nas685-delete-text">
+                        Are you sure you want to delete this service
+                        section? This action cannot be undone.
+                    </p>
+
+                    <span
+                        class="nas686-delete-name"
+                        id="nas696DeleteTitle"
+                    >
+                    </span>
+
+                </div>
+
+
+                <!-- Existing backend expects hidden id -->
+                <input
+                    type="hidden"
+                    name="id"
+                    id="nas697DeleteId"
+                >
+
+
+                <div class="nas687-delete-footer">
+
+                    <button
+                        type="button"
+                        class="nas688-delete-cancel"
+                        data-bs-dismiss="modal"
+                    >
+                        <i class="fa fa-times me-1"></i>
+                        Cancel
+                    </button>
+
+                    <!-- Existing backend expects name="delete" -->
+                    <button
+                        type="submit"
+                        class="nas689-delete-submit"
+                        name="delete"
+                        id="nas698DeleteSubmit"
+                    >
+                        <i class="fa fa-trash me-1"></i>
+                        Delete Section
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script>
+(function () {
+
+    function nas699InitSectionModals() {
+
+        /*
+         * UPDATE
+         */
+        var updateButtons = document.querySelectorAll(
+            '.nas663-update-trigger'
+        );
+
+        updateButtons.forEach(function (button) {
+
+            button.addEventListener('click', function () {
+
+                var sectionId = this.getAttribute(
+                    'data-section-id'
+                );
+
+                var sectionTitle = this.getAttribute(
+                    'data-section-title'
+                ) || '';
+
+                document.getElementById(
+                    'nas692UpdateId'
+                ).value = sectionId;
+
+                document.getElementById(
+                    'nas693UpdateTitle'
+                ).value = sectionTitle;
+
+                document.getElementById(
+                    'nas691CurrentTitle'
+                ).textContent = sectionTitle;
+
+                /*
+                 * Backend originally expects:
+                 *
+                 * name="update"
+                 * value="{{ i.id }}"
+                 *
+                 * So dynamically assign the exact value.
+                 */
+                document.getElementById(
+                    'nas694UpdateSubmit'
+                ).value = sectionId;
+
+            });
+
+        });
+
+
+        /*
+         * DELETE
+         */
+        var deleteButtons = document.querySelectorAll(
+            '.nas664-delete-trigger'
+        );
+
+        deleteButtons.forEach(function (button) {
+
+            button.addEventListener('click', function () {
+
+                var sectionId = this.getAttribute(
+                    'data-section-id'
+                );
+
+                var sectionTitle = this.getAttribute(
+                    'data-section-title'
+                ) || '';
+
+                document.getElementById(
+                    'nas697DeleteId'
+                ).value = sectionId;
+
+                document.getElementById(
+                    'nas696DeleteTitle'
+                ).textContent = sectionTitle;
+
+                /*
+                 * Backend originally expects:
+                 *
+                 * name="delete"
+                 * value="{{ i.id }}"
+                 */
+                document.getElementById(
+                    'nas698DeleteSubmit'
+                ).value = sectionId;
+
+            });
+
+        });
+
+    }
+
+
+    /*
+     * Move the actual Bootstrap modal elements directly
+     * underneath BODY.
+     *
+     * This prevents:
+     *
+     * overflow:hidden
+     * transform
+     * position
+     * z-index
+     * stacking-context
+     *
+     * conflicts from the admin dashboard.
+     */
+    function nas700MoveModalsToBody() {
+
+        var ids = [
+            'nas641AddSectionModal',
+            'nas642UpdateSectionModal',
+            'nas643DeleteSectionModal'
+        ];
+
+        ids.forEach(function (id) {
+
+            var modal = document.getElementById(id);
+
+            if (modal && modal.parentElement !== document.body) {
+                document.body.appendChild(modal);
+            }
+
+        });
+
+    }
+
+
+    document.addEventListener(
+        'DOMContentLoaded',
+        function () {
+
+            nas700MoveModalsToBody();
+            nas699InitSectionModals();
+
+            setTimeout(
+                nas700MoveModalsToBody,
+                100
+            );
+
+        }
+    );
+
+})();
+</script>

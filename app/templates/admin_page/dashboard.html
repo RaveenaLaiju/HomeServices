@@ -1,0 +1,909 @@
+{% extends 'admin_page/base.html' %}
+{% load static %}
+
+{% block title %}
+    Dashboard | Noah's Ark Home Services
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+<div class="nhs201-page">
+
+
+    <section class="nhs202-hero">
+
+        <div class="nhs203-hero-content">
+
+
+            <div>
+
+                <p class="nhs204-hero-eyebrow">
+                    Noah's Ark Home Services
+                </p>
+
+
+                <h1 class="nhs205-hero-title">
+
+                    Welcome to your
+
+                    <br class="d-none d-sm-block">
+
+                    Admin Dashboard
+
+                </h1>
+
+
+                <p class="nhs206-hero-description">
+
+                    Manage your complete home-service ecosystem,
+                    monitor providers, track bookings, review customer
+                    feedback and oversee business activity.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- IMAGE-FREE BRAND ICON -->
+
+            <div class="nhs207-hero-brand">
+
+                <i
+                    class="fa fa-ship nhs208-hero-brand-icon"
+                    aria-hidden="true"
+                ></i>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ============================================================
+         STATISTICS
+         ============================================================ -->
+
+    <div class="row g-3">
+
+
+        <!-- PROVIDERS -->
+
+        <div class="col-12 col-sm-6 col-xl-4">
+
+            <div class="nhs209-stat-card nhs217-green">
+
+                <div class="nhs210-stat-orb"></div>
+
+
+                <div class="nhs211-stat-content">
+
+                    <div class="nhs212-stat-top">
+
+                        <div>
+
+                            <p class="nhs213-stat-label">
+                                Providers
+                            </p>
+
+
+                            <h2 class="nhs214-stat-number">
+
+                                {{ provider_count }}
+
+                            </h2>
+
+
+                            <p class="nhs215-stat-description">
+
+                                Registered service providers
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="nhs216-stat-icon">
+
+                            <i
+                                class="fa fa-users"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SERVICES -->
+
+        <div class="col-12 col-sm-6 col-xl-4">
+
+            <div class="nhs209-stat-card nhs218-blue">
+
+                <div class="nhs210-stat-orb"></div>
+
+
+                <div class="nhs211-stat-content">
+
+                    <div class="nhs212-stat-top">
+
+                        <div>
+
+                            <p class="nhs213-stat-label">
+                                Services
+                            </p>
+
+
+                            <h2 class="nhs214-stat-number">
+
+                                {{ service_count }}
+
+                            </h2>
+
+
+                            <p class="nhs215-stat-description">
+
+                                Available home services
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="nhs216-stat-icon">
+
+                            <i
+                                class="fa fa-toolbox"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- REVENUE -->
+
+        <div class="col-12 col-sm-12 col-xl-4">
+
+            <div class="nhs209-stat-card nhs219-gold">
+
+                <div class="nhs210-stat-orb"></div>
+
+
+                <div class="nhs211-stat-content">
+
+                    <div class="nhs212-stat-top">
+
+                        <div>
+
+                            <p class="nhs213-stat-label">
+                                Revenue
+                            </p>
+
+
+                            <h2 class="nhs214-stat-number">
+
+                                ₹{{ total_amount }}
+
+                            </h2>
+
+
+                            <p class="nhs215-stat-description">
+
+                                {{ booking_count }}
+                                total bookings
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="nhs216-stat-icon">
+
+                            <i
+                                class="fa fa-money-bill-wave"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ============================================================
+         RECENT BOOKINGS
+         ============================================================ -->
+
+    <div class="mt-4">
+
+
+        <div class="nhs220-card">
+
+
+            <div class="nhs221-card-header">
+
+
+                <div class="nhs222-header-left">
+
+                    <h2 class="nhs223-card-title">
+                        Recent Bookings
+                    </h2>
+
+
+                    <p class="nhs224-card-subtitle">
+                        Latest service booking activity
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="{% url 'admin_booking_list' %}"
+                    class="nhs225-view-button"
+                >
+
+                    View All
+
+                    <i
+                        class="fa fa-arrow-right"
+                        aria-hidden="true"
+                    ></i>
+
+                </a>
+
+            </div>
+
+
+
+            <div class="nhs226-card-body">
+
+                <div class="nhs227-table-scroll">
+
+
+                    <table class="nhs228-booking-table">
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Customer
+                                </th>
+
+                                <th>
+                                    Service
+                                </th>
+
+                                <th>
+                                    Amount
+                                </th>
+
+                                <th>
+                                    Provider
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+
+                        <tbody>
+
+
+                            {% for booking in bookings|slice:":4" %}
+
+                            <tr>
+
+
+                                <td class="nhs229-customer">
+
+                                    {{ booking.booking_request.customer.user_profile.user.first_name }}
+
+                                    {{ booking.booking_request.customer.user_profile.user.last_name }}
+
+                                </td>
+
+
+                                <td>
+
+                                    {{ booking.booking_request.service.service_name }}
+
+                                </td>
+
+
+                                <td class="nhs230-amount">
+
+                                    ₹{{ booking.booking_request.service.price }}
+
+                                </td>
+
+
+                                <td>
+
+                                    {{ booking.booking_request.provider.user_profile.user.first_name }}
+
+                                    {{ booking.booking_request.provider.user_profile.user.last_name }}
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="nhs231-status">
+
+                                        {{ booking.booking_request.status }}
+
+                                    </span>
+
+                                </td>
+
+
+                            </tr>
+
+
+                            {% empty %}
+
+
+                            <tr>
+
+                                <td colspan="5">
+
+                                    <div class="nhs241-empty">
+
+                                        <div>
+
+                                            <i
+                                                class="fa fa-calendar-xmark d-block mb-2"
+                                                style="font-size: 25px;"
+                                            ></i>
+
+                                            No bookings available yet.
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+                            {% endfor %}
+
+
+                        </tbody>
+
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ============================================================
+         REVIEWS + ENQUIRIES
+         ============================================================ -->
+
+    <div class="row g-3 mt-1">
+
+
+        <!-- ========================================================
+             REVIEWS
+             ======================================================== -->
+
+        <div class="col-12 col-xl-6">
+
+            <div class="nhs220-card">
+
+
+                <div class="nhs221-card-header">
+
+
+                    <div class="nhs222-header-left">
+
+                        <h2 class="nhs223-card-title">
+                            Customer Reviews
+                        </h2>
+
+
+                        <p class="nhs224-card-subtitle">
+                            Recent customer feedback
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="{% url 'review_list' %}"
+                        class="nhs225-view-button"
+                    >
+
+                        View All
+
+                        <i
+                            class="fa fa-arrow-right"
+                            aria-hidden="true"
+                        ></i>
+
+                    </a>
+
+                </div>
+
+
+
+                <div class="nhs226-card-body">
+
+
+                    <div class="nhs232-activity-list">
+
+
+                        {% for review in reviews|slice:":5" %}
+
+
+                        <div class="nhs233-activity">
+
+
+                            <!-- ICON AVATAR -->
+
+                            <div class="nhs234-avatar-wrapper">
+
+                                <i
+                                    class="fa fa-user nhs234-avatar-icon"
+                                    aria-hidden="true"
+                                ></i>
+
+                            </div>
+
+
+
+                            <div class="nhs235-activity-main">
+
+
+                                <div class="nhs236-activity-heading">
+
+
+                                    <h6 class="nhs237-activity-name">
+
+                                        {{ review.customer.user_profile.user.username }}
+
+                                    </h6>
+
+
+                                    <p class="nhs238-activity-date">
+
+                                        {{ review.created_at|date:"M d, Y" }}
+
+                                    </p>
+
+
+                                </div>
+
+
+                                <p class="nhs239-message">
+
+                                    {{ review.comment }}
+
+                                </p>
+
+
+                                <p class="nhs240-rating">
+
+                                    <i
+                                        class="fa fa-star"
+                                        aria-hidden="true"
+                                    ></i>
+
+                                    {{ review.rating }}/5
+
+                                </p>
+
+
+                            </div>
+
+                        </div>
+
+
+                        {% empty %}
+
+
+                        <div class="nhs241-empty">
+
+                            <div>
+
+                                <i
+                                    class="fa fa-star d-block mb-2"
+                                    style="font-size: 25px;"
+                                ></i>
+
+                                No reviews available yet.
+
+                            </div>
+
+                        </div>
+
+
+                        {% endfor %}
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ========================================================
+             ENQUIRIES
+             ======================================================== -->
+
+        <div class="col-12 col-xl-6">
+
+            <div class="nhs220-card">
+
+
+                <div class="nhs221-card-header">
+
+
+                    <div class="nhs222-header-left">
+
+                        <h2 class="nhs223-card-title">
+                            Customer Enquiries
+                        </h2>
+
+
+                        <p class="nhs224-card-subtitle">
+                            Latest customer messages
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="{% url 'admin_enquiry_list' %}"
+                        class="nhs225-view-button"
+                    >
+
+                        View All
+
+                        <i
+                            class="fa fa-arrow-right"
+                            aria-hidden="true"
+                        ></i>
+
+                    </a>
+
+                </div>
+
+
+
+                <div class="nhs226-card-body">
+
+
+                    <div class="nhs232-activity-list">
+
+
+                        {% for enquiry in enquiries|slice:":5" %}
+
+
+                        <div class="nhs233-activity">
+
+
+                            <!-- ICON AVATAR -->
+
+                            <div class="nhs234-avatar-wrapper">
+
+                                <i
+                                    class="fa fa-user nhs234-avatar-icon"
+                                    aria-hidden="true"
+                                ></i>
+
+                            </div>
+
+
+
+                            <div class="nhs235-activity-main">
+
+
+                                <div class="nhs236-activity-heading">
+
+                                    <h6 class="nhs237-activity-name">
+
+                                        {{ enquiry.name }}
+
+                                    </h6>
+
+                                </div>
+
+
+                                <p class="nhs239-message">
+
+                                    {{ enquiry.message }}
+
+                                </p>
+
+
+                            </div>
+
+                        </div>
+
+
+                        {% empty %}
+
+
+                        <div class="nhs241-empty">
+
+                            <div>
+
+                                <i
+                                    class="fa fa-comments d-block mb-2"
+                                    style="font-size: 25px;"
+                                ></i>
+
+                                No enquiries available yet.
+
+                            </div>
+
+                        </div>
+
+
+                        {% endfor %}
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ============================================================
+         PROVIDER NETWORK
+         ============================================================ -->
+
+    <div class="mt-4 mb-3">
+
+
+        <div class="nhs220-card">
+
+
+            <div class="nhs221-card-header">
+
+
+                <div class="nhs222-header-left">
+
+                    <h2 class="nhs223-card-title">
+                        Provider Network
+                    </h2>
+
+
+                    <p class="nhs224-card-subtitle">
+                        Providers and their assigned services
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="/admin_provider/"
+                    class="nhs225-view-button"
+                >
+
+                    Manage
+
+                    <i
+                        class="fa fa-arrow-right"
+                        aria-hidden="true"
+                    ></i>
+
+                </a>
+
+            </div>
+
+
+
+            <div class="nhs226-card-body">
+
+
+                <div class="row g-4 align-items-stretch">
+
+
+                    <!-- =================================================
+                         PROVIDER LIST
+                         ================================================= -->
+
+                    <div class="col-12 col-xl-5">
+
+
+                        <div class="nhs242-provider-scroll">
+
+
+                            <table class="nhs243-provider-table">
+
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            Provider
+                                        </th>
+
+                                        <th>
+                                            Service
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+
+                                <tbody>
+
+
+                                    {% for provider in providers|slice:":8" %}
+
+
+                                    <tr>
+
+
+                                        <td class="nhs244-provider-name">
+
+                                            <i
+                                                class="fa fa-user-tie me-2"
+                                                style="opacity:.55;"
+                                            ></i>
+
+                                            {{ provider.user_profile.user.first_name }}
+
+                                            {{ provider.user_profile.user.last_name }}
+
+                                        </td>
+
+
+                                        <td>
+
+                                            <span class="nhs245-service">
+
+                                                {{ provider.service.service_name }}
+
+                                            </span>
+
+                                        </td>
+
+
+                                    </tr>
+
+
+                                    {% empty %}
+
+
+                                    <tr>
+
+                                        <td colspan="2">
+
+                                            <div class="nhs241-empty">
+
+                                                <div>
+
+                                                    <i
+                                                        class="fa fa-user-slash d-block mb-2"
+                                                        style="font-size: 25px;"
+                                                    ></i>
+
+                                                    No providers available yet.
+
+                                                </div>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+
+                                    {% endfor %}
+
+
+                                </tbody>
+
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         MAP
+                         ================================================= -->
+
+                    <div class="col-12 col-xl-7">
+
+
+                        <div class="nhs246-map">
+
+
+                            <iframe
+                                class="nhs247-map-frame"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.682561608238!2d76.2414004748452!3d9.960346940143044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b086d39ba66b1c7%3A0xb1317583174761ca!2sAmaravathy%2C%20Fort%20Kochi%2C%20Kochi%2C%20Kerala%20682001!5e0!3m2!1sen!2sin!4v1762083615411!5m2!1sen!2sin"
+                                loading="lazy"
+                                allowfullscreen
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Noah's Ark provider location"
+                            ></iframe>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

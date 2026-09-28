@@ -1,0 +1,1449 @@
+{% extends 'admin_page/base.html' %}
+
+{% block title %}Booking Details - Noah's Ark Services{% endblock %}
+
+{% block content %}
+
+<style>
+
+.nhs301-page {
+    min-height: 100vh;
+    width: 100%;
+    
+    color: #172033;
+    overflow-x: hidden;
+}
+
+.nhs302-container {
+    position: relative;
+}
+
+
+.nhs303-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 22px;
+    padding: 10px 16px;
+    border: 1px solid #e4e8ef;
+    border-radius: 12px;
+    background: rgba(255,255,255,.85);
+    color: #445066;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(15,23,42,.04);
+    transition: .25s ease;
+}
+
+.nhs303-back:hover {
+    color: #2563eb;
+    border-color: #bfdbfe;
+    background: #fff;
+    transform: translateX(-3px);
+}
+
+.nhs304-hero {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 26px;
+    padding: 32px;
+    border-radius: 26px;
+    background:
+        linear-gradient(135deg, #101827 0%, #17243b 48%, #0f766e 150%);
+    box-shadow: 0 22px 55px rgba(15,23,42,.16);
+    color: #fff;
+}
+
+.nhs304-hero::before {
+    content: "";
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    top: -120px;
+    right: 4%;
+    border-radius: 50%;
+    background: rgba(255,255,255,.06);
+}
+
+.nhs304-hero::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    bottom: -100px;
+    left: 42%;
+    border-radius: 50%;
+    background: rgba(16,185,129,.12);
+}
+
+.nhs305-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.nhs306-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding: 7px 12px;
+    border: 1px solid rgba(255,255,255,.13);
+    border-radius: 30px;
+    background: rgba(255,255,255,.08);
+    color: #a7f3d0;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.nhs307-title {
+    margin: 0;
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 850;
+    letter-spacing: -.8px;
+    line-height: 1.05;
+}
+
+.nhs308-subtitle {
+    max-width: 650px;
+    margin: 13px 0 0;
+    color: rgba(255,255,255,.70);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.nhs309-id-box {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 105px;
+    padding: 20px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 20px;
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(14px);
+    text-align: center;
+}
+
+.nhs310-id-label {
+    display: block;
+    margin-bottom: 5px;
+    color: rgba(255,255,255,.5);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+.nhs311-id-value {
+    display: block;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+/* =========================================================
+   SUMMARY STRIP
+   ========================================================= */
+
+.nhs312-summary {
+    margin-bottom: 28px;
+}
+
+.nhs313-summary-card {
+    height: 100%;
+    padding: 19px;
+    border: 1px solid #e5e9f0;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 8px 28px rgba(15,23,42,.055);
+}
+
+.nhs314-summary-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 43px;
+    margin-bottom: 13px;
+    border-radius: 13px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 17px;
+}
+
+.nhs315-summary-label {
+    display: block;
+    margin-bottom: 4px;
+    color: #8993a5;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+}
+
+.nhs316-summary-value {
+    display: block;
+    color: #1b2537;
+    font-size: 15px;
+    font-weight: 750;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   MAIN CARD
+   ========================================================= */
+
+.nhs317-section {
+    height: 100%;
+    border: 1px solid #e5e9f0;
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: 0 12px 35px rgba(15,23,42,.055);
+    overflow: hidden;
+}
+
+.nhs318-section-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 22px 24px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.nhs319-section-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 47px;
+    height: 47px;
+    border-radius: 14px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 18px;
+}
+
+.nhs320-section-title {
+    margin: 0;
+    color: #172033;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.nhs321-section-subtitle {
+    margin: 3px 0 0;
+    color: #8b95a7;
+    font-size: 12px;
+}
+
+.nhs322-section-body {
+    padding: 5px 24px 22px;
+}
+
+/* =========================================================
+   INFORMATION ROW
+   ========================================================= */
+
+.nhs323-info-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid #f0f2f6;
+}
+
+.nhs323-info-row:last-child {
+    border-bottom: 0;
+}
+
+.nhs324-info-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 135px;
+    color: #8993a5;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.nhs324-info-label i {
+    width: 17px;
+    color: #64748b;
+    text-align: center;
+}
+
+.nhs325-info-value {
+    max-width: 60%;
+    color: #202b3d;
+    font-size: 13px;
+    font-weight: 750;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.nhs326-status,
+.nhs327-type {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.nhs328-completed {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.nhs329-pending {
+    background: #fef3c7;
+    color: #b45309;
+}
+
+.nhs330-cancelled {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.nhs331-other {
+    background: #e2e8f0;
+    color: #475569;
+}
+
+.nhs332-emergency {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.nhs333-normal {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+/* =========================================================
+   PROFILE CARDS
+   ========================================================= */
+
+.nhs334-profile {
+    padding: 22px 24px;
+}
+
+.nhs335-profile-top {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.nhs336-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 57px;
+    height: 57px;
+    flex: 0 0 auto;
+    border-radius: 17px;
+    background: linear-gradient(135deg,#2563eb,#0f766e);
+    color: #fff;
+    font-size: 21px;
+    box-shadow: 0 9px 20px rgba(37,99,235,.18);
+}
+
+.nhs337-profile-label {
+    margin: 0 0 4px;
+    color: #8993a5;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.nhs338-profile-name {
+    margin: 0;
+    color: #172033;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.nhs339-contact-list {
+    display: grid;
+    gap: 10px;
+}
+
+.nhs340-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    color: #526075;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.nhs340-contact-item i {
+    width: 20px;
+    margin-top: 2px;
+    color: #2563eb;
+}
+
+/* =========================================================
+   SERVICE CARD
+   ========================================================= */
+
+.nhs341-service {
+    height: 100%;
+    padding: 25px;
+    border-radius: 22px;
+    background:
+        linear-gradient(145deg,#0f172a,#172554);
+    color: #fff;
+    box-shadow: 0 15px 38px rgba(15,23,42,.14);
+}
+
+.nhs342-service-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 28px;
+}
+
+.nhs343-service-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 17px;
+    background: rgba(255,255,255,.10);
+    color: #a7f3d0;
+    font-size: 22px;
+}
+
+.nhs344-service-tag {
+    padding: 7px 11px;
+    border-radius: 30px;
+    background: rgba(16,185,129,.14);
+    color: #6ee7b7;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+}
+
+.nhs345-service-label {
+    margin-bottom: 7px;
+    color: rgba(255,255,255,.48);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.nhs346-service-name {
+    margin: 0 0 22px;
+    color: #fff;
+    font-size: clamp(21px,3vw,29px);
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.nhs347-service-price {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,.10);
+}
+
+.nhs348-currency {
+    color: #6ee7b7;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.nhs349-price {
+    color: #fff;
+    font-size: 31px;
+    font-weight: 850;
+}
+
+/* =========================================================
+   PAYMENT
+   ========================================================= */
+
+.nhs350-payment {
+    margin-top: 24px;
+    border: 1px solid #dcefe8;
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0 15px 42px rgba(15,23,42,.065);
+    overflow: hidden;
+}
+
+.nhs351-payment-head {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 23px 26px;
+    background: linear-gradient(135deg,#ecfdf5,#f0fdfa);
+    border-bottom: 1px solid #dcefe8;
+}
+
+.nhs352-payment-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 49px;
+    height: 49px;
+    border-radius: 15px;
+    background: #d1fae5;
+    color: #059669;
+    font-size: 18px;
+}
+
+.nhs353-payment-title {
+    margin: 0;
+    color: #064e3b;
+    font-size: 19px;
+    font-weight: 850;
+}
+
+.nhs354-payment-subtitle {
+    margin: 3px 0 0;
+    color: #6b8b82;
+    font-size: 12px;
+}
+
+.nhs355-payment-body {
+    padding: 6px 26px 22px;
+}
+
+.nhs356-payment-amount {
+    color: #059669;
+    font-size: 19px;
+    font-weight: 850;
+}
+
+.nhs357-code {
+    display: inline-block;
+    max-width: 100%;
+    padding: 7px 9px;
+    border-radius: 8px;
+    background: #f3f5f8;
+    color: #475569;
+    font-family: monospace;
+    font-size: 11px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.nhs358-payment-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 11px;
+    border-radius: 30px;
+    background: #dcfce7;
+    color: #15803d;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+/* =========================================================
+   NO PAYMENT
+   ========================================================= */
+
+.nhs359-no-payment {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-top: 24px;
+    padding: 22px;
+    border: 1px dashed #d9dee8;
+    border-radius: 18px;
+    background: #fff;
+    color: #7a8496;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.nhs360-no-payment-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 43px;
+    flex: 0 0 auto;
+    border-radius: 13px;
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    .nhs301-page {
+        padding: 15px 0 35px;
+    }
+
+    .nhs304-hero {
+        padding: 24px 19px;
+        border-radius: 20px;
+    }
+
+    .nhs307-title {
+        font-size: 31px;
+    }
+
+    .nhs308-subtitle {
+        font-size: 13px;
+    }
+
+    .nhs309-id-box {
+        min-height: 80px;
+        margin-top: 20px;
+    }
+
+    .nhs317-section {
+        border-radius: 18px;
+    }
+
+    .nhs318-section-head {
+        padding: 18px;
+    }
+
+    .nhs322-section-body {
+        padding: 2px 18px 16px;
+    }
+
+    .nhs323-info-row {
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .nhs324-info-label {
+        min-width: 0;
+    }
+
+    .nhs325-info-value {
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .nhs334-profile {
+        padding: 19px 18px;
+    }
+
+    .nhs341-service {
+        padding: 21px;
+        border-radius: 19px;
+    }
+
+    .nhs350-payment {
+        border-radius: 19px;
+    }
+
+    .nhs351-payment-head,
+    .nhs355-payment-body {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .nhs359-no-payment {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 575.98px) {
+
+    .nhs302-container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .nhs303-back {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .nhs306-eyebrow {
+        font-size: 9px;
+    }
+
+    .nhs307-title {
+        font-size: 28px;
+    }
+
+    .nhs311-id-value {
+        font-size: 19px;
+    }
+
+    .nhs318-section-head {
+        align-items: flex-start;
+    }
+
+    .nhs319-section-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 15px;
+    }
+
+    .nhs320-section-title {
+        font-size: 16px;
+    }
+
+    .nhs346-service-name {
+        font-size: 23px;
+    }
+
+    .nhs349-price {
+        font-size: 27px;
+    }
+}
+</style>
+
+<div class="nhs301-page">
+
+<div class="container-fluid nhs302-container">
+
+    <a href="{% url 'admin_booking_list' %}" class="nhs303-back">
+        <i class="fa fa-arrow-left"></i>
+        <span>Back to Bookings</span>
+    </a>
+
+    <section class="nhs304-hero">
+
+        <div class="row align-items-center g-4">
+
+            <div class="col-lg-8">
+
+                <div class="nhs305-hero-content">
+
+                    <div class="nhs306-eyebrow">
+                        <i class="fa fa-home"></i>
+                        Home Service Management
+                    </div>
+
+                    <h1 class="nhs307-title">
+                        Booking Details
+                    </h1>
+
+                    <p class="nhs308-subtitle">
+                        Manage customer, provider, schedule, service
+                        and payment information from one premium
+                        service workspace.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-4">
+
+                <div class="nhs309-id-box">
+
+                    <div>
+
+                        <span class="nhs310-id-label">
+                            Booking Reference
+                        </span>
+
+                        <span class="nhs311-id-value">
+                            #{{ booking.id }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         QUICK SUMMARY
+         ===================================================== -->
+
+    <section class="nhs312-summary">
+
+        <div class="row g-3">
+
+            <div class="col-6 col-lg-3">
+
+                <div class="nhs313-summary-card">
+
+                    <div class="nhs314-summary-icon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+
+                    <span class="nhs315-summary-label">
+                        Service Date
+                    </span>
+
+                    <span class="nhs316-summary-value">
+                        {{ booking.service_date|date:"d M Y H:i" }}
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="nhs313-summary-card">
+
+                    <div class="nhs314-summary-icon">
+                        <i class="fa fa-wrench"></i>
+                    </div>
+
+                    <span class="nhs315-summary-label">
+                        Service
+                    </span>
+
+                    <span class="nhs316-summary-value">
+                        {{ booking.booking_request.service.service_name }}
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="nhs313-summary-card">
+
+                    <div class="nhs314-summary-icon">
+                        <i class="fa fa-info-circle"></i>
+                    </div>
+
+                    <span class="nhs315-summary-label">
+                        Status
+                    </span>
+
+                    <span class="nhs316-summary-value">
+
+                        {% if booking.booking_request.status == "completed" %}
+                            <span class="nhs326-status nhs328-completed">
+                                <i class="fa fa-check"></i>
+                                Completed
+                            </span>
+
+                        {% elif booking.booking_request.status == "pending" %}
+                            <span class="nhs326-status nhs329-pending">
+                                <i class="fa fa-clock-o"></i>
+                                Pending
+                            </span>
+
+                        {% elif booking.booking_request.status == "cancelled" %}
+                            <span class="nhs326-status nhs330-cancelled">
+                                <i class="fa fa-times"></i>
+                                Cancelled
+                            </span>
+
+                        {% else %}
+                            <span class="nhs326-status nhs331-other">
+                                {{ booking.booking_request.status|title }}
+                            </span>
+                        {% endif %}
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="nhs313-summary-card">
+
+                    <div class="nhs314-summary-icon">
+                        <i class="fa fa-inr"></i>
+                    </div>
+
+                    <span class="nhs315-summary-label">
+                        Service Price
+                    </span>
+
+                    <span class="nhs316-summary-value">
+                        ₹ {{ booking.booking_request.service.price }}
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         INFORMATION GRID
+         ===================================================== -->
+
+    <div class="row g-4">
+
+
+        <!-- =================================================
+             BOOKING INFORMATION
+             ================================================= -->
+
+        <div class="col-xl-6">
+
+            <section class="nhs317-section">
+
+                <div class="nhs318-section-head">
+
+                    <div class="nhs319-section-icon">
+                        <i class="fa fa-book"></i>
+                    </div>
+
+                    <div>
+
+                        <h2 class="nhs320-section-title">
+                            Booking Information
+                        </h2>
+
+                        <p class="nhs321-section-subtitle">
+                            Reservation and schedule details
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="nhs322-section-body">
+
+                    <div class="nhs323-info-row">
+
+                        <span class="nhs324-info-label">
+                            <i class="fa fa-hashtag"></i>
+                            Booking ID
+                        </span>
+
+                        <span class="nhs325-info-value">
+                            #{{ booking.id }}
+                        </span>
+
+                    </div>
+
+
+                    <div class="nhs323-info-row">
+
+                        <span class="nhs324-info-label">
+                            <i class="fa fa-bolt"></i>
+                            Booking Type
+                        </span>
+
+                        <span class="nhs325-info-value">
+
+                            {% if booking.booking_request.type == "emergency" %}
+
+                                <span class="nhs327-type nhs332-emergency">
+                                    <i class="fa fa-bolt"></i>
+                                    Emergency
+                                </span>
+
+                            {% else %}
+
+                                <span class="nhs327-type nhs333-normal">
+                                    <i class="fa fa-calendar"></i>
+                                    Normal
+                                </span>
+
+                            {% endif %}
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="nhs323-info-row">
+
+                        <span class="nhs324-info-label">
+                            <i class="fa fa-info-circle"></i>
+                            Status
+                        </span>
+
+                        <span class="nhs325-info-value">
+
+                            {% if booking.booking_request.status == "completed" %}
+
+                                <span class="nhs326-status nhs328-completed">
+                                    <i class="fa fa-check"></i>
+                                    Completed
+                                </span>
+
+                            {% elif booking.booking_request.status == "pending" %}
+
+                                <span class="nhs326-status nhs329-pending">
+                                    <i class="fa fa-clock-o"></i>
+                                    Pending
+                                </span>
+
+                            {% elif booking.booking_request.status == "cancelled" %}
+
+                                <span class="nhs326-status nhs330-cancelled">
+                                    <i class="fa fa-times"></i>
+                                    Cancelled
+                                </span>
+
+                            {% else %}
+
+                                <span class="nhs326-status nhs331-other">
+                                    {{ booking.booking_request.status|title }}
+                                </span>
+
+                            {% endif %}
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="nhs323-info-row">
+
+                        <span class="nhs324-info-label">
+                            <i class="fa fa-calendar"></i>
+                            Booking Date
+                        </span>
+
+                        <span class="nhs325-info-value">
+                            {{ booking.booking_date|date:"Y-m-d H:i" }}
+                        </span>
+
+                    </div>
+
+
+                    <div class="nhs323-info-row">
+
+                        <span class="nhs324-info-label">
+                            <i class="fa fa-calendar"></i>
+                            Service Date
+                        </span>
+
+                        <span class="nhs325-info-value">
+                            {{ booking.service_date|date:"Y-m-d H:i" }}
+                        </span>
+
+                    </div>
+
+
+                    <div class="nhs323-info-row">
+
+                        <span class="nhs324-info-label">
+                            <i class="fa fa-hourglass-half"></i>
+                            Payment Deadline
+                        </span>
+
+                        <span class="nhs325-info-value">
+                            {{ booking.payment_deadline|date:"Y-m-d H:i" }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- =================================================
+             CUSTOMER
+             ================================================= -->
+
+        <div class="col-xl-6">
+
+            <section class="nhs317-section">
+
+                <div class="nhs318-section-head">
+
+                    <div class="nhs319-section-icon">
+                        <i class="fa fa-user"></i>
+                    </div>
+
+                    <div>
+
+                        <h2 class="nhs320-section-title">
+                            Customer Details
+                        </h2>
+
+                        <p class="nhs321-section-subtitle">
+                            Customer account information
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="nhs334-profile">
+
+                    <div class="nhs335-profile-top">
+
+                        <div class="nhs336-avatar">
+                            <i class="fa fa-user"></i>
+                        </div>
+
+                        <div>
+
+                            <p class="nhs337-profile-label">
+                                Customer
+                            </p>
+
+                            <h3 class="nhs338-profile-name">
+                                {{ booking.booking_request.customer.user_profile.user.get_full_name }}
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="nhs339-contact-list">
+
+                        <div class="nhs340-contact-item">
+                            <i class="fa fa-user"></i>
+                            <span>
+                                {{ booking.booking_request.customer.user_profile.user.username }}
+                            </span>
+                        </div>
+
+                        <div class="nhs340-contact-item">
+                            <i class="fa fa-envelope"></i>
+                            <span>
+                                {{ booking.booking_request.customer.user_profile.user.email }}
+                            </span>
+                        </div>
+
+                        <div class="nhs340-contact-item">
+                            <i class="fa fa-phone"></i>
+                            <span>
+                                {{ booking.booking_request.customer.user_profile.phone }}
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- =================================================
+             PROVIDER
+             ================================================= -->
+
+        <div class="col-xl-6">
+
+            <section class="nhs317-section">
+
+                <div class="nhs318-section-head">
+
+                    <div class="nhs319-section-icon">
+                        <i class="fa fa-user-md"></i>
+                    </div>
+
+                    <div>
+
+                        <h2 class="nhs320-section-title">
+                            Provider Details
+                        </h2>
+
+                        <p class="nhs321-section-subtitle">
+                            Assigned service provider
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="nhs334-profile">
+
+                    <div class="nhs335-profile-top">
+
+                        <div class="nhs336-avatar">
+                            <i class="fa fa-user-md"></i>
+                        </div>
+
+                        <div>
+
+                            <p class="nhs337-profile-label">
+                                Service Provider
+                            </p>
+
+                            <h3 class="nhs338-profile-name">
+                                {{ booking.booking_request.provider.user_profile.user.get_full_name }}
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="nhs339-contact-list">
+
+                        <div class="nhs340-contact-item">
+                            <i class="fa fa-user"></i>
+                            <span>
+                                {{ booking.booking_request.provider.user_profile.user.username }}
+                            </span>
+                        </div>
+
+                        <div class="nhs340-contact-item">
+                            <i class="fa fa-envelope"></i>
+                            <span>
+                                {{ booking.booking_request.provider.user_profile.user.email }}
+                            </span>
+                        </div>
+
+                        <div class="nhs340-contact-item">
+                            <i class="fa fa-phone"></i>
+                            <span>
+                                {{ booking.booking_request.provider.user_profile.phone }}
+                            </span>
+                        </div>
+
+                        <div class="nhs340-contact-item">
+                            <i class="fa fa-map-marker"></i>
+                            <span>
+                                {{ booking.booking_request.provider.location }}
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- =================================================
+             SERVICE
+             ================================================= -->
+
+        <div class="col-xl-6">
+
+            <div class="nhs341-service">
+
+                <div class="nhs342-service-top">
+
+                    <div class="nhs343-service-icon">
+                        <i class="fa fa-wrench"></i>
+                    </div>
+
+                    <span class="nhs344-service-tag">
+                        Selected Service
+                    </span>
+
+                </div>
+
+
+                <div class="nhs345-service-label">
+                    Service Name
+                </div>
+
+                <h2 class="nhs346-service-name">
+                    {{ booking.booking_request.service.service_name }}
+                </h2>
+
+
+                <div class="nhs347-service-price">
+
+                    <span class="nhs348-currency">
+                        ₹
+                    </span>
+
+                    <span class="nhs349-price">
+                        {{ booking.booking_request.service.price }}
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         PAYMENT
+         ===================================================== -->
+
+    {% if booking.payment %}
+
+    <section class="nhs350-payment">
+
+        <div class="nhs351-payment-head">
+
+            <div class="nhs352-payment-icon">
+                <i class="fa fa-credit-card"></i>
+            </div>
+
+            <div>
+
+                <h2 class="nhs353-payment-title">
+                    Payment Details
+                </h2>
+
+                <p class="nhs354-payment-subtitle">
+                    Razorpay transaction information
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="nhs355-payment-body">
+
+            <div class="nhs323-info-row">
+
+                <span class="nhs324-info-label">
+                    <i class="fa fa-inr"></i>
+                    Amount
+                </span>
+
+                <span class="nhs325-info-value">
+                    <span class="nhs356-payment-amount">
+                        ₹ {{ booking.payment.amount }}
+                    </span>
+                </span>
+
+            </div>
+
+
+            <div class="nhs323-info-row">
+
+                <span class="nhs324-info-label">
+                    <i class="fa fa-info-circle"></i>
+                    Payment Status
+                </span>
+
+                <span class="nhs325-info-value">
+
+                    <span class="nhs358-payment-status">
+                        {{ booking.payment.payment_status }}
+                    </span>
+
+                </span>
+
+            </div>
+
+
+            <div class="nhs323-info-row">
+
+                <span class="nhs324-info-label">
+                    <i class="fa fa-credit-card"></i>
+                    Razorpay ID
+                </span>
+
+                <span class="nhs325-info-value">
+                    <span class="nhs357-code">
+                        {{ booking.payment.razorpay_payment_id }}
+                    </span>
+                </span>
+
+            </div>
+
+
+            <div class="nhs323-info-row">
+
+                <span class="nhs324-info-label">
+                    <i class="fa fa-cart-arrow-down"></i>
+                    Order ID
+                </span>
+
+                <span class="nhs325-info-value">
+                    <span class="nhs357-code">
+                        {{ booking.payment.provider_order_id }}
+                    </span>
+                </span>
+
+            </div>
+
+
+            <div class="nhs323-info-row">
+
+                <span class="nhs324-info-label">
+                    <i class="fa fa-shield"></i>
+                    Signature
+                </span>
+
+                <span class="nhs325-info-value">
+                    <span class="nhs357-code">
+                        {{ booking.payment.signature_id }}
+                    </span>
+                </span>
+
+            </div>
+
+
+            <div class="nhs323-info-row">
+
+                <span class="nhs324-info-label">
+                    <i class="fa fa-calendar"></i>
+                    Payment Date
+                </span>
+
+                <span class="nhs325-info-value">
+                    {{ booking.payment.payment_date|date:"Y-m-d H:i" }}
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    {% else %}
+
+    <div class="nhs359-no-payment">
+
+        <div class="nhs360-no-payment-icon">
+            <i class="fa fa-credit-card"></i>
+        </div>
+
+        <span>
+            No payment details are available for this booking.
+        </span>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</div>
+
+{% endblock %}

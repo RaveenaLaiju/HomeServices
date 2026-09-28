@@ -1,0 +1,19 @@
+{% for provider in providers %}
+<div class="modal fade" id="deleteProviderModal_{{ provider.id }}" tabindex="-1" aria-labelledby="deleteProviderModalLabel_{{ provider.id }}" aria-hidden="true">
+    <div class="modal-dialog">
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="provider_id" value="{{ provider.id }}">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Are you sure you want to delete provider <strong>{{ provider.user.username }}</strong>?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" name="delete_provider" value="{{ provider.id }}" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endfor %}

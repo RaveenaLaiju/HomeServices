@@ -1,0 +1,728 @@
+{% extends 'admin_page/base.html' %}
+
+{% block title %}Customer Reviews - Noah's Ark Services{% endblock %}
+
+{% block content %}
+
+
+<div class="main-panel">
+
+    <div class="content-wrapper p-0">
+
+        <div class="nrv901-page">
+
+
+            <section class="nrv901-hero">
+
+                <div class="nrv901-hero-content">
+
+                    <div class="row align-items-center g-4">
+
+                        <!-- HERO CONTENT -->
+
+                        <div class="col-12 col-lg">
+
+                            <div class="nrv901-hero-main">
+
+                                <div class="nrv901-hero-icon">
+
+                                    <i class="fa fa-star"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <p class="nrv901-eyebrow">
+                                        Customer Experience
+                                    </p>
+
+
+                                    <h1 class="nrv901-title">
+                                        Customer Reviews
+                                    </h1>
+
+
+                                    <p class="nrv901-description">
+                                        Monitor customer feedback, service
+                                        ratings and provider experiences
+                                        from one central dashboard.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- COUNT -->
+
+                        <div class="col-12 col-lg-auto">
+
+                            <div class="nrv901-count-card">
+
+                                <i class="fa fa-comments"></i>
+
+                                <span>
+                                    {{ reviews|length }} Reviews
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 FILTER CARD
+                 ================================================= -->
+
+            <section class="nrv901-filter-card">
+
+                <div class="nrv901-filter-heading">
+
+                    <div class="nrv901-filter-icon">
+
+                        <i class="fa fa-sliders"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h2 class="nrv901-filter-title">
+                            Refine Reviews
+                        </h2>
+
+                        <p class="nrv901-filter-subtitle">
+                            Filter customer feedback by service or provider
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form method="GET">
+
+                    <div class="row g-3 align-items-end">
+
+
+                        <!-- SERVICE -->
+
+                        <div class="col-12 col-md-5">
+
+                            <label class="nrv901-label">
+                                Service
+                            </label>
+
+
+                            <select
+                                name="service"
+                                class="form-select nrv901-select"
+                            >
+
+                                <option value="">
+                                    All Services
+                                </option>
+
+
+                                {% for s in services %}
+
+                                <option
+                                    value="{{ s.id }}"
+                                    {% if s.id|stringformat:"s" == selected_service %}
+                                        selected
+                                    {% endif %}
+                                >
+
+                                    {{ s.service_name }}
+
+                                </option>
+
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- PROVIDER -->
+
+                        <div class="col-12 col-md-5">
+
+                            <label class="nrv901-label">
+                                Provider
+                            </label>
+
+
+                            <select
+                                name="provider"
+                                class="form-select nrv901-select"
+                            >
+
+                                <option value="">
+                                    All Providers
+                                </option>
+
+
+                                {% for p in providers %}
+
+                                <option
+                                    value="{{ p.id }}"
+                                    {% if p.id|stringformat:"s" == selected_provider %}
+                                        selected
+                                    {% endif %}
+                                >
+
+                                    {{ p.user_profile.user.first_name }}
+                                    {{ p.user_profile.user.last_name }}
+
+                                </option>
+
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- FILTER BUTTON -->
+
+                        <div class="col-12 col-md-2 d-grid">
+
+                            <button
+                                type="submit"
+                                class="btn nrv901-filter-btn"
+                            >
+
+                                <i class="fa fa-filter me-1"></i>
+
+                                Apply Filter
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 REVIEW MANAGEMENT PANEL
+                 ================================================= -->
+
+            <section class="nrv901-review-panel">
+
+
+                <!-- PANEL HEADER -->
+
+                <div class="nrv901-panel-header">
+
+                    <div class="nrv901-panel-heading">
+
+                        <h2 class="nrv901-panel-title">
+                            Review Management
+                        </h2>
+
+
+                        <p class="nrv901-panel-description">
+                            Customer ratings and feedback received for
+                            your services
+                        </p>
+
+                    </div>
+
+
+                    <div class="nrv901-panel-badge">
+
+                        <i class="fa fa-star"></i>
+
+                        Customer Feedback
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     TABLE
+                     ================================================= -->
+
+                <div class="nrv901-table-container">
+
+                    <table
+                        class="table nrv901-table text-center align-middle"
+                        id="example"
+                    >
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Customer
+                                </th>
+
+
+                                <th>
+                                    Service
+                                </th>
+
+
+                                <th>
+                                    Provider
+                                </th>
+
+
+                                <th>
+                                    Rating
+                                </th>
+
+
+                                <th>
+                                    Comment
+                                </th>
+
+
+                                <th>
+                                    Date
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+
+                        <tbody>
+
+
+                            {% for r in reviews %}
+
+
+                            <tr>
+
+
+                                <!-- =================================
+                                     CUSTOMER
+                                     ================================= -->
+
+                                <td>
+
+                                    <div class="nrv901-person">
+
+                                        <div class="nrv901-avatar">
+
+                                            <i class="fa fa-user"></i>
+
+                                        </div>
+
+
+                                        <span class="nrv901-person-name">
+
+                                            {{ r.customer.user_profile.user.first_name }}
+
+                                            {{ r.customer.user_profile.user.last_name }}
+
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+
+                                <!-- =================================
+                                     SERVICE
+                                     ================================= -->
+
+                                <td>
+
+                                    <span class="nrv901-service">
+
+                                        <span class="nrv901-service-icon">
+
+                                            <i class="fa fa-wrench"></i>
+
+                                        </span>
+
+
+                                        {{ r.service.service_name }}
+
+                                    </span>
+
+                                </td>
+
+
+
+                                <!-- =================================
+                                     PROVIDER
+                                     ================================= -->
+
+                                <td>
+
+                                    <div class="nrv901-person">
+
+                                        <div class="nrv901-avatar nrv901-provider-avatar">
+
+                                            <i class="fa fa-user-md"></i>
+
+                                        </div>
+
+
+                                        <span class="nrv901-person-name">
+
+                                            {{ r.provider.user_profile.user.first_name }}
+
+                                            {{ r.provider.user_profile.user.last_name }}
+
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+
+                                <!-- =================================
+                                     RATING
+                                     ================================= -->
+
+                                <td>
+
+                                    <div class="nrv901-rating">
+
+                                        <span class="nrv901-stars">
+
+
+                                            {% for i in "12345"|make_list %}
+
+                                                {% if forloop.counter <= r.rating %}
+
+                                                    <i class="fa fa-star"></i>
+
+                                                {% else %}
+
+                                                    <i class="fa fa-star-o nrv901-empty-star"></i>
+
+                                                {% endif %}
+
+                                            {% endfor %}
+
+
+                                        </span>
+
+
+                                        <span class="nrv901-rating-number">
+
+                                            {{ r.rating }}/5
+
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+
+                                <!-- =================================
+                                     COMMENT
+                                     ================================= -->
+
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="btn nrv901-comment-btn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#nrv901CommentModal{{ r.id }}"
+                                    >
+
+                                        <i class="fa fa-comment"></i>
+
+                                        View Comment
+
+                                    </button>
+
+                                </td>
+
+
+
+                                <!-- =================================
+                                     DATE
+                                     ================================= -->
+
+                                <td>
+
+                                    <span class="nrv901-date">
+
+                                        <i class="fa fa-calendar-o"></i>
+
+                                        {{ r.created_at|date:"M d, Y h:i A" }}
+
+                                    </span>
+
+                                </td>
+
+
+                            </tr>
+
+
+                            {% empty %}
+
+
+                            <!-- =================================
+                                 EMPTY STATE
+                                 ================================= -->
+
+                            <tr>
+
+                                <td
+                                    colspan="6"
+                                    class="nrv901-empty"
+                                >
+
+                                    <div class="nrv901-empty-icon">
+
+                                        <i class="fa fa-star-o"></i>
+
+                                    </div>
+
+
+                                    <p class="nrv901-empty-title">
+                                        No reviews found
+                                    </p>
+
+
+                                    <p class="nrv901-empty-description">
+
+                                        Customer reviews will appear here
+                                        once customers submit their feedback.
+
+                                    </p>
+
+                                </td>
+
+                            </tr>
+
+
+                            {% endfor %}
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =====================================================
+                 REVIEW MODALS
+                 
+                 IMPORTANT:
+                 These are intentionally OUTSIDE the table and
+                 OUTSIDE the review panel.
+                 ===================================================== -->
+
+            {% for r in reviews %}
+
+
+            <div
+                class="modal fade nrv901-modal"
+                id="nrv901CommentModal{{ r.id }}"
+                tabindex="-1"
+                aria-labelledby="nrv901CommentModalLabel{{ r.id }}"
+                aria-hidden="true"
+            >
+
+
+                <div class="modal-dialog modal-dialog-centered">
+
+
+                    <div class="modal-content">
+
+
+                        <!-- =========================================
+                             MODAL HEADER
+                             ========================================= -->
+
+                        <div class="modal-header nrv901-modal-header">
+
+
+                            <div class="nrv901-modal-title-wrap">
+
+
+                                <div class="nrv901-modal-icon">
+
+                                    <i class="fa fa-comment"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <h5
+                                        class="nrv901-modal-title"
+                                        id="nrv901CommentModalLabel{{ r.id }}"
+                                    >
+                                        Review Comment
+                                    </h5>
+
+
+                                    <p class="nrv901-modal-subtitle">
+                                        Customer feedback
+                                    </p>
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <button
+                                type="button"
+                                class="nrv901-modal-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            >
+
+                                <i class="fa fa-times"></i>
+
+                            </button>
+
+
+                        </div>
+
+
+
+                        <!-- =========================================
+                             MODAL BODY
+                             ========================================= -->
+
+                        <div class="nrv901-modal-body">
+
+
+                            <!-- REVIEW SUMMARY -->
+
+                            <div class="nrv901-summary">
+
+
+                                <div class="nrv901-summary-icon">
+
+                                    <i class="fa fa-star"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <p class="nrv901-summary-label">
+                                        Customer Rating
+                                    </p>
+
+
+                                    <p class="nrv901-summary-value">
+
+                                        {{ r.rating }}/5
+
+                                        &nbsp;•&nbsp;
+
+                                        {{ r.service.service_name }}
+
+                                    </p>
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- COMMENT -->
+
+                            <div class="nrv901-comment-box">
+
+
+                                <div class="nrv901-comment-heading">
+
+                                    <i class="fa fa-comment-o"></i>
+
+                                    Customer Comment
+
+                                </div>
+
+
+                                <p class="nrv901-comment-text">
+
+                                    {{ r.comment|default:"No comment provided." }}
+
+                                </p>
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- =========================================
+                             MODAL FOOTER
+                             ========================================= -->
+
+                        <div class="nrv901-modal-footer text-end">
+
+
+                            <button
+                                type="button"
+                                class="btn nrv901-close-btn"
+                                data-bs-dismiss="modal"
+                            >
+
+                                <i class="fa fa-times me-1"></i>
+
+                                Close
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            {% endfor %}
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

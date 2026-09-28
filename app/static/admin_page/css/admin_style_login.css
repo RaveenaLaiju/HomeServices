@@ -1,0 +1,710 @@
+.nal801-page {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(13, 110, 253, 0.14),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(25, 135, 84, 0.13),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #f8fafc 0%,
+            #eef3f9 50%,
+            #f8fafc 100%
+        );
+}
+
+
+/* ================================================================
+   BACKGROUND DECORATION
+   ================================================================ */
+
+.nal801-orb {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(1px);
+}
+
+
+.nal801-orb-one {
+    width: 260px;
+    height: 260px;
+
+    top: -100px;
+    left: -80px;
+
+    background: rgba(13, 110, 253, 0.07);
+}
+
+
+.nal801-orb-two {
+    width: 300px;
+    height: 300px;
+
+    right: -120px;
+    bottom: -130px;
+
+    background: rgba(25, 135, 84, 0.07);
+}
+
+
+.nal801-orb-three {
+    width: 120px;
+    height: 120px;
+
+    right: 15%;
+    top: 10%;
+
+    background: rgba(111, 66, 193, 0.05);
+}
+
+
+/* ================================================================
+   LOGIN WRAPPER
+   ================================================================ */
+
+.nal801-wrapper {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    max-width: none;
+
+    display: flex;
+
+    overflow: hidden;
+
+    border-radius: 0;
+
+    background: rgba(255, 255, 255, 0.84);
+
+    border: 0;
+
+    box-shadow: none;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+
+/* ================================================================
+   LEFT BRAND PANEL
+   ================================================================ */
+
+.nal801-brand-panel {
+    position: relative;
+
+    width: 46%;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 60px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0f172a 0%,
+            #172554 50%,
+            #0f3d2e 100%
+        );
+}
+
+
+.nal801-brand-panel::before {
+    content: "";
+
+    position: absolute;
+
+    width: 320px;
+    height: 320px;
+
+    top: -150px;
+    right: -140px;
+
+    border-radius: 50%;
+
+    background: rgba(13, 110, 253, 0.18);
+}
+
+
+.nal801-brand-panel::after {
+    content: "";
+
+    position: absolute;
+
+    width: 270px;
+    height: 270px;
+
+    bottom: -150px;
+    left: -120px;
+
+    border-radius: 50%;
+
+    background: rgba(25, 135, 84, 0.16);
+}
+
+
+.nal801-brand-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    color: #ffffff;
+}
+
+
+/* ================================================================
+   BRAND ICON
+   ================================================================ */
+
+.nal801-logo-box {
+    width: 78px;
+    height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 28px;
+
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.11);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 12px 30px rgba(0, 0, 0, 0.16);
+}
+
+
+.nal801-logo-box i {
+    font-size: 34px;
+
+    color: #ffffff;
+}
+
+
+/* ================================================================
+   BRAND TEXT
+   ================================================================ */
+
+.nal801-brand-kicker {
+    margin-bottom: 10px;
+
+    color: rgba(255, 255, 255, 0.58);
+
+    font-size: 0.72rem;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+.nal801-brand-title {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+
+    font-weight: 900;
+
+    line-height: 1.05;
+
+    letter-spacing: -1.5px;
+}
+
+
+.nal801-brand-highlight {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #8ec5ff;
+}
+
+
+.nal801-brand-description {
+    max-width: 390px;
+
+    margin: 22px 0 0;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 0.9rem;
+
+    line-height: 1.8;
+}
+
+
+/* ================================================================
+   FEATURES
+   ================================================================ */
+
+.nal801-features {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-top: 34px;
+}
+
+
+.nal801-feature {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: rgba(255, 255, 255, 0.78);
+
+    font-size: 0.78rem;
+
+    font-weight: 600;
+}
+
+
+.nal801-feature-icon {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.09);
+
+    color: #8ec5ff;
+}
+
+
+/* ================================================================
+   RIGHT LOGIN PANEL
+   ================================================================ */
+
+.nal801-login-panel {
+    width: 54%;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 60px 80px;
+
+    background: rgba(255, 255, 255, 0.96);
+}
+
+
+.nal801-login-content {
+    width: 100%;
+
+    max-width: 470px;
+}
+
+
+/* ================================================================
+   LOGIN HEADER
+   ================================================================ */
+
+.nal801-login-icon {
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+
+    border-radius: 16px;
+
+    background: #eef5ff;
+
+    color: #0d6efd;
+
+    font-size: 20px;
+}
+
+
+.nal801-login-title {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+
+    font-weight: 850;
+
+    letter-spacing: -0.8px;
+}
+
+
+.nal801-login-subtitle {
+    margin: 8px 0 30px;
+
+    color: #94a3b8;
+
+    font-size: 0.85rem;
+
+    line-height: 1.6;
+}
+
+
+/* ================================================================
+   FORM
+   ================================================================ */
+
+.nal801-form-group {
+    margin-bottom: 20px;
+}
+
+
+.nal801-label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #475569;
+
+    font-size: 0.76rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.2px;
+}
+
+
+.nal801-input-wrap {
+    position: relative;
+}
+
+
+.nal801-input-icon {
+    position: absolute;
+
+    left: 16px;
+    top: 50%;
+
+    z-index: 2;
+
+    transform: translateY(-50%);
+
+    color: #94a3b8;
+
+    font-size: 14px;
+
+    pointer-events: none;
+}
+
+
+.nal801-input {
+    width: 100%;
+
+    min-height: 52px;
+
+    padding: 0 45px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 14px;
+
+    outline: none;
+
+    background: #f8fafc;
+
+    color: #1e293b;
+
+    font-size: 0.84rem;
+
+    font-weight: 600;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.nal801-input::placeholder {
+    color: #a8b2c0;
+
+    font-weight: 500;
+}
+
+
+.nal801-input:focus {
+    border-color: #86b7fe;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 4px rgba(13, 110, 253, 0.08);
+}
+
+
+/* ================================================================
+   PASSWORD TOGGLE
+   ================================================================ */
+
+.nal801-password-toggle {
+    position: absolute;
+
+    right: 13px;
+    top: 50%;
+
+    width: 32px;
+    height: 32px;
+
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #94a3b8;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.nal801-password-toggle:hover {
+    background: #eef2f7;
+
+    color: #475569;
+}
+
+
+/* ================================================================
+   LOGIN BUTTON
+   ================================================================ */
+
+.nal801-login-btn {
+    width: 100%;
+
+    min-height: 52px;
+
+    margin-top: 5px;
+
+    border: 0;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d6efd 0%,
+            #155eef 50%,
+            #198754 100%
+        );
+
+    color: #ffffff;
+
+    font-size: 0.85rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.2px;
+
+    box-shadow:
+        0 12px 25px rgba(13, 110, 253, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.nal801-login-btn:hover {
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 16px 30px rgba(13, 110, 253, 0.24);
+}
+
+
+.nal801-login-btn:active {
+    transform: translateY(0);
+}
+
+
+.nal801-login-btn i {
+    margin-right: 8px;
+}
+
+
+/* ================================================================
+   SECURITY NOTE
+   ================================================================ */
+
+.nal801-security {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 24px;
+
+    color: #94a3b8;
+
+    font-size: 0.7rem;
+
+    font-weight: 600;
+}
+
+
+.nal801-security i {
+    color: #198754;
+}
+
+
+/* ================================================================
+   TABLET
+   ================================================================ */
+
+@media (max-width: 991.98px) {
+
+    .nal801-page {
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+
+    .nal801-wrapper {
+        min-height: 100vh;
+        min-height: 100dvh;
+
+        display: flex;
+
+        border-radius: 0;
+    }
+
+
+    .nal801-brand-panel {
+        display: none;
+    }
+
+
+    .nal801-login-panel {
+        width: 100%;
+
+        min-height: 100vh;
+        min-height: 100dvh;
+
+        padding: 55px 45px;
+    }
+
+}
+
+
+/* ================================================================
+   MOBILE
+   ================================================================ */
+
+@media (max-width: 575.98px) {
+
+    .nal801-page {
+        min-height: 100vh;
+        min-height: 100dvh;
+
+        padding: 0;
+    }
+
+
+    .nal801-wrapper {
+        border-radius: 0;
+    }
+
+
+    .nal801-login-panel {
+        padding: 35px 22px;
+    }
+
+
+    .nal801-login-icon {
+        width: 48px;
+        height: 48px;
+
+        margin-bottom: 17px;
+
+        border-radius: 14px;
+
+        font-size: 18px;
+    }
+
+
+    .nal801-login-subtitle {
+        margin-bottom: 25px;
+    }
+
+
+    .nal801-input {
+        min-height: 50px;
+    }
+
+
+    .nal801-login-btn {
+        min-height: 50px;
+    }
+
+}

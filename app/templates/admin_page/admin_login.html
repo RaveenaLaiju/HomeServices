@@ -1,0 +1,401 @@
+{% extends 'admin_page/admin_login_base.html' %}
+
+{% block title %}
+    Admin Login - Noah's Ark Services
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- ============================================================
+     LOGIN MESSAGES
+     ============================================================ -->
+
+{% if messages %}
+
+    {% for message in messages %}
+
+        <div
+            class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3 shadow"
+            style="z-index:9999; min-width:min(90%, 350px);"
+            role="alert"
+        >
+
+            <i class="fa fa-info-circle me-2"></i>
+
+            {{ message }}
+
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+            ></button>
+
+        </div>
+
+    {% endfor %}
+
+{% endif %}
+
+
+
+<!-- ============================================================
+     LOGIN PAGE
+     ============================================================ -->
+
+<div class="nal801-page">
+
+
+    <!-- DECORATIVE ORBS -->
+
+    <div class="nal801-orb nal801-orb-one"></div>
+
+    <div class="nal801-orb nal801-orb-two"></div>
+
+    <div class="nal801-orb nal801-orb-three"></div>
+
+
+    <div class="nal801-wrapper">
+
+
+        <!-- ====================================================
+             BRAND PANEL
+             ==================================================== -->
+
+        <div class="nal801-brand-panel">
+
+            <div class="nal801-brand-content">
+
+
+                <div class="nal801-logo-box">
+
+                    <i class="fa fa-shield"></i>
+
+                </div>
+
+
+                <div class="nal801-brand-kicker">
+
+                    Noah's Ark Services
+
+                </div>
+
+
+                <h1 class="nal801-brand-title">
+
+                    Admin
+
+                    <span class="nal801-brand-highlight">
+                        Portal
+                    </span>
+
+                </h1>
+
+
+                <p class="nal801-brand-description">
+
+                    Manage services, providers, customers,
+                    bookings, payments and everything that
+                    keeps Noah's Ark Services running smoothly.
+
+                </p>
+
+
+                <div class="nal801-features">
+
+
+                    <div class="nal801-feature">
+
+                        <span class="nal801-feature-icon">
+
+                            <i class="fa fa-lock"></i>
+
+                        </span>
+
+                        <span>
+                            Secure administrator access
+                        </span>
+
+                    </div>
+
+
+                    <div class="nal801-feature">
+
+                        <span class="nal801-feature-icon">
+
+                            <i class="fa fa-dashboard"></i>
+
+                        </span>
+
+                        <span>
+                            Centralized management dashboard
+                        </span>
+
+                    </div>
+
+
+                    <div class="nal801-feature">
+
+                        <span class="nal801-feature-icon">
+
+                            <i class="fa fa-users"></i>
+
+                        </span>
+
+                        <span>
+                            Manage your service ecosystem
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ====================================================
+             LOGIN PANEL
+             ==================================================== -->
+
+        <div class="nal801-login-panel">
+
+            <div class="nal801-login-content">
+
+
+                <!-- LOGIN ICON -->
+
+                <div class="nal801-login-icon">
+
+                    <i class="fa fa-user"></i>
+
+                </div>
+
+
+                <!-- HEADING -->
+
+                <h2 class="nal801-login-title">
+
+                    Welcome Back
+
+                </h2>
+
+
+                <p class="nal801-login-subtitle">
+
+                    Sign in to access your Noah's Ark
+                    administration panel.
+
+                </p>
+
+
+                <!-- =================================================
+                     LOGIN FORM
+                     ================================================= -->
+
+                <form
+                    method="POST"
+                    action="{% url 'admin_login' %}"
+                >
+
+                    {% csrf_token %}
+
+
+                    <!-- USERNAME -->
+
+                    <div class="nal801-form-group">
+
+                        <label
+                            for="nal801Username"
+                            class="nal801-label"
+                        >
+                            Username
+                        </label>
+
+
+                        <div class="nal801-input-wrap">
+
+                            <i
+                                class="fa fa-user nal801-input-icon"
+                            ></i>
+
+
+                            <input
+                                type="text"
+                                id="nal801Username"
+                                name="username"
+                                class="nal801-input"
+                                placeholder="Enter your username"
+                                autocomplete="username"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="nal801-form-group">
+
+                        <label
+                            for="nal801Password"
+                            class="nal801-label"
+                        >
+                            Password
+                        </label>
+
+
+                        <div class="nal801-input-wrap">
+
+                            <i
+                                class="fa fa-lock nal801-input-icon"
+                            ></i>
+
+
+                            <input
+                                type="password"
+                                id="nal801Password"
+                                name="password"
+                                class="nal801-input"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+
+                            <button
+                                type="button"
+                                class="nal801-password-toggle"
+                                id="nal801PasswordToggle"
+                                aria-label="Show password"
+                            >
+
+                                <i
+                                    class="fa fa-eye"
+                                    id="nal801PasswordIcon"
+                                ></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LOGIN BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="btn nal801-login-btn"
+                    >
+
+                        <i class="fa fa-sign-in"></i>
+
+                        Login to Dashboard
+
+                    </button>
+
+
+                </form>
+
+
+                <!-- SECURITY -->
+
+                <div class="nal801-security">
+
+                    <i class="fa fa-shield"></i>
+
+                    Secure administrator authentication
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- ============================================================
+     PASSWORD VISIBILITY
+     ============================================================ -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const passwordInput =
+            document.getElementById(
+                "nal801Password"
+            );
+
+
+        const passwordToggle =
+            document.getElementById(
+                "nal801PasswordToggle"
+            );
+
+
+        const passwordIcon =
+            document.getElementById(
+                "nal801PasswordIcon"
+            );
+
+
+        if (
+            passwordInput &&
+            passwordToggle &&
+            passwordIcon
+        ) {
+
+            passwordToggle.addEventListener(
+                "click",
+                function () {
+
+                    const isPassword =
+                        passwordInput.type === "password";
+
+
+                    passwordInput.type =
+                        isPassword
+                            ? "text"
+                            : "password";
+
+
+                    passwordIcon.className =
+                        isPassword
+                            ? "fa fa-eye-slash"
+                            : "fa fa-eye";
+
+
+                    passwordToggle.setAttribute(
+                        "aria-label",
+                        isPassword
+                            ? "Hide password"
+                            : "Show password"
+                    );
+
+                }
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+
+{% endblock %}

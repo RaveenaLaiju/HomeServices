@@ -1,0 +1,1808 @@
+Customer page
+
+Index.html
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+<head>
+
+</head>
+<body>
+
+{% include 'customer_page/header.html' %}
+
+<section class="introduction-section">
+
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false" data-bs-interval="4000">
+<div class="carousel-inner">
+
+<div class="carousel-item active">
+<div class="row">
+
+<div class="col-lg-6 col-md-12 col-sm-12">
+
+<div class="welcme-caption">
+
+<div class="heading-caption">
+
+<h1 class="intro-heading pt-5">
+Your Home, Our Expertise: <br>
+Reliable Services for Every Need.
+</h1>
+<p class="intro-p mt-lg-4">
+From plumbing and electrical repairs to cleaning and maintenance, <br>
+we bring trusted professionals right to your doorstep.
+</p>
+<a href="/contact-us/">
+<button type="button" class="btn btn-primary rounded-pill ps-4 pe-4 intro-btn mt-4 mb-5">Learn More</button>
+</a>
+
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+<div class="col-lg-6 col-md-12 intro-img">
+
+<img src="{% static 'customer_page/img/ban1.jpg' %}" alt="">
+
+</div>
+
+
+
+</div>
+</div>
+
+
+
+<div class="carousel-item">
+
+<div class="row">
+
+<div class="col-lg-6">
+
+<div class="welcme-caption">
+
+<div class="heading-caption">
+
+<h1 class="intro-heading">
+Hassle-Free Home Services, <br>
+Just a Click Away.
+</h1>
+<p class="intro-p mt-4">
+Skilled professionals, transparent pricing, and on-time service — <br>
+making your home care simple and stress-free.
+</p>
+<a href="/contact-us/">
+<button type="button" class="btn btn-primary rounded-pill ps-4 pe-4 intro-btn mt-4 mb-5">Learn More</button>
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-6 col-md-12 intro-img">
+
+<img src="{% static 'customer_page/img/ban2.jpg' %}" alt="">
+
+</div>
+
+</div>
+</div>
+
+<div class="carousel-item">
+<div class="row">
+
+<div class="col-lg-6 col-md-12 col-sm-12">
+
+<div class="welcme-caption">
+
+<div class="heading-caption">
+
+<h1 class="intro-heading pt-5">
+Fast, Reliable, and Professional, <br>
+Because Your Home Deserves the Best.
+</h1>
+<p class="intro-p mt-lg-4">
+Whether it’s fixing, installing, or deep cleaning, <br>
+we’re here to deliver quality service whenever you need it.
+</p>
+
+<a href="/contact-us/">
+<button type="button" class="btn btn-primary rounded-pill ps-4 pe-4 intro-btn mt-4 mb-5">Learn More</button>
+</a>
+
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+<div class="col-lg-6 col-md-12 intro-img">
+
+<img src="{% static 'customer_page/img/ban3.jpg' %}" alt="">
+
+</div>
+
+
+
+</div>
+</div>
+
+<div class="carousel-item">
+<div class="row">
+
+<div class="col-lg-6 col-md-12 col-sm-12">
+
+<div class="welcme-caption">
+
+<div class="heading-caption">
+
+<h1 class="intro-heading pt-5">
+Expert Help for Every Corner of Your Home.
+</h1>
+<p class="intro-p mt-lg-4">
+From quick fixes to full makeovers, our experienced team <br>
+ensures your home stays safe, clean, and beautifully maintained.
+</p>
+
+<a href="/contact-us/">
+<button type="button" class="btn btn-primary rounded-pill ps-4 pe-4 intro-btn mt-4 mb-5">Learn More</button>
+</a>
+
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+<div class="col-lg-6 col-md-12 intro-img">
+
+<img src="{% static 'customer_page/img/ban4.jpg' %}" alt="">
+
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="container-xl container-fluid-lg marquee-section">
+
+<div class="scroll">
+
+<div class="row">
+
+<div class="col-xxl-3 col-lg-12 col-md-12 scroll-left">
+<h3 class="scroll-h text-center mt-3 mb-3 text-white"> <i class="fa fa-bullhorn text-white"></i> News & Events</h3>
+</div>
+
+
+<div class="col-xxl-9 col-lg-12 col-md-12 scroll-right">
+<marquee behavior="" direction="left" scrollamount="10">
+
+<p class="marq mt-3">Stay Updated with Noah’s Ark Services: Exciting offers and new service launches await! Discover the latest home care tips, seasonal discounts, and updates from our trusted professionals. Check back often to make the most of our newest services and special deals.</p>
+</marquee>
+</div>
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<section class="welcome-section pt-5 mt-4 pb-4">
+
+
+
+<div class="container-lg p-xxl-5 p-xl-5">
+
+<div class="row gx-5">
+
+<div class="col-lg-5 col-md-12 col-sm-12 mb-5 wel-img">
+<img src="{% static 'customer_page/img/welcome-img.jpg' %}" alt="">
+</div>
+<div class="col-lg-7 col-md-12 wel-con">
+<h6 style="color: blue;">Welcome to Noah’s Ark Services</h6>
+<h2 class="welcome-h2">Transforming Homes with <br>
+Reliable, Professional, and Affordable Care</h2>
+
+<p class="mt-5 welcome-caption">Welcome to Noah’s Ark Home Services</p>
+<p class="mt-4 welcme-p">
+We’re your trusted partner for complete home care solutions — offering expert plumbing, electrical, AC repair, and cleaning services right at your doorstep. 
+Our mission is to make home maintenance simple, reliable, and worry-free for every household.
+</p>
+
+<p class="mt-5 welcome-caption">Your Comfort, Our Commitment</p>
+<p class="mt-4 welcme-p">
+At Noah’s Ark Services, we believe your home deserves the best care. 
+Our skilled and verified professionals handle every task with precision and dedication, ensuring safety, comfort, and satisfaction in every service we provide.
+</p>
+
+<p class="mt-5 welcome-caption">Quality Work You Can Trust</p>
+<p class="mt-4 welcme-p">
+Each service is delivered using trusted techniques, modern tools, and strict quality checks. 
+Whether it’s fixing a leak, installing an appliance, or deep cleaning your space, our focus is on lasting solutions — not quick fixes.
+</p>
+
+<p class="mt-5 welcome-caption">Putting People First</p>
+<p class="mt-4 welcme-p">
+Beyond service excellence, we value the trust our customers place in us. 
+Our friendly support team and courteous professionals ensure a smooth, respectful experience every time — because your comfort and peace of mind matter most.
+</p>
+
+<p class="mt-5 welcome-caption">Driven by Innovation and Reliability</p>
+<p class="mt-4 welcme-p">
+As homes and technologies evolve, we continue to upgrade our processes and service methods. 
+Our goal is to combine convenience, innovation, and reliability — helping you maintain a perfect home effortlessly.
+</p>
+
+<p class="mt-5 welcome-caption">Choose Noah’s Ark for Total Home Care</p>
+<p class="mt-4 welcme-p">
+Experience the best home service network in Kochi — where professionalism meets personal care. 
+From repairs to renovations, we’re here to make every corner of your home shine. 
+Trust <a href="#">Noah’s Ark Services</a> — your home, our responsibility.
+</p>
+
+<div class="welcome-btn">
+<button type="button" class="btn btn-primary rounded-pill ps-4 pe-4 intro-btn mt-4">Learn More</button>
+</div>
+</a>
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+<section class="package">
+<div class="container-lg">
+
+<div class="pack-heading ps-lg-4 pe-lg-4">
+<h1 class="pack-h">
+Noah Ark Services: <br>
+Unveiling Our Range of Home Care Services
+</h1>
+<div class="btn pack-btn">
+<a href="/package/">
+<button type="button" class="btn btn-primary rounded-pill ps-4 pe-4 intro-btn mt-4">View More</button>
+</a>
+</div>
+</div>
+
+<div class="pack-slider">
+
+<!-- image slide start -->
+
+<div class="container-lg swiper review-container mt-5 d-flex justify-content-center pack-contain">
+<div class="slide-container-2">
+<div class="card-wrapper swiper-wrapper">
+{% if services %}
+{% for i in services %}
+
+<a href="{% url 'service_view' name=i.service_name %}">
+<div class="card swiper-slide card-1">
+<div class="" style="border: none;">
+<div class="enquiry-img">
+<div class="en-imgs">
+<img src="{{i.image.url}}" class="img-fluid en-img" alt="...">
+
+</div>
+<span class="en-span"><h5>From: <i class="fa fa-rupee"></i> {{i.price}}</h5></span>
+<div class="middle">
+<a href=""><i class="fa fa-link text-white fs-2"></i></a>
+</div>
+</div>
+<div class="card-body">
+<div>
+<p class="card-text ">{{i.service_name}}</p></div>
+<div>
+<i class="fa fa-angle-right fs-3"></i>
+</div>
+</div>
+</div>
+</div>
+</a>
+{% endfor %}
+
+{% endif %}
+
+</div>
+</div>
+<div class="swiper-pagination swiper-pagination-2"></div>
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+<section class="package">
+<div class="container-lg">
+
+<div class="pack-heading ps-lg-4 pe-lg-4">
+<h1 class="pack-h">
+Noah’s Ark Services: <br>
+Service Provider's
+</h1>
+
+<div class="btn pack-btn">
+<a href="/providers/">
+<button type="button" class="btn btn-primary rounded-pill ps-4 pe-4 intro-btn mt-4">View More</button>
+</a>
+</div>
+</div>
+
+<div class="container">
+<div class="box mySwiper">
+<div class="content swiper-wrapper">
+
+{% for i in providers %}
+
+<div class="card swiper-slide card-s">
+<div class="card-content">
+{% if i.photo %}
+<div class="image-prof">
+<img src="{{i.photo.url}}" alt="" class="img-p">
+</div>
+{% endif %}
+<div class="name-profession">
+<span class="name">{{i.user_profile.user.first_name}} {{i.user_profile.user.last_name}}</span>
+<span class="profession">{{i.service}}</span>
+</div>
+
+</div>
+</div>
+
+
+
+
+{% endfor %}     
+
+
+
+</div>
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+<div class="swiper-pagination"></div>
+</div>
+</div>
+</div>
+
+</section>
+</section>
+<section class="enquiry">
+
+<div class="container-lg container-fluid-md en">
+
+<div class="row">
+
+<div class="col-lg-8 col-md-12 col-sm-12">
+
+<h1 class="pack-h ">
+Embrace Excellence: <br>
+Why Noah Ark's Services Stands Out
+</h1>
+
+<div class="en-con-1 mt-5">
+<p>At Noah Ark Services, we stand out as a beacon of excellence, offering top-notch  services and a commitment to your well-being.</p>
+</div>
+<div class="en-con-2 mt-4">
+<p><i class="fa fa-check"></i>  Cutting-edge, precision diagnostic technology</p>
+<p><i class="fa fa-check"></i> A highly skilled, dedicated team of healthcare professionals</p>
+<p><i class="fa fa-check"></i>  Stringent quality control protocols to ensure result accuracy</p>
+<p><i class="fa fa-check"></i>  An extensive selection of comprehensive Health Check Up Packages</p>
+<p><i class="fa fa-check"></i>  Competitive and accessible pricing to promote your health</p>
+
+</div>
+
+<div class="en-btn">
+<a href="/contact-us/">
+<button type="button" class="btn btn-primary rounded-pill ps-4 pe-4 intro-btn mt-4">Learn More</button>
+</a>
+</div>
+
+</div>
+
+<div class="col-lg-4 col-md-12 col-sm-8 form-section">
+
+<div class="form-heading">
+<h1 class="text-center pack-h">Enquiry</h1>
+<p class="text-center">For any inquiries, please feel free to <br>
+reach out to us.</p>
+</div>
+<form class="container-lg" method="POST">
+{% csrf_token %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+<b>{{message}}</b>
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+<input class="form-control form-enquiry mt-3 text-black" type="text" placeholder="Your Name" aria-label="default input example" name="name" required>
+<input class="form-control form-enquiry mt-3 text-black" type="email" placeholder="Email" aria-label="default input example" name="email" pattern="[a-z].*[a-z0-9]@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address" required>
+<input class="form-control form-enquiry mt-3 text-black" type="tel" placeholder="Phone" aria-label="default input example" name="phone" pattern="\+[0-9]{2} [0-9]{4} [0-9]{6}" title="Please enter your phone number in the format: +xx xxxx xxxxxx" required>
+<textarea class="form-control form-enquiry mt-3 text-black" id="exampleFormControlTextarea1" cols="40" rows="10" placeholder="Message" name="message" required></textarea>
+<div class=" d-flex justify-content-center">
+<button id="submitButton" class="form-btn mt-3 mb-3 rounded" name="save">
+Submit
+<div id="buttonSpinner" class="overlay-spinner"></div>
+</button>
+
+
+</div>
+</form>
+
+</div>
+
+</div>
+</div>
+
+</section>
+
+<footer>
+{% include 'customer_page/footer.html' %}
+</footer>
+</body>
+</html>
+
+
+
+
+Bookings.html
+
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+
+</head>
+<body>
+<header>
+{% include 'customer_page/header.html' %}
+</header>
+
+<section class="introduction-section introduction-section-inner">
+
+<div class="row">
+
+
+<div class="col-lg-6 col-md-12">
+
+<div class="container intro-caption intro-caption-inner">
+
+<h1 class="intro-heading">
+Bookings
+</h1>
+<p class="intro-p mt-4">
+Manage and track all your service bookings with ease at Noah’s Ark. View detailed information about your scheduled, ongoing, and completed services — from plumbing and cleaning to painting and electrical work. Stay updated on service status, provider details, and payment summaries, all in one convenient place.
+</p>
+</div>
+
+</div>
+
+<div class="col-lg-6 col-md-12 intro-img-sec">
+<img src="{% static 'customer_page/img/bookings.jpg' %}" alt="" style="z-index: 1050;opacity: 1;" class="intro-inner-img">
+</div>
+
+
+</div>
+
+
+</section>
+
+<section class="bookings">
+
+<div class="container-lg">
+<div class="table-section">
+<form method="GET" class="mt-5 mb-4 pt-3">
+<div class="row">
+
+
+<div class="col-lg-4">
+<div class="form-group">
+<label for="service" class="text-black">Filter by Service:</label>
+<select class="form-control text-black" id="service" name="service">
+<option value="">All Services</option>
+{% for s in services %}
+<option value="{{ s.service_name }}" {% if s.service_name == selected_service %}selected{% endif %}>
+{{ s.service_name }}
+</option>
+{% endfor %}
+</select>
+</div>
+</div>
+
+<div class="col-lg-4">
+<div class="form-group">
+<label for="date" class="text-black">Filter by Booking Date:</label>
+<select class="form-control text-black" id="date" name="date">
+<option value="">All Dates</option>
+{% for d in all_dates %}
+
+<option value="{{ d|date:'Y-m-d' }}" {% if selected_date == d|date:'Y-m-d' %}selected{% endif %}>
+{{ d|date:"M d, Y" }}
+</option>
+{% endfor %}
+</select>
+</div>
+</div>
+
+
+<div class="col-lg-4 mt-4 pt-1">
+<div class="form-group">
+<div class="filter-btn">
+<button type="submit" class="btn btn-primary">Filter</button>
+<a href="{% url 'bookings' %}" class="btn btn-secondary ms-2">Reset</a>
+</div>
+</div>
+</div>
+
+</div>
+</form>
+
+
+
+<div class="table-responsive scrollable-table">
+
+<table class="table hoverable table-1" id="example">
+<thead>
+<tr>
+<th>Service</th>
+<th>Provider</th>
+<th>Amount</th>
+<th>Date</th>
+<th>Type</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+{% for booking in booking_requests %}
+<tr>
+<td>{{ booking.service.service_name }}</td>
+<td>{{ booking.provider.user_profile.user.first_name }} {{ booking.provider.user_profile.user.last_name }}</td>
+<td>₹{{ booking.service.price }}</td>
+<td>{{ booking.date }}</td>
+
+<td>
+{% if booking.type == 'emergency' %}
+<span class="badge bg-danger">Emergency</span><br>
+<small><b>Immediate</b></small>
+{% else %}
+<span class="badge bg-secondary">Normal</span><br>
+
+{% endif %}
+</td>
+
+<td>
+{% if booking.status == 'pending' %}
+<span class="badge bg-warning text-dark">Pending</span>
+{% elif booking.status == 'accepted' %}
+<span class="badge bg-primary">Accepted</span>
+{% elif booking.status == 'completed' %}
+<span class="badge bg-info">Completed</span>
+{% elif booking.status == 'rework_pending' %}
+<span class="badge bg-warning text-dark">Rework Requested</span>
+{% elif booking.status == 'rework_accepted' %}
+<span class="badge bg-primary">Rework Accepted</span>
+{% elif booking.status == 'rework_completed' %}
+<span class="badge bg-success">Rework Completed</span>
+{% elif booking.status == 'cancelled' %}
+<span class="badge bg-danger">Cancelled</span>
+{% endif %}
+</td>
+
+<td>
+{% if booking.status == 'pending' %}
+<form action="{% url 'cancel_booking' booking.id %}" method="post" class="d-inline">
+{% csrf_token %}
+<button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+</form>
+
+{% elif booking.status == 'accepted' %}
+{% if booking.booking %}
+{% if booking.booking.is_paid %}
+<span class="badge bg-success">Paid</span>
+{% else %}
+<form action="{% url 'customer_pay' booking.booking.id %}" method="get" class="d-inline">
+<button type="submit" class="btn btn-success btn-sm fw-bold">Pay Now</button>
+</form>
+<form action="{% url 'cancel_booking' booking.id %}" method="post" class="d-inline">
+{% csrf_token %}
+<button type="submit" class="btn btn-danger btn-sm fw-bold">Cancel</button>
+</form>
+{% endif %}
+{% else %}
+<span class="badge bg-secondary">Awaiting Confirmation</span>
+{% endif %}
+
+{% elif booking.status == 'completed' %}
+{% if not booking.is_rework and booking.rework_count == 0 %}
+<button class="btn btn-warning btn-sm fw-bold" data-bs-toggle="modal" data-bs-target="#reworkModal{{ booking.id }}">
+Request Rework
+</button>
+{% endif %}
+<form action="{% url 'leave_review' booking.id %}" method="get" class="d-inline">
+<button class="btn btn-primary btn-sm fw-bold">Review</button>
+</form>
+
+{% elif booking.status == 'rework_pending' %}
+<span class="badge bg-warning text-dark">Waiting for Provider</span>
+
+{% elif booking.status == 'rework_accepted' %}
+<span class="badge bg-info">Rework in Progress</span>
+
+{% elif booking.status == 'rework_completed' %}
+<span class="badge bg-success">Rework Completed</span>
+<form action="{% url 'leave_review' booking.id %}" method="get" class="d-inline">
+<button class="btn btn-primary btn-sm mt-1 fw-bold">Review</button>
+</form>
+{% else %}
+<span class="badge bg-success">No Actions</span>
+
+{% endif %}
+</td>
+</tr>
+
+
+<div class="modal fade" id="reworkModal{{ booking.id }}" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content rounded-4 shadow">
+<div class="modal-header bg-warning text-dark">
+<h5 class="modal-title">Request Rework</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<form method="POST" action="{% url 'request_rework' booking.id %}">
+{% csrf_token %}
+<div class="modal-body">
+<label class="form-label">Describe the issue</label>
+<textarea name="rework_message" class="form-control" rows="4" required></textarea>
+</div>
+<div class="modal-footer">
+<button type="submit" class="btn btn-warning">Submit Request</button>
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+{% endfor %}
+</tbody>
+</table>
+
+</div>
+
+
+</section>
+
+<footer class="mt-5">
+{% include 'customer_page/footer.html' %}
+</footer>
+</body>
+</html>
+
+
+Book_service.html
+
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+<body>
+
+<section class="introduction-section introduction-section-inner">
+
+<div class="row">
+
+
+<div class="col-lg-6 col-md-12">
+
+<div class="container intro-caption intro-caption-inner">
+
+<h1 class="intro-heading">
+Book Service
+</h1>
+<p class="intro-p mt-4">
+Book your service today for expert assistance and reliable home solutions tailored to your needs.
+</p>
+</div>
+
+</div>
+
+
+<div class="col-lg-6 col-md-12 intro-img-sec">
+<img src="{% static 'customer_page/img/book.jpg' %}" alt="" style="z-index: 1050;opacity: 1;" class="intro-inner-img">
+</div>
+
+</div>
+
+<header>
+{% include 'customer_page/header.html' %}
+</header>
+
+</section>
+
+<section class="appointment-form">
+
+<div class="container">
+
+<div class="row justify-content-center">
+
+<div class="col-lg-8 appointment">
+
+<h3 class="text-center">Book a Home Service</h3>
+<p class="mb-4 text-center">
+Experience personalized service with our expert providers—schedule your appointment for reliable and convenient home services.
+</p>
+<form method="POST" action="{% url 'book_service' %}">
+{% csrf_token %}
+<input type="hidden" name="service_id" value="{{ selected_service.id }}">
+<input type="hidden" name="location" value="{{ selected_location }}">
+<input type="hidden" name="type" value="{{ booking_type }}">
+<input type="hidden" name="date" value="{{ date|date:'Y-m-d' }}">
+
+<div class="row justify-content-center app-form">
+
+<div class="col-lg-6">
+<div class="mb-3">
+<label class="form-label">Service</label>
+<input type="text" class="form-control" value="{{ selected_service }}" readonly>
+</div>
+</div>
+
+<div class="col-lg-6">
+<div class="mb-3">
+<label class="form-label">Location</label>
+<input type="text" class="form-control" value="{{ selected_location }}" readonly>
+</div>
+</div>
+
+<div class="col-lg-6">
+<div class="mb-3">
+<label class="form-label">Service Type</label>
+<input type="text" class="form-control" 
+value="{{ booking_type|title }}" readonly>
+</div>
+</div>
+
+<div class="col-lg-6">
+<div class="mb-3">
+<label class="form-label">Selected Date</label>
+<input type="text" class="form-control" 
+value="{% if date %}{{ date|date:'Y-m-d' }}{% else %}None{% endif %}" readonly>
+</div>
+</div>
+
+</div>
+
+<h4 class="mb-3 mt-3 text-center"><b>Available Providers</b></h4>
+
+<div class="row justify-content-center app-form">
+<div class="col-lg-12">
+<div class="swiper mySwiper5">
+<div class="swiper-wrapper">
+{% for i in providers %}
+<div class="swiper-slide">
+<div class="row g-2">
+<div class="col-lg-8 col-md-6 col-sm-12 d-flex justify-content-center">
+<article class="glass-card">
+<div class="provider-header mb-3">
+<div>
+<div class="name">{{ i.user_profile.user.first_name }} {{ i.user_profile.user.last_name }}</div>
+<div class="meta">{{ i.experience_years }} years experience</div>
+</div>
+<span class="badge service-badge bg-light text-dark">{{ i.service }}</span>
+</div>
+
+<div class="text-center mb-3">
+<img src="{{ i.photo.url }}" alt="Provider photo" class="provider-photo">
+</div>
+
+<div class="mb-2">
+<div class="d-flex align-items-center mb-1">
+<span class="me-2">📍</span>
+<small class="text-muted fw-bold">{{ i.location }}</small>
+</div>
+<div class="d-flex align-items-center mb-1">
+<span class="me-2">📞</span>
+<small class="text-muted fw-bold">{{ i.user_profile.phone }}</small>
+</div>
+<div class="d-flex align-items-center">
+<span class="me-2">✉️</span>
+<small class="text-muted fw-bold">{{ i.user_profile.user.email }}</small>
+</div>
+
+<div class="text-center mb-3 mt-4">
+<label>
+<input type="radio" name="provider" value="{{ i.id }}" required>
+<b>Select this Provider</b>
+</label>
+</div>
+</div>
+</article>
+</div>
+</div>
+</div>
+{% endfor %}
+</div>
+
+<div class="swiper-pagination5"></div>
+<div class="swiper-button-next5"></div>
+<div class="swiper-button-prev5"></div>
+</div>
+</div>
+
+<div class="col-lg-4 col-md-12 col-12">
+<button type="submit" class="form-btn mt-3 mb-3 rounded">
+Book Service
+<div id="buttonSpinner1" class="overlay-spinner"></div>
+</button>
+</div>
+</div>
+</form>
+
+ 
+</div>
+
+</div>
+
+</div>
+</form>
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+<footer>
+{% include 'customer_page/footer.html' %}
+</footer>
+
+
+</body>
+</html>
+
+
+Reviews.html
+
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+
+</head>
+<body>
+<header>
+{% include 'customer_page/header.html' %}
+</header>
+<section class="introduction-section introduction-section-inner">
+
+<div class="row">
+
+<div class="col-lg-6 col-md-12">
+
+<div class="container intro-caption intro-caption-inner">
+
+<h1 class="intro-heading mt-4">
+Customer Reviews
+</h1>
+
+</div>
+
+</div>
+
+<div class="col-lg-6 col-md-12 intro-img-sec">
+<img src="{% static 'customer_page/img/review.jpg' %}" alt="" style="z-index: 1050;opacity: 1;" class="intro-inner-img">
+</div>
+
+</div>
+
+
+</section>
+
+<div class="container mt-5">
+<h2 class="fw-bold mb-4 text-center">Customer Reviews</h2>
+
+<div class="card p-3 mb-4 shadow-sm">
+<form method="get" class="row g-3">
+<div class="col-md-6">
+<label class="form-label fw-bold">Filter by Service</label>
+<select name="service" class="form-select" onchange="this.form.submit()">
+<option value="">All Services</option>
+{% for s in services %}
+<option value="{{ s.id }}" {% if selected_service == s.id|stringformat:"s" %}selected{% endif %}>
+{{ s.service_name }}
+</option>
+{% endfor %}
+</select>
+</div>
+
+<div class="col-md-6">
+<label class="form-label fw-bold">Filter by Provider</label>
+<select name="provider" class="form-select" onchange="this.form.submit()">
+<option value="">All Providers</option>
+{% for p in providers %}
+<option value="{{ p.id }}" {% if selected_provider == p.id|stringformat:"s" %}selected{% endif %}>
+{{ p.user.username }}
+</option>
+{% endfor %}
+</select>
+</div>
+</form>
+</div>
+
+{% for review in reviews %}
+<div class="card mb-3 p-3 shadow-sm">
+<div class="d-flex justify-content-between align-items-start">
+<div>
+<div class="d-inline-block bg-success text-white fw-bold px-3 py-1 rounded mb-2" style="font-size: 1.2rem;">
+{{ review.rating }}★
+</div>
+<p class="review-text">{{ review.comment }}</p>
+
+<div class="review-meta">
+<strong>{{ review.customer.user_profile.user.first_name }} {{ review.customer.user_profile.user.last_name }}</strong><br>
+Service: <strong>{{ review.service.service_name }}</strong><br>
+Provider: <strong>{{ review.provider.user_profile.user.first_name }} {{ review.provider.user_profile.user.last_name }}</strong><br>
+{% if review.provider.location %}
+Location: <strong>{{ review.provider.location }}</strong>
+{% elif review.service.location %}
+Location: <strong>{{ review.service.location }}</strong>
+{% endif %}
+</div>
+</div>
+<div class="text-muted small">{{ review.created_at|date:"M d, Y" }}</div>
+</div>
+</div>
+{% empty %}
+<div class="text-center text-muted mt-5">No reviews found.</div>
+{% endfor %}
+
+{% if reviews.has_other_pages %}
+<nav aria-label="Review pagination" class="mt-4">
+<ul class="pagination justify-content-center">
+{% if reviews.has_previous %}
+<li class="page-item">
+<a class="page-link" href="?page={{ reviews.previous_page_number }}{% if selected_service %}&service={{ selected_service }}{% endif %}{% if selected_provider %}&provider={{ selected_provider }}{% endif %}">Previous</a>
+</li>
+{% else %}
+<li class="page-item disabled"><span class="page-link">Previous</span></li>
+{% endif %}
+
+{% for num in reviews.paginator.page_range %}
+{% if num == reviews.number %}
+<li class="page-item active"><span class="page-link">{{ num }}</span></li>
+{% elif num > reviews.number|add:'-3' and num < reviews.number|add:'3' %}
+<li class="page-item">
+<a class="page-link" href="?page={{ num }}{% if selected_service %}&service={{ selected_service }}{% endif %}{% if selected_provider %}&provider={{ selected_provider }}{% endif %}">
+{{ num }}
+</a>
+</li>
+{% endif %}
+{% endfor %}
+
+{% if reviews.has_next %}
+<li class="page-item">
+<a class="page-link" href="?page={{ reviews.next_page_number }}{% if selected_service %}&service={{ selected_service }}{% endif %}{% if selected_provider %}&provider={{ selected_provider }}{% endif %}">Next</a>
+</li>
+{% else %}
+<li class="page-item disabled"><span class="page-link">Next</span></li>
+{% endif %}
+</ul>
+</nav>
+{% endif %}
+</div>
+<footer class="mt-5">
+{% include 'customer_page/footer.html' %}
+</footer>
+
+</body>
+</html>
+
+
+Login.html
+
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+
+</head>
+
+<body>
+{% if messages %}
+{% for message in messages %}
+<script>
+alert('{{ message }}')
+</script>
+{% endfor %}
+{% endif %}
+<section class="login-section" style="background: url('{% static "customer_page/img/back.jpg" %}') center/cover no-repeat;">
+<div class="login-container">
+
+<div class="left-side">
+<h1>Welcome Back to <br> Noah's Ark</h1>
+<img src="{% static 'customer_page/img/Picture1.jpg' %}" alt="Home Service">
+</div>
+
+<div class="right-side">
+<div class="form-card">
+<div class="form-title">Login to Your Account</div>
+
+<form method="POST" action="{% url 'login' %}">
+{% csrf_token %}
+<input type="text" class="form-control" placeholder="Enter your Username" name="username" required>
+
+<input type="password" class="form-control" placeholder="Enter your password" name="password" required>
+
+<button type="submit" class="btn btn-auth">Login</button>
+</form>
+
+<a href="{% url 'register' %}" class="switch-link"><b>Don’t have an account? Register</b></a>
+</div>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>
+
+
+
+Register.html
+
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+
+</head>
+
+<body>
+{% if messages %}
+{% for message in messages %}
+<script>
+alert('{{ message }}')
+</script>
+{% endfor %}
+{% endif %}
+<section class="register-section" style="background: url('{% static "customer_page/img/back.jpg" %}') center/cover no-repeat;">
+<div class="register-container">
+
+<div class="left-side">
+<h1>Welcome to Noah's Ark Home Services</h1>
+<img src="{% static 'customer_page/img/Picture1.jpg'%}" alt="Home Service">
+</div>
+
+<div class="right-side">
+<div class="form-card">
+<div class="form-title">Create an Account</div>
+<form method="POST" action="{% url 'register' %}">
+{% csrf_token %}
+
+<input type="text" class="form-control" placeholder="Enter your First Name" name="fname" required>
+<input type="text" class="form-control" placeholder="Enter your Last Name" name="lname" required>
+<input type="text" class="form-control" placeholder="Enter your User Name" name="username" required>
+<input type="email" class="form-control" pattern="[a-z].*[a-z0-9]@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" placeholder="Enter your Email" title="Please enter a valid email address" name="email" required>
+<input type="tel" class="form-control" placeholder="Enter Phone number format: +xx xxxx xxxxxx" 
+pattern="\+[0-9]{2} [0-9]{4} [0-9]{6}" 
+title="Please enter your phone number in the format: +xx xxxx xxxxxx" name="phone" required>
+<input type="password" class="form-control" placeholder="Enter your Password" name="password" required>
+<button type="submit" class="btn btn-auth">Register</button>
+</form>
+<a href="{% url 'login' %}" class="switch-link"><b>
+Already have an account? Login</b>
+</a>
+
+</div>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>
+
+
+Admin_page
+
+Service_add.html
+
+<form action="" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+<a href="" data-bs-toggle="modal" data-bs-target="#addNewServiceModal" class="btn px-3 fs-5 btn-lg" style="color: red;background-color: yellow;"><b>Add new Services</b></a>
+
+<div class="modal fade" id="addNewServiceModal" tabindex="-1" aria-labelledby="addNewServiceModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+
+<div class="modal-content">
+<div class="modal-header bg-info">
+<h1 class="modal-title fs-5" id="exampleModalLabel">Add Services</h1>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+<div class="mb-3">
+<label for="exampleFormControlInput1" class="form-label">Service name</label>
+<input type="text" class="form-control text-white" id="exampleFormControlInput1" placeholder="Enter Service name" name="service_name" value="{{i.name}}">
+</div>
+<div class="mb-3">
+<label for="exampleFormControlInput1" class="form-label">Service Price</label>
+<input type="text" class="form-control text-white" id="exampleFormControlInput1" placeholder="Enter Service Price" name="price" value="{{i.price}}">
+</div>
+<div class="mb-3">
+<label for="exampleFormControlInput1" class="form-label">Service image</label>
+<input type="file" class="form-control text-white" id="exampleFormControlInput1" placeholder="Service image" name="image" value="{{i.image}}" accept="image/*">
+</div>
+</div>
+<div class="modal-footer bg-info">
+<button type="button" class="btn bg-danger text-white" data-bs-dismiss="modal">Close</button>
+<button name="save" value="{{i.id}}" class="btn btn-primary">Submit</button>
+
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</form>
+
+
+
+
+
+
+
+
+
+Service_update.html
+
+<div class="d-flex justify-content-center gap-2 flex-wrap mt-3">
+<a href="" data-bs-toggle="modal" data-bs-target="#updateServiceModal_{{service.id}}"
+class="btn btn-success d-flex align-items-center px-3 py-2 shadow-sm rounded-pill">
+<i class="fa fa-pencil-alt me-2"></i> Update
+</a>
+
+<a href="" data-bs-toggle="modal" data-bs-target="#deleteServiceModal_{{service.id}}"
+class="btn btn-danger d-flex align-items-center px-3 py-2 shadow-sm rounded-pill">
+<i class="fa fa-trash me-2"></i> Delete
+</a>
+</div>
+
+
+<div class="modal fade" id="updateServiceModal_{{service.id}}" tabindex="-1" aria-labelledby="updateServiceModal_{{service.id}}Label" aria-hidden="true">
+<div class="modal-dialog">
+<form action="" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+<div class="modal-content">
+<div class="modal-header bg-info">
+<h1 class="modal-title fs-5" id="updateServiceModal_{{service.id}}Label">Update Services</h1>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+
+<div class="modal-body">
+<div class="mb-3">
+<label for="serviceName_{{service.id}}" class="form-label">Service name</label>
+<input type="text" class="form-control text-white" id="serviceName_{{service.id}}" name="service_name" value="{{ service.service_name }}">
+</div>
+
+<div class="mb-3">
+<label for="servicePrice_{{service.id}}" class="form-label">Service price</label>
+<input type="text" class="form-control text-white" id="servicePrice_{{service.id}}" name="price" value="{{ service.price }}">
+</div>
+
+<div class="mb-3">
+<label class="form-label">Service Image</label>
+<input type="file" class="form-control" name="image">
+{% if service.image %}
+<div class="mt-2">
+<small>Current Image:</small><br>
+<img src="{{ service.image.url }}" alt="Current Service Image" width="120" class="border rounded">
+</div>
+{% endif %}
+</div>
+</div>
+
+<div class="modal-footer bg-info">
+<button type="button" class="btn bg-danger text-white" data-bs-dismiss="modal">Cancel</button>
+<button type="submit" class="btn btn-success" name="update" value="{{ service.id }}">Update Service</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+
+
+
+<div class="modal fade" id="deleteServiceModal_{{service.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteServiceModal_{{service.id}}Label" aria-hidden="true">
+<div class="modal-dialog">
+<form action="" method="post">
+{% csrf_token %}
+<input type="hidden" name="id" value="{{service.id}}">
+<div class="modal-content">
+<div class="modal-body">
+<p>Are you sure? you want to delete {{service.service_name}} Service</p>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+<button type="submit" class="btn btn-danger" name="delete" value="{{service.id}}">Delete Service</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+
+
+Admin_service.html
+
+{% extends 'admin_page/base.html' %}
+
+{% block title %}Providers - Noah's Ark Services{% endblock %}
+
+{% block content %}
+<div class="main-panel">
+<div class="content-wrapper">
+
+<form method="POST" enctype="multipart/form-data">
+<div class="container-fluid">
+<div class="add">
+{% include 'admin_page/admin_service_add.html' %}
+</div>
+
+<div class="row mt-4">
+{% for service in services %}
+
+<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+<a href="{% url 'admin_service_section' name=service.service_name %}">
+<div class="product-card shadow-sm rounded">
+{% if service.image %}
+<img class="product-image" src="{{ service.image.url }}" alt="{{ service.service_name }}"
+width="100%">
+{% else %}
+<p class="text-center py-4">No image available</p>
+{% endif %}
+
+<div class="product-details text-center mt-3">
+<h2 class="product-title text-black">{{ service.service_name }}</h2>
+<div class="price">₹{{ service.price }}</div>
+</div>
+
+<div class="option-btn mt-3 d-flex justify-content-center gap-3 flex-wrap">
+{% include 'admin_page/admin_service_update.html' %}
+
+{% if service.providers.exists %}
+<a href="{% url 'admin_service_provider' service.id %}" 
+class="btn btn-primary d-flex align-items-center px-3 py-2 shadow-sm rounded-pill mt-3">
+<i class="fa fa-user me-2"></i> Providers
+</a>
+{% else %}
+<span class="text-black mt-3">No Providers</span>
+{% endif %}
+</div>
+</div>
+</a>
+</div>
+
+{% endfor %}
+</div>
+</div>
+</form>
+
+</div>
+{% endblock %}
+</div>
+
+
+Provide_display.html
+
+{% extends 'admin_page/base.html' %}
+
+{% block title %}Providers - Noah's Ark Services{% endblock %}
+
+{% block content %}
+<div class="main-panel">
+<div class="content-wrapper">
+
+<form method="POST" enctype="multipart/form-data">
+<div class="container-fluid">
+
+<div class="add">
+{% include 'admin_page/register_provider.html' %}
+</div>
+
+<div class="provider-container">
+<div class="container my-4">
+<div class="row">
+{% for provider in providers %}
+<div class="col-md-4 col-sm-6 mb-4">           
+<a href="{% url 'admin_provider_view' id=provider.id %}" class="text-decoration-none d-block" style="color: inherit;">
+<div class="card provider-card shadow-sm clickable h-100">
+<div class="card-body position-relative">
+<h3 class="card-title">{{ provider.user.first_name }} {{ provider.user.last_name }}</h5>
+<p><strong>Email:</strong> {{ provider.user.email }}</p>
+<p><strong>Phone:</strong> {{ provider.phone }}</p>
+<span class="badge {% if provider.status %}bg-success{% else %}bg-danger{% endif %}" style="font-size: 1rem;">
+{% if provider.status %}Active{% else %}Inactive{% endif %}
+</span>
+
+<div class="card-icons position-absolute top-0 end-0 p-2">
+<a href="#" data-bs-toggle="modal" data-bs-target="#editProviderModal_{{ provider.id }}" class="text-primary me-2" title="Edit">
+<i class="fas fa-edit fs-5"></i>
+</a>
+<a href="#" data-bs-toggle="modal" data-bs-target="#deleteProviderModal_{{ provider.id }}" class="text-danger" title="Delete">
+<i class="fas fa-trash fs-5"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="editProviderModal_{{ provider.id }}" tabindex="-1" aria-labelledby="editProviderModalLabel_{{ provider.id }}" aria-hidden="true">
+<div class="modal-dialog">
+<form action="" method="POST">
+{% csrf_token %}
+<div class="modal-content">
+<div class="modal-header bg-info text-white">
+<h5 class="modal-title" id="editProviderModalLabel_{{ provider.id }}">Edit Provider</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+<div class="mb-3">
+<label class="form-label">First name</label>
+<input type="text" class="form-control text-white" name="first_name" value="{{ provider.user.first_name }}" required>
+</div>
+<div class="mb-3">
+<label class="form-label">Last name</label>
+<input type="text" class="form-control text-white" name="last_name" value="{{ provider.user.last_name }}" required>
+</div>
+<div class="mb-3">
+<label class="form-label">Email</label>
+<input type="email" class="form-control text-white" name="email" value="{{ provider.user.email }}" required>
+</div>
+<div class="mb-3">
+<label class="form-label">Phone</label>
+<input type="text" class="form-control text-white" name="phone" value="{{ provider.phone }}" required>
+</div>
+<div class="form-check">
+<input type="checkbox" class="form-check-input" name="status" id="status_{{ provider.id }}" {% if provider.status %}checked{% endif %}>
+<label class="form-check-label" for="status_{{ provider.id }}">Active</label>
+</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+<button type="submit" class="btn btn-primary" name="update_provider" value="{{ provider.id }}">Update</button>
+
+</div>
+</div>
+</form>
+</div>
+</div>
+
+<div class="modal fade" id="deleteProviderModal_{{ provider.id }}" tabindex="-1" aria-labelledby="deleteProviderModalLabel_{{ provider.id }}" aria-hidden="true">
+<div class="modal-dialog">
+<form action="" method="POST">
+{% csrf_token %}
+<div class="modal-content">
+<div class="modal-body">
+<p>Are you sure you want to delete <strong>{{ provider.user.first_name }} {{ provider.user.last_name }}</strong>?</p>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+<button type="submit" class="btn btn-danger" name="delete_provider" value="{{ provider.id }}">Delete</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+
+{% empty %}
+<p>No providers registered yet.</p>
+{% endfor %}
+</div>
+</div>
+
+</div>
+
+</div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+{% endblock %}
+</div>
+
+
+
+Provider_add.html
+
+<form action="" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+<a href="" data-bs-toggle="modal" data-bs-target="#addnewsectioncontentsModal" class="btn px-3 btn-lg fs-6" style="color: red;background-color: yellow;"><b>Add {{data.title}} Contents</b></a>
+
+<div class="modal fade" id="addnewsectioncontentsModal" tabindex="-1" aria-labelledby="addnewsectioncontentsModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+
+<div class="modal-content">
+<div class="modal-header bg-info">
+<h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Add Contents</h1>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+<div class="mb-3">
+<label for="exampleFormControlInput1" class="form-label" hidden>Section</label>
+<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" name="section" id="section" value="{{data}}" hidden>
+</div>
+<div class="mb-3">
+<label for="exampleFormControlInput1" class="form-label text-white">Title</label>
+<input type="text" class="form-control text-white" id="exampleFormControlInput1" placeholder="Enter Title" name="title" id="title">
+</div>
+<div class="mb-3">
+<label for="exampleFormControlInput1" class="form-label text-white">Description</label>
+<div class="form-floating">
+<textarea class="form-control text-white" id="description" style="height: 100px" name="description"></textarea>
+</div>
+</div>
+<div class="mb-3">
+<label for="exampleFormControlInput1" class="form-label text-white">Icon</label>
+<input type="text" class="form-control text-white" id="exampleFormControlInput1" placeholder="Enter Icon URL" name="icon" id="icon">
+</div>
+<div class="mb-3">
+<label for="exampleFormControlInput1" class="form-label text-white">Image</label>
+<input type="file" class="form-control text-white" id="exampleFormControlInput1" placeholder="Image" name="image" value="{{i.image}}" accept="image/*">
+</div>
+<div class="mb-3">
+<label for="exampleFormControlInput1" class="form-label text-white">Order</label>
+<input type="number" class="form-control text-white" id="exampleFormControlInput1" placeholder="Enter Order" name="order" id="order" required>
+</div>
+</div>
+<div class="modal-footer bg-info">
+<button type="button" class="btn bg-danger text-white" data-bs-dismiss="modal">Close</button>
+<button type="submit" class="btn btn-primary" name="save">Submit</button>
+
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</form>
+
+Provider_details.html
+
+{% extends 'admin_page/base.html' %}
+
+{% block title %}Providers - Noah's Ark Services{% endblock %}
+
+{% block content %}
+<div class="main-panel">
+<div class="content-wrapper">
+
+<section class="profile-card">
+
+<div class="container-lg pro">
+
+<div class="edit-options">
+<div class="profile-update">
+<a href="{% url 'admin_provider_view_update' provider.id %}" class="btn px-3 btn-lg bg-success text-white profile-u"><i class="fa fa-edit fs-3"></i></a>
+</div>
+<div class="profile-delete">
+
+</div>
+
+</div>
+
+
+<div class="row profile">
+
+<div class="col-lg-4 col-md-12 left-profile col-12">
+<div class="mb-3">
+{% if provider.photo %}
+<img src="{{provider.photo.url}}" height="200" width="200" alt="User-Profile-Image">
+{% else %}
+<div class="profile-photo-icon">
+<i class="fa fa-user"></i>
+</div>
+{% endif %}
+</div>
+<h3 class="text-white profile-h mb-4"><b>{{ provider.user_profile.user.first_name }} {{provider.user_profile.user.last_name}}</b></h6>
+</div>
+
+
+
+
+<div class="col-lg-8 col-md-12 right-profile col-12 text-black">
+<ul type="none">
+<li class="mt-4 mb-4"><span class="me-3 right-profile-con1">Email:</span> <span class="me-3 right-profile-con1">{{provider.user_profile.user.email}}</span></li>
+<li class="mt-4 mb-4"><span class="me-3 right-profile-con1">Phone number:</span> <span class="me-3 right-profile-con1">{{provider.user_profile.phone}}</span></li>
+<li class="mt-4 mb-4"><span class="me-3 right-profile-con1">Location:</span> <span class="me-3 right-profile-con1">{{provider.location}}</span></li>
+<li class="mt-4 mb-4"><span class="me-3 right-profile-con1">Experience:</span> <span class="me-3 right-profile-con1">{{provider.experience_years}}</span></li>
+<li class="mt-4 mb-4"><span class="me-3 right-profile-con1">Service:</span> <span class="me-3 right-profile-con1">{{provider.service}}</span></li>
+
+</ul>
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+</section>
+
+
+</div>
+{% endblock %}
+</div>
+
+
+
+
+Provider page
+
+
+
+
+Bookings_view.html:-
+
+{% extends 'provider_page/base.html' %}
+
+{% block title %}Providers - Noah's Ark Services{% endblock %}
+
+{% block content %}
+<div class="main-panel">
+<div class="content-wrapper">
+
+<section class="provider-section">
+<div class="container-lg">
+
+<div class="table-section card p-4 shadow-sm rounded-4">
+<h3 class="text-center text-primary mb-4">Customer Booking Requests</h3>
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success text-center">{{ message }}</div>
+{% endfor %}
+{% endif %}
+
+<div class="table-responsive">
+<table class="table table-striped table-bordered text-center align-middle">
+<thead class="table-primary">
+<tr>
+<th>Customer</th>
+<th>Service</th>
+<th>Date</th>
+<th>Type</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody class="text-white">
+{% for booking in booking_requests %}
+<tr class="text-white">
+<td>{{ booking.customer.user_profile.user.first_name }}</td>
+<td>{{ booking.service.service_name }}</td>
+<td>{{ booking.date }}</td>
+<td>
+{% if booking.type == 'emergency' %}
+<span class="badge bg-danger">Emergency</span>
+{% else %}
+<span class="badge bg-secondary">Normal</span>
+{% endif %}
+</td>
+
+<!-- STATUS -->
+<td>
+{% if booking.status == "pending" %}
+<span class="badge bg-warning text-dark">Pending</span>
+{% elif booking.status == "accepted" %}
+<span class="badge bg-primary">Accepted</span>
+{% elif booking.status == "completed" %}
+<span class="badge bg-success">Completed</span>
+{% elif booking.status == "rework_pending" %}
+<span class="badge bg-info text-dark">Rework Requested</span>
+{% elif booking.status == "rework_accepted" %}
+<span class="badge bg-primary">Rework Accepted</span>
+{% elif booking.status == "rework_completed" %}
+<span class="badge bg-success">Rework Completed</span>
+{% else %}
+<span class="badge bg-dark">{{ booking.status|title }}</span>
+{% endif %}
+</td>
+
+<td>
+{% if booking.status == "pending" %}
+<form method="post" action="{% url 'provider_bookings' %}" class="d-inline">
+{% csrf_token %}
+<input type="hidden" name="booking_id" value="{{ booking.id }}">
+<button type="submit" name="action" value="accept" class="btn btn-success btn-sm">Accept</button>
+</form>
+
+{% elif booking.status == "accepted" %}
+{% if booking.booking and booking.booking.is_paid %}
+<form method="post" action="{% url 'provider_bookings' %}" class="d-inline">
+{% csrf_token %}
+<input type="hidden" name="booking_id" value="{{ booking.id }}">
+<button type="submit" name="action" value="complete" class="btn btn-primary btn-sm">Mark Completed</button>
+</form>
+{% else %}
+<span class="badge bg-info text-dark">Waiting for Payment</span>
+{% endif %}
+
+{% elif booking.status == "rework_pending" %}
+<button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#reworkModal{{ booking.id }}">View Rework</button>
+
+{% elif booking.status == "rework_accepted" %}
+<form method="post" action="{% url 'provider_bookings' %}" class="d-inline">
+{% csrf_token %}
+<input type="hidden" name="booking_id" value="{{ booking.id }}">
+<button type="submit" name="action" value="rework_done" class="btn btn-success btn-sm">Mark Rework Done</button>
+</form>
+
+{% else %}
+<span class="badge bg-secondary">No Action</span>
+{% endif %}
+</td>
+</tr>
+
+{% if booking.status == "rework_pending" or booking.status == "rework_accepted" %}
+<div class="modal fade" id="reworkModal{{ booking.id }}" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content rounded-3">
+<div class="modal-header bg-warning text-dark">
+<h5 class="modal-title">Rework Request</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body">
+<p><strong>Message:</strong> {{ booking.rework_message|default:"No message provided" }}</p>
+</div>
+<div class="modal-footer">
+{% if booking.status == "rework_pending" %}
+<form method="post" action="{% url 'provider_bookings' %}" class="d-inline">
+{% csrf_token %}
+<input type="hidden" name="booking_id" value="{{ booking.id }}">
+<button type="submit" name="action" value="accept_rework" class="btn btn-primary btn-sm">Accept Rework</button>
+</form>
+{% endif %}
+<button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+{% endif %}
+{% empty %}
+<tr><td colspan="6" class="text-muted text-center">No bookings found.</td></tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</section>
+
+
+
+
+
+
+
+
+</div>
+
+{% endblock %}
+</div>
+
+

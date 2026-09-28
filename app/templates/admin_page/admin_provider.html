@@ -1,0 +1,755 @@
+{% extends 'admin_page/base.html' %}
+
+{% block title %}Providers - Noah's Ark Services{% endblock %}
+
+{% block content %}
+
+
+<div class="npr901-page">
+
+    <section class="npr901-hero">
+
+        <div class="container-fluid px-0">
+
+            <div class="row align-items-center g-4">
+
+                <div class="col-xl-8 col-lg-7">
+
+                    <div class="npr902-hero-inner">
+
+                        <div class="npr903-eyebrow">
+                            <i class="fa fa-users"></i>
+                            Provider Management
+                        </div>
+
+                        <h1 class="npr904-title">
+                            Service Providers
+                        </h1>
+
+                        <p class="npr905-description">
+                            Manage your Noah's Ark service provider accounts,
+                            update provider information, control account status,
+                            and access detailed provider profiles.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-xl-4 col-lg-5">
+
+                    <div class="npr906-action-card">
+
+                        <div class="npr907-action-content">
+
+                            <div class="npr908-action-icon">
+                                <i class="fa fa-user-plus"></i>
+                            </div>
+
+                            <h3 class="npr909-action-title">
+                                Add New Provider
+                            </h3>
+
+                            <p class="npr910-action-text">
+                                Create a new provider account
+                            </p>
+
+                            <!--
+                                REGISTER PROVIDER PARTIAL
+                                Contains the trigger + modal.
+                            -->
+                            {% include 'admin_page/register_provider.html' %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         REGISTERED PROVIDERS
+         ===================================================== -->
+
+    <section>
+
+        <div class="npr912-section-head">
+
+            <div>
+
+                <p class="npr913-section-label">
+                    Noah's Ark Network
+                </p>
+
+                <h2 class="npr914-section-title">
+                    Registered Providers
+                </h2>
+
+            </div>
+
+            <div class="npr915-count">
+                {{ providers|length }}
+            </div>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            {% for provider in providers %}
+
+                <div class="col-xl-4 col-lg-6 col-md-6">
+
+                    <div class="npr916-card">
+
+                        <!-- =================================================
+                             CARD HEADER
+                             ================================================= -->
+
+                        <div class="npr917-card-top">
+
+                            <div class="npr918-provider-main">
+
+                                <div class="npr919-avatar">
+                                    <i class="fa fa-user"></i>
+                                </div>
+
+                                <div class="min-w-0">
+
+                                    <h3 class="npr920-provider-name">
+                                        {{ provider.user.first_name }}
+                                        {{ provider.user.last_name }}
+                                    </h3>
+
+                                    <p class="npr921-provider-role">
+                                        Service Provider
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- CARD ACTIONS -->
+
+                            <div class="npr922-actions">
+
+                                <!-- EDIT -->
+
+                                <button
+                                    type="button"
+                                    class="npr923-icon-btn"
+                                    title="Edit Provider"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#nprEditProviderModal{{ provider.id }}"
+                                >
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+
+
+                                <!-- DELETE -->
+
+                                <button
+                                    type="button"
+                                    class="npr923-icon-btn npr924-delete-btn"
+                                    title="Delete Provider"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#nprDeleteProviderModal{{ provider.id }}"
+                                >
+                                    <i class="fa fa-trash"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- =================================================
+                             PROVIDER INFORMATION
+                             ================================================= -->
+
+                        <ul class="npr925-info-list">
+
+                            <!-- EMAIL -->
+
+                            <li class="npr926-info-item">
+
+                                <div class="npr927-info-icon">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+
+                                <div class="npr928-info-content">
+
+                                    <span class="npr929-info-label">
+                                        Email Address
+                                    </span>
+
+                                    <span class="npr930-info-value">
+                                        {{ provider.user.email|default:"Not provided" }}
+                                    </span>
+
+                                </div>
+
+                            </li>
+
+
+                            <!-- PHONE -->
+
+                            <li class="npr926-info-item">
+
+                                <div class="npr927-info-icon">
+                                    <i class="fa fa-phone"></i>
+                                </div>
+
+                                <div class="npr928-info-content">
+
+                                    <span class="npr929-info-label">
+                                        Phone Number
+                                    </span>
+
+                                    <span class="npr930-info-value">
+                                        {{ provider.phone|default:"Not provided" }}
+                                    </span>
+
+                                </div>
+
+                            </li>
+
+                        </ul>
+
+
+                        <!-- =================================================
+                             CARD FOOTER
+                             ================================================= -->
+
+                        <div class="npr931-card-footer">
+
+                            {% if provider.status %}
+
+                                <span class="npr932-status npr934-status-active">
+                                    <span class="npr933-status-dot"></span>
+                                    Active
+                                </span>
+
+                            {% else %}
+
+                                <span class="npr932-status npr935-status-inactive">
+                                    <span class="npr933-status-dot"></span>
+                                    Inactive
+                                </span>
+
+                            {% endif %}
+
+
+                            <a
+                                href="{% url 'admin_provider_view' id=provider.id %}"
+                                class="npr936-view-btn"
+                            >
+                                View Profile
+                                <i class="fa fa-arrow-right"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% empty %}
+
+                <div class="col-12">
+
+                    <div class="npr937-empty">
+
+                        <div class="npr938-empty-icon">
+                            <i class="fa fa-users"></i>
+                        </div>
+
+                        <h3 class="npr939-empty-title">
+                            No Providers Registered
+                        </h3>
+
+                        <p class="npr940-empty-text">
+                            Add your first Noah's Ark service provider
+                            using the button above.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- =============================================================
+     =============================================================
+     EDIT + DELETE MODALS
+     
+     IMPORTANT:
+     These are deliberately OUTSIDE the provider cards.
+     JavaScript below also moves them directly to BODY.
+     =============================================================
+     ============================================================= -->
+
+{% for provider in providers %}
+
+
+    <!-- =========================================================
+         EDIT PROVIDER MODAL
+         ========================================================= -->
+
+    <div
+        class="modal fade npr-modal"
+        id="nprEditProviderModal{{ provider.id }}"
+        tabindex="-1"
+        aria-labelledby="nprEditProviderLabel{{ provider.id }}"
+        aria-hidden="true"
+        data-bs-backdrop="true"
+        data-bs-keyboard="true"
+    >
+
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+
+            <div class="modal-content">
+
+                <form
+                    action=""
+                    method="POST"
+                >
+
+                    {% csrf_token %}
+
+
+                    <!-- HEADER -->
+
+                    <div class="modal-header">
+
+                        <div class="npr-modal-heading">
+
+                            <div class="npr-modal-icon">
+                                <i class="fa fa-pencil"></i>
+                            </div>
+
+                            <div>
+
+                                <h2
+                                    class="npr-modal-title"
+                                    id="nprEditProviderLabel{{ provider.id }}"
+                                >
+                                    Edit Provider
+                                </h2>
+
+                                <p class="npr-modal-subtitle">
+                                    Update provider account information
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="npr-modal-close ms-auto"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        >
+                            <i class="fa fa-times"></i>
+                        </button>
+
+                    </div>
+
+
+                    <!-- BODY -->
+
+                    <div class="npr-modal-body">
+
+                        <div class="npr-modal-note">
+
+                            <i class="fa fa-info-circle"></i>
+
+                            <span>
+                                Update the provider's basic account details.
+                                Account status controls whether the provider
+                                is currently active.
+                            </span>
+
+                        </div>
+
+
+                        <div class="row g-3">
+
+
+                            <!-- FIRST NAME -->
+
+                            <div class="col-md-6">
+
+                                <div class="npr-field mb-0">
+
+                                    <label
+                                        for="nprEditFirstName{{ provider.id }}"
+                                        class="npr-field-label"
+                                    >
+                                        First Name
+                                        <span class="npr-field-required">*</span>
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="nprEditFirstName{{ provider.id }}"
+                                        name="first_name"
+                                        class="npr-field-control"
+                                        value="{{ provider.user.first_name }}"
+                                        placeholder="Enter first name"
+                                        autocomplete="given-name"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- LAST NAME -->
+
+                            <div class="col-md-6">
+
+                                <div class="npr-field mb-0">
+
+                                    <label
+                                        for="nprEditLastName{{ provider.id }}"
+                                        class="npr-field-label"
+                                    >
+                                        Last Name
+                                        <span class="npr-field-required">*</span>
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="nprEditLastName{{ provider.id }}"
+                                        name="last_name"
+                                        class="npr-field-control"
+                                        value="{{ provider.user.last_name }}"
+                                        placeholder="Enter last name"
+                                        autocomplete="family-name"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- EMAIL -->
+
+                            <div class="col-md-6">
+
+                                <div class="npr-field mb-0">
+
+                                    <label
+                                        for="nprEditEmail{{ provider.id }}"
+                                        class="npr-field-label"
+                                    >
+                                        Email Address
+                                        <span class="npr-field-required">*</span>
+                                    </label>
+
+                                    <input
+                                        type="email"
+                                        id="nprEditEmail{{ provider.id }}"
+                                        name="email"
+                                        class="npr-field-control"
+                                        value="{{ provider.user.email }}"
+                                        placeholder="provider@example.com"
+                                        autocomplete="email"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- PHONE -->
+
+                            <div class="col-md-6">
+
+                                <div class="npr-field mb-0">
+
+                                    <label
+                                        for="nprEditPhone{{ provider.id }}"
+                                        class="npr-field-label"
+                                    >
+                                        Phone Number
+                                        <span class="npr-field-required">*</span>
+                                    </label>
+
+                                    <input
+                                        type="tel"
+                                        id="nprEditPhone{{ provider.id }}"
+                                        name="phone"
+                                        class="npr-field-control"
+                                        value="{{ provider.phone }}"
+                                        placeholder="Enter phone number"
+                                        autocomplete="tel"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- STATUS -->
+
+                            <div class="col-12">
+
+                                <div class="npr-field mb-0">
+
+                                    <label class="npr-field-label">
+                                        Account Status
+                                    </label>
+
+                                    <div class="npr-status-box">
+
+                                        <input
+                                            type="checkbox"
+                                            class="npr-status-check"
+                                            id="nprEditStatus{{ provider.id }}"
+                                            name="status"
+                                            {% if provider.status %}checked{% endif %}
+                                        >
+
+                                        <label
+                                            for="nprEditStatus{{ provider.id }}"
+                                            class="npr-status-text mb-0"
+                                        >
+
+                                            <span class="npr-status-title">
+                                                Activate provider account
+                                            </span>
+
+                                            <span class="npr-status-description">
+                                                Allow this provider account
+                                                to remain active.
+                                            </span>
+
+                                        </label>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FOOTER -->
+
+                    <div class="npr-modal-footer">
+
+                        <button
+                            type="button"
+                            class="npr-modal-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            <i class="fa fa-times me-1"></i>
+                            Cancel
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="npr-modal-primary"
+                            name="update_provider"
+                            value="{{ provider.id }}"
+                        >
+                            <i class="fa fa-save me-1"></i>
+                            Save Changes
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         DELETE PROVIDER MODAL
+         ========================================================= -->
+
+    <div
+        class="modal fade npr-modal"
+        id="nprDeleteProviderModal{{ provider.id }}"
+        tabindex="-1"
+        aria-labelledby="nprDeleteProviderLabel{{ provider.id }}"
+        aria-hidden="true"
+        data-bs-backdrop="true"
+        data-bs-keyboard="true"
+    >
+
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+
+            <div class="modal-content">
+
+                <form
+                    action=""
+                    method="POST"
+                >
+
+                    {% csrf_token %}
+
+
+                    <div class="npr-delete-body">
+
+                        <div class="npr-delete-icon">
+                            <i class="fa fa-trash"></i>
+                        </div>
+
+                        <h2
+                            class="npr-delete-title"
+                            id="nprDeleteProviderLabel{{ provider.id }}"
+                        >
+                            Delete Provider?
+                        </h2>
+
+                        <p class="npr-delete-text">
+                            You are about to permanently delete
+                            <strong>
+                                {{ provider.user.first_name }}
+                                {{ provider.user.last_name }}
+                            </strong>.
+                            This action cannot be undone.
+                        </p>
+
+                    </div>
+
+
+                    <div class="npr-modal-footer">
+
+                        <button
+                            type="button"
+                            class="npr-modal-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            <i class="fa fa-times me-1"></i>
+                            Cancel
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="npr-modal-danger"
+                            name="delete_provider"
+                            value="{{ provider.id }}"
+                        >
+                            <i class="fa fa-trash me-1"></i>
+                            Delete Provider
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endfor %}
+
+
+<!-- =============================================================
+     MODAL ISOLATION SCRIPT
+     
+     This moves every provider modal directly under BODY.
+     This prevents sidebar/content-wrapper/transform/z-index
+     styles from darkening or covering the modal.
+     ============================================================= -->
+
+<script>
+(function () {
+
+    function nprMoveModalsToBody() {
+
+        var nprModals = document.querySelectorAll(
+            '.npr-modal, #nprAddProviderModal'
+        );
+
+        nprModals.forEach(function (modal) {
+
+            if (modal.parentElement !== document.body) {
+                document.body.appendChild(modal);
+            }
+
+        });
+
+    }
+
+
+    function nprSetupModalEvents() {
+
+        var nprModalElements = document.querySelectorAll(
+            '.npr-modal, #nprAddProviderModal'
+        );
+
+        nprModalElements.forEach(function (modal) {
+
+            modal.addEventListener('show.bs.modal', function () {
+
+                document.body.classList.add('npr-modal-open');
+
+            });
+
+
+            modal.addEventListener('hidden.bs.modal', function () {
+
+                if (
+                    !document.querySelector(
+                        '.npr-modal.show, #nprAddProviderModal.show'
+                    )
+                ) {
+                    document.body.classList.remove('npr-modal-open');
+                }
+
+            });
+
+        });
+
+    }
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        nprMoveModalsToBody();
+
+        nprSetupModalEvents();
+
+    });
+
+})();
+
+</script>
+
+{% endblock %}

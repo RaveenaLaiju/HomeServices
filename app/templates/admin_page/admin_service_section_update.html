@@ -1,0 +1,34 @@
+
+
+<div class="nas661-actions">
+
+    <!-- UPDATE -->
+    <button
+        type="button"
+        class="nas662-action nas663-update-trigger"
+        data-bs-toggle="modal"
+        data-bs-target="#nas642UpdateSectionModal"
+        data-section-id="{{ i.id }}"
+        data-section-title="{{ i.title|escapejs }}"
+        title="Update Section"
+    >
+        <i class="fa fa-pencil"></i>
+        <span>Update</span>
+    </button>
+
+
+    <!-- DELETE -->
+    <button
+        type="button"
+        class="nas662-action nas664-delete-trigger"
+        data-bs-toggle="modal"
+        data-bs-target="#nas643DeleteSectionModal"
+        data-section-id="{{ i.id }}"
+        data-section-title="{{ i.title|escapejs }}"
+        title="Delete Section"
+    >
+        <i class="fa fa-trash"></i>
+        <span>Delete</span>
+    </button>
+
+</div>

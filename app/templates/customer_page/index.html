@@ -1,0 +1,1229 @@
+
+{% extends 'customer_page/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="nhs101-page">
+    <section class="nhs101-section nhs101-hero">
+
+        <div class="nhs101-hero-glow-one"></div>
+        <div class="nhs101-hero-glow-two"></div>
+
+        <div class="container-fluid">
+            <div class="container-xl">
+
+                <div class="row align-items-center nhs101-hero-row">
+
+                    <!-- HERO CONTENT -->
+
+                    <div class="col-lg-6">
+
+                        <div class="nhs101-hero-content">
+
+                            <div class="nhs101-hero-badge">
+                                <span class="nhs101-hero-dot"></span>
+                                Trusted Home Service Professionals
+                            </div>
+
+                            <h1 class="nhs101-hero-title">
+                                Your Home.
+                                <br>
+                                Our <span>Expertise.</span>
+                            </h1>
+
+                            <p class="nhs101-hero-text">
+                                From plumbing and electrical repairs to AC
+                                servicing, cleaning and complete home
+                                maintenance, Noah's Ark Services brings
+                                dependable professionals directly to your
+                                doorstep.
+                            </p>
+
+                            <div class="nhs101-hero-features">
+
+                                <div class="nhs101-hero-chip">
+                                    <i class="fa fa-check"></i>
+                                    Verified Professionals
+                                </div>
+
+                                <div class="nhs101-hero-chip">
+                                    <i class="fa fa-check"></i>
+                                    Transparent Pricing
+                                </div>
+
+                                <div class="nhs101-hero-chip">
+                                    <i class="fa fa-check"></i>
+                                    Reliable Service
+                                </div>
+
+                                <div class="nhs101-hero-chip">
+                                    <i class="fa fa-check"></i>
+                                    Easy Booking
+                                </div>
+
+                            </div>
+
+                            <div class="nhs101-hero-actions">
+
+                                <a href="/contact/" class="nhs101-btn-primary">
+                                    Book a Service
+                                    <i class="fa fa-arrow-right"></i>
+                                </a>
+
+                                <a href="/services/" class="nhs101-btn-outline">
+                                    Explore Services
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- HERO IMAGE -->
+
+                    <div class="col-lg-6">
+
+                        <div class="nhs101-hero-visual">
+
+                            <div class="nhs101-hero-image-wrap">
+
+                                <img
+                                    src="{% static 'customer_page/img/ban1.jpg' %}"
+                                    alt="Noah's Ark home service professional"
+                                    class="nhs101-hero-image"
+                                >
+
+                                <div class="nhs101-rating-card">
+
+                                    <div class="nhs101-rating-icon">
+                                        <i class="fa fa-star"></i>
+                                    </div>
+
+                                    <div>
+                                        <strong>4.9 / 5</strong>
+                                        <small>Customer Satisfaction</small>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="nhs101-floating-card">
+
+                                <div class="nhs101-floating-icon">
+                                    <i class="fa fa-shield"></i>
+                                </div>
+
+                                <div>
+                                    <strong>Trusted Care</strong>
+                                    <small>Professionals you can rely on</small>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TRUST FEATURES
+    ====================================================== -->
+
+    <section class="nhs202-trust">
+
+        <div class="container-fluid p-0">
+
+            <div class="row g-0">
+
+                <div class="col-6 col-lg-3">
+                    <div class="nhs202-trust-item">
+
+                        <div class="nhs202-trust-icon">
+                            <i class="fa fa-users"></i>
+                        </div>
+
+                        <div>
+                            <strong>Verified Pros</strong>
+                            <small>Skilled &amp; trusted</small>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="col-6 col-lg-3">
+                    <div class="nhs202-trust-item">
+
+                        <div class="nhs202-trust-icon">
+                            <i class="fa fa-clock-o"></i>
+                        </div>
+
+                        <div>
+                            <strong>On-Time Service</strong>
+                            <small>Respecting your time</small>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="col-6 col-lg-3">
+                    <div class="nhs202-trust-item">
+
+                        <div class="nhs202-trust-icon">
+                            <i class="fa fa-inr"></i>
+                        </div>
+
+                        <div>
+                            <strong>Clear Pricing</strong>
+                            <small>No unnecessary surprises</small>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="col-6 col-lg-3">
+                    <div class="nhs202-trust-item">
+
+                        <div class="nhs202-trust-icon">
+                            <i class="fa fa-headphones"></i>
+                        </div>
+
+                        <div>
+                            <strong>Friendly Support</strong>
+                            <small>Here when you need us</small>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         WELCOME
+    ====================================================== -->
+
+    <section class="nhs101-section nhs404-welcome">
+
+        <div class="container-xl">
+
+            <div class="row align-items-center g-4 g-lg-5">
+
+                <div class="col-lg-5">
+
+                    <div class="nhs404-image-card">
+
+                        <img
+                            src="{% static 'customer_page/img/welcome-img.jpg' %}"
+                            alt="Noah's Ark Services"
+                            class="nhs404-image"
+                        >
+
+                        <div class="nhs404-image-badge">
+
+                            <strong>
+                                Complete Home Care
+                            </strong>
+
+                            <span>
+                                Professional service for every corner
+                                of your home.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-7">
+
+                    <div class="nhs404-content">
+
+                        <div class="nhs404-label">
+                            Welcome to Noah's Ark Services
+                        </div>
+
+                        <h2 class="nhs404-title">
+                            Professional care for
+                            the place you call home.
+                        </h2>
+
+                        <p class="nhs404-lead">
+                            We make home maintenance easier by connecting
+                            you with reliable professionals for everyday
+                            repairs, installations, cleaning and maintenance.
+                            Our goal is simple — dependable service without
+                            unnecessary stress.
+                        </p>
+
+
+                        <div class="nhs404-point">
+
+                            <div class="nhs404-point-icon">
+                                <i class="fa fa-check"></i>
+                            </div>
+
+                            <div>
+                                <h6>Reliable Professionals</h6>
+
+                                <p>
+                                    Get access to skilled service providers
+                                    who are ready to handle your home-service
+                                    needs with care.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="nhs404-point">
+
+                            <div class="nhs404-point-icon">
+                                <i class="fa fa-check"></i>
+                            </div>
+
+                            <div>
+                                <h6>Quality-Focused Work</h6>
+
+                                <p>
+                                    From small repairs to regular maintenance,
+                                    every service is approached with attention
+                                    to detail.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="nhs404-point">
+
+                            <div class="nhs404-point-icon">
+                                <i class="fa fa-check"></i>
+                            </div>
+
+                            <div>
+                                <h6>Convenient Home Service</h6>
+
+                                <p>
+                                    Find the right service and connect with
+                                    professionals without leaving your home.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="mt-4">
+
+                            <a
+                                href="/about/"
+                                class="nhs101-btn-primary"
+                            >
+                                Discover Our Story
+                                <i class="fa fa-arrow-right"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SERVICES
+    ====================================================== -->
+
+    <section class="nhs101-section nhs505-services">
+
+        <div class="container-xl">
+
+            <div class="nhs303-heading">
+
+                <span class="nhs303-eyebrow">
+                    What We Offer
+                </span>
+
+                <h2 class="nhs303-title">
+                    Services designed around
+                    your home.
+                </h2>
+
+                <p class="nhs303-text">
+                    Explore our range of home-care services and find
+                    professional help for repairs, maintenance, cleaning
+                    and more.
+                </p>
+
+            </div>
+
+
+            <div class="nhs505-slider">
+
+                <div class="swiper nhs505-swiper">
+
+                    <div class="swiper-wrapper">
+
+                        {% if services %}
+
+                            {% for i in services %}
+
+                                <div class="swiper-slide">
+
+                                    <a
+                                        href="{% url 'service_view' name=i.service_name %}"
+                                        class="text-decoration-none"
+                                    >
+
+                                        <article class="nhs505-card">
+
+                                            <div class="nhs505-image-wrap">
+
+                                                {% if i.image %}
+
+                                                    <img
+                                                        src="{{ i.image.url }}"
+                                                        alt="{{ i.service_name }}"
+                                                        class="nhs505-image"
+                                                    >
+
+                                                {% else %}
+
+                                                    <img
+                                                        src="{% static 'customer_page/img/ban1.jpg' %}"
+                                                        alt="{{ i.service_name }}"
+                                                        class="nhs505-image"
+                                                    >
+
+                                                {% endif %}
+
+                                                <div class="nhs505-price">
+
+                                                    From
+                                                    <i class="fa fa-inr"></i>
+                                                    {{ i.price }}
+
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="nhs505-body">
+
+                                                <p class="nhs505-name">
+                                                    {{ i.service_name }}
+                                                </p>
+
+                                                <span class="nhs505-arrow">
+                                                    <i class="fa fa-arrow-right"></i>
+                                                </span>
+
+                                            </div>
+
+                                        </article>
+
+                                    </a>
+
+                                </div>
+
+                            {% endfor %}
+
+                        {% else %}
+
+                            <div class="swiper-slide">
+
+                                <div class="alert alert-light border">
+                                    No services are currently available.
+                                </div>
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <div class="swiper-button-next nhs505-navigation"></div>
+                    <div class="swiper-button-prev nhs505-navigation"></div>
+
+                    <div class="swiper-pagination nhs505-pagination"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROVIDERS
+    ====================================================== -->
+
+    <section class="nhs101-section nhs606-providers">
+
+        <div class="container-xl">
+
+            <div class="nhs303-heading">
+
+                <span class="nhs303-eyebrow">
+                    Meet The Professionals
+                </span>
+
+                <h2 class="nhs303-title">
+                    Skilled people behind
+                    every service.
+                </h2>
+
+                <p class="nhs303-text">
+                    Discover professionals available through Noah's Ark
+                    Services and find the expertise you need.
+                </p>
+
+            </div>
+
+
+            <div class="nhs606-slider">
+
+                <div class="swiper nhs606-swiper">
+
+                    <div class="swiper-wrapper">
+
+                        {% for i in providers %}
+
+                            <div class="swiper-slide">
+
+                                <div class="nhs606-card">
+
+                                    {% if i.photo %}
+
+                                        <div class="nhs606-photo-wrap">
+
+                                            <img
+                                                src="{{ i.photo.url }}"
+                                                alt="{{ i.user_profile.user.first_name }} {{ i.user_profile.user.last_name }}"
+                                                class="nhs606-photo"
+                                            >
+
+                                        </div>
+
+                                    {% endif %}
+
+
+                                    <div class="nhs606-info">
+
+                                        <span class="nhs606-name">
+
+                                            {{ i.user_profile.user.first_name }}
+                                            {{ i.user_profile.user.last_name }}
+
+                                        </span>
+
+                                        <span class="nhs606-service">
+
+                                            {{ i.service }}
+
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        {% empty %}
+
+                            <div class="swiper-slide">
+
+                                <div class="text-center py-5">
+                                    <p class="text-muted mb-0">
+                                        No service providers available.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+
+
+                    <div class="swiper-button-next nhs606-navigation"></div>
+                    <div class="swiper-button-prev nhs606-navigation"></div>
+
+                    <div class="swiper-pagination nhs606-pagination"></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="text-center mt-4">
+
+                <a
+                    href="/providers/"
+                    class="nhs101-btn-primary"
+                >
+                    View All Providers
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         WHY NOAH'S ARK
+    ====================================================== -->
+
+    <section class="nhs101-section nhs707-why">
+
+        <div class="container-xl">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-8">
+
+                    <span class="nhs707-why-label">
+                        Why Choose Noah's Ark
+                    </span>
+
+                    <h2 class="nhs707-why-title">
+                        More than a service.
+                        A better home-care experience.
+                    </h2>
+
+                    <p class="nhs707-why-text">
+                        We focus on making home maintenance convenient,
+                        transparent and dependable — from the moment you
+                        search for a service to the moment the work is
+                        completed.
+                    </p>
+
+
+                    <div class="nhs707-list">
+
+                        <div class="nhs707-item">
+
+                            <div class="nhs707-check">
+                                <i class="fa fa-check"></i>
+                            </div>
+
+                            <span>
+                                Convenient access to multiple home-service
+                                categories.
+                            </span>
+
+                        </div>
+
+
+                        <div class="nhs707-item">
+
+                            <div class="nhs707-check">
+                                <i class="fa fa-check"></i>
+                            </div>
+
+                            <span>
+                                Professionals with service-specific
+                                experience.
+                            </span>
+
+                        </div>
+
+
+                        <div class="nhs707-item">
+
+                            <div class="nhs707-check">
+                                <i class="fa fa-check"></i>
+                            </div>
+
+                            <span>
+                                Simple communication and booking experience.
+                            </span>
+
+                        </div>
+
+
+                        <div class="nhs707-item">
+
+                            <div class="nhs707-check">
+                                <i class="fa fa-check"></i>
+                            </div>
+
+                            <span>
+                                Customer-focused support throughout the
+                                service journey.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="/contact/"
+                        class="nhs101-btn-primary mt-3"
+                    >
+                        Talk To Us
+                        <i class="fa fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <div class="col-lg-4">
+
+                    <div class="nhs707-stats">
+
+                        <div class="nhs707-stat">
+
+                            <strong>5K+</strong>
+                            <span>Happy Homes</span>
+
+                        </div>
+
+                        <div class="nhs707-stat">
+
+                            <strong>200+</strong>
+                            <span>Professionals</span>
+
+                        </div>
+
+                        <div class="nhs707-stat">
+
+                            <strong>4.9★</strong>
+                            <span>Customer Rating</span>
+
+                        </div>
+
+                        <div class="nhs707-stat">
+
+                            <strong>50+</strong>
+                            <span>Service Options</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ENQUIRY / CONTACT
+    ====================================================== -->
+
+    <section class="nhs101-section nhs808-enquiry">
+
+        <div class="container-xl">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6">
+
+                    <div class="nhs808-info">
+
+                        <span class="nhs303-eyebrow">
+                            Need Assistance?
+                        </span>
+
+                        <h2 class="nhs808-title">
+                            Let's take care
+                            of your home.
+                        </h2>
+
+                        <p class="nhs808-text">
+                            Have a question, need help choosing a service,
+                            or want to discuss a home-maintenance requirement?
+                            Send us a message and our team will get in touch.
+                        </p>
+
+
+                        <div class="nhs808-contact-list">
+
+                            <div class="nhs808-contact">
+
+                                <div class="nhs808-contact-icon">
+                                    <i class="fa fa-phone"></i>
+                                </div>
+
+                                <div>
+                                    <strong>Customer Support</strong>
+                                    <span>We're here to help</span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="nhs808-contact">
+
+                                <div class="nhs808-contact-icon">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+
+                                <div>
+                                    <strong>Email Assistance</strong>
+                                    <span>Send us your enquiry</span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="nhs808-contact">
+
+                                <div class="nhs808-contact-icon">
+                                    <i class="fa fa-map-marker"></i>
+                                </div>
+
+                                <div>
+                                    <strong>Serving Kochi</strong>
+                                    <span>Professional home services</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-6">
+
+                    <div class="nhs808-form-card">
+
+                        <h3 class="nhs808-form-title">
+                            Send an Enquiry
+                        </h3>
+
+                        <p class="nhs808-form-subtitle">
+                            Tell us what you need and we'll get back to you.
+                        </p>
+
+
+                        {% if messages %}
+
+                            {% for message in messages %}
+
+                                <div
+                                    class="alert alert-success alert-dismissible fade show"
+                                    role="alert"
+                                >
+                                    <strong>{{ message }}</strong>
+
+                                    <button
+                                        type="button"
+                                        class="btn-close"
+                                        data-bs-dismiss="alert"
+                                        aria-label="Close"
+                                    ></button>
+
+                                </div>
+
+                            {% endfor %}
+
+                        {% endif %}
+
+
+                        <form method="POST">
+
+                            {% csrf_token %}
+
+                            <div class="mb-3">
+
+                                <label
+                                    for="nhs808-name"
+                                    class="visually-hidden"
+                                >
+                                    Your Name
+                                </label>
+
+                                <input
+                                    id="nhs808-name"
+                                    class="form-control nhs808-input"
+                                    type="text"
+                                    name="name"
+                                    placeholder="Your Name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="mb-3">
+
+                                <label
+                                    for="nhs808-email"
+                                    class="visually-hidden"
+                                >
+                                    Email
+                                </label>
+
+                                <input
+                                    id="nhs808-email"
+                                    class="form-control nhs808-input"
+                                    type="email"
+                                    name="email"
+                                    placeholder="Email Address"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="mb-3">
+
+                                <label
+                                    for="nhs808-phone"
+                                    class="visually-hidden"
+                                >
+                                    Phone
+                                </label>
+
+                                <input
+                                    id="nhs808-phone"
+                                    class="form-control nhs808-input"
+                                    type="tel"
+                                    name="phone"
+                                    placeholder="Phone Number"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="mb-3">
+
+                                <label
+                                    for="nhs808-message"
+                                    class="visually-hidden"
+                                >
+                                    Message
+                                </label>
+
+                                <textarea
+                                    id="nhs808-message"
+                                    class="form-control nhs808-input nhs808-textarea"
+                                    name="message"
+                                    placeholder="How can we help you?"
+                                    required
+                                ></textarea>
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                id="nhs808-submit"
+                                class="nhs808-submit"
+                                name="save"
+                            >
+                                <span id="nhs808-submit-text">
+                                    Send Enquiry
+                                </span>
+
+                                <span
+                                    id="nhs808-spinner"
+                                    class="spinner-border spinner-border-sm d-none ms-2"
+                                    aria-hidden="true"
+                                ></span>
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         NEWS BAR
+    ====================================================== -->
+
+    <section class="nhs909-news">
+
+        <div class="nhs909-label">
+
+            <i class="fa fa-bullhorn"></i>
+
+            <span>News &amp; Updates</span>
+
+        </div>
+
+
+        <div class="nhs909-track">
+
+            <div class="nhs909-content">
+
+                <span>
+                    ✦ Discover convenient home services with Noah's Ark
+                </span>
+
+                <b>◆</b>
+
+                <span>
+                    ✦ Find trusted professionals for your next home project
+                </span>
+
+                <b>◆</b>
+
+                <span>
+                    ✦ Explore our growing range of home-care services
+                </span>
+
+                <b>◆</b>
+
+                <span>
+                    ✦ Simple booking. Professional service. Better homes.
+                </span>
+
+                <b>◆</b>
+
+
+                <!-- Duplicate for continuous scrolling -->
+
+                <span>
+                    ✦ Discover convenient home services with Noah's Ark
+                </span>
+
+                <b>◆</b>
+
+                <span>
+                    ✦ Find trusted professionals for your next home project
+                </span>
+
+                <b>◆</b>
+
+                <span>
+                    ✦ Explore our growing range of home-care services
+                </span>
+
+                <b>◆</b>
+
+                <span>
+                    ✦ Simple booking. Professional service. Better homes.
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- =========================================================
+     SWIPER INITIALIZATION
+========================================================= -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* -----------------------------------------------------
+       SERVICES SWIPER
+    ----------------------------------------------------- */
+
+    const serviceSlider = document.querySelector(".nhs505-swiper");
+
+    if (serviceSlider) {
+
+        new Swiper(".nhs505-swiper", {
+
+            loop: true,
+
+            grabCursor: true,
+
+            watchOverflow: true,
+
+            spaceBetween: 18,
+
+            slidesPerView: 1,
+
+            navigation: {
+                nextEl: ".nhs505-services .swiper-button-next",
+                prevEl: ".nhs505-services .swiper-button-prev"
+            },
+
+            pagination: {
+                el: ".nhs505-pagination",
+                clickable: true
+            },
+
+            breakpoints: {
+
+                576: {
+                    slidesPerView: 2,
+                    spaceBetween: 18
+                },
+
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 22
+                },
+
+                992: {
+                    slidesPerView: 3,
+                    spaceBetween: 24
+                },
+
+                1200: {
+                    slidesPerView: 3,
+                    spaceBetween: 28
+                }
+
+            }
+
+        });
+
+    }
+
+
+    /* -----------------------------------------------------
+       PROVIDER SWIPER
+    ----------------------------------------------------- */
+
+    const providerSlider = document.querySelector(".nhs606-swiper");
+
+    if (providerSlider) {
+
+        new Swiper(".nhs606-swiper", {
+
+            loop: true,
+
+            grabCursor: true,
+
+            watchOverflow: true,
+
+            spaceBetween: 18,
+
+            slidesPerView: 1,
+
+            navigation: {
+                nextEl: ".nhs606-providers .swiper-button-next",
+                prevEl: ".nhs606-providers .swiper-button-prev"
+            },
+
+            pagination: {
+                el: ".nhs606-pagination",
+                clickable: true
+            },
+
+            breakpoints: {
+
+                576: {
+                    slidesPerView: 2,
+                    spaceBetween: 18
+                },
+
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 22
+                },
+
+                992: {
+                    slidesPerView: 3,
+                    spaceBetween: 25
+                },
+
+                1200: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                }
+
+            }
+
+        });
+
+    }
+
+
+    /* -----------------------------------------------------
+       ENQUIRY BUTTON LOADING STATE
+    ----------------------------------------------------- */
+
+    const enquiryForm = document.querySelector(
+        ".nhs808-form-card form"
+    );
+
+    const submitButton = document.getElementById(
+        "nhs808-submit"
+    );
+
+    const submitText = document.getElementById(
+        "nhs808-submit-text"
+    );
+
+    const spinner = document.getElementById(
+        "nhs808-spinner"
+    );
+
+
+    if (enquiryForm && submitButton) {
+
+        enquiryForm.addEventListener("submit", function () {
+
+            submitButton.disabled = true;
+
+            if (submitText) {
+                submitText.textContent = "Sending...";
+            }
+
+            if (spinner) {
+                spinner.classList.remove("d-none");
+            }
+
+        });
+
+    }
+
+});
+</script>
+
+{% endblock %}
+

@@ -1,0 +1,537 @@
+{% extends 'admin_page/base.html' %}
+
+{% block title %}Payments - Noah's Ark Services{% endblock %}
+
+{% block content %}
+
+<div class="main-panel">
+
+    <div class="content-wrapper p-0">
+
+        <div class="nap902-page">
+
+            <section class="nap902-hero">
+
+                <div class="nap902-hero-content">
+
+                    <div class="row align-items-center g-4">
+
+                        <div class="col-12 col-lg">
+
+                            <div class="d-flex align-items-center gap-3">
+
+                                <div class="nap902-hero-icon">
+                                    <i class="fa fa-credit-card"></i>
+                                </div>
+
+                                <div>
+
+                                    <p class="nap902-eyebrow">
+                                        Financial Overview
+                                    </p>
+
+                                    <h1 class="nap902-title">
+                                        Payments
+                                    </h1>
+
+                                    <p class="nap902-subtitle">
+                                        Monitor customer transactions,
+                                        payment activity and service revenue
+                                        from one centralized dashboard.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-12 col-lg-auto">
+
+                            <div class="d-flex justify-content-lg-end">
+
+                                <div class="nap902-transaction-pill">
+
+                                    <i class="fa fa-bar-chart"></i>
+
+                                    <span>
+                                        {{ payments|length }} Transactions
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+                 SUMMARY CARDS
+                 ===================================================== -->
+
+            <section class="nap902-stat-grid">
+
+                <div class="row g-3">
+
+                    <!-- TRANSACTIONS -->
+
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <div class="nap902-stat-card">
+
+                            <div class="d-flex align-items-center gap-3">
+
+                                <div class="nap902-stat-icon nap902-stat-icon-purple">
+                                    <i class="fa fa-credit-card"></i>
+                                </div>
+
+                                <div>
+
+                                    <p class="nap902-stat-label">
+                                        Transactions
+                                    </p>
+
+                                    <p class="nap902-stat-value">
+                                        {{ payments|length }}
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RECORDS -->
+
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <div class="nap902-stat-card">
+
+                            <div class="d-flex align-items-center gap-3">
+
+                                <div class="nap902-stat-icon nap902-stat-icon-green">
+                                    <i class="fa fa-check-circle"></i>
+                                </div>
+
+                                <div>
+
+                                    <p class="nap902-stat-label">
+                                        Payment Records
+                                    </p>
+
+                                    <p class="nap902-stat-value">
+                                        {{ payments|length }}
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SUCCESS -->
+
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <div class="nap902-stat-card">
+
+                            <div class="d-flex align-items-center gap-3">
+
+                                <div class="nap902-stat-icon nap902-stat-icon-green">
+                                    <i class="fa fa-check"></i>
+                                </div>
+
+                                <div>
+
+                                    <p class="nap902-stat-label">
+                                        Payment Status
+                                    </p>
+
+                                    <p class="nap902-stat-value">
+                                        Active
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SECURE -->
+
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <div class="nap902-stat-card">
+
+                            <div class="d-flex align-items-center gap-3">
+
+                                <div class="nap902-stat-icon nap902-stat-icon-orange">
+                                    <i class="fa fa-shield"></i>
+                                </div>
+
+                                <div>
+
+                                    <p class="nap902-stat-label">
+                                        Payment Security
+                                    </p>
+
+                                    <p class="nap902-stat-value">
+                                        Secure
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+                 PAYMENT TABLE
+                 ===================================================== -->
+
+            <section class="nap902-table-card">
+
+                <!-- TABLE TOOLBAR -->
+
+                <div class="nap902-table-toolbar">
+
+                    <div class="row align-items-center g-3">
+
+                        <div class="col-12 col-md">
+
+                            <h2 class="nap902-section-label">
+                                Payment Transactions
+                            </h2>
+
+                            <p class="nap902-section-description">
+                                Complete payment and transaction information
+                            </p>
+
+                        </div>
+
+
+                        <div class="col-12 col-md-auto">
+
+                            <div class="d-flex justify-content-md-end">
+
+                                <div class="nap902-live-indicator">
+
+                                    <span></span>
+
+                                    Transaction Records
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TABLE -->
+
+                <div class="nap902-table-scroll">
+
+                    <table
+                        class="table nap902-table text-center align-middle"
+                        id="example"
+                    >
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Customer</th>
+
+                                <th>Provider</th>
+
+                                <th>Service</th>
+
+                                <th>Amount</th>
+
+                                <th>Status</th>
+
+                                <th>Payment ID</th>
+
+                                <th>Order ID</th>
+
+                                <th>Date</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            {% for payment in payments %}
+
+                            <tr>
+
+                                <!-- ID -->
+
+                                <td>
+
+                                    <span class="nap902-id">
+                                        #{{ payment.id }}
+                                    </span>
+
+                                </td>
+
+
+                                <!-- CUSTOMER -->
+
+                                <td>
+
+                                    <div class="nap902-person">
+
+                                        <div class="nap902-avatar">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+
+                                        <span
+                                            class="nap902-person-name"
+                                            title="{{ payment.booking.booking_request.customer.user_profile.user.username }}"
+                                        >
+                                            {{ payment.booking.booking_request.customer.user_profile.user.username }}
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+                                <!-- PROVIDER -->
+
+                                <td>
+
+                                    <div class="nap902-person">
+
+                                        <div class="nap902-avatar">
+                                            <i class="fa fa-user-md"></i>
+                                        </div>
+
+                                        <span
+                                            class="nap902-person-name"
+                                            title="{{ payment.booking.booking_request.provider.user_profile.user.username }}"
+                                        >
+                                            {{ payment.booking.booking_request.provider.user_profile.user.username }}
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+                                <!-- SERVICE -->
+
+                                <td>
+
+                                    <div class="nap902-service-box">
+
+                                        <i class="fa fa-wrench"></i>
+
+                                        <span>
+                                            {{ payment.booking.booking_request.service.service_name }}
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+                                <!-- AMOUNT -->
+
+                                <td>
+
+                                    <span class="nap902-amount">
+
+                                        <span class="nap902-currency">
+                                            ₹
+                                        </span>
+
+                                        {{ payment.amount }}
+
+                                    </span>
+
+                                </td>
+
+
+                                <!-- STATUS -->
+
+                                <td>
+
+                                    {% if payment.payment_status == "Success" %}
+
+                                        <span class="nap902-status nap902-status-success">
+
+                                            <i class="fa fa-circle"></i>
+
+                                            Success
+
+                                        </span>
+
+                                    {% elif payment.payment_status == "Failure" %}
+
+                                        <span class="nap902-status nap902-status-failure">
+
+                                            <i class="fa fa-circle"></i>
+
+                                            Failure
+
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="nap902-status nap902-status-pending">
+
+                                            <i class="fa fa-circle"></i>
+
+                                            Pending
+
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+
+                                <!-- PAYMENT ID -->
+
+                                <td>
+
+                                    {% if payment.razorpay_payment_id %}
+
+                                        <span
+                                            class="nap902-reference"
+                                            title="{{ payment.razorpay_payment_id }}"
+                                        >
+                                            {{ payment.razorpay_payment_id }}
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="text-muted">
+                                            —
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+
+                                <!-- ORDER ID -->
+
+                                <td>
+
+                                    {% if payment.provider_order_id %}
+
+                                        <span
+                                            class="nap902-reference"
+                                            title="{{ payment.provider_order_id }}"
+                                        >
+                                            {{ payment.provider_order_id }}
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="text-muted">
+                                            —
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+
+                                <!-- DATE -->
+
+                                <td>
+
+                                    <span class="nap902-date">
+
+                                        <i class="fa fa-calendar-o me-1"></i>
+
+                                        {{ payment.payment_date|date:"Y-m-d H:i" }}
+
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                            {% empty %}
+
+                            <tr>
+
+                                <td
+                                    colspan="9"
+                                    class="nap902-empty"
+                                >
+
+                                    <div class="nap902-empty-icon">
+
+                                        <i class="fa fa-credit-card"></i>
+
+                                    </div>
+
+                                    <p class="nap902-empty-title">
+                                        No payments found
+                                    </p>
+
+                                    <p class="nap902-empty-text">
+                                        Payment transactions will appear here
+                                        once customer bookings are completed.
+                                    </p>
+
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+

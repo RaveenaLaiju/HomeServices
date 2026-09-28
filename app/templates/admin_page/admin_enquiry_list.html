@@ -1,0 +1,379 @@
+{% extends 'admin_page/base.html' %}
+
+{% block title %}Enquiries - Noah's Ark Services{% endblock %}
+
+{% block content %}
+
+<div class="nas410-page">
+
+    <div class="nas411-glow"></div>
+    <div class="nas412-glow"></div>
+    <div class="nas413-grid"></div>
+
+
+    <div class="nas414-container">
+
+
+
+        <section class="nas415-hero">
+
+            <div class="nas416-hero-content">
+
+                <div class="row align-items-center g-4">
+
+
+                    <!-- HERO CONTENT -->
+
+                    <div class="col-xl-8 col-lg-7">
+
+                        <div class="nas419-eyebrow">
+                            <i class="fa fa-comments"></i>
+                            Customer Communication
+                        </div>
+
+                        <h1 class="nas420-title">
+                            Enquiry Center
+                        </h1>
+
+                        <p class="nas421-description">
+                            Stay connected with your customers. Review incoming
+                            enquiries, understand their requests and respond
+                            directly from your Noah's Ark administration panel.
+                        </p>
+
+                    </div>
+
+
+                    <!-- TOTAL CARD -->
+
+                    <div class="col-xl-4 col-lg-5">
+
+                        <div class="nas422-status">
+
+                            <div class="nas423-status-top">
+
+                                <span class="nas424-status-label">
+                                    Communication Overview
+                                </span>
+
+                                <span class="nas425-live-dot"></span>
+
+                            </div>
+
+                            <div class="nas426-total">
+
+                                <span class="nas427-number">
+                                    {{ enquiries|length }}
+                                </span>
+
+                                <span class="nas428-unit">
+                                    Enquiries
+                                </span>
+
+                            </div>
+
+                            <div class="nas429-status-note">
+                                Total customer messages received
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ENQUIRIES CARD
+             ================================================= -->
+
+        <section class="nas430-card">
+
+
+            <!-- CARD HEADER -->
+
+            <div class="nas431-card-header">
+
+                <div class="d-flex flex-column flex-md-row
+                            align-items-md-center justify-content-between gap-3">
+
+                    <div class="nas432-heading">
+
+                        <div class="nas433-heading-icon">
+                            <i class="fa fa-inbox"></i>
+                        </div>
+
+                        <div>
+
+                            <h2 class="nas434-heading-title">
+                                All Enquiries
+                            </h2>
+
+                            <p class="nas435-heading-subtitle">
+                                Customer messages received through your website
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="nas436-count">
+                        {{ enquiries|length }} Enquiries
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TABLE
+                 ================================================= -->
+
+            <div class="nas437-table-area">
+
+                <table class="nas438-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Message</th>
+                            <th>Received</th>
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        {% for enquiry in enquiries %}
+
+
+                        <tr>
+
+
+                            <!-- ID -->
+
+                            <td>
+
+                                <span class="nas439-id">
+                                    #{{ enquiry.id }}
+                                </span>
+
+                            </td>
+
+
+
+                            <!-- CUSTOMER -->
+
+                            <td>
+
+                                <div class="nas440-customer">
+
+                                    <div class="nas441-avatar">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+
+                                    <div>
+
+                                        <div class="nas442-name">
+                                            {{ enquiry.name }}
+                                        </div>
+
+                                        <div class="nas443-customer-label">
+                                            Customer enquiry
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <!-- EMAIL -->
+
+                            <td>
+
+                                <div class="nas444-contact">
+
+                                    <span class="nas445-contact-icon">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+
+                                    <span class="nas446-contact-text">
+                                        {{ enquiry.email }}
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <!-- PHONE -->
+
+                            <td>
+
+                                <div class="nas444-contact">
+
+                                    <span class="nas445-contact-icon">
+                                        <i class="fa fa-phone"></i>
+                                    </span>
+
+                                    <span class="nas446-contact-text">
+                                        {{ enquiry.phone|default:"-" }}
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <!-- MESSAGE -->
+
+                            <td>
+
+                                <div class="nas447-message">
+
+                                    <div class="nas448-message-text">
+
+                                        {{ enquiry.message|truncatechars:80 }}
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <!-- DATE -->
+
+                            <td>
+
+                                <div class="nas449-date">
+
+                                    <i class="fa fa-calendar"></i>
+
+                                    <span>
+                                        {{ enquiry.created_at|date:"Y-m-d H:i" }}
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <!-- ACTIONS -->
+
+                            <td>
+
+                                <div class="nas450-actions">
+
+
+                                    <a
+                                        href="{% url 'admin_enquiry_detail' enquiry.id %}"
+                                        class="nas451-action nas452-view"
+                                    >
+
+                                        <i class="fa fa-eye"></i>
+
+                                        <span>View</span>
+
+                                    </a>
+
+
+
+                                    {% if enquiry.email %}
+
+                                    <a
+                                        href="https://mail.google.com/mail/?view=cm&fs=1&to={{ enquiry.email }}&su=Reply%20to%20your%20Enquiry&body=Dear%20{{ enquiry.name }},%0A%0A"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="nas451-action nas453-reply"
+                                    >
+
+                                        <i class="fa fa-envelope"></i>
+
+                                        <span>Reply</span>
+
+                                    </a>
+
+                                    {% endif %}
+
+
+                                </div>
+
+                            </td>
+
+
+                        </tr>
+
+
+                        {% empty %}
+
+
+                        <!-- EMPTY STATE -->
+
+                        <tr>
+
+                            <td colspan="7" class="nas454-empty">
+
+                                <div class="nas455-empty-icon">
+
+                                    <i class="fa fa-envelope-open-o"></i>
+
+                                </div>
+
+                                <h3 class="nas456-empty-title">
+                                    No Enquiries Found
+                                </h3>
+
+                                <p class="nas457-empty-text">
+                                    There are currently no customer enquiries
+                                    available. New messages will appear here
+                                    when customers contact your business.
+                                </p>
+
+                            </td>
+
+                        </tr>
+
+
+                        {% endfor %}
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+</div>
+
+{% endblock %}
+

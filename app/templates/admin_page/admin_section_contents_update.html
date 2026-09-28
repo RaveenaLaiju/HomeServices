@@ -1,0 +1,32 @@
+
+<div class="nac732-actions">
+
+    <button
+        type="button"
+        class="nac733-action nac734-update"
+        data-bs-toggle="modal"
+        data-bs-target="#nac752UpdateContentModal"
+        data-content-id="{{ item.id }}"
+        data-content-title="{{ item.title|escapejs }}"
+        data-content-description="{{ item.description|escapejs }}"
+        data-content-icon="{{ item.icon|escapejs }}"
+        data-content-order="{{ item.order }}"
+        title="Update Content"
+    >
+        <i class="fa fa-pencil"></i>
+    </button>
+
+
+    <button
+        type="button"
+        class="nac733-action nac735-delete"
+        data-bs-toggle="modal"
+        data-bs-target="#nac753DeleteContentModal"
+        data-content-id="{{ item.id }}"
+        data-content-title="{{ item.title|escapejs }}"
+        title="Delete Content"
+    >
+        <i class="fa fa-trash"></i>
+    </button>
+
+</div>

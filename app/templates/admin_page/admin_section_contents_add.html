@@ -1,0 +1,259 @@
+
+
+<div
+    class="modal fade nac750-modal nac751-add-modal"
+    id="nac751AddContentModal"
+    tabindex="-1"
+    aria-labelledby="nac751AddContentModalLabel"
+    aria-hidden="true"
+    data-bs-backdrop="static"
+>
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <!-- FORM INSIDE MODAL -->
+        <form
+            action=""
+            method="POST"
+            enctype="multipart/form-data"
+            class="w-100"
+            autocomplete="off"
+        >
+
+            {% csrf_token %}
+
+            <div class="modal-content">
+
+                <div class="modal-header nac761-modal-header">
+
+                    <div class="nac762-header-content">
+
+                        <div class="nac763-header-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+
+                        <div>
+
+                            <h5
+                                class="nac764-title"
+                                id="nac751AddContentModalLabel"
+                            >
+                                Add Section Content
+                            </h5>
+
+                            <p class="nac765-subtitle">
+                                Create content for this section
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="btn-close nac766-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    ></button>
+
+                </div>
+
+
+                <div class="modal-body nac767-body">
+
+                    <!-- SECTION -->
+
+                    <div class="nac768-section-preview">
+
+                        <div class="nac769-preview-icon">
+                            <i class="fa fa-folder-open"></i>
+                        </div>
+
+                        <div>
+
+                            <span class="nac770-preview-label">
+                                Current Section
+                            </span>
+
+                            <span class="nac771-preview-value">
+                                {{ data.title }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <input
+                        type="hidden"
+                        name="section"
+                        value="{{ data }}"
+                    >
+
+
+                    <!-- TITLE -->
+
+                    <div class="nac772-field">
+
+                        <label
+                            for="nac783AddTitle"
+                            class="nac773-label"
+                        >
+                            Title
+                        </label>
+
+                        <div class="nac774-wrapper">
+
+                            <i class="fa fa-pencil nac775-icon"></i>
+
+                            <input
+                                type="text"
+                                id="nac783AddTitle"
+                                name="title"
+                                class="nac776-input"
+                                placeholder="Enter content title"
+                                maxlength="255"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="nac772-field">
+
+                        <label
+                            for="nac784AddDescription"
+                            class="nac773-label"
+                        >
+                            Description
+                        </label>
+
+                        <div class="nac774-wrapper">
+
+                            <i class="fa fa-align-left nac775-icon"></i>
+
+                            <textarea
+                                id="nac784AddDescription"
+                                name="description"
+                                class="nac777-textarea"
+                                placeholder="Enter content description"
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ICON -->
+
+                    <div class="nac772-field">
+
+                        <label
+                            for="nac785AddIcon"
+                            class="nac773-label"
+                        >
+                            Icon Class
+                        </label>
+
+                        <div class="nac774-wrapper">
+
+                            <i class="fa fa-star nac775-icon"></i>
+
+                            <input
+                                type="text"
+                                id="nac785AddIcon"
+                                name="icon"
+                                class="nac776-input"
+                                placeholder="Example: fa fa-home"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- IMAGE -->
+
+                    <div class="nac772-field">
+
+                        <label
+                            for="nac786AddImage"
+                            class="nac773-label"
+                        >
+                            Image
+                        </label>
+
+                        <input
+                            type="file"
+                            id="nac786AddImage"
+                            name="image"
+                            class="nac778-file"
+                            accept="image/*"
+                        >
+
+                    </div>
+
+
+                    <!-- ORDER -->
+
+                    <div class="nac772-field mb-0">
+
+                        <label
+                            for="nac787AddOrder"
+                            class="nac773-label"
+                        >
+                            Display Order
+                        </label>
+
+                        <div class="nac774-wrapper">
+
+                            <i class="fa fa-sort-numeric-asc nac775-icon"></i>
+
+                            <input
+                                type="number"
+                                id="nac787AddOrder"
+                                name="order"
+                                class="nac779-number"
+                                placeholder="Enter order"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer nac780-footer">
+
+                    <button
+                        type="button"
+                        class="nac781-cancel"
+                        data-bs-dismiss="modal"
+                    >
+                        <i class="fa fa-times me-1"></i>
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="nac782-submit"
+                        name="save"
+                    >
+                        <i class="fa fa-check me-1"></i>
+                        Add Content
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

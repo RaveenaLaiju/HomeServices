@@ -1,0 +1,367 @@
+{% extends 'admin_page/base.html' %}
+
+{% block title %}Section Contents - Noah's Ark Services{% endblock %}
+
+{% block content %}
+
+
+<div class="nac701-page">
+
+    <div class="nac702-container">
+
+              <section class="nac703-hero">
+
+            <div class="row align-items-center nac704-hero-content">
+
+                <div class="col-lg-8">
+
+                    <span class="nac705-eyebrow">
+                        <i class="fa fa-list-alt"></i>
+                        Section Content Management
+                    </span>
+
+                    <h1 class="nac706-title">
+                        Section Contents
+                    </h1>
+
+                    <p class="nac707-description">
+                        Manage the content, descriptions, icons, images and
+                        display order belonging to this service section.
+                    </p>
+
+                    <div class="nac708-service-badge">
+                        <i class="fa fa-folder-open"></i>
+                        <span>{{ data.title }}</span>
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-4">
+
+                    <div class="nac709-hero-action">
+
+                        <!--
+                            IMPORTANT:
+                            This is only a BUTTON.
+                            There is NO form around this button.
+                        -->
+
+                        <button
+                            type="button"
+                            class="nac710-add-trigger"
+                            data-bs-toggle="modal"
+                            data-bs-target="#nac751AddContentModal"
+                        >
+
+                            <span class="nac711-add-icon">
+                                <i class="fa fa-plus"></i>
+                            </span>
+
+                            <span>
+                                <span class="nac712-add-heading">
+                                    Add Content
+                                </span>
+
+                                <span class="nac713-add-subtitle">
+                                    Add {{ data.title }} contents
+                                </span>
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             MAIN CONTENT
+             ================================================= -->
+
+        <div class="row nac714-content">
+
+            <div class="col-xl-8 col-lg-7">
+
+                <div class="nac715-header">
+
+                    <div>
+                        <h2 class="nac716-heading">
+                            Available Contents
+                        </h2>
+
+                        <p class="nac717-subheading">
+                            Manage all content entries for this section.
+                        </p>
+                    </div>
+
+                    <span class="nac718-count">
+                        {{ grouped_items|length }}
+                    </span>
+
+                </div>
+
+
+                {% if grouped_items %}
+
+                    {% for order, items in grouped_items.items %}
+
+                        <section class="nac719-group">
+
+                            <div class="nac720-group-header">
+
+                                <h3 class="nac721-group-title">
+                                    Content Group
+                                </h3>
+
+                                <span class="nac722-order-badge">
+                                    Order {{ order }}
+                                </span>
+
+                            </div>
+
+
+                            <div class="nac723-items">
+
+                                {% for item in items %}
+
+                                    <article class="nac724-item">
+
+                                        <!-- IMAGE -->
+
+                                        <div class="nac725-image-wrapper">
+
+                                            {% if item.image %}
+
+                                                <img
+                                                    src="{{ item.image.url }}"
+                                                    alt="{{ item.title }}"
+                                                    class="nac725-image"
+                                                >
+
+                                            {% else %}
+
+                                                <div class="nac726-no-image">
+                                                    <i class="fa fa-picture-o"></i>
+                                                </div>
+
+                                            {% endif %}
+
+                                        </div>
+
+
+                                        <!-- INFORMATION -->
+
+                                        <div class="nac727-info">
+
+                                            <span class="nac728-label">
+                                                Section Content
+                                            </span>
+
+
+                                            {% if item.title %}
+
+                                                <h4 class="nac729-item-title">
+                                                    {{ item.title }}
+                                                </h4>
+
+                                            {% else %}
+
+                                                <h4 class="nac729-item-title">
+                                                    Untitled Content
+                                                </h4>
+
+                                            {% endif %}
+
+
+                                            {% if item.description %}
+
+                                                <p class="nac730-description">
+                                                    {{ item.description }}
+                                                </p>
+
+                                            {% endif %}
+
+
+                                            {% if item.icon %}
+
+                                                <span class="nac731-icon-badge">
+                                                    <i class="{{ item.icon }}"></i>
+                                                    {{ item.icon }}
+                                                </span>
+
+                                            {% endif %}
+
+                                        </div>
+
+
+                                        <!-- ACTIONS -->
+
+                                        {% include 'admin_page/admin_section_contents_update.html' %}
+
+                                    </article>
+
+                                {% endfor %}
+
+                            </div>
+
+                        </section>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <div class="nac736-empty">
+
+                        <div class="nac737-empty-icon">
+                            <i class="fa fa-folder-open-o"></i>
+                        </div>
+
+                        <h3 class="nac738-empty-title">
+                            No Contents Available
+                        </h3>
+
+                        <p class="nac739-empty-text">
+                            This section does not contain any content yet.
+                            Use the Add Content button to create your first
+                            entry.
+                        </p>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- =================================================
+                 RIGHT SIDE
+                 ================================================= -->
+
+            <div class="col-xl-4 col-lg-5">
+
+                <aside class="nac740-side-card">
+
+                    <div class="nac741-side-icon">
+                        <i class="fa fa-cogs"></i>
+                    </div>
+
+                    <h3 class="nac742-side-title">
+                        Manage Content
+                    </h3>
+
+                    <p class="nac743-side-text">
+                        Keep your service section organized with structured
+                        titles, descriptions, images, icons and custom
+                        display ordering.
+                    </p>
+
+
+                    <div class="nac744-tips">
+
+                        <div class="nac745-tip">
+                            <i class="fa fa-check-circle"></i>
+                            <span>
+                                Add new section content whenever required.
+                            </span>
+                        </div>
+
+                        <div class="nac745-tip">
+                            <i class="fa fa-check-circle"></i>
+                            <span>
+                                Update title and description information.
+                            </span>
+                        </div>
+
+                        <div class="nac745-tip">
+                            <i class="fa fa-check-circle"></i>
+                            <span>
+                                Replace images without affecting the section.
+                            </span>
+                        </div>
+
+                        <div class="nac745-tip">
+                            <i class="fa fa-check-circle"></i>
+                            <span>
+                                Control the display order of your content.
+                            </span>
+                        </div>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MODALS
+     
+     IMPORTANT:
+     They are OUTSIDE all cards and scrolling containers.
+     ========================================================= -->
+
+{% include 'admin_page/admin_section_contents_add.html' %}
+
+{% include 'admin_page/admin_section_contents_modals.html' %}
+
+
+<script>
+(function () {
+
+    function nac760MoveModalsToBody() {
+
+        var modalIds = [
+            'nac751AddContentModal',
+            'nac752UpdateContentModal',
+            'nac753DeleteContentModal'
+        ];
+
+        modalIds.forEach(function (modalId) {
+
+            var modal = document.getElementById(modalId);
+
+            if (
+                modal &&
+                modal.parentElement !== document.body
+            ) {
+                document.body.appendChild(modal);
+            }
+
+        });
+
+    }
+
+
+    document.addEventListener(
+        'DOMContentLoaded',
+        function () {
+
+            nac760MoveModalsToBody();
+
+            /*
+             * Extra protection against admin dashboard
+             * layout/overflow containers.
+             */
+            setTimeout(
+                nac760MoveModalsToBody,
+                100
+            );
+
+        }
+    );
+
+})();
+</script>
+
+{% endblock %}

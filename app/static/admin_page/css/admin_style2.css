@@ -1,0 +1,3770 @@
+
+.npv700-page {
+    width: 100%;
+    min-height: 100%;
+    padding: 25px 0 45px;
+    background:
+        radial-gradient(
+            circle at 0% 0%,
+            rgba(0, 184, 148, 0.08),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 100% 15%,
+            rgba(13, 110, 253, 0.07),
+            transparent 30%
+        ),
+        #f6f8fb;
+}
+
+.npv701-container {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.npv702-hero {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+    padding: 34px;
+    border-radius: 28px;
+    background:
+        radial-gradient(
+            circle at 88% 10%,
+            rgba(0, 255, 170, 0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(0, 160, 255, 0.13),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #031b18,
+            #071b1a 48%,
+            #092731
+        );
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 25px 65px rgba(0,0,0,0.17);
+}
+
+.npv703-glow {
+    position: absolute;
+    right: -80px;
+    bottom: -120px;
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    background: rgba(0,255,170,0.10);
+    filter: blur(18px);
+    pointer-events: none;
+}
+
+.npv704-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.npv705-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    color: #00d99a;
+    background: rgba(0,255,170,0.08);
+    border: 1px solid rgba(0,255,170,0.15);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.npv706-title {
+    margin: 16px 0 0;
+    color: #ffffff;
+    font-size: clamp(30px, 4vw, 47px);
+    line-height: 1.08;
+    font-weight: 800;
+}
+
+.npv707-description {
+    max-width: 730px;
+    margin: 13px 0 0;
+    color: rgba(255,255,255,0.63);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* ============================================================
+   ADD PROVIDER PANEL
+   ============================================================ */
+
+.npv708-add-panel {
+    height: 100%;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 22px;
+    background: rgba(255,255,255,0.045);
+    backdrop-filter: blur(14px);
+}
+
+.npv709-add-content {
+    width: 100%;
+    text-align: center;
+}
+
+.npv710-add-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 11px;
+    border-radius: 16px;
+    color: #00d99a;
+    background: rgba(0,255,170,0.10);
+    border: 1px solid rgba(0,255,170,0.13);
+    font-size: 19px;
+}
+
+.npv711-add-heading {
+    margin: 0;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.npv712-add-text {
+    margin: 5px 0 14px;
+    color: rgba(255,255,255,0.50);
+    font-size: 11px;
+}
+
+.npv713-add-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 43px;
+    padding: 9px 18px;
+    border: 0;
+    border-radius: 12px;
+    color: #04221b;
+    background: #00d99a;
+    font-size: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 9px 25px rgba(0,217,154,0.20);
+    transition: all 0.25s ease;
+}
+
+.npv713-add-button:hover {
+    color: #04221b;
+    transform: translateY(-2px);
+    box-shadow: 0 13px 30px rgba(0,217,154,0.30);
+}
+
+
+/* ============================================================
+   SECTION HEADER
+   ============================================================ */
+
+.npv714-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.npv715-heading {
+    margin: 0;
+    color: #151d2b;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.npv716-subheading {
+    margin: 5px 0 0;
+    color: #7c8795;
+    font-size: 13px;
+}
+
+.npv717-count {
+    min-width: 45px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 13px;
+    border-radius: 12px;
+    color: #008966;
+    background: #eaf9f4;
+    border: 1px solid #d5f0e7;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+/* ============================================================
+   PROVIDER CARD
+   ============================================================ */
+
+.npv718-card {
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid #e8ecf1;
+    border-radius: 21px;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(20,30,45,0.065);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.npv718-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0,168,120,0.25);
+    box-shadow: 0 20px 45px rgba(20,30,45,0.12);
+}
+
+
+/* ============================================================
+   CARD HEADER
+   ============================================================ */
+
+.npv719-card-header {
+    position: relative;
+    padding: 22px;
+}
+
+.npv720-profile {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding-right: 78px;
+}
+
+.npv721-avatar {
+    width: 59px;
+    height: 59px;
+    flex: 0 0 59px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 17px;
+    color: #009b73;
+    background: linear-gradient(
+        135deg,
+        #e7f8f2,
+        #f3fbf8
+    );
+    border: 1px solid #d8eee7;
+    font-size: 22px;
+}
+
+.npv721-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.npv722-name {
+    margin: 0;
+    color: #171f2c;
+    font-size: 18px;
+    line-height: 1.3;
+    font-weight: 800;
+    word-break: break-word;
+}
+
+.npv723-role {
+    display: block;
+    margin-top: 4px;
+    color: #98a1ad;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
+/* ============================================================
+   CARD ACTIONS
+   ============================================================ */
+
+.npv724-actions {
+    position: absolute;
+    top: 19px;
+    right: 19px;
+    display: flex;
+    gap: 7px;
+}
+
+.npv725-action {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+}
+
+.npv725-action:hover {
+    transform: translateY(-2px);
+}
+
+.npv726-edit {
+    color: #087fce;
+    background: #eef7fd;
+    border: 1px solid #d9edf9;
+}
+
+.npv726-edit:hover {
+    color: #ffffff;
+    background: #087fce;
+}
+
+.npv727-delete {
+    color: #dc3545;
+    background: #fff0f1;
+    border: 1px solid #f9dfe2;
+}
+
+.npv727-delete:hover {
+    color: #ffffff;
+    background: #dc3545;
+}
+
+
+/* ============================================================
+   INFORMATION
+   ============================================================ */
+
+.npv728-information {
+    padding: 0 22px 19px;
+}
+
+.npv729-info {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 10px 0;
+    border-bottom: 1px solid #edf0f3;
+}
+
+.npv729-info:last-child {
+    border-bottom: 0;
+}
+
+.npv730-info-icon {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    color: #009b73;
+    background: #f1f8f5;
+    font-size: 13px;
+}
+
+.npv731-info-data {
+    min-width: 0;
+    flex: 1;
+}
+
+.npv732-label {
+    display: block;
+    margin-bottom: 2px;
+    color: #9aa3ae;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.npv733-value {
+    display: block;
+    color: #293342;
+    font-size: 12px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   CARD FOOTER
+   ============================================================ */
+
+.npv734-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 14px 22px;
+    background: #fafcfb;
+    border-top: 1px solid #edf0f3;
+}
+
+.npv735-profile-link {
+    color: #007e61;
+    font-size: 12px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.npv735-profile-link:hover {
+    color: #005c47;
+}
+
+.npv736-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.npv737-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.npv738-active {
+    color: #087f5b;
+    background: #e8faf2;
+}
+
+.npv738-active .npv737-dot {
+    background: #00a878;
+}
+
+.npv739-inactive {
+    color: #c12e3a;
+    background: #fff0f1;
+}
+
+.npv739-inactive .npv737-dot {
+    background: #dc3545;
+}
+
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+
+.npv740-empty {
+    padding: 65px 25px;
+    text-align: center;
+    border: 1px dashed #d8e0e7;
+    border-radius: 23px;
+    background: #ffffff;
+}
+
+.npv741-empty-icon {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 17px;
+    border-radius: 21px;
+    color: #009b73;
+    background: #eff8f5;
+    font-size: 27px;
+}
+
+.npv742-empty-title {
+    margin: 0;
+    color: #1f2937;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.npv743-empty-text {
+    max-width: 450px;
+    margin: 8px auto 0;
+    color: #7b8592;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   MODAL BASE
+   ============================================================ */
+
+.npv744-modal {
+    z-index: 9999 !important;
+}
+
+.npv744-modal .modal-dialog {
+    width: 100%;
+    max-width: 570px;
+    margin: 1rem auto;
+}
+
+.npv745-modal-content {
+    overflow: hidden;
+    border: 0;
+    border-radius: 25px;
+    background: #ffffff;
+    box-shadow: 0 35px 100px rgba(0,0,0,0.30);
+}
+
+
+/* ============================================================
+   MODAL HEADER
+   ============================================================ */
+
+.npv746-modal-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 22px 24px;
+    border: 0;
+    background:
+        radial-gradient(
+            circle at 90% 0%,
+            rgba(0,255,170,0.16),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #04221d,
+            #07332c
+        );
+}
+
+.npv747-modal-heading {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-width: 0;
+    flex: 1;
+}
+
+.npv748-modal-icon {
+    width: 45px;
+    height: 45px;
+    flex: 0 0 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    color: #00d99a;
+    background: rgba(0,255,170,0.11);
+    border: 1px solid rgba(0,255,170,0.12);
+    font-size: 17px;
+}
+
+.npv749-modal-title {
+    margin: 0;
+    color: #ffffff;
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.npv750-modal-subtitle {
+    margin: 3px 0 0;
+    color: rgba(255,255,255,0.52);
+    font-size: 10px;
+}
+
+.npv751-close {
+    opacity: 1 !important;
+    filter: invert(1);
+}
+
+
+/* ============================================================
+   MODAL BODY
+   ============================================================ */
+
+.npv752-modal-body {
+    padding: 25px;
+}
+
+.npv753-field {
+    margin-bottom: 17px;
+}
+
+.npv754-label {
+    display: block;
+    margin-bottom: 7px;
+    color: #303846;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.npv755-input {
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 13px;
+    border: 1px solid #dfe5ea !important;
+    border-radius: 12px !important;
+    background: #ffffff !important;
+    color: #202832 !important;
+    box-shadow: none !important;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.npv756-input {
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 13px;
+    border: 1px solid #dfe5ea !important;
+    border-radius: 12px !important;
+    background: #ffffff !important;
+    color: #202832 !important;
+    box-shadow: none !important;
+    font-size: 13px;
+}
+
+.npv755-input:focus,
+.npv756-input:focus {
+    border-color: #00a878 !important;
+    box-shadow: 0 0 0 4px rgba(0,168,120,0.09) !important;
+    outline: none;
+}
+
+
+/* ============================================================
+   STATUS
+   ============================================================ */
+
+.npv757-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 3px;
+    padding: 13px 14px;
+    border: 1px solid #e2ece8;
+    border-radius: 13px;
+    background: #f7faf9;
+}
+
+.npv757-status input {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.npv757-status label {
+    margin: 0;
+    color: #344054;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+/* ============================================================
+   MODAL FOOTER
+   ============================================================ */
+
+.npv758-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 9px;
+    padding: 16px 25px;
+    border-top: 1px solid #edf0f3;
+    background: #fafcfb;
+}
+
+.npv759-cancel {
+    min-height: 42px;
+    padding: 9px 17px;
+    border: 0 !important;
+    border-radius: 11px;
+    color: #47505b !important;
+    background: #edf0f2 !important;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.npv760-submit {
+    min-height: 42px;
+    padding: 9px 20px;
+    border: 0 !important;
+    border-radius: 11px;
+    color: #ffffff !important;
+    background: #00a878 !important;
+    font-size: 12px;
+    font-weight: 800;
+    box-shadow: 0 7px 18px rgba(0,168,120,0.18);
+}
+
+.npv760-submit:hover {
+    background: #008d65 !important;
+}
+
+
+/* ============================================================
+   DELETE MODAL
+   ============================================================ */
+
+.npv761-delete-icon {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px auto 18px;
+    border-radius: 22px;
+    color: #dc3545;
+    background: #fff0f1;
+    font-size: 27px;
+}
+
+.npv762-delete-title {
+    margin: 0 0 8px;
+    color: #202832;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.npv763-delete-text {
+    max-width: 400px;
+    margin: 0 auto;
+    color: #737d89;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.npv764-delete-footer {
+    background: #fffafa;
+}
+
+.npv765-delete-button {
+    min-height: 42px;
+    padding: 9px 20px;
+    border: 0 !important;
+    border-radius: 11px;
+    color: #ffffff !important;
+    background: #dc3545 !important;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.npv765-delete-button:hover {
+    background: #bb2d3b !important;
+}
+
+
+/* ============================================================
+   ADD MODAL EXTRA DESIGN
+   ============================================================ */
+
+.npv766-add-intro {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 13px 14px;
+    border: 1px solid #dcefe8;
+    border-radius: 14px;
+    background: #f3faf7;
+}
+
+.npv767-add-intro-icon {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    color: #009b73;
+    background: #ffffff;
+    font-size: 13px;
+}
+
+.npv768-add-intro-text {
+    margin: 0;
+    color: #52605b;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 991.98px) {
+
+    .npv702-hero {
+        padding: 28px;
+    }
+
+    .npv708-add-panel {
+        min-height: 135px;
+    }
+}
+
+
+@media (max-width: 767.98px) {
+
+    .npv700-page {
+        padding-top: 14px;
+        padding-bottom: 30px;
+    }
+
+    .npv702-hero {
+        padding: 23px 19px;
+        border-radius: 21px;
+    }
+
+    .npv706-title {
+        font-size: 31px;
+    }
+
+    .npv707-description {
+        font-size: 13px;
+    }
+
+    .npv714-section-header {
+        align-items: flex-start;
+    }
+
+    .npv715-heading {
+        font-size: 21px;
+    }
+
+    .npv718-card {
+        border-radius: 19px;
+    }
+
+    .npv719-card-header {
+        padding: 19px 18px;
+    }
+
+    .npv720-profile {
+        padding-right: 72px;
+    }
+
+    .npv728-information {
+        padding-right: 18px;
+        padding-left: 18px;
+    }
+
+    .npv734-footer {
+        padding-right: 18px;
+        padding-left: 18px;
+    }
+
+    .npv744-modal .modal-dialog {
+        max-width: none;
+        margin: 0.65rem;
+    }
+
+    .npv752-modal-body {
+        padding: 20px;
+    }
+
+    .npv758-modal-footer {
+        padding: 14px 20px;
+    }
+}
+
+
+@media (max-width: 575.98px) {
+
+    .npv705-eyebrow {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .npv706-title {
+        font-size: 28px;
+    }
+
+    .npv714-section-header {
+        gap: 8px;
+    }
+
+    .npv715-heading {
+        font-size: 19px;
+    }
+
+    .npv717-count {
+        min-width: 39px;
+        height: 34px;
+        padding: 0 10px;
+    }
+
+    .npv720-profile {
+        gap: 9px;
+        padding-right: 70px;
+    }
+
+    .npv721-avatar {
+        width: 53px;
+        height: 53px;
+        flex-basis: 53px;
+    }
+
+    .npv722-name {
+        font-size: 16px;
+    }
+
+    .npv724-actions {
+        top: 14px;
+        right: 14px;
+    }
+
+    .npv725-action {
+        width: 33px;
+        height: 33px;
+    }
+
+    .npv734-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .npv736-status {
+        align-self: flex-start;
+    }
+
+    .npv758-modal-footer {
+        flex-direction: column-reverse;
+    }
+
+    .npv759-cancel,
+    .npv760-submit,
+    .npv765-delete-button {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 380px) {
+
+    .npv702-hero {
+        padding: 20px 15px;
+    }
+
+    .npv706-title {
+        font-size: 25px;
+    }
+
+    .npv721-avatar {
+        width: 47px;
+        height: 47px;
+        flex-basis: 47px;
+        border-radius: 13px;
+    }
+
+    .npv722-name {
+        font-size: 14px;
+    }
+
+    .npv734-footer {
+        gap: 8px;
+    }
+}
+
+.npu501-page {
+    width: 100%;
+    padding: 25px 0 45px;
+}
+
+
+.npu502-hero {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 30px;
+
+    margin-bottom: 25px;
+
+    border-radius: 27px;
+
+    background:
+        radial-gradient(
+            circle at 90% 0%,
+            rgba(0,255,170,0.18),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #031c18,
+            #062b25,
+            #09221f
+        );
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 22px 55px rgba(0,0,0,0.17);
+}
+
+.npu503-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.npu504-eyebrow {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 13px;
+
+    border-radius: 999px;
+
+    color: #00d99a;
+
+    background: rgba(0,255,170,0.08);
+
+    border: 1px solid rgba(0,255,170,0.14);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
+}
+
+.npu505-title {
+    margin: 14px 0 6px;
+
+    color: #ffffff;
+
+    font-size: clamp(28px,4vw,43px);
+
+    font-weight: 800;
+
+    line-height: 1.1;
+}
+
+.npu506-subtitle {
+    margin: 0;
+
+    color: rgba(255,255,255,0.58);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+.npu507-back {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 44px;
+
+    padding: 9px 17px;
+
+    color: #ffffff !important;
+
+    background: rgba(255,255,255,0.08);
+
+    border: 1px solid rgba(255,255,255,0.13);
+
+    border-radius: 12px;
+
+    text-decoration: none !important;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+.npu507-back:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+
+/* =========================================================
+   UPDATE CARD
+   ========================================================= */
+
+.npu508-card {
+    overflow: hidden;
+
+    border-radius: 25px;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(20,30,40,0.07);
+
+    box-shadow:
+        0 15px 45px rgba(16,24,40,0.08);
+}
+
+.npu509-card-header {
+    padding: 22px 28px;
+
+    border-bottom: 1px solid #edf1ef;
+
+    background: #fbfdfc;
+}
+
+.npu510-header-title {
+    margin: 0;
+
+    color: #18212a;
+
+    font-size: 19px;
+
+    font-weight: 800;
+}
+
+.npu511-header-text {
+    margin: 4px 0 0;
+
+    color: #8c96a1;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   FORM BODY
+   ========================================================= */
+
+.npu512-body {
+    padding: 30px;
+}
+
+.npu513-field {
+    margin-bottom: 21px;
+}
+
+.npu514-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #303944;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+}
+
+.npu515-input,
+.npu516-select {
+    width: 100%;
+
+    min-height: 48px;
+
+    padding: 10px 14px;
+
+    color: #202832 !important;
+
+    background: #ffffff !important;
+
+    border: 1px solid #dfe5e8 !important;
+
+    border-radius: 12px !important;
+
+    outline: none;
+
+    box-shadow: none !important;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.npu515-input:focus,
+.npu516-select:focus {
+    border-color: #00a878 !important;
+
+    box-shadow:
+        0 0 0 4px rgba(0,168,120,0.09) !important;
+}
+
+
+/* =========================================================
+   PHOTO AREA
+   ========================================================= */
+
+.npu517-photo-panel {
+    height: 100%;
+
+    padding: 25px;
+
+    border-radius: 19px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f4faf7,
+            #fbfdfc
+        );
+
+    border: 1px solid #e4eee9;
+
+    text-align: center;
+}
+
+.npu518-photo-title {
+    margin: 0 0 17px;
+
+    color: #27313b;
+
+    font-size: 14px;
+
+    font-weight: 800;
+}
+
+.npu519-photo-wrapper {
+    width: 145px;
+    height: 145px;
+
+    margin: 0 auto 17px;
+
+    padding: 5px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00c994,
+            #007f66,
+            #00dca2
+        );
+}
+
+.npu520-photo {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 4px solid #f4faf7;
+
+    background: #ffffff;
+}
+
+.npu521-avatar {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: #009b73;
+
+    background: #ffffff;
+
+    border: 4px solid #f4faf7;
+
+    font-size: 45px;
+}
+
+.npu522-file {
+    width: 100%;
+
+    padding: 10px;
+
+    color: #56616d;
+
+    background: #ffffff;
+
+    border: 1px dashed #cddbd5;
+
+    border-radius: 11px;
+
+    font-size: 11px;
+}
+
+.npu523-help {
+    margin: 9px 0 0;
+
+    color: #929ba4;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   CURRENT PROVIDER
+   ========================================================= */
+
+.npu524-current {
+    margin-top: 15px;
+
+    padding: 10px 13px;
+
+    border-radius: 11px;
+
+    color: #59636e;
+
+    background: #ffffff;
+
+    border: 1px solid #e6ece9;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   SUBMIT AREA
+   ========================================================= */
+
+.npu525-footer {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding: 18px 30px;
+
+    background: #fbfdfc;
+
+    border-top: 1px solid #edf1ef;
+}
+
+.npu526-cancel {
+    min-height: 44px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 9px 18px;
+
+    border-radius: 11px;
+
+    color: #56606b !important;
+
+    background: #edf0f2 !important;
+
+    border: 0 !important;
+
+    text-decoration: none !important;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+.npu526-cancel:hover {
+    background: #dfe4e7 !important;
+}
+
+.npu527-submit {
+    min-height: 44px;
+
+    padding: 9px 21px;
+
+    border-radius: 11px;
+
+    color: #ffffff !important;
+
+    background: #00a878 !important;
+
+    border: 0 !important;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 8px 20px rgba(0,168,120,0.16);
+}
+
+.npu527-submit:hover {
+    background: #008f68 !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+
+    .npu502-hero {
+        padding: 26px;
+    }
+
+    .npu512-body {
+        padding: 25px;
+    }
+
+}
+
+
+@media (max-width: 767.98px) {
+
+    .npu501-page {
+        padding-top: 15px;
+    }
+
+    .npu502-hero {
+        padding: 22px 18px;
+
+        border-radius: 20px;
+    }
+
+    .npu507-back {
+        width: 100%;
+
+        margin-top: 5px;
+    }
+
+    .npu509-card-header {
+        padding: 20px;
+    }
+
+    .npu512-body {
+        padding: 20px;
+    }
+
+    .npu517-photo-panel {
+        padding: 20px;
+    }
+
+}
+
+
+@media (max-width: 575.98px) {
+
+    .npu505-title {
+        font-size: 28px;
+    }
+
+    .npu525-footer {
+        padding: 15px 20px;
+
+        flex-direction: column-reverse;
+    }
+
+    .npu525-footer a,
+    .npu525-footer button {
+        width: 100%;
+    }
+
+}
+
+    .napv601-page {
+        width: 100%;
+        min-height: 100%;
+        padding: 25px 0 45px;
+        background:
+            radial-gradient(
+                circle at 5% 5%,
+                rgba(13, 110, 253, 0.08),
+                transparent 28%
+            ),
+            radial-gradient(
+                circle at 95% 10%,
+                rgba(25, 135, 84, 0.08),
+                transparent 28%
+            ),
+            #f5f7fb;
+    }
+
+    .napv601-container {
+        width: 100%;
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* =========================================================
+       TOP ACTION BAR
+       ========================================================= */
+
+    .napv602-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        margin-bottom: 22px;
+        flex-wrap: wrap;
+    }
+
+    .napv603-back {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        min-height: 44px;
+        padding: 10px 17px;
+        border: 1px solid #e4e9f1;
+        border-radius: 13px;
+        background: #ffffff;
+        color: #263247;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+        box-shadow: 0 7px 24px rgba(20, 35, 60, 0.06);
+        transition: all 0.25s ease;
+    }
+
+    .napv603-back:hover {
+        color: #0d6efd;
+        text-decoration: none;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(20, 35, 60, 0.10);
+    }
+
+    .napv603-back i {
+        font-size: 15px;
+    }
+
+    .napv604-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .napv605-edit {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 44px;
+        padding: 10px 19px;
+        border: 0;
+        border-radius: 13px;
+        background: linear-gradient(
+            135deg,
+            #0d6efd,
+            #246bce
+        );
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+        box-shadow: 0 9px 24px rgba(13, 110, 253, 0.22);
+        transition: all 0.25s ease;
+    }
+
+    .napv605-edit:hover {
+        color: #ffffff;
+        text-decoration: none;
+        transform: translateY(-2px);
+        box-shadow: 0 13px 30px rgba(13, 110, 253, 0.30);
+    }
+
+    /* =========================================================
+       PREMIUM HERO
+       ========================================================= */
+
+    .napv606-hero {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 23px;
+        padding: 35px;
+        border-radius: 25px;
+        background:
+            linear-gradient(
+                135deg,
+                #111827 0%,
+                #172554 52%,
+                #0f766e 100%
+            );
+        box-shadow: 0 20px 55px rgba(15, 23, 42, 0.17);
+    }
+
+    .napv606-hero::before {
+        content: "";
+        position: absolute;
+        width: 290px;
+        height: 290px;
+        top: -150px;
+        right: -90px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        pointer-events: none;
+    }
+
+    .napv606-hero::after {
+        content: "";
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        left: 35%;
+        bottom: -135px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        pointer-events: none;
+    }
+
+    .napv607-hero-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        gap: 26px;
+    }
+
+    /* =========================================================
+       PROFILE PHOTO
+       ========================================================= */
+
+    .napv608-photo {
+        width: 112px;
+        height: 112px;
+        flex: 0 0 112px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 4px solid rgba(255, 255, 255, 0.30);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.12);
+        box-shadow:
+            0 12px 35px rgba(0, 0, 0, 0.22),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.10);
+    }
+
+    .napv608-photo img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .napv609-photo-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 43px;
+    }
+
+    /* =========================================================
+       HERO TEXT
+       ========================================================= */
+
+    .napv610-hero-text {
+        min-width: 0;
+    }
+
+    .napv611-eyebrow {
+        margin: 0 0 8px;
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 12px;
+        line-height: 1.3;
+        font-weight: 700;
+        letter-spacing: 1.8px;
+        text-transform: uppercase;
+    }
+
+    .napv612-name {
+        margin: 0;
+        color: #ffffff;
+        font-size: clamp(26px, 3vw, 40px);
+        line-height: 1.15;
+        font-weight: 800;
+        word-break: break-word;
+    }
+
+    .napv613-service {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 13px;
+        padding: 8px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.11);
+        color: rgba(255, 255, 255, 0.90);
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .napv613-service i {
+        color: #5eead4;
+    }
+
+    /* =========================================================
+       CONTENT GRID
+       ========================================================= */
+
+    .napv614-grid {
+        display: grid;
+        grid-template-columns:
+            minmax(0, 1.55fr)
+            minmax(290px, 0.75fr);
+        gap: 23px;
+    }
+
+    /* =========================================================
+       COMMON CARD
+       ========================================================= */
+
+    .napv615-card {
+        height: 100%;
+        overflow: hidden;
+        border: 1px solid #e7ebf2;
+        border-radius: 22px;
+        background: #ffffff;
+        box-shadow: 0 10px 36px rgba(30, 45, 70, 0.07);
+    }
+
+    /* =========================================================
+       CARD HEADER
+       ========================================================= */
+
+    .napv616-card-header {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        padding: 22px 24px;
+        border-bottom: 1px solid #edf0f5;
+    }
+
+    .napv617-header-icon {
+        width: 43px;
+        height: 43px;
+        flex: 0 0 43px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 13px;
+        background: #eef5ff;
+        color: #0d6efd;
+        font-size: 17px;
+    }
+
+    .napv618-header-title {
+        margin: 0;
+        color: #182235;
+        font-size: 18px;
+        font-weight: 800;
+    }
+
+    .napv619-header-subtitle {
+        margin: 3px 0 0;
+        color: #8c96a7;
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    /* =========================================================
+       INFORMATION BODY
+       ========================================================= */
+
+    .napv620-card-body {
+        padding: 7px 24px 20px;
+    }
+
+    .napv621-detail {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 18px 0;
+        border-bottom: 1px solid #edf0f5;
+    }
+
+    .napv621-detail:last-child {
+        border-bottom: 0;
+    }
+
+    .napv622-detail-icon {
+        width: 45px;
+        height: 45px;
+        flex: 0 0 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 13px;
+        background: #f5f7fb;
+        color: #526071;
+        font-size: 16px;
+    }
+
+    .napv623-detail-content {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .napv624-detail-label {
+        display: block;
+        margin-bottom: 4px;
+        color: #929baa;
+        font-size: 11px;
+        line-height: 1.2;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+    }
+
+    .napv625-detail-value {
+        display: block;
+        color: #263247;
+        font-size: 15px;
+        line-height: 1.5;
+        font-weight: 600;
+        overflow-wrap: anywhere;
+    }
+
+    /* =========================================================
+       SUMMARY CARD
+       ========================================================= */
+
+    .napv626-summary {
+        padding: 24px;
+    }
+
+    .napv627-summary-title {
+        margin: 0 0 19px;
+        color: #182235;
+        font-size: 18px;
+        font-weight: 800;
+    }
+
+    .napv628-summary-box {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 15px;
+        margin-bottom: 12px;
+        border: 1px solid #edf0f5;
+        border-radius: 16px;
+        background: #f8fafc;
+        transition: all 0.22s ease;
+    }
+
+    .napv628-summary-box:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 7px 20px rgba(30, 45, 70, 0.06);
+    }
+
+    .napv628-summary-box:last-child {
+        margin-bottom: 0;
+    }
+
+    .napv629-summary-icon {
+        width: 42px;
+        height: 42px;
+        flex: 0 0 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        background: #ffffff;
+        color: #0d6efd;
+        box-shadow: 0 4px 12px rgba(30, 45, 70, 0.06);
+    }
+
+    .napv630-summary-text {
+        min-width: 0;
+    }
+
+    .napv631-summary-label {
+        display: block;
+        margin-bottom: 3px;
+        color: #929baa;
+        font-size: 11px;
+        line-height: 1.3;
+        font-weight: 700;
+        letter-spacing: 0.7px;
+        text-transform: uppercase;
+    }
+
+    .napv632-summary-value {
+        display: block;
+        color: #273246;
+        font-size: 14px;
+        line-height: 1.4;
+        font-weight: 700;
+        overflow-wrap: anywhere;
+    }
+
+    /* =========================================================
+       STATUS
+       ========================================================= */
+
+    .napv633-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .napv634-status-active {
+        color: #087443;
+        background: #e8f8f0;
+    }
+
+    .napv635-status-inactive {
+        color: #a13a3a;
+        background: #fdeeee;
+    }
+
+    .napv636-status-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: currentColor;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 991.98px) {
+
+        .napv614-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .napv606-hero {
+            padding: 30px;
+        }
+    }
+
+    @media (max-width: 767.98px) {
+
+        .napv601-page {
+            padding-top: 16px;
+        }
+
+        .napv601-container {
+            padding-right: 14px;
+            padding-left: 14px;
+        }
+
+        .napv602-topbar {
+            align-items: stretch;
+        }
+
+        .napv603-back {
+            width: 100%;
+        }
+
+        .napv604-actions {
+            width: 100%;
+        }
+
+        .napv605-edit {
+            width: 100%;
+        }
+
+        .napv606-hero {
+            padding: 25px 19px;
+            border-radius: 20px;
+        }
+
+        .napv607-hero-content {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .napv608-photo {
+            width: 96px;
+            height: 96px;
+            flex-basis: 96px;
+        }
+
+        .napv609-photo-placeholder {
+            font-size: 37px;
+        }
+
+        .napv615-card {
+            border-radius: 18px;
+        }
+
+        .napv616-card-header {
+            padding: 18px;
+        }
+
+        .napv620-card-body {
+            padding-right: 18px;
+            padding-left: 18px;
+        }
+
+        .napv626-summary {
+            padding: 18px;
+        }
+
+        .napv621-detail {
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .napv622-detail-icon {
+            width: 41px;
+            height: 41px;
+            flex-basis: 41px;
+        }
+    }
+
+    @media (max-width: 479.98px) {
+
+        .napv612-name {
+            font-size: 25px;
+        }
+
+        .napv621-detail {
+            gap: 10px;
+        }
+
+        .napv625-detail-value {
+            font-size: 14px;
+        }
+
+        .napv618-header-title {
+            font-size: 16px;
+        }
+    }
+
+
+    .npr901-page {
+        width: 100%;
+        min-height: 100%;
+        padding: 0;
+        position: relative;
+    }
+
+
+    .npr901-hero {
+        position: relative;
+        overflow: hidden;
+        border-radius: 30px;
+        padding: 38px;
+        margin-bottom: 30px;
+        background:
+            radial-gradient(circle at 90% 10%, rgba(0, 255, 170, 0.18), transparent 30%),
+            radial-gradient(circle at 10% 100%, rgba(0, 180, 130, 0.15), transparent 30%),
+            linear-gradient(135deg, #002f28 0%, #003d34 45%, #00251f 100%);
+        box-shadow: 0 25px 60px rgba(0, 45, 38, 0.16);
+        color: #ffffff;
+    }
+
+    .npr901-hero::before {
+        content: "";
+        position: absolute;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        right: -90px;
+        top: -130px;
+        background: rgba(0, 255, 170, 0.07);
+        pointer-events: none;
+    }
+
+    .npr901-hero::after {
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        left: -90px;
+        bottom: -100px;
+        background: rgba(255, 255, 255, 0.035);
+        pointer-events: none;
+    }
+
+    .npr902-hero-inner {
+        position: relative;
+        z-index: 2;
+    }
+
+    .npr903-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 8px 14px;
+        border-radius: 50px;
+        background: rgba(0, 255, 170, 0.10);
+        border: 1px solid rgba(0, 255, 170, 0.18);
+        color: #65ffd0;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+    }
+
+    .npr903-eyebrow .fa {
+        font-size: 13px;
+    }
+
+    .npr904-title {
+        margin: 0;
+        font-size: clamp(32px, 4vw, 52px);
+        line-height: 1.05;
+        font-weight: 800;
+        letter-spacing: -1.5px;
+    }
+
+    .npr905-description {
+        margin: 14px 0 0;
+        max-width: 650px;
+        color: rgba(255, 255, 255, 0.70);
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    /* =========================================================
+       HERO ACTION
+       ========================================================= */
+
+    .npr906-action-card {
+        height: 100%;
+        min-height: 170px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.055);
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+    }
+
+    .npr907-action-content {
+        text-align: center;
+    }
+
+    .npr908-action-icon {
+        width: 58px;
+        height: 58px;
+        margin: 0 auto 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+        background: rgba(0, 255, 170, 0.11);
+        border: 1px solid rgba(0, 255, 170, 0.16);
+        color: #43ffc7;
+        font-size: 22px;
+    }
+
+    .npr909-action-title {
+        margin: 0 0 4px;
+        font-size: 17px;
+        font-weight: 800;
+        color: #ffffff;
+    }
+
+    .npr910-action-text {
+        margin: 0 0 16px;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.58);
+    }
+
+    .npr911-add-btn {
+        border: 0;
+        min-height: 46px;
+        padding: 0 20px;
+        border-radius: 13px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: linear-gradient(135deg, #00d995, #00b77e);
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 800;
+        box-shadow: 0 12px 25px rgba(0, 217, 149, 0.20);
+        transition: all 0.25s ease;
+    }
+
+    .npr911-add-btn:hover {
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 16px 30px rgba(0, 217, 149, 0.30);
+    }
+
+    /* =========================================================
+       SECTION HEADING
+       ========================================================= */
+
+    .npr912-section-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .npr913-section-label {
+        margin: 0 0 5px;
+        color: #00a978;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+
+    .npr914-section-title {
+        margin: 0;
+        color: #17252a;
+        font-size: clamp(24px, 3vw, 32px);
+        font-weight: 800;
+        letter-spacing: -0.8px;
+    }
+
+    .npr915-count {
+        min-width: 48px;
+        height: 42px;
+        padding: 0 14px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 13px;
+        background: #effaf6;
+        border: 1px solid #d9f1e8;
+        color: #008d68;
+        font-size: 15px;
+        font-weight: 800;
+    }
+
+    /* =========================================================
+       PROVIDER CARD
+       ========================================================= */
+
+    .npr916-card {
+        position: relative;
+        height: 100%;
+        padding: 24px;
+        border-radius: 24px;
+        background: #ffffff;
+        border: 1px solid #e9efed;
+        box-shadow: 0 12px 35px rgba(22, 45, 40, 0.07);
+        overflow: hidden;
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease,
+            border-color 0.25s ease;
+    }
+
+    .npr916-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #00b981, #00e0a0);
+        opacity: 0;
+        transition: opacity 0.25s ease;
+    }
+
+    .npr916-card:hover {
+        transform: translateY(-5px);
+        border-color: #d6ebe4;
+        box-shadow: 0 22px 50px rgba(22, 45, 40, 0.12);
+    }
+
+    .npr916-card:hover::before {
+        opacity: 1;
+    }
+
+    .npr917-card-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 14px;
+        margin-bottom: 24px;
+    }
+
+    .npr918-provider-main {
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .npr919-avatar {
+        width: 62px;
+        height: 62px;
+        flex: 0 0 62px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 19px;
+        background: linear-gradient(145deg, #eafaf5, #d9f4eb);
+        border: 1px solid #d5eee5;
+        color: #009b70;
+        font-size: 22px;
+        overflow: hidden;
+    }
+
+    .npr919-avatar .fa {
+        font-size: 22px;
+    }
+
+    .npr920-provider-name {
+        min-width: 0;
+        margin: 0;
+        color: #15262a;
+        font-size: 18px;
+        line-height: 1.25;
+        font-weight: 800;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .npr921-provider-role {
+        margin: 5px 0 0;
+        color: #00a274;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 1.1px;
+        text-transform: uppercase;
+    }
+
+    .npr922-actions {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        flex-shrink: 0;
+    }
+
+    .npr923-icon-btn {
+        width: 39px;
+        height: 39px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        border: 1px solid #e5ece9;
+        background: #f8faf9;
+        color: #008d68;
+        transition: all 0.2s ease;
+    }
+
+    .npr923-icon-btn:hover {
+        background: #e9f9f3;
+        border-color: #cceee2;
+        color: #007d5e;
+        transform: translateY(-1px);
+    }
+
+    .npr924-delete-btn {
+        color: #d35b64;
+    }
+
+    .npr924-delete-btn:hover {
+        background: #fff0f1;
+        border-color: #f6d7da;
+        color: #c43d49;
+    }
+
+    /* =========================================================
+       PROVIDER INFORMATION
+       ========================================================= */
+
+    .npr925-info-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .npr926-info-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 0;
+        border-top: 1px solid #edf1ef;
+    }
+
+    .npr926-info-item:first-child {
+        border-top: 0;
+        padding-top: 0;
+    }
+
+    .npr927-info-icon {
+        width: 36px;
+        height: 36px;
+        flex: 0 0 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 11px;
+        background: #f0faf6;
+        color: #009b70;
+        font-size: 13px;
+    }
+
+    .npr928-info-content {
+        min-width: 0;
+    }
+
+    .npr929-info-label {
+        display: block;
+        margin-bottom: 3px;
+        color: #9aa7a3;
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .npr930-info-value {
+        display: block;
+        color: #344447;
+        font-size: 13px;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+    }
+
+    .npr931-card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 18px;
+        padding-top: 17px;
+        border-top: 1px solid #edf1ef;
+    }
+
+    .npr932-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 7px 11px;
+        border-radius: 50px;
+        font-size: 10px;
+        font-weight: 800;
+    }
+
+    .npr933-status-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: currentColor;
+    }
+
+    .npr934-status-active {
+        color: #008e68;
+        background: #eafaf4;
+    }
+
+    .npr935-status-inactive {
+        color: #9a6d13;
+        background: #fff7df;
+    }
+
+    .npr936-view-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        color: #008f69;
+        font-size: 11px;
+        font-weight: 800;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .npr936-view-btn:hover {
+        color: #006c51;
+    }
+
+    /* =========================================================
+       EMPTY STATE
+       ========================================================= */
+
+    .npr937-empty {
+        padding: 70px 25px;
+        text-align: center;
+        border-radius: 26px;
+        background: #ffffff;
+        border: 1px dashed #d7e5e0;
+    }
+
+    .npr938-empty-icon {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 22px;
+        background: #effaf6;
+        color: #00a878;
+        font-size: 26px;
+    }
+
+    .npr939-empty-title {
+        margin: 0 0 7px;
+        color: #243437;
+        font-size: 19px;
+        font-weight: 800;
+    }
+
+    .npr940-empty-text {
+        margin: 0;
+        color: #8c9995;
+        font-size: 13px;
+    }
+
+    /* =========================================================
+       MODAL SYSTEM
+       ========================================================= */
+
+    .npr-modal {
+        z-index: 20000 !important;
+    }
+
+    .npr-modal .modal-dialog {
+        z-index: 20001 !important;
+    }
+
+    .npr-modal .modal-content {
+        position: relative;
+        z-index: 20002 !important;
+        overflow: hidden;
+        border: 0;
+        border-radius: 26px;
+        background: #ffffff;
+        box-shadow: 0 35px 100px rgba(0, 0, 0, 0.25);
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none;
+    }
+
+    .npr-modal .modal-header {
+        position: relative;
+        padding: 24px 27px;
+        border: 0;
+        background:
+            radial-gradient(circle at 90% 10%, rgba(0, 255, 170, 0.13), transparent 32%),
+            linear-gradient(135deg, #003b31, #002d27);
+        color: #ffffff;
+    }
+
+    .npr-modal-heading {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+    }
+
+    .npr-modal-icon {
+        width: 48px;
+        height: 48px;
+        flex: 0 0 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        background: rgba(0, 255, 170, 0.10);
+        border: 1px solid rgba(0, 255, 170, 0.16);
+        color: #4dffd0;
+        font-size: 18px;
+    }
+
+    .npr-modal-title {
+        margin: 0;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 800;
+    }
+
+    .npr-modal-subtitle {
+        margin: 3px 0 0;
+        color: rgba(255, 255, 255, 0.56);
+        font-size: 11px;
+    }
+
+    .npr-modal-close {
+        width: 38px;
+        height: 38px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        border-radius: 11px;
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 18px;
+        transition: all 0.2s ease;
+    }
+
+    .npr-modal-close:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+    }
+
+    .npr-modal-body {
+        padding: 27px;
+        background: #ffffff;
+    }
+
+    .npr-modal-note {
+        display: flex;
+        align-items: flex-start;
+        gap: 11px;
+        margin-bottom: 22px;
+        padding: 13px 15px;
+        border-radius: 14px;
+        background: #effaf6;
+        border: 1px solid #d9f0e8;
+        color: #52635f;
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+    .npr-modal-note .fa {
+        margin-top: 2px;
+        color: #009e74;
+    }
+
+    .npr-field {
+        margin-bottom: 18px;
+    }
+
+    .npr-field-label {
+        display: block;
+        margin-bottom: 7px;
+        color: #26373a;
+        font-size: 11px;
+        font-weight: 800;
+    }
+
+    .npr-field-required {
+        color: #00a878;
+    }
+
+    .npr-field-control {
+        width: 100%;
+        min-height: 48px;
+        padding: 11px 14px;
+        border-radius: 13px;
+        border: 1px solid #dfe8e4;
+        background: #fbfcfc;
+        color: #253639;
+        font-size: 13px;
+        outline: none;
+        transition: all 0.2s ease;
+        box-shadow: none !important;
+    }
+
+    .npr-field-control:focus {
+        border-color: #00b984;
+        background: #ffffff;
+        box-shadow: 0 0 0 4px rgba(0, 185, 132, 0.09) !important;
+    }
+
+    .npr-field-control::placeholder {
+        color: #aab5b1;
+    }
+
+    .npr-status-box {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-height: 52px;
+        padding: 11px 14px;
+        border-radius: 13px;
+        background: #f7faf9;
+        border: 1px solid #e1e9e6;
+    }
+
+    .npr-status-check {
+        width: 19px;
+        height: 19px;
+        margin: 0;
+        flex: 0 0 19px;
+        cursor: pointer;
+        accent-color: #00a878;
+    }
+
+    .npr-status-text {
+        cursor: pointer;
+    }
+
+    .npr-status-title {
+        display: block;
+        color: #27383b;
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    .npr-status-description {
+        display: block;
+        margin-top: 2px;
+        color: #8d9996;
+        font-size: 10px;
+    }
+
+    .npr-modal-footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        padding: 18px 27px 23px;
+        border: 0;
+        background: #ffffff;
+    }
+
+    .npr-modal-secondary {
+        min-height: 44px;
+        padding: 0 17px;
+        border: 1px solid #e1e8e5;
+        border-radius: 12px;
+        background: #f8faf9;
+        color: #53625f;
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    .npr-modal-secondary:hover {
+        background: #eef3f1;
+        color: #34423f;
+    }
+
+    .npr-modal-primary {
+        min-height: 44px;
+        padding: 0 20px;
+        border: 0;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #00c78c, #00a976);
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 800;
+        box-shadow: 0 10px 22px rgba(0, 169, 118, 0.18);
+        transition: all 0.2s ease;
+    }
+
+    .npr-modal-primary:hover {
+        color: #ffffff;
+        transform: translateY(-1px);
+        box-shadow: 0 14px 26px rgba(0, 169, 118, 0.25);
+    }
+
+    .npr-modal-danger {
+        min-height: 44px;
+        padding: 0 20px;
+        border: 0;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #df5963, #c93d48);
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 800;
+        box-shadow: 0 10px 22px rgba(201, 61, 72, 0.16);
+    }
+
+    .npr-modal-danger:hover {
+        color: #ffffff;
+        transform: translateY(-1px);
+    }
+
+    /* =========================================================
+       DELETE MODAL
+       ========================================================= */
+
+    .npr-delete-body {
+        padding: 30px 27px 10px;
+        text-align: center;
+    }
+
+    .npr-delete-icon {
+        width: 68px;
+        height: 68px;
+        margin: 0 auto 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 22px;
+        background: #fff0f1;
+        color: #d54c57;
+        font-size: 25px;
+    }
+
+    .npr-delete-title {
+        margin: 0 0 8px;
+        color: #253437;
+        font-size: 19px;
+        font-weight: 800;
+    }
+
+    .npr-delete-text {
+        max-width: 390px;
+        margin: 0 auto;
+        color: #7c8986;
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+    /* =========================================================
+       BACKDROP
+       ========================================================= */
+
+    body.npr-modal-open .modal-backdrop {
+        z-index: 19990 !important;
+    }
+
+    .modal-backdrop.show {
+        opacity: 0.72 !important;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 767.98px) {
+
+        .npr901-hero {
+            padding: 25px 20px;
+            border-radius: 23px;
+        }
+
+        .npr904-title {
+            font-size: 34px;
+        }
+
+        .npr905-description {
+            font-size: 13px;
+        }
+
+        .npr906-action-card {
+            min-height: auto;
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .npr912-section-head {
+            align-items: center;
+        }
+
+        .npr914-section-title {
+            font-size: 24px;
+        }
+
+        .npr916-card {
+            padding: 20px;
+            border-radius: 21px;
+        }
+
+        .npr919-avatar {
+            width: 54px;
+            height: 54px;
+            flex-basis: 54px;
+            border-radius: 16px;
+        }
+
+        .npr920-provider-name {
+            font-size: 16px;
+        }
+
+        .npr-modal .modal-dialog {
+            margin: 10px;
+        }
+
+        .npr-modal .modal-content {
+            border-radius: 21px;
+        }
+
+        .npr-modal .modal-header {
+            padding: 20px;
+        }
+
+        .npr-modal-body {
+            padding: 20px;
+        }
+
+        .npr-modal-footer {
+            padding: 15px 20px 20px;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+
+        .npr901-page {
+            padding: 0;
+        }
+
+        .npr912-section-head {
+            gap: 10px;
+        }
+
+        .npr915-count {
+            min-width: 42px;
+            height: 38px;
+        }
+
+        .npr917-card-top {
+            gap: 8px;
+        }
+
+        .npr922-actions {
+            gap: 4px;
+        }
+
+        .npr923-icon-btn {
+            width: 35px;
+            height: 35px;
+        }
+
+        .npr931-card-footer {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .npr-modal-footer {
+            flex-direction: column-reverse;
+        }
+
+        .npr-modal-footer > button {
+            width: 100%;
+        }
+    }
+
+    .npa901-trigger {
+        min-height: 46px;
+        padding: 0 21px;
+        border: 0;
+        border-radius: 13px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+
+        background: linear-gradient(
+            135deg,
+            #00d995,
+            #00ad79
+        );
+
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 800;
+
+        box-shadow:
+            0 10px 25px rgba(0, 180, 125, 0.22);
+
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease,
+            background 0.25s ease;
+
+        cursor: pointer;
+    }
+
+
+    .npa901-trigger:hover {
+        color: #ffffff;
+
+        background: linear-gradient(
+            135deg,
+            #00e6a0,
+            #00b982
+        );
+
+        transform: translateY(-2px);
+
+        box-shadow:
+            0 15px 32px rgba(0, 180, 125, 0.30);
+    }
+
+
+    .npa901-trigger:focus {
+        color: #ffffff;
+        outline: none;
+
+        box-shadow:
+            0 0 0 4px rgba(0, 217, 149, 0.14),
+            0 10px 25px rgba(0, 180, 125, 0.22);
+    }
+
+
+    .npa901-trigger .fa {
+        font-size: 14px;
+    }
+
+
+
+    /* =========================================================
+       MODAL CONTAINER
+       ========================================================= */
+
+    #npaAddProviderModal {
+        z-index: 21000 !important;
+    }
+
+
+    #npaAddProviderModal .modal-dialog {
+        z-index: 21001 !important;
+
+        width: 100%;
+        max-width: 720px;
+    }
+
+
+    #npaAddProviderModal .modal-content {
+
+        position: relative;
+        z-index: 21002 !important;
+
+        overflow: hidden;
+
+        border: 0;
+        border-radius: 27px;
+
+        background: #ffffff;
+
+        opacity: 1 !important;
+        filter: none !important;
+
+        box-shadow:
+            0 35px 100px rgba(0, 0, 0, 0.28);
+    }
+
+
+
+    /* =========================================================
+       MODAL HEADER
+       ========================================================= */
+
+    .npa902-header {
+
+        position: relative;
+
+        padding: 25px 28px;
+
+        border: 0;
+
+        background:
+            radial-gradient(
+                circle at 90% 5%,
+                rgba(0, 255, 170, 0.14),
+                transparent 32%
+            ),
+            radial-gradient(
+                circle at 10% 100%,
+                rgba(0, 200, 150, 0.08),
+                transparent 35%
+            ),
+            linear-gradient(
+                135deg,
+                #003c31 0%,
+                #003228 55%,
+                #002720 100%
+            );
+
+        color: #ffffff;
+    }
+
+
+    .npa902-header::after {
+
+        content: "";
+
+        position: absolute;
+
+        width: 180px;
+        height: 180px;
+
+        right: -80px;
+        top: -100px;
+
+        border-radius: 50%;
+
+        background:
+            rgba(0, 255, 170, 0.05);
+
+        pointer-events: none;
+    }
+
+
+    .npa903-header-inner {
+
+        position: relative;
+
+        z-index: 2;
+
+        display: flex;
+        align-items: center;
+
+        gap: 14px;
+    }
+
+
+    .npa904-header-icon {
+
+        width: 50px;
+        height: 50px;
+
+        flex: 0 0 50px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 16px;
+
+        background:
+            rgba(0, 255, 170, 0.11);
+
+        border:
+            1px solid rgba(0, 255, 170, 0.18);
+
+        color: #4dffd0;
+
+        font-size: 19px;
+
+        box-shadow:
+            inset 0 0 20px rgba(0, 255, 170, 0.04);
+    }
+
+
+    .npa905-title {
+
+        margin: 0;
+
+        color: #ffffff;
+
+        font-size: 19px;
+
+        line-height: 1.25;
+
+        font-weight: 800;
+
+        letter-spacing: -0.2px;
+    }
+
+
+    .npa906-subtitle {
+
+        margin: 4px 0 0;
+
+        color:
+            rgba(255, 255, 255, 0.55);
+
+        font-size: 11px;
+
+        line-height: 1.5;
+    }
+
+
+    .npa907-close {
+
+        position: relative;
+
+        z-index: 3;
+
+        width: 39px;
+        height: 39px;
+
+        flex: 0 0 39px;
+
+        margin-left: auto;
+
+        padding: 0;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        border: 0;
+
+        border-radius: 12px;
+
+        background:
+            rgba(255, 255, 255, 0.08);
+
+        color:
+            rgba(255, 255, 255, 0.75);
+
+        font-size: 17px;
+
+        transition: all 0.2s ease;
+    }
+
+
+    .npa907-close:hover {
+
+        background:
+            rgba(255, 255, 255, 0.15);
+
+        color: #ffffff;
+
+        transform: rotate(3deg);
+    }
+
+
+
+    /* =========================================================
+       MODAL BODY
+       ========================================================= */
+
+    .npa908-body {
+
+        padding: 27px 28px 10px;
+
+        background: #ffffff;
+    }
+
+
+    /* =========================================================
+       INFORMATION MESSAGE
+       ========================================================= */
+
+    .npa909-info {
+
+        display: flex;
+        align-items: flex-start;
+
+        gap: 11px;
+
+        margin-bottom: 23px;
+
+        padding: 14px 15px;
+
+        border-radius: 15px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #effbf6,
+                #f5fcf9
+            );
+
+        border:
+            1px solid #d8eee6;
+
+        color: #596864;
+
+        font-size: 11px;
+
+        line-height: 1.65;
+    }
+
+
+    .npa909-info .fa {
+
+        margin-top: 2px;
+
+        flex: 0 0 auto;
+
+        color: #00a878;
+
+        font-size: 14px;
+    }
+
+
+
+    /* =========================================================
+       FORM GROUP
+       ========================================================= */
+
+    .npa910-field {
+
+        margin-bottom: 18px;
+    }
+
+
+    .npa911-label {
+
+        display: block;
+
+        margin-bottom: 7px;
+
+        color: #26373a;
+
+        font-size: 11px;
+
+        font-weight: 800;
+
+        letter-spacing: 0.1px;
+    }
+
+
+    .npa912-required {
+
+        color: #00a878;
+    }
+
+
+    .npa913-input-wrapper {
+
+        position: relative;
+    }
+
+
+    .npa914-input-icon {
+
+        position: absolute;
+
+        top: 50%;
+        left: 14px;
+
+        transform: translateY(-50%);
+
+        color: #94a39e;
+
+        font-size: 12px;
+
+        pointer-events: none;
+
+        z-index: 2;
+    }
+
+
+    .npa915-control {
+
+        width: 100%;
+
+        min-height: 49px;
+
+        padding:
+            11px 14px 11px 40px;
+
+        border:
+            1px solid #dfe8e4;
+
+        border-radius: 13px;
+
+        background: #fbfcfc;
+
+        color: #26373a;
+
+        font-size: 13px;
+
+        line-height: 1.4;
+
+        outline: none;
+
+        box-shadow: none !important;
+
+        transition:
+            border-color 0.2s ease,
+            background 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+
+    .npa915-control:focus {
+
+        border-color: #00b984;
+
+        background: #ffffff;
+
+        box-shadow:
+            0 0 0 4px
+            rgba(0, 185, 132, 0.09) !important;
+    }
+
+
+    .npa915-control:hover {
+
+        border-color: #cbdcd6;
+    }
+
+
+    .npa915-control::placeholder {
+
+        color: #aab5b1;
+    }
+
+
+    /* =========================================================
+       PHONE FIELD
+       ========================================================= */
+
+    .npa916-help {
+
+        display: block;
+
+        margin-top: 6px;
+
+        color: #9aa7a3;
+
+        font-size: 9px;
+
+        line-height: 1.5;
+    }
+
+
+
+    /* =========================================================
+       STATUS CARD
+       ========================================================= */
+
+    .npa917-status {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 13px;
+
+        min-height: 57px;
+
+        padding: 12px 14px;
+
+        border-radius: 14px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #f7faf9,
+                #fbfcfc
+            );
+
+        border:
+            1px solid #e0e9e5;
+
+        transition:
+            border-color 0.2s ease,
+            background 0.2s ease;
+    }
+
+
+    .npa917-status:has(
+        .npa918-checkbox:checked
+    ) {
+
+        border-color: #ccecdf;
+
+        background:
+            linear-gradient(
+                135deg,
+                #effaf5,
+                #f8fcfa
+            );
+    }
+
+
+    .npa918-checkbox {
+
+        width: 20px;
+        height: 20px;
+
+        flex: 0 0 20px;
+
+        margin: 0;
+
+        cursor: pointer;
+
+        accent-color: #00a878;
+    }
+
+
+    .npa919-status-label {
+
+        cursor: pointer;
+
+        margin: 0;
+    }
+
+
+    .npa920-status-title {
+
+        display: block;
+
+        color: #26373a;
+
+        font-size: 12px;
+
+        line-height: 1.4;
+
+        font-weight: 800;
+    }
+
+
+    .npa921-status-description {
+
+        display: block;
+
+        margin-top: 3px;
+
+        color: #8d9996;
+
+        font-size: 10px;
+
+        line-height: 1.4;
+    }
+
+
+
+    /* =========================================================
+       MODAL FOOTER
+       ========================================================= */
+
+    .npa922-footer {
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: flex-end;
+
+        gap: 10px;
+
+        padding:
+            18px 28px 24px;
+
+        border: 0;
+
+        background: #ffffff;
+    }
+
+
+    .npa923-cancel {
+
+        min-height: 45px;
+
+        padding: 0 18px;
+
+        border:
+            1px solid #e0e8e4;
+
+        border-radius: 12px;
+
+        background: #f8faf9;
+
+        color: #53625f;
+
+        font-size: 12px;
+
+        font-weight: 800;
+
+        transition: all 0.2s ease;
+    }
+
+
+    .npa923-cancel:hover {
+
+        background: #eef3f1;
+
+        border-color: #d7e2de;
+
+        color: #34423f;
+    }
+
+
+    .npa924-submit {
+
+        min-height: 45px;
+
+        padding: 0 21px;
+
+        border: 0;
+
+        border-radius: 12px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #00c78c,
+                #00a976
+            );
+
+        color: #ffffff;
+
+        font-size: 12px;
+
+        font-weight: 800;
+
+        box-shadow:
+            0 10px 22px
+            rgba(0, 169, 118, 0.18);
+
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+
+    .npa924-submit:hover {
+
+        color: #ffffff;
+
+        transform: translateY(-1px);
+
+        box-shadow:
+            0 14px 27px
+            rgba(0, 169, 118, 0.27);
+    }
+
+
+    .npa924-submit:focus {
+
+        color: #ffffff;
+
+        box-shadow:
+            0 0 0 4px
+            rgba(0, 169, 118, 0.12),
+            0 10px 22px
+            rgba(0, 169, 118, 0.18);
+    }
+
+
+
+    /* =========================================================
+       BOOTSTRAP BACKDROP
+       ========================================================= */
+
+    body.npa-modal-active .modal-backdrop {
+
+        z-index: 20990 !important;
+
+        opacity: 0.72 !important;
+    }
+
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 767.98px) {
+
+        #npaAddProviderModal .modal-dialog {
+
+            max-width: none;
+
+            margin:
+                10px;
+        }
+
+
+        #npaAddProviderModal .modal-content {
+
+            border-radius: 22px;
+        }
+
+
+        .npa902-header {
+
+            padding:
+                20px;
+        }
+
+
+        .npa908-body {
+
+            padding:
+                20px 20px 5px;
+        }
+
+
+        .npa922-footer {
+
+            padding:
+                16px 20px 20px;
+        }
+
+    }
+
+
+    @media (max-width: 575.98px) {
+
+        .npa903-header-inner {
+
+            gap: 10px;
+        }
+
+
+        .npa904-header-icon {
+
+            width: 44px;
+            height: 44px;
+
+            flex-basis: 44px;
+
+            border-radius: 14px;
+        }
+
+
+        .npa905-title {
+
+            font-size: 16px;
+        }
+
+
+        .npa906-subtitle {
+
+            font-size: 10px;
+        }
+
+
+        .npa907-close {
+
+            width: 35px;
+            height: 35px;
+
+            flex-basis: 35px;
+        }
+
+
+        .npa922-footer {
+
+            flex-direction: column-reverse;
+
+            align-items: stretch;
+        }
+
+
+        .npa923-cancel,
+        .npa924-submit {
+
+            width: 100%;
+        }
+
+    }

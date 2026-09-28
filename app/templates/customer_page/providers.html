@@ -1,0 +1,418 @@
+{% extends 'customer_page/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="psp201-page">
+
+
+<section class="psp202-hero">
+
+    <img
+        src="{% static 'customer_page/img/providers.jpg' %}"
+        alt="Home service providers"
+        class="psp204-hero-image"
+    >
+
+    <div class="psp203-hero-overlay"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-9 col-md-11">
+
+                <div class="psp205-hero-content">
+
+                    <span class="psp206-eyebrow">
+                        <span class="psp207-eyebrow-dot"></span>
+                        Trusted Home Services
+                    </span>
+
+                    <h1 class="psp208-title">
+                        Professionals who
+                        care for your home.
+                    </h1>
+
+                    <p class="psp209-description">
+                        Connect with trusted service providers at
+                        Noah's Ark for plumbing, painting, cleaning,
+                        electrical work, maintenance, and more.
+                        Quality service, dependable professionals,
+                        and complete care for your home.
+                    </p>
+
+                    <div class="psp210-hero-points">
+
+                        <span class="psp211-point">
+                            ✓ Verified Professionals
+                        </span>
+
+                        <span class="psp211-point">
+                            ✓ Experienced Providers
+                        </span>
+
+                        <span class="psp211-point">
+                            ✓ Quality Home Care
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     STATISTICS
+====================================================== -->
+
+<section class="psp212-stat-wrapper">
+
+    <div class="container">
+
+        <div class="row g-3">
+
+            <div class="col-6 col-lg-3">
+                <div class="psp213-stat-card">
+
+                    <div class="psp214-stat-icon">
+                        👨‍🔧
+                    </div>
+
+                    <div class="psp215-stat-number">
+                        {{ providers|length }}+
+                    </div>
+
+                    <p class="psp216-stat-label">
+                        Service Providers
+                    </p>
+
+                </div>
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+                <div class="psp213-stat-card">
+
+                    <div class="psp214-stat-icon">
+                        🛠️
+                    </div>
+
+                    <div class="psp215-stat-number">
+                        10+
+                    </div>
+
+                    <p class="psp216-stat-label">
+                        Home Services
+                    </p>
+
+                </div>
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+                <div class="psp213-stat-card">
+
+                    <div class="psp214-stat-icon">
+                        ⭐
+                    </div>
+
+                    <div class="psp215-stat-number">
+                        4.9
+                    </div>
+
+                    <p class="psp216-stat-label">
+                        Service Experience
+                    </p>
+
+                </div>
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+                <div class="psp213-stat-card">
+
+                    <div class="psp214-stat-icon">
+                        🏠
+                    </div>
+
+                    <div class="psp215-stat-number">
+                        100%
+                    </div>
+
+                    <p class="psp216-stat-label">
+                        Home Care Focus
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROVIDERS
+====================================================== -->
+
+<section class="psp217-provider-section">
+
+    <div class="container">
+
+        <!-- SECTION HEADER -->
+
+        <div class="row align-items-end mb-4">
+
+            <div class="col-lg-6 col-md-12">
+
+                <div class="psp218-section-heading">
+
+                    <span class="psp219-section-label">
+                        Meet the professionals
+                    </span>
+
+                    <h2 class="psp220-section-title">
+                        Find the right provider
+                    </h2>
+
+                    <p class="psp221-section-text">
+                        Explore our network of experienced professionals
+                        ready to help maintain, repair, and improve your
+                        home.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-6 col-md-12">
+
+                <div class="psp222-service-list">
+
+                    <span class="psp223-service-pill">
+                        Plumbing
+                    </span>
+
+                    <span class="psp223-service-pill">
+                        Electrical
+                    </span>
+
+                    <span class="psp223-service-pill">
+                        Cleaning
+                    </span>
+
+                    <span class="psp223-service-pill">
+                        Painting
+                    </span>
+
+                    <span class="psp223-service-pill">
+                        Maintenance
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROVIDER GRID -->
+
+        {% if providers %}
+
+            <div class="row g-4">
+
+                {% for i in providers %}
+
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+
+                        <article class="psp224-card">
+
+                            <!-- PROVIDER IMAGE -->
+
+                            <div class="psp225-image-wrapper">
+
+                                {% if i.photo %}
+
+                                    <img
+                                        src="{{ i.photo.url }}"
+                                        alt="{{ i.user_profile.user.first_name }} {{ i.user_profile.user.last_name }}"
+                                        class="psp226-provider-image"
+                                    >
+
+                                {% else %}
+
+                                    <img
+                                        src="{% static 'customer_page/img/providers.jpg' %}"
+                                        alt="Home service provider"
+                                        class="psp226-provider-image"
+                                    >
+
+                                {% endif %}
+
+
+                                <div class="psp227-image-overlay"></div>
+
+
+                                <span class="psp228-service-badge">
+                                    {{ i.service }}
+                                </span>
+
+
+                                <span class="psp229-experience-badge">
+                                    {{ i.experience_years }} Years Experience
+                                </span>
+
+                            </div>
+
+
+                            <!-- CARD CONTENT -->
+
+                            <div class="psp230-card-body">
+
+                                <h3 class="psp231-provider-name">
+
+                                    {{ i.user_profile.user.first_name }}
+                                    {{ i.user_profile.user.last_name }}
+
+                                </h3>
+
+
+                                <div class="psp232-provider-role">
+                                    Home Service Professional
+                                </div>
+
+
+                                <!-- RATING -->
+
+                                <div class="psp233-rating-row">
+
+                                    <span class="psp234-rating-stars">
+                                        ★★★★★
+                                    </span>
+
+                                    <span class="psp235-rating-text">
+                                        Trusted Service Provider
+                                    </span>
+
+                                </div>
+
+
+                                <!-- DETAILS -->
+
+                                <div class="psp236-details">
+
+                                    <div class="psp237-detail">
+
+                                        <span class="psp238-detail-icon">
+                                            📍
+                                        </span>
+
+                                        <span class="psp239-detail-text">
+                                            {{ i.location }}
+                                        </span>
+
+                                    </div>
+
+
+                                    <div class="psp237-detail">
+
+                                        <span class="psp238-detail-icon">
+                                            📞
+                                        </span>
+
+                                        <span class="psp239-detail-text">
+                                            {{ i.user_profile.phone }}
+                                        </span>
+
+                                    </div>
+
+
+                                    <div class="psp237-detail">
+
+                                        <span class="psp238-detail-icon">
+                                            ✉
+                                        </span>
+
+                                        <span class="psp239-detail-text">
+                                            {{ i.user_profile.user.email }}
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- FOOTER -->
+
+                                <div class="psp240-card-footer">
+
+                                    <div class="psp241-verified">
+
+                                        <span class="psp242-verified-icon">
+                                            ✓
+                                        </span>
+
+                                        Verified Provider
+
+                                    </div>
+
+
+                                    <a
+                                        href="tel:{{ i.user_profile.phone }}"
+                                        class="psp243-contact-btn"
+                                    >
+                                        Contact Provider
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <!-- EMPTY STATE -->
+
+            <div class="psp244-empty">
+
+                <div class="psp245-empty-icon">
+                    👨‍🔧
+                </div>
+
+                <h3 class="psp246-empty-title">
+                    No providers available
+                </h3>
+
+                <p class="psp247-empty-text">
+                    New home service professionals will appear here
+                    when they become available.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+</div>
+
+{% endblock %}

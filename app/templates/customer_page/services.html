@@ -1,0 +1,236 @@
+{% extends 'customer_page/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="srv101-page">
+
+    <section class="srv102-hero">
+
+        <div class="srv103-hero-overlay"></div>
+
+        <div class="container">
+
+            <div class="srv104-hero-content">
+
+                <span class="srv105-eyebrow">
+                    <span class="srv106-eyebrow-dot"></span>
+                    Trusted Home Care
+                </span>
+
+                <h1 class="srv107-title">
+                    Professional care
+                    <span class="srv108-title-accent">for every corner</span>
+                    of your home.
+                </h1>
+
+                <p class="srv109-description">
+                    Discover reliable home services from skilled professionals.
+                    From everyday maintenance to complete home care, everything
+                    you need is available in one place.
+                </p>
+
+                <div class="srv110-hero-actions">
+
+                    <a href="#srvServices" class="srv111-primary-btn">
+                        Explore Services
+                        <i class="fa fa-arrow-right"></i>
+                    </a>
+
+                    <a href="{% url 'providers' %}" class="srv112-secondary-btn">
+                        <i class="fa fa-users"></i>
+                        Find Professionals
+                    </a>
+
+                </div>
+
+
+                <div class="srv113-stats-row">
+
+                    <div class="row g-0">
+
+                        <div class="col-4">
+                            <div class="srv114-stat-box">
+                                <div class="srv115-stat-number">100+</div>
+                                <div class="srv116-stat-label">
+                                    Services
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="srv114-stat-box">
+                                <div class="srv115-stat-number">50+</div>
+                                <div class="srv116-stat-label">
+                                    Professionals
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="srv114-stat-box">
+                                <div class="srv115-stat-number">24/7</div>
+                                <div class="srv116-stat-label">
+                                    Support
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SERVICES SECTION
+         ===================================================== -->
+
+    <section class="srv117-services-area" id="srvServices">
+
+        <div class="container">
+
+            <!-- Section heading -->
+
+            <div class="srv118-section-heading">
+
+                <span class="srv119-section-tag">
+                    What We Offer
+                </span>
+
+                <h2 class="srv120-section-title">
+                    Services designed around your home
+                </h2>
+
+                <p class="srv121-section-description">
+                    Choose from our range of professional home services and
+                    connect with experienced providers who take care of the
+                    work while you enjoy peace of mind.
+                </p>
+
+            </div>
+
+
+            <!-- Service cards -->
+
+            <div class="row g-4">
+
+                {% for i in services %}
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 srv122-card-column">
+
+                    <article class="srv123-service-card">
+
+                        <a
+                            href="{% url 'service_view' name=i.service_name %}"
+                            class="srv124-card-link"
+                        >
+
+                            <!-- Image -->
+
+                            <div class="srv125-image-wrap">
+
+                                <img
+                                    src="{{ i.image.url }}"
+                                    class="srv126-service-image"
+                                    alt="{{ i.service_name }}"
+                                >
+
+                                <div class="srv127-image-shade"></div>
+
+
+                                <!-- Price -->
+
+                                <div class="srv128-price">
+
+                                    From
+
+                                    <span class="srv129-price-value">
+                                        <i class="fa fa-rupee"></i>
+                                        {{ i.price }}
+                                    </span>
+
+                                </div>
+
+
+                                <!-- Hover icon -->
+
+                                <div class="srv130-hover-icon">
+                                    <i class="fa fa-arrow-up-right"></i>
+                                </div>
+
+                            </div>
+
+
+                            <!-- Card content -->
+
+                            <div class="srv131-card-body">
+
+                                <div class="srv132-card-topline">
+
+                                    <h3 class="srv133-service-name">
+                                        {{ i.service_name }}
+                                    </h3>
+
+                                    <span class="srv134-arrow">
+                                        <i class="fa fa-arrow-right"></i>
+                                    </span>
+
+                                </div>
+
+                                <div class="srv135-card-line"></div>
+
+                                <p class="srv136-card-text">
+                                    Professional and dependable service
+                                    tailored to keep your home comfortable,
+                                    clean and well maintained.
+                                </p>
+
+                            </div>
+
+                        </a>
+
+                    </article>
+
+                </div>
+
+                {% empty %}
+
+                <div class="col-12">
+
+                    <div class="srv137-empty">
+
+                        <div class="srv138-empty-icon">
+                            <i class="fa fa-home"></i>
+                        </div>
+
+                        <h3 class="srv139-empty-title">
+                            No services available
+                        </h3>
+
+                        <p class="srv140-empty-text">
+                            We are currently updating our service catalogue.
+                            Please check back soon.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

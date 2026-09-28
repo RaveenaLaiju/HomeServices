@@ -1,0 +1,481 @@
+{% extends 'customer_page/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="crs101-page">
+
+
+    <section class="crs102-hero">
+
+        <div class="crs103-hero-overlay"></div>
+
+        <div class="container position-relative">
+
+            <div class="row align-items-center g-4">
+
+                <!-- HERO CONTENT -->
+
+                <div class="col-lg-7">
+
+                    <div class="crs104-hero-content">
+
+                        <div class="crs105-eyebrow">
+                            <i class="bi bi-stars"></i>
+                            Trusted Home Services
+                        </div>
+
+                        <h1 class="crs106-hero-title">
+                            Customer Reviews
+                        </h1>
+
+                        <p class="crs107-hero-description">
+                            Discover genuine experiences from customers who have
+                            booked professional home services through our platform.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HERO IMAGE -->
+
+                <div class="col-lg-5">
+
+                    <div class="crs108-hero-image-wrap">
+
+                        <img
+                            src="{% static 'customer_page/img/review.jpg' %}"
+                            alt="Customer Reviews"
+                            class="crs109-hero-image"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="crs110-main">
+
+        <div class="container">
+
+            <!-- SECTION HEADING -->
+
+            <div class="crs111-section-heading text-center">
+
+                <div class="crs112-section-label">
+                    Real Experiences
+                </div>
+
+                <h2 class="crs113-section-title">
+                    What Our Customers Say
+                </h2>
+
+                <p class="crs114-section-subtitle">
+                    Browse customer feedback and explore reviews
+                    for different services and providers.
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 FILTER CARD
+            ================================================== -->
+
+            <div class="crs115-filter-card">
+
+                <div class="crs116-filter-header">
+
+                    <h3 class="crs117-filter-title">
+                        Find Relevant Reviews
+                    </h3>
+
+                    <div class="crs118-filter-icon">
+                        <i class="bi bi-funnel-fill"></i>
+                    </div>
+
+                </div>
+
+
+                <form method="get">
+
+                    <div class="row g-3">
+
+                        <!-- SERVICE FILTER -->
+
+                        <div class="col-lg-6 col-md-6">
+
+                            <label
+                                for="crs-service-filter"
+                                class="crs119-filter-label"
+                            >
+                                Filter by Service
+                            </label>
+
+                            <select
+                                name="service"
+                                id="crs-service-filter"
+                                class="form-select crs120-filter-select"
+                                onchange="this.form.submit()"
+                            >
+
+                                <option value="">
+                                    All Services
+                                </option>
+
+                                {% for s in services %}
+
+                                    <option
+                                        value="{{ s.id }}"
+                                        {% if selected_service == s.id|stringformat:"s" %}
+                                            selected
+                                        {% endif %}
+                                    >
+                                        {{ s.service_name }}
+                                    </option>
+
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- PROVIDER FILTER -->
+
+                        <div class="col-lg-6 col-md-6">
+
+                            <label
+                                for="crs-provider-filter"
+                                class="crs119-filter-label"
+                            >
+                                Filter by Provider
+                            </label>
+
+                            <select
+                                name="provider"
+                                id="crs-provider-filter"
+                                class="form-select crs120-filter-select"
+                                onchange="this.form.submit()"
+                            >
+
+                                <option value="">
+                                    All Providers
+                                </option>
+
+                                {% for p in providers %}
+
+                                    <option
+                                        value="{{ p.id }}"
+                                        {% if selected_provider == p.id|stringformat:"s" %}
+                                            selected
+                                        {% endif %}
+                                    >
+                                        {{ p.user.first_name }}
+                                        {{ p.user.last_name }}
+                                    </option>
+
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- =================================================
+                 REVIEWS
+            ================================================== -->
+
+            <div class="crs121-review-list">
+
+                {% for review in reviews %}
+
+                    <article class="crs122-review-card">
+
+                        <!-- REVIEW HEADER -->
+
+                        <div class="crs123-review-top">
+
+                            <div class="crs124-reviewer-area">
+
+                                <div class="crs125-avatar">
+
+                                    {{ review.customer.user_profile.user.first_name|first|upper }}
+
+                                </div>
+
+                                <div>
+
+                                    <h3 class="crs126-reviewer-name">
+
+                                        {{ review.customer.user_profile.user.first_name }}
+                                        {{ review.customer.user_profile.user.last_name }}
+
+                                    </h3>
+
+                                    <div class="crs127-review-date">
+
+                                        {{ review.created_at|date:"M d, Y" }}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- RATING -->
+
+                            <div class="crs128-rating">
+
+                                <span>
+                                    {{ review.rating }}
+                                </span>
+
+                                <span>★</span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- COMMENT -->
+
+                        <p class="crs129-review-comment">
+
+                            {{ review.comment }}
+
+                        </p>
+
+
+                        <!-- DETAILS -->
+
+                        <div class="crs130-details">
+
+                            <div class="crs131-detail-pill">
+
+                                <i class="bi bi-tools"></i>
+
+                                <span>
+                                    Service:
+                                    <strong>
+                                        {{ review.service.service_name }}
+                                    </strong>
+                                </span>
+
+                            </div>
+
+
+                            <div class="crs131-detail-pill">
+
+                                <i class="bi bi-person-check"></i>
+
+                                <span>
+                                    Provider:
+                                    <strong>
+                                        {{ review.provider.user_profile.user.first_name }}
+                                        {{ review.provider.user_profile.user.last_name }}
+                                    </strong>
+                                </span>
+
+                            </div>
+
+
+                            {% if review.provider.location %}
+
+                                <div class="crs131-detail-pill">
+
+                                    <i class="bi bi-geo-alt"></i>
+
+                                    <span>
+                                        Location:
+                                        <strong>
+                                            {{ review.provider.location }}
+                                        </strong>
+                                    </span>
+
+                                </div>
+
+                            {% elif review.service.location %}
+
+                                <div class="crs131-detail-pill">
+
+                                    <i class="bi bi-geo-alt"></i>
+
+                                    <span>
+                                        Location:
+                                        <strong>
+                                            {{ review.service.location }}
+                                        </strong>
+                                    </span>
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    </article>
+
+                {% empty %}
+
+                    <!-- EMPTY STATE -->
+
+                    <div class="crs133-empty">
+
+                        <div class="crs134-empty-icon">
+
+                            <i class="bi bi-chat-square-text"></i>
+
+                        </div>
+
+                        <h3 class="crs135-empty-title">
+                            No Reviews Found
+                        </h3>
+
+                        <p class="crs136-empty-text">
+                            Try changing your service or provider filter.
+                        </p>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <!-- =================================================
+                 PAGINATION
+            ================================================== -->
+
+            {% if reviews.has_other_pages %}
+
+                <nav
+                    aria-label="Review pagination"
+                    class="crs137-pagination"
+                >
+
+                    <ul class="pagination justify-content-center mb-0">
+
+
+                        <!-- PREVIOUS -->
+
+                        {% if reviews.has_previous %}
+
+                            <li class="page-item crs139-page-item">
+
+                                <a
+                                    class="page-link crs138-page-link"
+                                    href="?page={{ reviews.previous_page_number }}{% if selected_service %}&service={{ selected_service }}{% endif %}{% if selected_provider %}&provider={{ selected_provider }}{% endif %}"
+                                >
+                                    <i class="bi bi-chevron-left"></i>
+                                </a>
+
+                            </li>
+
+                        {% else %}
+
+                            <li class="page-item crs139-page-item disabled">
+
+                                <span class="page-link crs138-page-link">
+                                    <i class="bi bi-chevron-left"></i>
+                                </span>
+
+                            </li>
+
+                        {% endif %}
+
+
+                        <!-- PAGE NUMBERS -->
+
+                        {% for num in reviews.paginator.page_range %}
+
+                            {% if num == reviews.number %}
+
+                                <li class="page-item crs139-page-item active">
+
+                                    <span class="page-link crs138-page-link">
+                                        {{ num }}
+                                    </span>
+
+                                </li>
+
+                            {% elif num > reviews.number|add:'-3' and num < reviews.number|add:'3' %}
+
+                                <li class="page-item crs139-page-item">
+
+                                    <a
+                                        class="page-link crs138-page-link"
+                                        href="?page={{ num }}{% if selected_service %}&service={{ selected_service }}{% endif %}{% if selected_provider %}&provider={{ selected_provider }}{% endif %}"
+                                    >
+                                        {{ num }}
+                                    </a>
+
+                                </li>
+
+                            {% endif %}
+
+                        {% endfor %}
+
+
+                        <!-- NEXT -->
+
+                        {% if reviews.has_next %}
+
+                            <li class="page-item crs139-page-item">
+
+                                <a
+                                    class="page-link crs138-page-link"
+                                    href="?page={{ reviews.next_page_number }}{% if selected_service %}&service={{ selected_service }}{% endif %}{% if selected_provider %}&provider={{ selected_provider }}{% endif %}"
+                                >
+                                    <i class="bi bi-chevron-right"></i>
+                                </a>
+
+                            </li>
+
+                        {% else %}
+
+                            <li class="page-item crs139-page-item disabled">
+
+                                <span class="page-link crs138-page-link">
+                                    <i class="bi bi-chevron-right"></i>
+                                </span>
+
+                            </li>
+
+                        {% endif %}
+
+                    </ul>
+
+                </nav>
+
+            {% endif %}
+
+        </div>
+
+    </main>
+
+</div>
+
+{% endblock %}
+

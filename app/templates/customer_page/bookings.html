@@ -1,0 +1,723 @@
+{% extends 'customer_page/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="hs301-page">
+
+
+<section class="hs302-hero">
+
+    <div class="container-fluid px-0">
+
+        <div class="row g-0 hs303-hero-row">
+
+            <!-- HERO CONTENT -->
+
+            <div class="col-lg-6">
+
+                <div class="hs304-hero-content">
+
+                    <div class="hs305-eyebrow">
+                        <span>✦</span>
+                        <span>Personal Service Hub</span>
+                    </div>
+
+                    <h1 class="hs306-hero-title">
+                        Your Home.<br>
+                        Your <span>Services.</span>
+                    </h1>
+
+                    <p class="hs307-hero-description">
+                        Manage every home service request from one
+                        simple dashboard. Track providers, appointments,
+                        payments and service updates effortlessly.
+                    </p>
+
+                    <div class="hs308-hero-actions">
+
+                        <span class="hs309-hero-chip">
+                            ✓ Easy Management
+                        </span>
+
+                        <span class="hs309-hero-chip">
+                            ✓ Trusted Providers
+                        </span>
+
+                        <span class="hs309-hero-chip">
+                            ✓ Secure Payments
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- HERO IMAGE -->
+
+            <div class="col-lg-6">
+
+                <div class="hs310-hero-visual">
+
+                    <img
+                        src="{% static 'customer_page/img/bookings.jpg' %}"
+                        alt="Home Service Bookings"
+                        class="hs311-hero-image"
+                    >
+
+                    <div class="hs312-hero-overlay"></div>
+
+                    <div class="hs313-floating-card">
+
+                        <span class="hs314-floating-label">
+                            Service Hub
+                        </span>
+
+                        <span class="hs315-floating-value">
+                            Everything in one place
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MAIN CONTENT
+====================================================== -->
+
+<main class="hs316-main">
+
+    <div class="container-xl">
+
+        <div class="hs317-shell">
+
+            <section class="hs318-panel">
+
+                <!-- =================================================
+                     PANEL HEADER
+                ================================================== -->
+
+                <div class="hs319-panel-top">
+
+                    <div class="row align-items-center g-3">
+
+                        <div class="col-md-8">
+
+                            <h2 class="hs320-panel-title">
+                                Booking Overview
+                            </h2>
+
+                            <p class="hs321-panel-description">
+                                View and manage your recent home service requests.
+                            </p>
+
+                        </div>
+
+                        <div class="col-md-4 text-md-end">
+
+                            <span class="hs322-service-badge">
+                                <span>●</span>
+                                Your Services
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     FILTER
+                ================================================== -->
+
+                <!-- <div class="hs323-filter">
+
+                    <form method="GET">
+
+                        <div class="row g-3 align-items-end">
+
+                        
+
+                            <div class="col-lg-4 col-md-6 col-12">
+
+                                <label
+                                    for="service"
+                                    class="hs324-label"
+                                >
+                                    Service
+                                </label>
+
+                                <select
+                                    class="form-select hs325-control"
+                                    id="service"
+                                    name="service"
+                                >
+
+                                    <option value="">
+                                        All Services
+                                    </option>
+
+                                    {% for s in services %}
+
+                                        <option
+                                            value="{{ s.service_name }}"
+                                            {% if s.service_name == selected_service %}
+                                                selected
+                                            {% endif %}
+                                        >
+                                            {{ s.service_name }}
+                                        </option>
+
+                                    {% endfor %}
+
+                                </select>
+
+                            </div>
+
+
+                                        <div class="col-lg-4 col-md-6 col-12">
+
+                                <label
+                                    for="date"
+                                    class="hs324-label"
+                                >
+                                    Booking Date
+                                </label>
+
+                                <select
+                                    class="form-select hs325-control"
+                                    id="date"
+                                    name="date"
+                                >
+
+                                    <option value="">
+                                        All Dates
+                                    </option>
+
+                                    {% for d in all_dates %}
+
+                                        <option
+                                            value="{{ d|date:'Y-m-d' }}"
+                                            {% if selected_date == d|date:'Y-m-d' %}
+                                                selected
+                                            {% endif %}
+                                        >
+                                            {{ d|date:"M d, Y" }}
+                                        </option>
+
+                                    {% endfor %}
+
+                                </select>
+
+                            </div>
+
+
+                           
+                            <div class="col-lg-4 col-md-12 col-12">
+
+                                <div class="hs326-filter-actions">
+
+                                    <button
+                                        type="submit"
+                                        class="hs327-filter-btn"
+                                    >
+                                        Apply Filter
+                                    </button>
+
+                                    <a
+                                        href="{% url 'bookings' %}"
+                                        class="hs328-reset-btn"
+                                    >
+                                        Reset
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div> -->
+
+
+                <!-- =================================================
+                     BOOKING TABLE
+                ================================================== -->
+
+                <div class="hs329-table-section">
+
+                    <div class="hs330-table-scroll">
+
+                        <table class="table hs331-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Service</th>
+                                    <th>Provider</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                {% for booking in booking_requests %}
+
+                                <tr>
+
+                                    <!-- SERVICE -->
+
+                                    <td>
+                                        <span class="hs332-service">
+                                            {{ booking.service.service_name }}
+                                        </span>
+                                    </td>
+
+
+                                    <!-- PROVIDER -->
+
+                                    <td>
+                                        <span class="hs333-provider">
+                                            {{ booking.provider.user_profile.user.first_name }}
+                                            {{ booking.provider.user_profile.user.last_name }}
+                                        </span>
+                                    </td>
+
+
+                                    <!-- AMOUNT -->
+
+                                    <td>
+                                        <span class="hs334-amount">
+                                            ₹{{ booking.service.price }}
+                                        </span>
+                                    </td>
+
+
+                                    <!-- DATE -->
+
+                                    <td>
+                                        <span class="hs335-date">
+                                            {{ booking.date }}
+                                        </span>
+                                    </td>
+
+
+                                    <!-- TYPE -->
+
+                                    <td>
+
+                                        {% if booking.type == 'emergency' %}
+
+                                            <span class="hs336-badge hs345-emergency">
+                                                Emergency
+                                            </span>
+
+                                            <small class="d-block mt-1 text-muted">
+                                                Immediate
+                                            </small>
+
+                                        {% else %}
+
+                                            <span class="hs336-badge hs344-normal">
+                                                Normal
+                                            </span>
+
+                                        {% endif %}
+
+                                    </td>
+
+
+                                    <!-- STATUS -->
+
+                                    <td>
+
+                                        {% if booking.status == 'pending' %}
+
+                                            <span class="hs336-badge hs337-pending">
+                                                Pending
+                                            </span>
+
+                                        {% elif booking.status == 'accepted' %}
+
+                                            <span class="hs336-badge hs338-accepted">
+                                                Accepted
+                                            </span>
+
+                                        {% elif booking.status == 'completed' %}
+
+                                            <span class="hs336-badge hs339-completed">
+                                                Completed
+                                            </span>
+
+                                        {% elif booking.status == 'rework_pending' %}
+
+                                            <span class="hs336-badge hs340-rework-pending">
+                                                Rework Requested
+                                            </span>
+
+                                        {% elif booking.status == 'rework_accepted' %}
+
+                                            <span class="hs336-badge hs341-rework-accepted">
+                                                Rework Accepted
+                                            </span>
+
+                                        {% elif booking.status == 'rework_completed' %}
+
+                                            <span class="hs336-badge hs342-rework-completed">
+                                                Rework Completed
+                                            </span>
+
+                                        {% elif booking.status == 'cancelled' %}
+
+                                            <span class="hs336-badge hs343-cancelled">
+                                                Cancelled
+                                            </span>
+
+                                        {% endif %}
+
+                                    </td>
+
+
+                                    <!-- ACTION -->
+
+                                    <td>
+
+                                        <div class="hs346-actions">
+
+                                            <!-- PENDING -->
+
+                                            {% if booking.status == 'pending' %}
+
+                                                <form
+                                                    action="{% url 'cancel_booking' booking.id %}"
+                                                    method="post"
+                                                    class="d-inline"
+                                                >
+
+                                                    {% csrf_token %}
+
+                                                    <button
+                                                        type="submit"
+                                                        class="hs347-action hs348-cancel"
+                                                    >
+                                                        Cancel
+                                                    </button>
+
+                                                </form>
+
+
+                                            <!-- ACCEPTED -->
+
+                                            {% elif booking.status == 'accepted' %}
+
+                                                {% if booking.booking %}
+
+                                                    {% if booking.booking.is_paid %}
+
+                                                        <span class="hs336-badge hs352-paid">
+                                                            Paid
+                                                        </span>
+
+                                                    {% else %}
+
+                                                        <form
+                                                            action="{% url 'customer_pay' booking.booking.id %}"
+                                                            method="get"
+                                                            class="d-inline"
+                                                        >
+
+                                                            <button
+                                                                type="submit"
+                                                                class="hs347-action hs349-pay"
+                                                            >
+                                                                Pay Now
+                                                            </button>
+
+                                                        </form>
+
+                                                        <form
+                                                            action="{% url 'cancel_booking' booking.id %}"
+                                                            method="post"
+                                                            class="d-inline"
+                                                        >
+
+                                                            {% csrf_token %}
+
+                                                            <button
+                                                                type="submit"
+                                                                class="hs347-action hs348-cancel"
+                                                            >
+                                                                Cancel
+                                                            </button>
+
+                                                        </form>
+
+                                                    {% endif %}
+
+                                                {% else %}
+
+                                                    <span class="hs336-badge hs344-normal">
+                                                        Awaiting Confirmation
+                                                    </span>
+
+                                                {% endif %}
+
+
+                                            <!-- COMPLETED -->
+
+                                            {% elif booking.status == 'completed' %}
+
+                                                {% if not booking.is_rework and booking.rework_count == 0 %}
+
+                                                    <button
+                                                        type="button"
+                                                        class="hs347-action hs351-rework"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#reworkModal{{ booking.id }}"
+                                                    >
+                                                        Request Rework
+                                                    </button>
+
+                                                {% endif %}
+
+
+                                                <form
+                                                    action="{% url 'leave_review' booking.id %}"
+                                                    method="get"
+                                                    class="d-inline"
+                                                >
+
+                                                    <button
+                                                        type="submit"
+                                                        class="hs347-action hs350-review"
+                                                    >
+                                                        Review
+                                                    </button>
+
+                                                </form>
+
+
+                                            <!-- REWORK PENDING -->
+
+                                            {% elif booking.status == 'rework_pending' %}
+
+                                                <span class="hs336-badge hs340-rework-pending">
+                                                    Waiting for Provider
+                                                </span>
+
+
+                                            <!-- REWORK ACCEPTED -->
+
+                                            {% elif booking.status == 'rework_accepted' %}
+
+                                                <span class="hs336-badge hs341-rework-accepted">
+                                                    Rework in Progress
+                                                </span>
+
+
+                                            <!-- REWORK COMPLETED -->
+
+                                            {% elif booking.status == 'rework_completed' %}
+
+                                                <span class="hs336-badge hs342-rework-completed">
+                                                    Rework Completed
+                                                </span>
+
+                                                <form
+                                                    action="{% url 'leave_review' booking.id %}"
+                                                    method="get"
+                                                    class="d-inline"
+                                                >
+
+                                                    <button
+                                                        type="submit"
+                                                        class="hs347-action hs350-review"
+                                                    >
+                                                        Review
+                                                    </button>
+
+                                                </form>
+
+
+                                            {% else %}
+
+                                                <span class="hs336-badge hs342-rework-completed">
+                                                    No Actions
+                                                </span>
+
+                                            {% endif %}
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+
+                                {% empty %}
+
+                                <tr>
+
+                                    <td
+                                        colspan="7"
+                                        class="hs353-empty"
+                                    >
+
+                                        <div class="hs354-empty-icon">
+                                            📋
+                                        </div>
+
+                                        <h5 class="hs355-empty-title">
+                                            No bookings found
+                                        </h5>
+
+                                        <p class="hs356-empty-text">
+                                            Try changing your filters or book a new service.
+                                        </p>
+
+                                    </td>
+
+                                </tr>
+
+                                {% endfor %}
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+```
+
+</div>
+
+<!-- =========================================================
+     REWORK MODALS
+========================================================= -->
+
+{% for booking in booking_requests %}
+
+```
+{% if booking.status == 'completed' %}
+
+    {% if not booking.is_rework and booking.rework_count == 0 %}
+
+        <div
+            class="modal fade hs357-modal"
+            id="reworkModal{{ booking.id }}"
+            tabindex="-1"
+            aria-labelledby="reworkModalLabel{{ booking.id }}"
+            aria-hidden="true"
+        >
+
+            <div class="modal-dialog modal-dialog-centered">
+
+                <div class="modal-content">
+
+                    <div class="modal-header hs358-modal-header">
+
+                        <h5
+                            class="modal-title hs359-modal-title"
+                            id="reworkModalLabel{{ booking.id }}"
+                        >
+                            Request Rework
+                        </h5>
+
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+
+                    </div>
+
+
+                    <form
+                        method="POST"
+                        action="{% url 'request_rework' booking.id %}"
+                    >
+
+                        {% csrf_token %}
+
+                        <div class="hs360-modal-body">
+
+                            <label class="hs361-modal-label">
+                                Describe the issue
+                            </label>
+
+                            <textarea
+                                name="rework_message"
+                                class="form-control hs362-modal-textarea"
+                                rows="5"
+                                required
+                                placeholder="Please describe the issue with the completed service..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="hs363-modal-footer">
+
+                            <button
+                                type="submit"
+                                class="hs364-modal-submit"
+                            >
+                                Submit Request
+                            </button>
+
+                            <button
+                                type="button"
+                                class="hs365-modal-cancel"
+                                data-bs-dismiss="modal"
+                            >
+                                Cancel
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    {% endif %}
+
+{% endif %}
+
+
+{% endfor %}
+
+{% endblock %}

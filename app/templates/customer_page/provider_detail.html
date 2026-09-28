@@ -1,0 +1,35 @@
+{% extends 'customer_page/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<style>
+.provider-photo{
+    width:160px; height:160px;
+    border-radius:16px;
+    object-fit:cover;
+}
+</style>
+
+<h2>{{ provider.user_profile.user.first_name }} {{ provider.user_profile.user.last_name }}</h2>
+
+<img src="{{ provider.photo.url }}" class="provider-photo mb-3">
+<p><strong>Service:</strong> {{ provider.service.service_name }}</p>
+<p><strong>Experience:</strong> {{ provider.experience_years }} years</p>
+<p><strong>Location:</strong> {{ provider.location }}</p>
+<p><strong>Phone:</strong> {{ provider.user_profile.phone }}</p>
+<p><strong>Email:</strong> {{ provider.user_profile.user.email }}</p>
+
+<a href="{% url 'book_service' %}?service={{ provider.service.id }}&location={{ provider.location }}" class="btn btn-primary mt-3">
+    Book This Provider
+</a>
+
+<style>
+.provider-photo{
+    width:160px; height:160px;
+    border-radius:16px;
+    object-fit:cover;
+}
+</style>
+{% endblock %}

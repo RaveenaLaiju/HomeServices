@@ -1,0 +1,556 @@
+{% extends 'admin_page/base.html' %}
+
+{% block title %}Booking List - Noah's Ark Services{% endblock %}
+
+{% block content %}
+
+
+<div class="nhs201-page">
+
+
+<div class="container-fluid">
+
+
+    <section class="nhs202-header">
+
+        <div class="nhs203-header-inner">
+
+            <div class="nhs204-header-left">
+
+                <div class="nhs205-kicker">
+                    <i class="fa fa-calendar-check-o"></i>
+                    Service Management
+                </div>
+
+                <h1 class="nhs206-title">
+                    Bookings
+                </h1>
+
+                <p class="nhs207-subtitle">
+                    Manage customer service reservations, providers,
+                    booking types and appointment status from one
+                    centralized workspace.
+                </p>
+
+            </div>
+
+
+            <div class="nhs208-counter">
+
+                <span class="nhs209-counter-number">
+                    {{ bookings|length }}
+                </span>
+
+                <span class="nhs210-counter-label">
+                    Current Results
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FILTERS
+         ===================================================== -->
+
+    <section class="nhs211-filter">
+
+        <div class="nhs212-filter-top">
+
+            <div class="nhs213-filter-icon">
+                <i class="fa fa-sliders"></i>
+            </div>
+
+            <div>
+
+                <h2 class="nhs214-filter-title">
+                    Refine Bookings
+                </h2>
+
+                <p class="nhs215-filter-description">
+                    Use the filters below to find specific service bookings.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form method="GET">
+
+            <div class="row g-3">
+
+                <!-- SERVICE -->
+
+                <div class="col-xl-3 col-lg-6 col-md-6">
+
+                    <label
+                        for="nhsServiceFilter"
+                        class="nhs216-label"
+                    >
+                        Service
+                    </label>
+
+                    <select
+                        name="service"
+                        id="nhsServiceFilter"
+                        class="form-select nhs217-control"
+                    >
+
+                        <option value="">
+                            All Services
+                        </option>
+
+                        {% for s in services %}
+
+                            <option
+                                value="{{ s.id }}"
+                                {% if selected_service == s.id|stringformat:"s" %}
+                                    selected
+                                {% endif %}
+                            >
+                                {{ s.service_name }}
+                            </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+                <!-- PROVIDER -->
+
+                <div class="col-xl-3 col-lg-6 col-md-6">
+
+                    <label
+                        for="nhsProviderFilter"
+                        class="nhs216-label"
+                    >
+                        Provider
+                    </label>
+
+                    <select
+                        name="provider"
+                        id="nhsProviderFilter"
+                        class="form-select nhs217-control"
+                    >
+
+                        <option value="">
+                            All Providers
+                        </option>
+
+                        {% for p in providers %}
+
+                            <option
+                                value="{{ p.id }}"
+                                {% if selected_provider == p.id|stringformat:"s" %}
+                                    selected
+                                {% endif %}
+                            >
+                                {{ p.user_profile.user.first_name }}
+                                {{ p.user_profile.user.last_name }}
+                            </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+                <!-- BOOKING TYPE -->
+
+                <div class="col-xl-2 col-lg-6 col-md-6">
+
+                    <label
+                        for="nhsTypeFilter"
+                        class="nhs216-label"
+                    >
+                        Booking Type
+                    </label>
+
+                    <select
+                        name="type"
+                        id="nhsTypeFilter"
+                        class="form-select nhs217-control"
+                    >
+
+                        <option value="">
+                            All Types
+                        </option>
+
+                        <option
+                            value="normal"
+                            {% if selected_type == "normal" %}
+                                selected
+                            {% endif %}
+                        >
+                            Normal
+                        </option>
+
+                        <option
+                            value="emergency"
+                            {% if selected_type == "emergency" %}
+                                selected
+                            {% endif %}
+                        >
+                            Emergency
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DATE -->
+
+                <div class="col-xl-2 col-lg-6 col-md-6">
+
+                    <label
+                        for="nhsDateFilter"
+                        class="nhs216-label"
+                    >
+                        Booking Date
+                    </label>
+
+                    <input
+                        type="date"
+                        name="date"
+                        id="nhsDateFilter"
+                        class="form-control nhs217-control"
+                        value="{{ selected_date }}"
+                    >
+
+                </div>
+
+
+                <!-- FILTER BUTTON -->
+
+                <div class="col-xl-2 col-lg-12 col-md-12 d-flex align-items-end">
+
+                    <button
+                        type="submit"
+                        class="btn nhs218-filter-button w-100"
+                    >
+                        <i class="fa fa-filter me-1"></i>
+                        Apply Filters
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- =====================================================
+         BOOKINGS
+         ===================================================== -->
+
+    <section class="nhs219-booking-panel">
+
+        <div class="nhs220-panel-header">
+
+            <div class="nhs221-panel-heading">
+
+                <div class="nhs222-panel-icon">
+                    <i class="fa fa-list-alt"></i>
+                </div>
+
+                <div>
+
+                    <h2 class="nhs223-panel-title">
+                        Registered Bookings
+                    </h2>
+
+                    <p class="nhs224-panel-caption">
+                        All matching service reservations
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <span class="nhs225-panel-count">
+                {{ bookings|length }}
+            </span>
+
+        </div>
+
+
+        <div class="nhs226-table-wrapper">
+
+            <table class="table nhs227-table align-middle">
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Customer</th>
+                        <th>Provider</th>
+                        <th>Service</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Booking Date</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for booking in bookings %}
+
+                    <tr>
+
+                        <!-- ID -->
+
+                        <td>
+
+                            <span class="nhs228-id">
+                                #{{ booking.id }}
+                            </span>
+
+                        </td>
+
+
+                        <!-- CUSTOMER -->
+
+                        <td>
+
+                            <div class="nhs229-person">
+
+                                <div class="nhs230-avatar">
+                                    <i class="fa fa-user"></i>
+                                </div>
+
+                                <div>
+
+                                    <span class="nhs231-person-name">
+
+                                        {{ booking.booking_request.customer.user_profile.user.first_name }}
+                                        {{ booking.booking_request.customer.user_profile.user.last_name }}
+
+                                    </span>
+
+                                    <span class="nhs232-person-role">
+                                        Customer
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- PROVIDER -->
+
+                        <td>
+
+                            <div class="nhs229-person">
+
+                                <div class="nhs230-avatar">
+                                    <i class="fa fa-user-md"></i>
+                                </div>
+
+                                <div>
+
+                                    <span class="nhs231-person-name">
+
+                                        {{ booking.booking_request.provider.user_profile.user.first_name }}
+                                        {{ booking.booking_request.provider.user_profile.user.last_name }}
+
+                                    </span>
+
+                                    <span class="nhs232-person-role">
+                                        Service Provider
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- SERVICE -->
+
+                        <td>
+
+                            <span class="nhs233-service">
+
+                                <i class="fa fa-wrench"></i>
+
+                                {{ booking.booking_request.service.service_name }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- TYPE -->
+
+                        <td>
+
+                            {% if booking.booking_request.type == "emergency" %}
+
+                                <span class="nhs234-type nhs234-emergency">
+
+                                    <i class="fa fa-bolt"></i>
+
+                                    Emergency
+
+                                </span>
+
+                            {% else %}
+
+                                <span class="nhs234-type nhs234-normal">
+
+                                    <i class="fa fa-calendar"></i>
+
+                                    Normal
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            {% if booking.booking_request.status == "completed" %}
+
+                                <span class="nhs235-status nhs235-completed">
+
+                                    <i class="fa fa-circle"></i>
+
+                                    Completed
+
+                                </span>
+
+                            {% elif booking.booking_request.status == "pending" %}
+
+                                <span class="nhs235-status nhs235-pending">
+
+                                    <i class="fa fa-circle"></i>
+
+                                    Pending
+
+                                </span>
+
+                            {% elif booking.booking_request.status == "cancelled" %}
+
+                                <span class="nhs235-status nhs235-cancelled">
+
+                                    <i class="fa fa-circle"></i>
+
+                                    Cancelled
+
+                                </span>
+
+                            {% else %}
+
+                                <span class="nhs235-status nhs235-other">
+
+                                    <i class="fa fa-circle"></i>
+
+                                    {{ booking.booking_request.status|title }}
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- DATE -->
+
+                        <td>
+
+                            <span class="nhs236-date">
+
+                                <i class="fa fa-clock-o"></i>
+
+                                {{ booking.booking_date|date:"Y-m-d H:i" }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- ACTION -->
+
+                        <td>
+
+                            <a
+                                href="{% url 'admin_booking_detail' booking.id %}"
+                                class="nhs237-view"
+                            >
+
+                                <i class="fa fa-eye"></i>
+
+                                View
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td
+                            colspan="8"
+                            class="nhs238-empty"
+                        >
+
+                            <div class="nhs239-empty-icon">
+
+                                <i class="fa fa-calendar-times-o"></i>
+
+                            </div>
+
+                            <h3 class="nhs240-empty-title">
+                                No bookings found
+                            </h3>
+
+                            <p class="nhs241-empty-text">
+                                Try changing your filters or check again later.
+                            </p>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</div>
+
+</div>
+
+{% endblock %}

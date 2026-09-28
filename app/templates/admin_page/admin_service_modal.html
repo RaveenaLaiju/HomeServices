@@ -1,0 +1,396 @@
+{% load static %}
+
+
+
+<div
+    class="modal fade nasu801-edit-modal"
+    id="nasEditServiceModal{{ service.id }}"
+    tabindex="-1"
+    aria-labelledby="nasEditServiceTitle{{ service.id }}"
+    aria-hidden="true"
+>
+    <div
+        class="modal-dialog modal-dialog-centered modal-dialog-scrollable nasu802-edit-dialog"
+    >
+        <div class="modal-content nasu803-edit-content">
+
+
+            <div class="nasu804-edit-header">
+
+                <div class="nasu805-header-left">
+
+                    <div class="nasu806-header-icon">
+                        <i class="fa fa-pencil"></i>
+                    </div>
+
+                    <div class="nasu807-header-text">
+
+                        <h5
+                            class="nasu808-title"
+                            id="nasEditServiceTitle{{ service.id }}"
+                        >
+                            Edit Service
+                        </h5>
+
+                        <p class="nasu809-subtitle">
+                            Update {{ service.service_name }}
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="nasu810-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                >
+                    <i class="fa fa-times"></i>
+                </button>
+
+            </div>
+
+
+            <!-- ==================================================
+                 FORM
+                 ================================================== -->
+
+            <form
+                method="POST"
+                enctype="multipart/form-data"
+                class="nasu811-edit-form"
+            >
+
+                {% csrf_token %}
+
+                <!-- Existing/current service ID -->
+                <input
+                    type="hidden"
+                    name="service_id"
+                    value="{{ service.id }}"
+                >
+
+                <!-- Compatibility with newer view logic -->
+                <input
+                    type="hidden"
+                    name="update_service"
+                    value="1"
+                >
+
+
+                <!-- ==================================================
+                     SCROLLABLE BODY
+                     ================================================== -->
+
+                <div class="nasu812-edit-body">
+
+                    <!-- SERVICE NAME -->
+
+                    <div class="nasu813-form-group">
+
+                        <label
+                            for="nasuServiceName{{ service.id }}"
+                            class="nasu814-label"
+                        >
+                            Service Name
+                            <span class="nasu815-required">*</span>
+                        </label>
+
+                        <div class="nasu816-input-wrapper">
+
+                            <span class="nasu817-input-icon">
+                                <i class="fa fa-tag"></i>
+                            </span>
+
+                            <input
+                                type="text"
+                                id="nasuServiceName{{ service.id }}"
+                                name="service_name"
+                                value="{{ service.service_name }}"
+                                class="nasu818-input"
+                                placeholder="Enter service name"
+                                autocomplete="off"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SERVICE PRICE -->
+
+                    <div class="nasu813-form-group">
+
+                        <label
+                            for="nasuServicePrice{{ service.id }}"
+                            class="nasu814-label"
+                        >
+                            Service Price
+                            <span class="nasu815-required">*</span>
+                        </label>
+
+                        <div class="nasu816-input-wrapper">
+
+                            <span class="nasu817-input-icon">
+                                <i class="fa fa-inr"></i>
+                            </span>
+
+                            <input
+                                type="number"
+                                id="nasuServicePrice{{ service.id }}"
+                                name="price"
+                                value="{{ service.price }}"
+                                class="nasu818-input"
+                                placeholder="Enter service price"
+                                min="0"
+                                step="0.01"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CURRENT IMAGE -->
+
+                    {% if service.image %}
+
+                    <div class="nasu813-form-group">
+
+                        <label class="nasu814-label">
+                            Current Service Image
+                        </label>
+
+                        <div class="nasu819-current-image">
+
+                            <div class="nasu820-current-image-preview">
+
+                                <img
+                                    src="{{ service.image.url }}"
+                                    alt="{{ service.service_name }}"
+                                >
+
+                            </div>
+
+                            <div class="nasu821-current-image-info">
+
+                                <strong>
+                                    Current service image
+                                </strong>
+
+                                <span>
+                                    {{ service.service_name }}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    {% endif %}
+
+
+                    <!-- NEW IMAGE -->
+
+                    <div class="nasu813-form-group">
+
+                        <label
+                            for="nasuImage{{ service.id }}"
+                            class="nasu814-label"
+                        >
+                            Service Image
+                        </label>
+
+                        <div class="nasu822-upload-area">
+
+                            <input
+                                type="file"
+                                id="nasuImage{{ service.id }}"
+                                name="image"
+                                class="nasu823-file-input"
+                                accept="image/jpeg,image/png,image/webp"
+                            >
+
+                            <div class="nasu824-upload-content">
+
+                                <div class="nasu825-upload-icon">
+                                    <i class="fa fa-cloud-upload"></i>
+                                </div>
+
+                                <h6 class="nasu826-upload-title">
+                                    Click to upload a new image
+                                </h6>
+
+                                <p class="nasu827-upload-description">
+                                    JPG, PNG or WEBP
+                                </p>
+
+                                <span class="nasu828-upload-hint">
+                                    Leave empty to keep the current image
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EXTRA SPACE SO CONTENT NEVER TOUCHES FOOTER -->
+
+                    <div class="nasu829-bottom-space"></div>
+
+                </div>
+
+
+                <!-- ==================================================
+                     FIXED FOOTER
+                     ================================================== -->
+
+                <div class="nasu830-edit-footer">
+
+                    <button
+                        type="button"
+                        class="nasu831-cancel-button"
+                        data-bs-dismiss="modal"
+                    >
+                        <i class="fa fa-times"></i>
+                        <span>Cancel</span>
+                    </button>
+
+
+                    <!--
+                        Sends BOTH:
+                        update_service=1
+                        update={{ service.id }}
+
+                        Therefore no views.py modification is required.
+                    -->
+
+                    <button
+                        type="submit"
+                        name="update"
+                        value="{{ service.id }}"
+                        class="nasu832-update-button"
+                    >
+                        <i class="fa fa-save"></i>
+                        <span>Update Service</span>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================================
+     DELETE MODAL
+     ============================================================ -->
+
+<div
+    class="modal fade nasu833-delete-modal"
+    id="nasDeleteServiceModal{{ service.id }}"
+    tabindex="-1"
+    aria-labelledby="nasDeleteServiceTitle{{ service.id }}"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered nasu834-delete-dialog">
+
+        <div class="modal-content nasu835-delete-content">
+
+            <div class="nasu836-delete-header">
+
+                <div class="nasu837-delete-icon">
+                    <i class="fa fa-trash"></i>
+                </div>
+
+                <button
+                    type="button"
+                    class="nasu838-delete-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                >
+                    <i class="fa fa-times"></i>
+                </button>
+
+            </div>
+
+
+            <div class="nasu839-delete-body">
+
+                <h5
+                    class="nasu840-delete-title"
+                    id="nasDeleteServiceTitle{{ service.id }}"
+                >
+                    Delete Service?
+                </h5>
+
+                <p class="nasu841-delete-text">
+
+                    Are you sure you want to delete
+
+                    <strong>
+                        {{ service.service_name }}
+                    </strong>
+
+                    service?
+
+                </p>
+
+                <div class="nasu842-delete-warning">
+
+                    <i class="fa fa-exclamation-triangle"></i>
+
+                    <span>
+                        This action cannot be undone.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <form method="POST" class="nasu843-delete-form">
+
+                {% csrf_token %}
+
+                <input
+                    type="hidden"
+                    name="id"
+                    value="{{ service.id }}"
+                >
+
+                <div class="nasu844-delete-footer">
+
+                    <button
+                        type="button"
+                        class="nasu845-delete-cancel"
+                        data-bs-dismiss="modal"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        name="delete"
+                        value="{{ service.id }}"
+                        class="nasu846-delete-confirm"
+                    >
+                        <i class="fa fa-trash"></i>
+                        Delete Service
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

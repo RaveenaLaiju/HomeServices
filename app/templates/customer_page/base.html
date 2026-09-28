@@ -1,0 +1,1736 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#092d35"
+    >
+
+    <meta
+        name="description"
+        content="Noah's Ark Services - Professional and reliable home services."
+    >
+
+    <title>
+        {% block title %}
+            Noah's Ark Services
+        {% endblock %}
+    </title>
+
+
+    <!-- =====================================================
+         FAVICON
+    ====================================================== -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="{% static 'customer_page/img/noah.png' %}"
+    >
+
+
+    <!-- =====================================================
+         BOOTSTRAP 5.3.2
+    ====================================================== -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    >
+
+
+    <!-- =====================================================
+         FLATPICKR
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    >
+
+
+    <link
+        rel="stylesheet"
+        href="{% static 'customer_page/css/customer_style.css' %}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{% static 'customer_page/css/customer_style2.css' %}"
+    >
+<link
+        rel="stylesheet"
+        href="{% static 'customer_page/css/customer_style3.css' %}"
+    >
+<style>
+
+.nas202-header {
+    position: sticky;
+    top: 0;
+    z-index: 1050;
+    width: 100%;
+    background: rgba(9, 45, 53, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="nas201-shell">
+
+    <header class="nas202-header">
+
+        <nav class="navbar navbar-expand-lg nas203-navbar">
+
+            <div class="container-fluid px-3 px-sm-4 px-lg-5 nas204-navbar-container">
+
+
+                <!-- =================================================
+                     LOGO
+                ================================================== -->
+
+                <a
+                    href="{% url 'index' %}"
+                    class="nas205-brand"
+                    aria-label="Noah's Ark Services Home"
+                >
+
+                    <img
+                        src="{% static 'customer_page/img/noah.png' %}"
+                        alt="Noah's Ark Services"
+                        class="nas206-brand-image"
+                    >
+
+                </a>
+
+
+                <!-- =================================================
+                     MOBILE TOGGLE
+                ================================================== -->
+
+                <button
+                    class="navbar-toggler nas207-toggler d-lg-none"
+                    type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#nas224MobileMenu"
+                    aria-controls="nas224MobileMenu"
+                    aria-label="Open navigation menu"
+                >
+
+                    <span class="nas208-toggler-icon"></span>
+
+                </button>
+
+
+                <!-- =================================================
+                     DESKTOP NAVIGATION
+                ================================================== -->
+
+                <div
+                    class="collapse navbar-collapse"
+                    id="nas209DesktopNavigation"
+                >
+
+                    <ul class="navbar-nav ms-auto align-items-lg-center nas209-desktop-menu">
+
+
+                        <!-- HOME -->
+
+                        <li class="nav-item nas210-nav-item">
+
+                            <a
+                                href="{% url 'index' %}"
+                                class="nav-link nas211-nav-link"
+                            >
+                                Home
+                            </a>
+
+                        </li>
+
+
+                        <!-- ABOUT -->
+
+                        <li class="nav-item nas210-nav-item">
+
+                            <a
+                                href="/about/"
+                                class="nav-link nas211-nav-link"
+                            >
+                                About
+                            </a>
+
+                        </li>
+
+
+                        <!-- SERVICES -->
+
+                        <li class="nav-item nas210-nav-item">
+
+                            <a
+                                href="/services/"
+                                class="nav-link nas211-nav-link"
+                            >
+                                Services
+                            </a>
+
+                        </li>
+
+
+                        <!-- PROVIDERS -->
+
+                        <li class="nav-item nas210-nav-item">
+
+                            <a
+                                href="/providers/"
+                                class="nav-link nas211-nav-link"
+                            >
+                                Providers
+                            </a>
+
+                        </li>
+
+
+                        <!-- BOOKINGS -->
+
+                        <li class="nav-item nas210-nav-item">
+
+                            <a
+                                href="/bookings/"
+                                class="nav-link nas211-nav-link"
+                            >
+                                Bookings
+                            </a>
+
+                        </li>
+
+
+                        <!-- REVIEWS -->
+
+                        <li class="nav-item nas210-nav-item">
+
+                            <a
+                                href="/reviews/"
+                                class="nav-link nas211-nav-link"
+                            >
+                                Reviews
+                            </a>
+
+                        </li>
+
+
+                        <!-- CONTACT -->
+
+                        <li class="nav-item nas210-nav-item">
+
+                            <a
+                                href="/contact/"
+                                class="nav-link nas211-nav-link"
+                            >
+                                Contact
+                            </a>
+
+                        </li>
+
+
+                        <!-- BOOK SERVICE -->
+
+                        <li class="nav-item nas210-nav-item">
+
+                            <a
+                                href="#"
+                                class="nas212-book-button"
+                                data-bs-toggle="modal"
+                                data-bs-target="#nas237ServiceModal"
+                            >
+
+                                <i class="fa-solid fa-calendar-check"></i>
+
+                                <span>
+                                    Book Service
+                                </span>
+
+                            </a>
+
+                        </li>
+
+
+                        <!-- USER -->
+
+                        <li class="nav-item nas213-profile-item">
+
+                            <a
+                                href="#"
+                                class="nas214-profile-button"
+                                onclick="nas214ToggleProfile(event);"
+                                aria-label="User account"
+                                aria-expanded="false"
+                            >
+
+                                <i class="fa-solid fa-user"></i>
+
+                            </a>
+
+
+                            <!-- PROFILE MENU -->
+
+                            <div class="nas215-profile-menu">
+
+
+                                {% if user.is_authenticated %}
+
+
+                                    <div class="nas216-profile-welcome">
+
+                                        <p class="nas217-profile-welcome-small">
+                                            Welcome to
+                                        </p>
+
+                                        <h6 class="nas218-profile-welcome-title">
+                                            Noah's Ark Services
+                                        </h6>
+
+                                    </div>
+
+
+                                    <div class="nas219-user-details">
+
+                                        <div class="nas220-user-icon">
+
+                                            <i class="fa-solid fa-circle-user"></i>
+
+                                        </div>
+
+                                        <p class="nas221-user-name">
+
+                                            {{ user.first_name }}
+                                            {{ user.last_name }}
+
+                                        </p>
+
+                                    </div>
+
+
+                                    <div class="nas222-profile-divider"></div>
+
+
+                                    <a
+                                        href="/logout/"
+                                        class="nas223-profile-link"
+                                    >
+
+                                        <i class="fa-solid fa-right-from-bracket"></i>
+
+                                        <span>
+                                            Logout
+                                        </span>
+
+                                    </a>
+
+
+                                {% else %}
+
+
+                                    <a
+                                        href="/login/"
+                                        class="nas223-profile-link"
+                                    >
+
+                                        <i class="fa-solid fa-right-to-bracket"></i>
+
+                                        <span>
+                                            Login
+                                        </span>
+
+                                    </a>
+
+
+                                    <a
+                                        href="/register/"
+                                        class="nas223-profile-link"
+                                    >
+
+                                        <i class="fa-solid fa-user-plus"></i>
+
+                                        <span>
+                                            Signup
+                                        </span>
+
+                                    </a>
+
+
+                                {% endif %}
+
+
+                            </div>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+        <!-- =====================================================
+             MOBILE OFFCANVAS
+        ====================================================== -->
+
+        <div
+            class="offcanvas offcanvas-end nas224-offcanvas"
+            tabindex="-1"
+            id="nas224MobileMenu"
+            aria-labelledby="nas226MobileMenuLabel"
+        >
+
+
+            <!-- MOBILE HEADER -->
+
+            <div class="offcanvas-header nas225-offcanvas-header">
+
+                <a
+                    href="{% url 'index' %}"
+                    class="nas226-mobile-logo"
+                    aria-label="Noah's Ark Services"
+                >
+
+                    <img
+                        src="{% static 'customer_page/img/noah.png' %}"
+                        alt="Noah's Ark Services"
+                        class="nas227-mobile-logo-image"
+                    >
+
+                </a>
+
+
+                <button
+                    type="button"
+                    class="btn-close nas228-close-button"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close navigation"
+                ></button>
+
+            </div>
+
+
+            <!-- MOBILE BODY -->
+
+            <div class="offcanvas-body nas229-offcanvas-body">
+
+                <ul class="nas230-mobile-list">
+
+
+                    <!-- HOME -->
+
+                    <li class="nas231-mobile-item">
+
+                        <a
+                            href="{% url 'index' %}"
+                            class="nas232-mobile-link"
+                        >
+                            Home
+                        </a>
+
+                    </li>
+
+
+                    <!-- ABOUT -->
+
+                    <li class="nas231-mobile-item">
+
+                        <a
+                            href="/about/"
+                            class="nas232-mobile-link"
+                        >
+                            About
+                        </a>
+
+                    </li>
+
+
+                    <!-- SERVICES -->
+
+                    <li class="nas231-mobile-item">
+
+                        <a
+                            href="/services/"
+                            class="nas232-mobile-link"
+                        >
+                            Services
+                        </a>
+
+                    </li>
+
+
+                    <!-- PROVIDERS -->
+
+                    <li class="nas231-mobile-item">
+
+                        <a
+                            href="/providers/"
+                            class="nas232-mobile-link"
+                        >
+                            Providers
+                        </a>
+
+                    </li>
+
+
+                    <!-- BOOKINGS -->
+
+                    <li class="nas231-mobile-item">
+
+                        <a
+                            href="/bookings/"
+                            class="nas232-mobile-link"
+                        >
+                            Bookings
+                        </a>
+
+                    </li>
+
+
+                    <!-- REVIEWS -->
+
+                    <li class="nas231-mobile-item">
+
+                        <a
+                            href="/reviews/"
+                            class="nas232-mobile-link"
+                        >
+                            Reviews
+                        </a>
+
+                    </li>
+
+
+                    <!-- CONTACT -->
+
+                    <li class="nas231-mobile-item">
+
+                        <a
+                            href="/contact/"
+                            class="nas232-mobile-link"
+                        >
+                            Contact
+                        </a>
+
+                    </li>
+
+
+                    <!-- BOOK SERVICE -->
+
+                    <li class="nas231-mobile-item">
+
+                        <a
+                            href="#"
+                            class="nas233-mobile-book"
+                            data-bs-toggle="modal"
+                            data-bs-target="#nas237ServiceModal"
+                            data-bs-dismiss="offcanvas"
+                        >
+
+                            <i class="fa-solid fa-calendar-check me-2"></i>
+
+                            Book Service
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- ACCOUNT -->
+
+                    <li class="nas234-mobile-account">
+
+
+                        {% if user.is_authenticated %}
+
+
+                            <div class="nas235-mobile-user">
+
+                                <i class="fa-solid fa-circle-user"></i>
+
+                                <span>
+
+                                    {{ user.first_name }}
+                                    {{ user.last_name }}
+
+                                </span>
+
+                            </div>
+
+
+                            <a
+                                href="/logout/"
+                                class="nas236-mobile-account-link"
+                            >
+
+                                <i class="fa-solid fa-right-from-bracket"></i>
+
+                                Logout
+
+                            </a>
+
+
+                        {% else %}
+
+
+                            <a
+                                href="/login/"
+                                class="nas236-mobile-account-link"
+                            >
+
+                                <i class="fa-solid fa-right-to-bracket"></i>
+
+                                Login
+
+                            </a>
+
+
+                            <a
+                                href="/register/"
+                                class="nas236-mobile-account-link"
+                            >
+
+                                <i class="fa-solid fa-user-plus"></i>
+
+                                Signup
+
+                            </a>
+
+
+                        {% endif %}
+
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         BOOK SERVICE MODAL
+    ====================================================== -->
+
+    <div
+        class="modal fade"
+        id="nas237ServiceModal"
+        tabindex="-1"
+        aria-labelledby="nas239ServiceModalTitle"
+        aria-hidden="true"
+    >
+
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+
+            <div class="modal-content nas237-modal">
+
+
+                <!-- MODAL HEADER -->
+
+                <div class="modal-header nas238-modal-header">
+
+                    <div>
+
+                        <h5
+                            class="nas239-modal-title"
+                            id="nas239ServiceModalTitle"
+                        >
+                            Book a Service
+                        </h5>
+
+                        <p class="nas240-modal-subtitle">
+                            Choose your service and location
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="btn-close nas241-modal-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    ></button>
+
+                </div>
+
+
+                <!-- MODAL BODY -->
+
+                <div class="modal-body nas242-modal-body">
+
+                    <form
+                        method="POST"
+                        action="{% url 'check_availability' %}"
+                        id="nas243ServiceBookingForm"
+                    >
+
+                        {% csrf_token %}
+
+
+                        <!-- SERVICE -->
+
+                        <div class="nas243-form-group">
+
+                            <label
+                                for="nas245Service"
+                                class="nas244-form-label"
+                            >
+                                Select Service
+                            </label>
+
+
+                            <select
+                                name="service"
+                                id="nas245Service"
+                                class="form-select nas245-form-control"
+                                required
+                            >
+
+                                <option
+                                    value=""
+                                    selected
+                                    disabled
+                                >
+                                    Choose a service
+                                </option>
+
+
+                                {% for s in services %}
+
+                                    <option value="{{ s.service_name }}">
+                                        {{ s.service_name }}
+                                    </option>
+
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- LOCATION -->
+
+                        <div class="nas243-form-group">
+
+                            <label
+                                for="nas245Location"
+                                class="nas244-form-label"
+                            >
+                                Select Location
+                            </label>
+
+
+                            <select
+                                name="location"
+                                id="nas245Location"
+                                class="form-select nas245-form-control"
+                                required
+                            >
+
+                                <option
+                                    value=""
+                                    selected
+                                    disabled
+                                >
+                                    Choose your location
+                                </option>
+
+
+                                {% for location in locations %}
+
+                                    <option value="{{ location }}">
+                                        {{ location }}
+                                    </option>
+
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- BOOKING TYPE -->
+
+                        <div class="nas243-form-group">
+
+                            <label
+                                for="nas245BookingType"
+                                class="nas244-form-label"
+                            >
+                                Booking Type
+                            </label>
+
+
+                            <select
+                                name="booking_type"
+                                id="nas245BookingType"
+                                class="form-select nas245-form-control"
+                                onchange="nas246ToggleDate();"
+                                required
+                            >
+
+                                <option value="normal">
+                                    Normal Booking
+                                </option>
+
+                                <option value="emergency">
+                                    Emergency Booking
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- DATE -->
+
+                        <div
+                            class="nas243-form-group"
+                            id="nas247DateField"
+                        >
+
+                            <label
+                                for="nas245Date"
+                                class="nas244-form-label"
+                            >
+                                Select Date
+                            </label>
+
+
+                            <input
+                                type="date"
+                                name="date"
+                                id="nas245Date"
+                                class="form-control nas245-form-control"
+                            >
+
+                        </div>
+
+
+                        <!-- BUTTONS -->
+
+                        <div class="nas246-modal-buttons">
+
+
+                            <button
+                                type="button"
+                                class="btn nas247-cancel-button"
+                                data-bs-dismiss="modal"
+                            >
+                                Cancel
+                            </button>
+
+
+                            <button
+                                type="submit"
+                                class="btn nas248-submit-button"
+                            >
+
+                                <i class="fa-solid fa-magnifying-glass me-2"></i>
+
+                                Check Availability
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         PAGE CONTENT
+    ====================================================== -->
+
+    <main>
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="nas249-footer">
+
+        <div class="container-xxl nas250-footer-container">
+
+            <div class="row g-5">
+
+
+                <!-- =================================================
+                     BRAND
+                ================================================== -->
+
+                <div class="col-12 col-md-6 col-lg-3 text-center text-md-start">
+
+                    <img
+                        src="{% static 'customer_page/img/noah.png' %}"
+                        alt="Noah's Ark Services"
+                        class="nas251-footer-logo"
+                    >
+
+
+                    <p class="nas252-footer-description">
+
+                        Bringing comfort, care, and reliability
+                        right to your doorstep.
+
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     QUICK LINKS
+                ================================================== -->
+
+                <div class="col-6 col-md-6 col-lg-2">
+
+                    <h5 class="nas253-footer-heading">
+                        Quick Links
+                    </h5>
+
+
+                    <ul class="nas254-footer-list">
+
+
+                        <li class="nas255-footer-list-item">
+
+                            <a
+                                href="/about/"
+                                class="nas256-footer-link"
+                            >
+                                About Us
+                            </a>
+
+                        </li>
+
+
+                        <li class="nas255-footer-list-item">
+
+                            <a
+                                href="/services/"
+                                class="nas256-footer-link"
+                            >
+                                Services
+                            </a>
+
+                        </li>
+
+
+                        <li class="nas255-footer-list-item">
+
+                            <a
+                                href="/providers/"
+                                class="nas256-footer-link"
+                            >
+                                Providers
+                            </a>
+
+                        </li>
+
+
+                        <li class="nas255-footer-list-item">
+
+                            <a
+                                href="/bookings/"
+                                class="nas256-footer-link"
+                            >
+                                Bookings
+                            </a>
+
+                        </li>
+
+
+                        <li class="nas255-footer-list-item">
+
+                            <a
+                                href="/reviews/"
+                                class="nas256-footer-link"
+                            >
+                                Reviews
+                            </a>
+
+                        </li>
+
+
+                        <li class="nas255-footer-list-item">
+
+                            <a
+                                href="/contact/"
+                                class="nas256-footer-link"
+                            >
+                                Contact
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+                </div>
+
+
+                <!-- =================================================
+                     CONTACT
+                ================================================== -->
+
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <h5 class="nas253-footer-heading">
+                        Reach Us
+                    </h5>
+
+
+                    <p class="nas257-contact-text">
+
+                        Noah's Ark Services,<br>
+
+                        Amaravathy, Fort Cochin - 682001
+
+                    </p>
+
+
+                    <a
+                        href="tel:+918138862626"
+                        class="nas258-contact-link"
+                    >
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        <span>
+                            +91 81388 62626
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="mailto:noaharksservice@gmail.com"
+                        class="nas258-contact-link"
+                    >
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <span>
+                            noaharksservice@gmail.com
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- =================================================
+                     SOCIAL
+                ================================================== -->
+
+                <div class="col-12 col-md-6 col-lg-3">
+
+                    <h5 class="nas253-footer-heading">
+                        Connect With Us
+                    </h5>
+
+
+                    <div class="nas259-social">
+
+
+                        <a
+                            href="https://facebook.com"
+                            class="nas260-social-icon"
+                            aria-label="Facebook"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+
+                            <i class="fa-brands fa-facebook-f"></i>
+
+                        </a>
+
+
+                        <a
+                            href="https://twitter.com"
+                            class="nas260-social-icon"
+                            aria-label="Twitter"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+
+                            <i class="fa-brands fa-x-twitter"></i>
+
+                        </a>
+
+
+                        <a
+                            href="https://linkedin.com"
+                            class="nas260-social-icon"
+                            aria-label="LinkedIn"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+
+                            <i class="fa-brands fa-linkedin-in"></i>
+
+                        </a>
+
+
+                        <a
+                            href="https://instagram.com"
+                            class="nas260-social-icon"
+                            aria-label="Instagram"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+
+                            <i class="fa-brands fa-instagram"></i>
+
+                        </a>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 DIVIDER
+            ================================================== -->
+
+            <hr class="nas261-footer-divider">
+
+
+            <!-- =================================================
+                 COPYRIGHT
+            ================================================== -->
+
+            <div class="text-center">
+
+                <p class="nas262-copyright">
+
+                    © 2025
+
+                    <strong>
+                        Noah's Ark Services
+                    </strong>
+
+                    — All Rights Reserved.
+
+                    <br>
+
+                    Crafted with
+
+                    <span aria-hidden="true">
+                        ♥
+                    </span>
+
+                    by
+
+                    <a
+                        href="#"
+                        class="nas263-credit"
+                    >
+                        Raveena
+                    </a>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+
+<!-- Bootstrap 5.3.2 -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+></script>
+
+
+<!-- Swiper -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+></script>
+
+
+<!-- Flatpickr -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/flatpickr"
+></script>
+
+
+<!-- Project JavaScript -->
+
+<script
+    src="{% static 'customer_page/js/script.js' %}"
+></script>
+
+
+<!-- =========================================================
+     BASE JAVASCRIPT
+========================================================= -->
+
+<script>
+
+    /* =========================================================
+       1. USER PROFILE DROPDOWN
+    ========================================================== */
+
+    function nas214ToggleProfile(event) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        const profileItem =
+            event.currentTarget.closest(
+                '.nas213-profile-item'
+            );
+
+        if (!profileItem) {
+            return;
+        }
+
+        const menu =
+            profileItem.querySelector(
+                '.nas215-profile-menu'
+            );
+
+        if (!menu) {
+            return;
+        }
+
+        const isActive =
+            menu.classList.toggle('active');
+
+        event.currentTarget.setAttribute(
+            'aria-expanded',
+            isActive ? 'true' : 'false'
+        );
+
+    }
+
+
+    /* =========================================================
+       2. CLOSE PROFILE WHEN CLICKING OUTSIDE
+    ========================================================== */
+
+    document.addEventListener(
+        'click',
+        function(event) {
+
+            const profileItem =
+                document.querySelector(
+                    '.nas213-profile-item'
+                );
+
+            if (!profileItem) {
+                return;
+            }
+
+            const menu =
+                profileItem.querySelector(
+                    '.nas215-profile-menu'
+                );
+
+            const button =
+                profileItem.querySelector(
+                    '.nas214-profile-button'
+                );
+
+            if (!menu || !button) {
+                return;
+            }
+
+            if (
+                !profileItem.contains(
+                    event.target
+                )
+            ) {
+
+                menu.classList.remove(
+                    'active'
+                );
+
+                button.setAttribute(
+                    'aria-expanded',
+                    'false'
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       3. BOOKING TYPE / DATE FIELD
+    ========================================================== */
+
+    function nas246ToggleDate() {
+
+        const bookingType =
+            document.getElementById(
+                'nas245BookingType'
+            );
+
+        const dateField =
+            document.getElementById(
+                'nas247DateField'
+            );
+
+        const dateInput =
+            document.getElementById(
+                'nas245Date'
+            );
+
+        if (
+            !bookingType ||
+            !dateField
+        ) {
+            return;
+        }
+
+
+        if (
+            bookingType.value === 'emergency'
+        ) {
+
+            dateField.style.display = 'none';
+
+            if (dateInput) {
+
+                dateInput.removeAttribute(
+                    'required'
+                );
+
+                dateInput.value = '';
+
+            }
+
+        }
+        else {
+
+            dateField.style.display = 'block';
+
+            if (dateInput) {
+
+                dateInput.setAttribute(
+                    'required',
+                    'required'
+                );
+
+            }
+
+        }
+
+    }
+
+
+    /* =========================================================
+       4. INITIALIZE BOOKING DATE
+    ========================================================== */
+
+    document.addEventListener(
+        'DOMContentLoaded',
+        function() {
+
+            const dateInput =
+                document.getElementById(
+                    'nas245Date'
+                );
+
+
+            if (dateInput) {
+
+                const now =
+                    new Date();
+
+                const year =
+                    now.getFullYear();
+
+                const month =
+                    String(
+                        now.getMonth() + 1
+                    ).padStart(
+                        2,
+                        '0'
+                    );
+
+                const day =
+                    String(
+                        now.getDate()
+                    ).padStart(
+                        2,
+                        '0'
+                    );
+
+                dateInput.min =
+                    `${year}-${month}-${day}`;
+
+            }
+
+
+            nas246ToggleDate();
+
+        }
+    );
+
+
+    /* =========================================================
+       5. ACTIVE DESKTOP NAVIGATION
+    ========================================================== */
+
+    document.addEventListener(
+        'DOMContentLoaded',
+        function() {
+
+            const currentPath =
+                window.location.pathname
+                    .replace(/\/+$/, '') || '/';
+
+
+            const navLinks =
+                document.querySelectorAll(
+                    '.nas211-nav-link'
+                );
+
+
+            navLinks.forEach(
+                function(link) {
+
+                    const href =
+                        link.getAttribute(
+                            'href'
+                        );
+
+
+                    if (!href) {
+                        return;
+                    }
+
+
+                    if (
+                        href.startsWith('#')
+                    ) {
+                        return;
+                    }
+
+
+                    let targetPath = href;
+
+
+                    try {
+
+                        targetPath =
+                            new URL(
+                                href,
+                                window.location.origin
+                            ).pathname;
+
+                    }
+                    catch (error) {
+
+                        return;
+
+                    }
+
+
+                    targetPath =
+                        targetPath
+                            .replace(/\/+$/, '') || '/';
+
+
+                    if (
+                        currentPath === targetPath
+                    ) {
+
+                        link.classList.add(
+                            'active'
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =========================================================
+       6. ACTIVE MOBILE NAVIGATION
+    ========================================================== */
+
+    document.addEventListener(
+        'DOMContentLoaded',
+        function() {
+
+            const currentPath =
+                window.location.pathname
+                    .replace(/\/+$/, '') || '/';
+
+
+            const mobileLinks =
+                document.querySelectorAll(
+                    '.nas232-mobile-link'
+                );
+
+
+            mobileLinks.forEach(
+                function(link) {
+
+                    const href =
+                        link.getAttribute(
+                            'href'
+                        );
+
+
+                    if (!href) {
+                        return;
+                    }
+
+
+                    if (
+                        href.startsWith('#')
+                    ) {
+                        return;
+                    }
+
+
+                    let targetPath;
+
+
+                    try {
+
+                        targetPath =
+                            new URL(
+                                href,
+                                window.location.origin
+                            ).pathname;
+
+                    }
+                    catch (error) {
+
+                        return;
+
+                    }
+
+
+                    targetPath =
+                        targetPath
+                            .replace(/\/+$/, '') || '/';
+
+
+                    if (
+                        currentPath === targetPath
+                    ) {
+
+                        link.classList.add(
+                            'active'
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =========================================================
+       7. FLATPICKR TIME SUPPORT
+       Only initialize if a #time field exists
+    ========================================================== */
+
+    document.addEventListener(
+        'DOMContentLoaded',
+        function() {
+
+            const timeInput =
+                document.getElementById(
+                    'time'
+                );
+
+
+            if (
+                timeInput &&
+                typeof flatpickr !== 'undefined'
+            ) {
+
+                flatpickr(
+                    timeInput,
+                    {
+                        enableTime: true,
+                        noCalendar: true,
+                        dateFormat: 'H:i'
+                    }
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       8. CLOSE PROFILE WHEN MOBILE OFFCANVAS OPENS
+    ========================================================== */
+
+    const mobileMenu =
+        document.getElementById(
+            'nas224MobileMenu'
+        );
+
+
+    if (mobileMenu) {
+
+        mobileMenu.addEventListener(
+            'show.bs.offcanvas',
+            function() {
+
+                const menu =
+                    document.querySelector(
+                        '.nas215-profile-menu'
+                    );
+
+                const button =
+                    document.querySelector(
+                        '.nas214-profile-button'
+                    );
+
+
+                if (menu) {
+
+                    menu.classList.remove(
+                        'active'
+                    );
+
+                }
+
+
+                if (button) {
+
+                    button.setAttribute(
+                        'aria-expanded',
+                        'false'
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =========================================================
+       9. RESET BOOKING MODAL
+    ========================================================== */
+
+    const serviceModal =
+        document.getElementById(
+            'nas237ServiceModal'
+        );
+
+
+    if (serviceModal) {
+
+        serviceModal.addEventListener(
+            'hidden.bs.modal',
+            function() {
+
+                const form =
+                    document.getElementById(
+                        'nas243ServiceBookingForm'
+                    );
+
+
+                if (form) {
+
+                    form.reset();
+
+                }
+
+
+                nas246ToggleDate();
+
+            }
+        );
+
+    }
+
+</script>
+
+{% block extra_js %}
+{% endblock %}
+
+
+</body>
+
+</html>

@@ -1,0 +1,708 @@
+{% extends 'provider_page/base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    Provider Dashboard - Noah's Ark Home Services
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="npd801-page">
+
+
+
+    <section class="npd801-hero">
+
+        <div class="npd801-hero-content">
+
+            <div class="row align-items-center">
+
+                <div class="col">
+
+                    <div class="npd801-eyebrow">
+                        Provider Dashboard
+                    </div>
+
+                    <h1 class="npd801-title">
+
+                        Welcome back,
+                        {{ provider.user_profile.user.first_name }}!
+
+                    </h1>
+
+                    <p class="npd801-description">
+
+                        Keep your home-service business running smoothly.
+                        Manage services, bookings and customer feedback
+                        from one convenient workspace.
+
+                    </p>
+
+                </div>
+
+
+                <div class="col-auto">
+
+                    <div class="npd801-hero-badge">
+
+                        <i class="fa fa-house-chimney-user"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         OVERVIEW
+         ===================================================== -->
+
+    <section class="npd801-section">
+
+
+        <div class="npd801-heading">
+
+            <div>
+
+                <h2 class="npd801-heading-title">
+                    Business Overview
+                </h2>
+
+                <p class="npd801-heading-text">
+                    A quick look at your provider activity
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="row g-3">
+
+
+            <!-- BOOKINGS -->
+
+            <div class="col-12 col-md-4">
+
+                <div class="npd801-stat">
+
+                    <div class="npd801-stat-top">
+
+                        <div class="npd801-stat-icon">
+
+                            <i class="fa fa-calendar-check"></i>
+
+                        </div>
+
+                    </div>
+
+                    <div class="npd801-stat-label">
+                        Total Bookings
+                    </div>
+
+                    <h3 class="npd801-stat-value">
+                        {{ booking_count }}
+                    </h3>
+
+                    <p class="npd801-stat-note">
+                        Customer booking requests
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SERVICES -->
+
+            <div class="col-12 col-md-4">
+
+                <div class="npd801-stat">
+
+                    <div class="npd801-stat-top">
+
+                        <div class="npd801-stat-icon blue">
+
+                            <i class="fa fa-screwdriver-wrench"></i>
+
+                        </div>
+
+                    </div>
+
+                    <div class="npd801-stat-label">
+                        My Services
+                    </div>
+
+                    <h3 class="npd801-stat-value">
+                        {{ service_count }}
+                    </h3>
+
+                    <p class="npd801-stat-note">
+                        Services you currently offer
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- EARNINGS -->
+
+            <div class="col-12 col-md-4">
+
+                <div class="npd801-stat">
+
+                    <div class="npd801-stat-top">
+
+                        <div class="npd801-stat-icon gold">
+
+                            <i class="fa fa-indian-rupee-sign"></i>
+
+                        </div>
+
+                    </div>
+
+                    <div class="npd801-stat-label">
+                        Total Earnings
+                    </div>
+
+                    <h3 class="npd801-stat-value">
+
+                        ₹{{ total_amount }}
+
+                    </h3>
+
+                    <p class="npd801-stat-note">
+                        Total booking amount
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BOOKINGS + ACTIONS
+         ===================================================== -->
+
+    <section class="npd801-section">
+
+        <div class="row g-4">
+
+
+            <!-- =================================================
+                 BOOKINGS
+                 ================================================= -->
+
+            <div class="col-12 col-xl-8">
+
+                <div class="npd801-card">
+
+
+                    <div class="npd801-card-header">
+
+                        <div>
+
+                            <h3 class="npd801-card-title">
+                                Recent Bookings
+                            </h3>
+
+                            <p class="npd801-card-subtitle">
+                                Your latest customer requests
+                            </p>
+
+                        </div>
+
+
+                        <a
+                            href="/provider_bookings/"
+                            class="npd801-link"
+                        >
+
+                            View All
+
+                        </a>
+
+                    </div>
+
+
+                    {% if bookings %}
+
+                        <div class="npd801-table-wrapper">
+
+                            <table class="npd801-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            Customer
+                                        </th>
+
+                                        <th>
+                                            Service
+                                        </th>
+
+                                        <th>
+                                            Amount
+                                        </th>
+
+                                        <th>
+                                            Status
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+                                    {% for booking in bookings %}
+
+                                        <tr>
+
+
+                                            <td>
+
+                                                <div class="npd801-customer">
+
+                                                    <div class="npd801-customer-avatar">
+
+                                                        {% if booking.booking_request.customer.user_profile.user.first_name %}
+
+                                                            {{ booking.booking_request.customer.user_profile.user.first_name|first|upper }}
+
+                                                        {% else %}
+
+                                                            C
+
+                                                        {% endif %}
+
+                                                    </div>
+
+
+                                                    <div>
+
+                                                        <div class="npd801-customer-name">
+
+                                                            {{ booking.booking_request.customer.user_profile.user.first_name }}
+
+                                                            {{ booking.booking_request.customer.user_profile.user.last_name }}
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </td>
+
+
+                                            <td>
+
+                                                <span class="npd801-service">
+
+                                                    {{ booking.booking_request.service.service_name }}
+
+                                                </span>
+
+                                            </td>
+
+
+                                            <td>
+
+                                                <span class="npd801-price">
+
+                                                    ₹{{ booking.booking_request.service.price }}
+
+                                                </span>
+
+                                            </td>
+
+
+                                            <td>
+
+                                                {% if booking.booking_request.status == "Pending" %}
+
+                                                    <span class="npd801-status pending">
+
+                                                        Pending
+
+                                                    </span>
+
+                                                {% elif booking.booking_request.status == "Cancelled" %}
+
+                                                    <span class="npd801-status cancelled">
+
+                                                        Cancelled
+
+                                                    </span>
+
+                                                {% else %}
+
+                                                    <span class="npd801-status">
+
+                                                        {{ booking.booking_request.status }}
+
+                                                    </span>
+
+                                                {% endif %}
+
+                                            </td>
+
+
+                                        </tr>
+
+                                    {% endfor %}
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                    {% else %}
+
+
+                        <div class="npd801-empty">
+
+                            <div class="npd801-empty-icon">
+
+                                <i class="fa fa-calendar-xmark"></i>
+
+                            </div>
+
+                            <h4 class="npd801-empty-title">
+                                No bookings yet
+                            </h4>
+
+                            <p class="npd801-empty-text">
+                                New customer bookings will appear here.
+                            </p>
+
+                        </div>
+
+
+                    {% endif %}
+
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 QUICK ACTIONS
+                 ================================================= -->
+
+            <div class="col-12 col-xl-4">
+
+                <div class="npd801-card">
+
+
+                    <div class="npd801-card-header">
+
+                        <div>
+
+                            <h3 class="npd801-card-title">
+                                Quick Actions
+                            </h3>
+
+                            <p class="npd801-card-subtitle">
+                                Manage your provider account
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="npd801-actions">
+
+
+                        <!-- SERVICE -->
+
+                        <a
+                            href="{% url 'provider_service' %}"
+                            class="npd801-action mb-2"
+                        >
+
+                            <div class="npd801-action-icon">
+
+                                <i class="fa fa-screwdriver-wrench"></i>
+
+                            </div>
+
+                            <div class="npd801-action-content">
+
+                                <h4 class="npd801-action-title">
+                                    Manage Services
+                                </h4>
+
+                                <p class="npd801-action-text">
+                                    Add and manage your services
+                                </p>
+
+                            </div>
+
+                            <i class="fa fa-chevron-right npd801-action-arrow"></i>
+
+                        </a>
+
+
+                        <!-- BOOKINGS -->
+
+                        <a
+                            href="/provider_bookings/"
+                            class="npd801-action mb-2"
+                        >
+
+                            <div class="npd801-action-icon">
+
+                                <i class="fa fa-calendar-days"></i>
+
+                            </div>
+
+                            <div class="npd801-action-content">
+
+                                <h4 class="npd801-action-title">
+                                    View Bookings
+                                </h4>
+
+                                <p class="npd801-action-text">
+                                    Review customer requests
+                                </p>
+
+                            </div>
+
+                            <i class="fa fa-chevron-right npd801-action-arrow"></i>
+
+                        </a>
+
+
+                        <!-- REVIEWS -->
+
+                        <a
+                            href="{% url 'provider_review' %}"
+                            class="npd801-action"
+                        >
+
+                            <div class="npd801-action-icon">
+
+                                <i class="fa fa-star"></i>
+
+                            </div>
+
+                            <div class="npd801-action-content">
+
+                                <h4 class="npd801-action-title">
+                                    Customer Reviews
+                                </h4>
+
+                                <p class="npd801-action-text">
+                                    Check your latest feedback
+                                </p>
+
+                            </div>
+
+                            <i class="fa fa-chevron-right npd801-action-arrow"></i>
+
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         REVIEWS
+         ===================================================== -->
+
+    <section class="npd801-section">
+
+        <div class="npd801-card">
+
+
+            <div class="npd801-card-header">
+
+                <div>
+
+                    <h3 class="npd801-card-title">
+                        Customer Reviews
+                    </h3>
+
+                    <p class="npd801-card-subtitle">
+                        Recent feedback from your customers
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="{% url 'provider_review' %}"
+                    class="npd801-link"
+                >
+
+                    View All
+
+                </a>
+
+            </div>
+
+
+            {% if reviews %}
+
+
+                {% for review in reviews|slice:":4" %}
+
+
+                    <div class="npd801-review">
+
+
+                        <div class="npd801-review-top">
+
+
+                            <div class="npd801-review-user">
+
+
+                                <div class="npd801-review-avatar">
+
+                                    {% if review.customer.user_profile.user.first_name %}
+
+                                        {{ review.customer.user_profile.user.first_name|first|upper }}
+
+                                    {% else %}
+
+                                        C
+
+                                    {% endif %}
+
+                                </div>
+
+
+                                <div>
+
+                                    <p class="npd801-review-name">
+
+                                        {{ review.customer.user_profile.user.username }}
+
+                                    </p>
+
+                                    <p class="npd801-review-date">
+
+                                        {{ review.created_at|date:"M d, Y" }}
+
+                                    </p>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="npd801-stars">
+
+
+                                {% if review.rating >= 1 %}
+                                    <i class="fa fa-star"></i>
+                                {% endif %}
+
+                                {% if review.rating >= 2 %}
+                                    <i class="fa fa-star"></i>
+                                {% endif %}
+
+                                {% if review.rating >= 3 %}
+                                    <i class="fa fa-star"></i>
+                                {% endif %}
+
+                                {% if review.rating >= 4 %}
+                                    <i class="fa fa-star"></i>
+                                {% endif %}
+
+                                {% if review.rating >= 5 %}
+                                    <i class="fa fa-star"></i>
+                                {% endif %}
+
+
+                            </div>
+
+
+                        </div>
+
+
+                        {% if review.comment %}
+
+                            <p class="npd801-review-text">
+
+                                {{ review.comment }}
+
+                            </p>
+
+                        {% endif %}
+
+
+                    </div>
+
+
+                {% endfor %}
+
+
+            {% else %}
+
+
+                <div class="npd801-empty">
+
+                    <div class="npd801-empty-icon">
+
+                        <i class="fa fa-star"></i>
+
+                    </div>
+
+                    <h4 class="npd801-empty-title">
+                        No reviews yet
+                    </h4>
+
+                    <p class="npd801-empty-text">
+                        Customer feedback will appear here.
+                    </p>
+
+                </div>
+
+
+            {% endif %}
+
+
+        </div>
+
+    </section>
+
+
+</div>
+
+{% endblock %}

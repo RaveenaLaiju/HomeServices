@@ -1,0 +1,59 @@
+{% extends 'admin_page/base.html' %}
+
+{% block title %}Providers - Noah's Ark Services{% endblock %}
+
+{% block content %}
+   <div class="main-panel">
+          <div class="content-wrapper">
+   <form method="POST" enctype="multipart/form-data">
+              <div class="container-fluid">
+                
+                    <div class="add">
+                    
+                    </div>
+                  
+            
+                <div class="row">
+                  {% for i in service %}
+                  <div class="col-lg-4 col-md-6 col-sm-12 mb-5">
+                    <a href="">
+                      <div class="product-card">
+                        {% if i.image %}
+    <img class="product-image" src="{{ i.image.url }}" alt="Product Image" width="100">
+{% else %}
+    <p>No image available</p>
+{% endif %}
+
+                        <div class="product-details">
+                          <h2 class="product-title text-center text-black">{{i.service_name}}</h2>
+                          <div class="price">₹{{i.price}}</div>
+                        </div>
+                        <div class="option-btn">
+                     
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </form>
+            
+
+
+
+
+
+
+
+          
+
+              </div>
+             
+        
+      
+            
+          <!-- partial -->
+        <!-- main-panel ends -->
+{% endblock %}
+  </div>

@@ -1,0 +1,299 @@
+{% extends 'admin_page/base.html' %}
+{% load static %}
+
+{% block title %}Service Sections - Noah's Ark Services{% endblock %}
+
+{% block content %}
+
+
+
+<div class="nas601-page">
+
+    <div class="nas602-container">
+
+        <section class="nas603-hero">
+
+            <div class="row align-items-center nas604-hero-grid">
+
+                <div class="col-lg-8">
+
+                    <span class="nas605-eyebrow">
+                        <i class="fa fa-cubes"></i>
+                        Service Management
+                    </span>
+
+                    <h1 class="nas606-title">
+                        Service Sections
+                    </h1>
+
+                    <p class="nas607-description">
+                        Organize and manage the different sections of your
+                        home services. Create, update and maintain service
+                        content from one streamlined dashboard.
+                    </p>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <div class="nas608-hero-action">
+
+                        <!-- IMPORTANT:
+                             This is ONLY a button.
+                             No form around it.
+                        -->
+                        <button
+                            type="button"
+                            class="nas609-add-button"
+                            data-bs-toggle="modal"
+                            data-bs-target="#nas641AddSectionModal"
+                        >
+
+                            <span class="nas610-add-icon">
+                                <i class="fa fa-plus"></i>
+                            </span>
+
+                            <span class="nas611-add-content">
+                                <span class="nas612-add-heading">
+                                    Add Service Section
+                                </span>
+
+                                <span class="nas613-add-subtitle">
+                                    Create a new section for this service
+                                </span>
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CONTENT
+             ================================================= -->
+
+        <div class="row nas614-content-row">
+
+            <!-- LEFT -->
+            <div class="col-xl-8 col-lg-7">
+
+                <div class="nas615-section-header">
+
+                    <div>
+                        <h2 class="nas616-section-heading">
+                            Available Sections
+                        </h2>
+
+                        <p class="nas617-section-subtitle">
+                            Manage the sections belonging to this service.
+                        </p>
+                    </div>
+
+                    <span class="nas618-count">
+                        {{ title|length }}
+                    </span>
+
+                </div>
+
+
+                <div class="nas619-list">
+
+                    {% for i in title %}
+
+                        {% if i.service == data %}
+
+                            <div class="nas620-card">
+
+                                <div class="nas621-icon">
+                                    <i class="fa fa-list-alt"></i>
+                                </div>
+
+                                <div class="nas622-info">
+
+                                    <span class="nas623-label">
+                                        Service Section
+                                    </span>
+
+                                    <a
+    href="{% url 'admin_section_contents' id=i.id %}"
+    class="nas624-title"
+>
+    {{ i.title }}
+</a>
+                                </div>
+
+
+                               <a
+    href="{% url 'admin_section_contents' id=i.id %}"
+    class="nas625-open"
+    title="Open Section"
+>
+    <i class="fa fa-angle-right"></i>
+</a>
+
+
+                                <!--
+                                    ONLY TRIGGERS HERE.
+                                    The actual modals are NOT rendered here.
+                                -->
+                                {% include 'admin_page/admin_service_section_update.html' %}
+
+                            </div>
+
+                        {% endif %}
+
+                    {% empty %}
+
+                        <div class="nas626-empty">
+
+                            <div class="nas627-empty-icon">
+                                <i class="fa fa-folder-open-o"></i>
+                            </div>
+
+                            <h3 class="nas628-empty-title">
+                                No Service Sections
+                            </h3>
+
+                            <p class="nas629-empty-text">
+                                There are currently no sections available
+                                for this service. Use the Add Service Section
+                                button to create your first one.
+                            </p>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT -->
+            <div class="col-xl-4 col-lg-5">
+
+                <div class="nas630-side-card">
+
+                    <div class="nas631-side-icon">
+                        <i class="fa fa-cog"></i>
+                    </div>
+
+                    <h3 class="nas632-side-title">
+                        Manage Your Service
+                    </h3>
+
+                    <p class="nas633-side-text">
+                        Keep your home service information structured and
+                        easy to maintain. Each section can contain its own
+                        service-related content.
+                    </p>
+
+
+                    <div class="nas634-tips">
+
+                        <div class="nas635-tip">
+                            <i class="fa fa-check-circle"></i>
+                            <span>Create dedicated service sections.</span>
+                        </div>
+
+                        <div class="nas635-tip">
+                            <i class="fa fa-check-circle"></i>
+                            <span>Update existing section information.</span>
+                        </div>
+
+                        <div class="nas635-tip">
+                            <i class="fa fa-check-circle"></i>
+                            <span>Open sections to manage their contents.</span>
+                        </div>
+
+                        <div class="nas635-tip">
+                            <i class="fa fa-check-circle"></i>
+                            <span>Keep your customer-facing services organized.</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     IMPORTANT:
+     ALL MODALS ARE OUTSIDE THE HERO/CARDS.
+     ========================================================= -->
+
+{% include 'admin_page/admin_service_section_add.html' %}
+
+{% include 'admin_page/admin_service_section_modals.html' %}
+
+
+<script>
+(function () {
+
+    function nas650MoveModalsToBody() {
+
+        var modals = document.querySelectorAll(
+            '#nas641AddSectionModal, #nas642UpdateSectionModal, #nas643DeleteSectionModal'
+        );
+
+        modals.forEach(function (modal) {
+
+            if (modal && modal.parentElement !== document.body) {
+                document.body.appendChild(modal);
+            }
+
+        });
+    }
+
+    function nas651FixBackdrop() {
+
+        document.addEventListener('shown.bs.modal', function (event) {
+
+            var modal = event.target;
+
+            if (!modal.classList.contains('nas640-modal')) {
+                return;
+            }
+
+            var backdrop = document.querySelector('.modal-backdrop:last-of-type');
+
+            if (backdrop) {
+                backdrop.style.zIndex = '99990';
+            }
+
+            modal.style.zIndex = '99999';
+
+        });
+
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        nas650MoveModalsToBody();
+        nas651FixBackdrop();
+
+        /*
+         * Bootstrap sometimes creates the modal after the page has
+         * already initialized. Run once more after a short delay.
+         */
+        setTimeout(nas650MoveModalsToBody, 50);
+
+    });
+
+})();
+</script>
+
+{% endblock %}

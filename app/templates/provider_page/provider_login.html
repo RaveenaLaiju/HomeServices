@@ -1,0 +1,598 @@
+{% extends 'provider_page/base.html' %}
+
+{% block title %}Provider Login - Noah's Ark Services{% endblock %}
+
+{% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+        <script>
+            alert('{{ message|escapejs }}');
+        </script>
+    {% endfor %}
+{% endif %}
+
+<style>
+   
+
+    .npl901-page {
+        min-height: calc(100vh - 70px);
+        width: 100%;
+        padding: 30px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f7f9fc;
+    }
+
+    .npl901-wrapper {
+        width: 100%;
+        max-width: 1050px;
+        background: #ffffff;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 18px 55px rgba(31, 45, 61, 0.12);
+        border: 1px solid #edf0f5;
+    }
+
+    /* LEFT PANEL */
+
+    .npl902-visual {
+        min-height: 560px;
+        height: 100%;
+        position: relative;
+        padding: 45px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+        background:
+            linear-gradient(
+                145deg,
+                rgba(24, 74, 146, 0.97),
+                rgba(39, 112, 190, 0.96)
+            );
+    }
+
+    .npl902-visual::before {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        top: -130px;
+        right: -100px;
+    }
+
+    .npl902-visual::after {
+        content: "";
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.06);
+        bottom: -100px;
+        left: -80px;
+    }
+
+    .npl903-visual-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .npl904-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 50px;
+        background: rgba(255, 255, 255, 0.14);
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        backdrop-filter: blur(8px);
+        margin-bottom: 25px;
+    }
+
+    .npl905-title {
+        color: #ffffff;
+        font-size: clamp(30px, 4vw, 48px);
+        font-weight: 800;
+        line-height: 1.12;
+        margin-bottom: 18px;
+    }
+
+    .npl906-title-highlight {
+        color: #d9efff;
+    }
+
+    .npl907-description {
+        color: rgba(255, 255, 255, 0.84);
+        font-size: 15px;
+        line-height: 1.8;
+        max-width: 440px;
+        margin-bottom: 30px;
+    }
+
+    .npl908-features {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .npl909-feature {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .npl910-feature-icon {
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.14);
+        color: #ffffff;
+    }
+
+    /* RIGHT PANEL */
+
+    .npl911-form-section {
+        min-height: 560px;
+        padding: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+    }
+
+    .npl912-form-container {
+        width: 100%;
+        max-width: 390px;
+    }
+
+    .npl913-form-header {
+        margin-bottom: 32px;
+    }
+
+    .npl914-small-label {
+        color: #2770be;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 1.3px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+
+    .npl915-form-title {
+        color: #182433;
+        font-size: 30px;
+        font-weight: 800;
+        margin-bottom: 8px;
+    }
+
+    .npl916-form-subtitle {
+        color: #8491a3;
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    .npl917-field {
+        margin-bottom: 20px;
+    }
+
+    .npl918-label {
+        display: block;
+        color: #364152;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .npl919-input-wrapper {
+        position: relative;
+    }
+
+    .npl920-input-icon {
+        position: absolute;
+        left: 17px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #91a0b5;
+        font-size: 15px;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .npl921-input {
+        width: 100%;
+        height: 54px;
+        border: 1px solid #e1e7ef;
+        border-radius: 13px;
+        background: #f9fbfd;
+        padding: 0 18px 0 47px;
+        color: #202b3a;
+        font-size: 14px;
+        outline: none;
+        transition: all 0.25s ease;
+    }
+
+    .npl921-input::placeholder {
+        color: #a7b1bf;
+    }
+
+    .npl921-input:focus {
+        background: #ffffff;
+        border-color: #2770be;
+        box-shadow: 0 0 0 4px rgba(39, 112, 190, 0.10);
+    }
+
+    .npl922-login-button {
+        width: 100%;
+        height: 54px;
+        border: 0;
+        border-radius: 13px;
+        background: linear-gradient(135deg, #2770be, #18559b);
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.3px;
+        box-shadow: 0 10px 22px rgba(39, 112, 190, 0.22);
+        transition: all 0.25s ease;
+    }
+
+    .npl922-login-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 28px rgba(39, 112, 190, 0.28);
+    }
+
+    .npl922-login-button:active {
+        transform: translateY(0);
+    }
+
+    .npl923-button-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+    }
+
+    .npl924-security-note {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        color: #98a4b4;
+        font-size: 11px;
+        margin-top: 20px;
+    }
+
+    .npl925-security-note i {
+        color: #37a169;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 991.98px) {
+
+        .npl901-page {
+            min-height: auto;
+            padding: 25px 15px;
+        }
+
+        .npl902-visual {
+            min-height: 420px;
+            padding: 35px;
+        }
+
+        .npl911-form-section {
+            min-height: auto;
+            padding: 40px 30px;
+        }
+
+    }
+
+    @media (max-width: 767.98px) {
+
+        .npl901-page {
+            padding: 15px 10px;
+        }
+
+        .npl901-wrapper {
+            border-radius: 18px;
+        }
+
+        .npl902-visual {
+            min-height: auto;
+            padding: 32px 25px;
+        }
+
+        .npl905-title {
+            font-size: 32px;
+        }
+
+        .npl907-description {
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .npl908-features {
+            gap: 11px;
+        }
+
+        .npl911-form-section {
+            padding: 35px 25px;
+        }
+
+        .npl915-form-title {
+            font-size: 27px;
+        }
+
+    }
+
+    @media (max-width: 575.98px) {
+
+        .npl901-page {
+            padding: 10px;
+        }
+
+        .npl902-visual {
+            padding: 28px 20px;
+        }
+
+        .npl905-title {
+            font-size: 28px;
+        }
+
+        .npl907-description {
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .npl911-form-section {
+            padding: 30px 20px;
+        }
+
+        .npl912-form-container {
+            max-width: 100%;
+        }
+
+        .npl915-form-title {
+            font-size: 25px;
+        }
+
+        .npl921-input,
+        .npl922-login-button {
+            height: 52px;
+        }
+
+    }
+</style>
+
+
+<div class="npl901-page">
+
+    <div class="npl901-wrapper">
+
+        <div class="row g-0">
+
+            <!-- Premium Introduction Section -->
+            <div class="col-lg-6">
+
+                <section class="npl902-visual">
+
+                    <div class="npl903-visual-content">
+
+                        <div class="npl904-badge">
+                            <i class="fas fa-shield-alt"></i>
+                            Provider Portal
+                        </div>
+
+                        <h1 class="npl905-title">
+                            Manage your
+                            <span class="npl906-title-highlight">
+                                services
+                            </span>
+                            with confidence.
+                        </h1>
+
+                        <p class="npl907-description">
+                            Welcome back to Noah's Ark Services.
+                            Access your provider dashboard, manage bookings,
+                            update services and stay connected with your customers.
+                        </p>
+
+                    </div>
+
+
+                    <div class="npl908-features">
+
+                        <div class="npl909-feature">
+                            <span class="npl910-feature-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </span>
+
+                            <span>
+                                Manage your service bookings
+                            </span>
+                        </div>
+
+
+                        <div class="npl909-feature">
+                            <span class="npl910-feature-icon">
+                                <i class="fas fa-concierge-bell"></i>
+                            </span>
+
+                            <span>
+                                Control your services easily
+                            </span>
+                        </div>
+
+
+                        <div class="npl909-feature">
+                            <span class="npl910-feature-icon">
+                                <i class="fas fa-users"></i>
+                            </span>
+
+                            <span>
+                                Connect with your customers
+                            </span>
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- Login Section -->
+            <div class="col-lg-6">
+
+                <section class="npl911-form-section">
+
+                    <div class="npl912-form-container">
+
+                        <div class="npl913-form-header">
+
+                            <div class="npl914-small-label">
+                                Welcome Back
+                            </div>
+
+                            <h2 class="npl915-form-title">
+                                Provider Login
+                            </h2>
+
+                            <p class="npl916-form-subtitle">
+                                Sign in to continue to your provider account.
+                            </p>
+
+                        </div>
+
+
+                        <form
+                            method="POST"
+                            action="{% url 'provider_login' %}"
+                        >
+
+                            {% csrf_token %}
+
+
+                            <!-- Username -->
+                            <div class="npl917-field">
+
+                                <label
+                                    for="npl_username"
+                                    class="npl918-label"
+                                >
+                                    Username
+                                </label>
+
+                                <div class="npl919-input-wrapper">
+
+                                    <i
+                                        class="fas fa-user npl920-input-icon"
+                                    ></i>
+
+                                    <input
+                                        id="npl_username"
+                                        type="text"
+                                        name="username"
+                                        class="npl921-input"
+                                        placeholder="Enter your username"
+                                        autocomplete="username"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Password -->
+                            <div class="npl917-field">
+
+                                <label
+                                    for="npl_password"
+                                    class="npl918-label"
+                                >
+                                    Password
+                                </label>
+
+                                <div class="npl919-input-wrapper">
+
+                                    <i
+                                        class="fas fa-lock npl920-input-icon"
+                                    ></i>
+
+                                    <input
+                                        id="npl_password"
+                                        type="password"
+                                        name="password"
+                                        class="npl921-input"
+                                        placeholder="Enter your password"
+                                        autocomplete="current-password"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Login Button -->
+                            <button
+                                type="submit"
+                                class="npl922-login-button"
+                            >
+
+                                <span class="npl923-button-content">
+
+                                    <i class="fas fa-sign-in-alt"></i>
+
+                                    <span>
+                                        Sign In
+                                    </span>
+
+                                </span>
+
+                            </button>
+
+
+                            <div class="npl924-security-note">
+
+                                <i class="fas fa-lock"></i>
+
+                                <span>
+                                    Your login information is securely protected
+                                </span>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

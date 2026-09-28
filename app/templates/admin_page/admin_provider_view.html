@@ -1,0 +1,449 @@
+{% extends 'admin_page/base.html' %}
+
+{% load static %}
+
+{% block title %}Provider Profile - Noah's Ark Services{% endblock %}
+
+{% block content %}
+
+
+
+<div class="napv601-page">
+
+    <div class="napv601-container">
+
+
+
+        <div class="napv602-topbar">
+
+    <a
+        href="{% url 'admin_provider' %}"
+        class="napv603-back"
+    >
+        <i class="fa fa-arrow-left"></i>
+        <span>Back to Providers</span>
+    </a>
+
+    <div class="napv604-actions">
+
+        <a
+            href="{% url 'admin_provider_view_update' id=provider.id %}"
+            class="napv605-edit"
+        >
+            <i class="fa fa-edit"></i>
+            <span>Edit Provider</span>
+        </a>
+
+    </div>
+
+</div>
+
+        <!-- =====================================================
+             PREMIUM PROVIDER HERO
+             ===================================================== -->
+
+        <section class="napv606-hero">
+
+            <div class="napv607-hero-content">
+
+
+                <!-- PROVIDER PHOTO -->
+
+                <div class="napv608-photo">
+
+                    {% if provider.photo %}
+
+                        <img
+                            src="{{ provider.photo.url }}"
+                            alt="{{ provider.user_profile.user.first_name }} {{ provider.user_profile.user.last_name }}"
+                        >
+
+                    {% else %}
+
+                        <div class="napv609-photo-placeholder">
+                            <i class="fa fa-user"></i>
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- PROVIDER NAME -->
+
+                <div class="napv610-hero-text">
+
+                    <p class="napv611-eyebrow">
+                        Service Provider Profile
+                    </p>
+
+                    <h1 class="napv612-name">
+
+                        {{ provider.user_profile.user.first_name }}
+
+                        {{ provider.user_profile.user.last_name }}
+
+                    </h1>
+
+
+                    {% if provider.service %}
+
+                        <div class="napv613-service">
+
+                            <i class="fa fa-briefcase"></i>
+
+                            <span>
+                                {{ provider.service }}
+                            </span>
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             INFORMATION GRID
+             ===================================================== -->
+
+        <div class="napv614-grid">
+
+
+            <!-- =================================================
+                 PROVIDER INFORMATION
+                 ================================================= -->
+
+            <div class="napv615-card">
+
+
+                <div class="napv616-card-header">
+
+                    <div class="napv617-header-icon">
+                        <i class="fa fa-id-card"></i>
+                    </div>
+
+                    <div>
+
+                        <h2 class="napv618-header-title">
+                            Provider Information
+                        </h2>
+
+                        <p class="napv619-header-subtitle">
+                            Contact and professional details
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="napv620-card-body">
+
+
+                    <!-- EMAIL -->
+
+                    <div class="napv621-detail">
+
+                        <div class="napv622-detail-icon">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+
+                        <div class="napv623-detail-content">
+
+                            <span class="napv624-detail-label">
+                                Email Address
+                            </span>
+
+                            <span class="napv625-detail-value">
+                                {{ provider.user_profile.user.email }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="napv621-detail">
+
+                        <div class="napv622-detail-icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+
+                        <div class="napv623-detail-content">
+
+                            <span class="napv624-detail-label">
+                                Phone Number
+                            </span>
+
+                            <span class="napv625-detail-value">
+                                {{ provider.user_profile.phone }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LOCATION -->
+
+                    <div class="napv621-detail">
+
+                        <div class="napv622-detail-icon">
+                            <i class="fa fa-map-marker"></i>
+                        </div>
+
+                        <div class="napv623-detail-content">
+
+                            <span class="napv624-detail-label">
+                                Location
+                            </span>
+
+                            <span class="napv625-detail-value">
+
+                                {% if provider.location %}
+                                    {{ provider.location }}
+                                {% else %}
+                                    Not specified
+                                {% endif %}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EXPERIENCE -->
+
+                    <div class="napv621-detail">
+
+                        <div class="napv622-detail-icon">
+                            <i class="fa fa-clock-o"></i>
+                        </div>
+
+                        <div class="napv623-detail-content">
+
+                            <span class="napv624-detail-label">
+                                Experience
+                            </span>
+
+                            <span class="napv625-detail-value">
+
+                                {% if provider.experience_years %}
+                                    {{ provider.experience_years }} years
+                                {% else %}
+                                    Not specified
+                                {% endif %}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SERVICE -->
+
+                    <div class="napv621-detail">
+
+                        <div class="napv622-detail-icon">
+                            <i class="fa fa-briefcase"></i>
+                        </div>
+
+                        <div class="napv623-detail-content">
+
+                            <span class="napv624-detail-label">
+                                Service
+                            </span>
+
+                            <span class="napv625-detail-value">
+
+                                {% if provider.service %}
+                                    {{ provider.service }}
+                                {% else %}
+                                    Not assigned
+                                {% endif %}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 PROFILE SUMMARY
+                 ================================================= -->
+
+            <div class="napv615-card">
+
+                <div class="napv626-summary">
+
+
+                    <h2 class="napv627-summary-title">
+                        Profile Summary
+                    </h2>
+
+
+                    <!-- SERVICE -->
+
+                    <div class="napv628-summary-box">
+
+                        <div class="napv629-summary-icon">
+                            <i class="fa fa-cogs"></i>
+                        </div>
+
+                        <div class="napv630-summary-text">
+
+                            <span class="napv631-summary-label">
+                                Service
+                            </span>
+
+                            <span class="napv632-summary-value">
+
+                                {% if provider.service %}
+                                    {{ provider.service }}
+                                {% else %}
+                                    Not assigned
+                                {% endif %}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EXPERIENCE -->
+
+                    <div class="napv628-summary-box">
+
+                        <div class="napv629-summary-icon">
+                            <i class="fa fa-star"></i>
+                        </div>
+
+                        <div class="napv630-summary-text">
+
+                            <span class="napv631-summary-label">
+                                Experience
+                            </span>
+
+                            <span class="napv632-summary-value">
+
+                                {% if provider.experience_years %}
+                                    {{ provider.experience_years }} years
+                                {% else %}
+                                    Not specified
+                                {% endif %}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LOCATION -->
+
+                    <div class="napv628-summary-box">
+
+                        <div class="napv629-summary-icon">
+                            <i class="fa fa-map-marker"></i>
+                        </div>
+
+                        <div class="napv630-summary-text">
+
+                            <span class="napv631-summary-label">
+                                Location
+                            </span>
+
+                            <span class="napv632-summary-value">
+
+                                {% if provider.location %}
+                                    {{ provider.location }}
+                                {% else %}
+                                    Not specified
+                                {% endif %}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STATUS -->
+
+                    <div class="napv628-summary-box">
+
+                        <div class="napv629-summary-icon">
+
+                            {% if provider.user_profile.status %}
+
+                                <i class="fa fa-check-circle"></i>
+
+                            {% else %}
+
+                                <i class="fa fa-times-circle"></i>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <div class="napv630-summary-text">
+
+                            <span class="napv631-summary-label">
+                                Account Status
+                            </span>
+
+
+                            {% if provider.user_profile.status %}
+
+                                <span
+                                    class="napv633-status napv634-status-active"
+                                >
+                                    <span class="napv636-status-dot"></span>
+                                    Active
+                                </span>
+
+                            {% else %}
+
+                                <span
+                                    class="napv633-status napv635-status-inactive"
+                                >
+                                    <span class="napv636-status-dot"></span>
+                                    Inactive
+                                </span>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

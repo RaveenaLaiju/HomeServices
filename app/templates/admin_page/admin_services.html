@@ -1,0 +1,2278 @@
+{% extends 'admin_page/base.html' %}
+
+{% block title %}Services | Noah's Ark Home Services{% endblock %}
+
+{% block content %}
+
+<style>
+
+/* ============================================================
+   NOAH'S ARK SERVICES PAGE
+   UNIQUE PREFIX: nas6-
+   ============================================================ */
+
+.nas6-page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 30px 0 60px;
+}
+
+.nas6-wrapper {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.nas6-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 34px;
+    margin-bottom: 26px;
+    border-radius: 24px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 91, 78, 0.98),
+            rgba(0, 135, 116, 0.92)
+        );
+    box-shadow: 0 20px 50px rgba(0, 80, 70, 0.20);
+}
+
+.nas6-hero::before {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    right: -90px;
+    top: -120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+}
+
+.nas6-hero::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: 100px;
+    bottom: -120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+}
+
+.nas6-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.nas6-hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding: 7px 14px;
+    border-radius: 50px;
+    background: rgba(255,255,255,0.13);
+    color: rgba(255,255,255,0.90);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.nas6-hero-title {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.nas6-hero-text {
+    max-width: 700px;
+    margin: 14px 0 0;
+    color: rgba(255,255,255,0.78);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   STAT
+   ============================================================ */
+
+.nas6-stat-area {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nas6-stat-card {
+    min-width: 190px;
+    padding: 22px;
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 20px;
+    background: rgba(255,255,255,0.10);
+    backdrop-filter: blur(12px);
+    text-align: center;
+}
+
+.nas6-stat-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.15);
+    color: #ffffff;
+    font-size: 19px;
+}
+
+.nas6-stat-number {
+    display: block;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.nas6-stat-label {
+    display: block;
+    margin-top: 7px;
+    color: rgba(255,255,255,0.70);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* ============================================================
+   ADD PANEL
+   ============================================================ */
+
+.nas6-add-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 26px;
+    margin-bottom: 34px;
+    border: 1px solid rgba(0, 130, 110, 0.10);
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+}
+
+.nas6-add-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.nas6-add-icon {
+    width: 55px;
+    height: 55px;
+    flex: 0 0 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: rgba(0, 145, 125, 0.10);
+    color: #00977f;
+    font-size: 21px;
+}
+
+.nas6-add-title {
+    margin: 0;
+    color: #142d32;
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.nas6-add-description {
+    margin: 5px 0 0;
+    color: #718287;
+    font-size: 13px;
+}
+
+.nas6-add-button {
+    border: 0;
+    padding: 13px 22px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #008d78, #00b59a);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 10px 25px rgba(0,145,125,0.20);
+    transition: all 0.25s ease;
+}
+
+.nas6-add-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(0,145,125,0.28);
+}
+
+.nas6-plus {
+    margin-right: 6px;
+    font-size: 18px;
+}
+
+
+/* ============================================================
+   CATALOGUE HEADER
+   ============================================================ */
+
+.nas6-catalogue-head {
+    margin-bottom: 20px;
+}
+
+.nas6-catalogue-title {
+    margin: 0;
+    color: #152d32;
+    font-size: 27px;
+    font-weight: 800;
+}
+
+.nas6-catalogue-text {
+    margin: 6px 0 0;
+    color: #75868a;
+    font-size: 14px;
+}
+
+
+/* ============================================================
+   GRID
+   ============================================================ */
+
+.nas6-grid {
+    row-gap: 26px;
+}
+
+.nas6-column {
+    display: flex;
+}
+
+
+/* ============================================================
+   SERVICE CARD
+   ============================================================ */
+
+.nas6-card {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 22px;
+    background: #ffffff;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.nas6-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.10);
+}
+
+
+/* ============================================================
+   IMAGE
+   ============================================================ */
+
+.nas6-image-link {
+    display: block;
+    text-decoration: none;
+}
+
+.nas6-image-area {
+    position: relative;
+    height: 235px;
+    overflow: hidden;
+    background: #eef4f3;
+}
+
+.nas6-service-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+}
+
+.nas6-card:hover .nas6-service-image {
+    transform: scale(1.05);
+}
+
+.nas6-image-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.35),
+        transparent 45%
+    );
+    pointer-events: none;
+}
+
+.nas6-status {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 11px;
+    border-radius: 50px;
+    background: rgba(10, 30, 30, 0.88);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.nas6-status i {
+    color: #42d9a8;
+}
+
+.nas6-price {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    padding: 8px 13px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.78);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+
+/* ============================================================
+   CARD BODY
+   ============================================================ */
+
+.nas6-card-body {
+    padding: 20px;
+}
+
+.nas6-service-title {
+    margin: 0;
+    color: #162d31;
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.nas6-service-description {
+    min-height: 42px;
+    margin: 8px 0 0;
+    color: #718185;
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+.nas6-divider {
+    height: 1px;
+    margin: 17px 0;
+    background: #edf1f1;
+}
+
+
+/* ============================================================
+   ACTION BUTTONS
+   ============================================================ */
+
+.nas6-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+}
+
+.nas6-edit-button,
+.nas6-provider-button,
+.nas6-delete-button {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border-radius: 11px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.nas6-edit-button {
+    border: 0;
+    background: #062c34;
+    color: #ffffff;
+}
+
+.nas6-edit-button:hover {
+    background: #004f58;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.nas6-provider-button {
+    border: 0;
+    background: #0756a3;
+    color: #ffffff;
+}
+
+.nas6-provider-button:hover {
+    background: #064784;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.nas6-delete-button {
+    width: 100%;
+    margin-top: 9px;
+    border: 1px solid #f0c7c7;
+    background: #ffffff;
+    color: #dc3545;
+}
+
+.nas6-delete-button:hover {
+    background: #dc3545;
+    border-color: #dc3545;
+    color: #ffffff;
+}
+
+
+/* ============================================================
+   NO PROVIDERS
+   ============================================================ */
+
+.nas6-no-provider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 42px;
+    margin-top: 9px;
+    border-radius: 10px;
+    background: #f6f8f8;
+    color: #879497;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* ============================================================
+   MODAL BACKDROP
+   ============================================================ */
+
+.nas6-modal {
+    background: rgba(0,0,0,0.25);
+}
+
+.nas6-modal .modal-dialog {
+    width: calc(100% - 30px);
+    max-width: 720px;
+    margin: 15px auto;
+}
+
+.nas6-modal .modal-content {
+    overflow: hidden;
+    max-height: calc(100vh - 30px);
+    border: 0;
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow: 0 30px 90px rgba(0,0,0,0.30);
+}
+
+
+/* ============================================================
+   MODAL HEADER
+   ============================================================ */
+
+.nas6-modal-header {
+    position: relative;
+    flex: 0 0 auto;
+    padding: 25px 28px;
+    background: linear-gradient(
+        135deg,
+        #004d48,
+        #008f7c
+    );
+    color: #ffffff;
+}
+
+.nas6-modal-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 15px;
+    background: rgba(255,255,255,0.12);
+    font-size: 20px;
+}
+
+.nas6-modal-title {
+    margin: 0;
+    padding-right: 55px;
+    color: #ffffff;
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.nas6-modal-subtitle {
+    margin: 5px 0 0;
+    padding-right: 45px;
+    color: rgba(255,255,255,0.72);
+    font-size: 13px;
+}
+
+.nas6-modal-close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    color: #ffffff;
+    font-size: 17px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nas6-modal-close:hover {
+    background: rgba(255,255,255,0.22);
+    transform: rotate(90deg);
+}
+
+
+/* ============================================================
+   MODAL BODY
+   ============================================================ */
+
+.nas6-modal-body {
+    overflow-y: auto;
+    max-height: calc(100vh - 235px);
+    padding: 28px;
+    scrollbar-width: thin;
+    scrollbar-color: #00a58d #edf3f2;
+}
+
+.nas6-modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.nas6-modal-body::-webkit-scrollbar-track {
+    background: #edf3f2;
+    border-radius: 10px;
+}
+
+.nas6-modal-body::-webkit-scrollbar-thumb {
+    background: #00a58d;
+    border-radius: 10px;
+}
+
+.nas6-form-group {
+    margin-bottom: 22px;
+}
+
+.nas6-form-label {
+    display: block;
+    margin-bottom: 9px;
+    color: #183338;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.nas6-required {
+    color: #dc3545;
+}
+
+.nas6-input-wrap {
+    position: relative;
+}
+
+.nas6-input-icon {
+    position: absolute;
+    left: 17px;
+    top: 50%;
+    z-index: 2;
+    transform: translateY(-50%);
+    color: #009d87;
+    font-size: 15px;
+    pointer-events: none;
+}
+
+.nas6-input {
+    width: 100%;
+    min-height: 55px;
+    padding: 13px 17px 13px 48px;
+    border: 1px solid #dce7e6;
+    border-radius: 15px;
+    outline: none;
+    background: #ffffff;
+    color: #20373b;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.nas6-input:focus {
+    border-color: #00a58d;
+    box-shadow: 0 0 0 4px rgba(0,165,141,0.10);
+}
+
+
+/* ============================================================
+   CURRENT IMAGE
+   ============================================================ */
+
+.nas6-current-image {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 22px;
+    padding: 12px;
+    border: 1px solid #e1ebea;
+    border-radius: 15px;
+    background: #f7faf9;
+}
+
+.nas6-current-image-file {
+    width: 76px;
+    height: 62px;
+    flex: 0 0 76px;
+    object-fit: cover;
+    border-radius: 11px;
+}
+
+.nas6-current-image-info {
+    min-width: 0;
+}
+
+.nas6-current-image-title {
+    display: block;
+    color: #183438;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.nas6-current-image-name {
+    display: block;
+    margin-top: 4px;
+    color: #7d8c8f;
+    font-size: 12px;
+}
+
+
+/* ============================================================
+   UPLOAD
+   ============================================================ */
+
+.nas6-upload-box {
+    position: relative;
+    min-height: 170px;
+    overflow: hidden;
+    border: 2px dashed #b7dcda;
+    border-radius: 17px;
+    background: #f8fcfb;
+    transition: all 0.25s ease;
+}
+
+.nas6-upload-box:hover {
+    border-color: #00a58d;
+    background: #f2faf8;
+}
+
+.nas6-file-input {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.nas6-upload-content {
+    position: relative;
+    z-index: 1;
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    pointer-events: none;
+}
+
+.nas6-upload-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: rgba(0,165,141,0.10);
+    color: #009f89;
+    font-size: 20px;
+}
+
+.nas6-upload-title {
+    margin: 0;
+    color: #20393d;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.nas6-upload-text {
+    margin: 5px 0 0;
+    color: #829193;
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   IMAGE PREVIEW
+   ============================================================ */
+
+.nas6-preview {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: none;
+    background: #ffffff;
+}
+
+.nas6-preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nas6-preview-overlay {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 9px 12px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.70);
+    text-align: center;
+}
+
+.nas6-preview-text {
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   MODAL FOOTER
+   ============================================================ */
+
+.nas6-modal-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 17px 28px;
+    border-top: 1px solid #e7eeee;
+    background: #ffffff;
+}
+
+.nas6-cancel,
+.nas6-save {
+    min-height: 45px;
+    padding: 0 20px;
+    border-radius: 11px;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nas6-cancel {
+    border: 1px solid #dce5e5;
+    background: #ffffff;
+    color: #46575a;
+}
+
+.nas6-cancel:hover {
+    background: #f4f6f6;
+}
+
+.nas6-save {
+    border: 0;
+    background: linear-gradient(135deg, #008d78, #00ad94);
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0,145,125,0.18);
+}
+
+.nas6-save:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 25px rgba(0,145,125,0.25);
+}
+
+
+/* ============================================================
+   DELETE MODAL
+   ============================================================ */
+
+.nas6-delete-modal .modal-content {
+    border-radius: 22px;
+}
+
+.nas6-delete-body {
+    padding: 30px;
+    text-align: center;
+}
+
+.nas6-delete-icon {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #fff0f1;
+    color: #dc3545;
+    font-size: 24px;
+}
+
+.nas6-delete-title {
+    margin: 0;
+    color: #1d3034;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.nas6-delete-text {
+    margin: 9px auto 0;
+    max-width: 420px;
+    color: #718083;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.nas6-delete-footer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 30px 25px;
+}
+
+.nas6-delete-cancel,
+.nas6-delete-confirm {
+    min-height: 44px;
+    padding: 0 20px;
+    border-radius: 11px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.nas6-delete-cancel {
+    border: 1px solid #dce5e5;
+    background: #ffffff;
+    color: #536467;
+}
+
+.nas6-delete-confirm {
+    border: 0;
+    background: #dc3545;
+    color: #ffffff;
+}
+
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+
+.nas6-empty {
+    padding: 70px 20px;
+    border: 1px dashed #cbd9d8;
+    border-radius: 22px;
+    background: #ffffff;
+    text-align: center;
+}
+
+.nas6-empty-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background: #edf8f6;
+    color: #009d87;
+    font-size: 27px;
+}
+
+.nas6-empty-title {
+    margin: 0;
+    color: #24373a;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.nas6-empty-text {
+    max-width: 500px;
+    margin: 8px auto 0;
+    color: #7b898c;
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 991px) {
+
+    .nas6-stat-area {
+        justify-content: flex-start;
+        margin-top: 25px;
+    }
+
+    .nas6-stat-card {
+        width: 100%;
+        max-width: 220px;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    .nas6-wrapper {
+        padding: 0 15px;
+    }
+
+    .nas6-hero {
+        padding: 25px;
+        border-radius: 20px;
+    }
+
+    .nas6-add-panel {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .nas6-add-button {
+        width: 100%;
+    }
+
+    .nas6-image-area {
+        height: 210px;
+    }
+
+    .nas6-modal .modal-dialog {
+        width: calc(100% - 16px);
+        margin: 8px auto;
+    }
+
+    .nas6-modal .modal-content {
+        max-height: calc(100vh - 16px);
+        border-radius: 19px;
+    }
+
+    .nas6-modal-header {
+        padding: 20px;
+    }
+
+    .nas6-modal-body {
+        max-height: calc(100vh - 205px);
+        padding: 20px;
+    }
+
+    .nas6-modal-footer {
+        padding: 14px 20px;
+    }
+
+    .nas6-current-image-file {
+        width: 65px;
+        height: 55px;
+        flex-basis: 65px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .nas6-page {
+        padding-top: 15px;
+    }
+
+    .nas6-hero-title {
+        font-size: 29px;
+    }
+
+    .nas6-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .nas6-provider-button {
+        width: 100%;
+    }
+
+    .nas6-modal-title {
+        font-size: 20px;
+    }
+
+    .nas6-modal-footer {
+        flex-direction: column-reverse;
+    }
+
+    .nas6-cancel,
+    .nas6-save {
+        width: 100%;
+    }
+
+}
+
+</style>
+
+
+<div class="nas6-page">
+
+    <div class="nas6-wrapper">
+
+
+        <!-- ======================================================
+             HERO
+             ====================================================== -->
+
+        <section class="nas6-hero">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-8 col-md-12">
+
+                    <div class="nas6-hero-content">
+
+                        <span class="nas6-hero-label">
+                            <i class="fa fa-cogs"></i>
+                            Administration
+                        </span>
+
+                        <h1 class="nas6-hero-title">
+                            Home Services
+                        </h1>
+
+                        <p class="nas6-hero-text">
+                            Manage your complete home-service catalogue,
+                            pricing and professional providers from one
+                            centralized dashboard.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-4 col-md-12">
+
+                    <div class="nas6-stat-area">
+
+                        <div class="nas6-stat-card">
+
+                            <div class="nas6-stat-icon">
+                                <i class="fa fa-th-large"></i>
+                            </div>
+
+                            <span class="nas6-stat-number">
+                                {{ services|length }}
+                            </span>
+
+                            <span class="nas6-stat-label">
+                                Total Services
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================================
+             ADD SERVICE
+             ====================================================== -->
+
+        <section class="nas6-add-panel">
+
+            <div class="nas6-add-info">
+
+                <div class="nas6-add-icon">
+                    <i class="fa fa-wrench"></i>
+                </div>
+
+                <div>
+
+                    <h2 class="nas6-add-title">
+                        Add New Service
+                    </h2>
+
+                    <p class="nas6-add-description">
+                        Create a new service for your Noah's Ark catalogue.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="nas6-add-button"
+                data-bs-toggle="modal"
+                data-bs-target="#nas6AddServiceModal"
+            >
+                <span class="nas6-plus">+</span>
+                Add New Service
+            </button>
+
+        </section>
+
+
+
+        <!-- ======================================================
+             SERVICE CATALOGUE
+             ====================================================== -->
+
+        <section>
+
+            <div class="nas6-catalogue-head">
+
+                <h2 class="nas6-catalogue-title">
+                    Service Catalogue
+                </h2>
+
+                <p class="nas6-catalogue-text">
+                    Select a service to view its details or manage
+                    assigned providers.
+                </p>
+
+            </div>
+
+
+            {% if services %}
+
+            <div class="row nas6-grid">
+
+                {% for service in services %}
+
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 nas6-column">
+
+                    <article class="nas6-card">
+
+
+                        <!-- ==================================================
+                             SERVICE IMAGE
+                             ================================================== -->
+
+                        <a
+                            href="{% url 'admin_service_section' name=service.service_name %}"
+                            class="nas6-image-link"
+                        >
+
+                            <div class="nas6-image-area">
+
+                                {% if service.image %}
+
+                                <img
+                                    src="{{ service.image.url }}"
+                                    alt="{{ service.service_name }}"
+                                    class="nas6-service-image"
+                                >
+
+                                {% else %}
+
+                                <div class="h-100 d-flex align-items-center justify-content-center">
+
+                                    <div class="text-center text-muted">
+
+                                        <i
+                                            class="fa fa-picture-o d-block mb-2"
+                                            style="font-size:32px;"
+                                        ></i>
+
+                                        <small>
+                                            No image available
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                                {% endif %}
+
+
+                                <div class="nas6-image-gradient"></div>
+
+
+                                <span class="nas6-status">
+
+                                    <i class="fa fa-check-circle"></i>
+
+                                    Active
+
+                                </span>
+
+
+                                <span class="nas6-price">
+                                    ₹{{ service.price }}
+                                </span>
+
+                            </div>
+
+                        </a>
+
+
+
+                        <!-- ==================================================
+                             CARD BODY
+                             ================================================== -->
+
+                        <div class="nas6-card-body">
+
+                            <h3 class="nas6-service-title">
+                                {{ service.service_name }}
+                            </h3>
+
+
+                            <p class="nas6-service-description">
+                                Professional home service offered through
+                                Noah's Ark Home Services.
+                            </p>
+
+
+                            <div class="nas6-divider"></div>
+
+
+
+                            <!-- ==================================================
+                                 ACTION BUTTONS
+                                 ================================================== -->
+
+                            <div class="nas6-actions">
+
+
+                                <!-- UPDATE -->
+
+                                <button
+                                    type="button"
+                                    class="nas6-edit-button"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#nas6UpdateServiceModal{{ service.id }}"
+                                >
+
+                                    <i class="fa fa-pencil"></i>
+
+                                    Edit
+
+                                </button>
+
+
+
+                                <!-- PROVIDERS -->
+
+                                <a
+                                    href="{% url 'admin_service_provider' service.id %}"
+                                    class="nas6-provider-button"
+                                >
+
+                                    <i class="fa fa-users"></i>
+
+                                    Providers
+
+                                </a>
+
+                            </div>
+
+
+
+                            <!-- ==================================================
+                                 DELETE
+                                 ================================================== -->
+
+                            <button
+                                type="button"
+                                class="nas6-delete-button"
+                                data-bs-toggle="modal"
+                                data-bs-target="#nas6DeleteServiceModal{{ service.id }}"
+                            >
+
+                                <i class="fa fa-trash"></i>
+
+                                Delete Service
+
+                            </button>
+
+
+                            {% if not service.providers.exists %}
+
+                            <div class="nas6-no-provider">
+
+                                <i class="fa fa-user-o"></i>
+
+                                No Providers Assigned
+
+                            </div>
+
+                            {% endif %}
+
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- ======================================================
+                         UPDATE SERVICE MODAL
+                         ====================================================== -->
+
+                    <div
+                        class="modal fade nas6-modal"
+                        id="nas6UpdateServiceModal{{ service.id }}"
+                        tabindex="-1"
+                        aria-labelledby="nas6UpdateServiceTitle{{ service.id }}"
+                        aria-hidden="true"
+                    >
+
+                        <div class="modal-dialog modal-dialog-centered">
+
+                            <div class="modal-content">
+
+
+                                <!-- HEADER -->
+
+                                <div class="nas6-modal-header">
+
+                                    <div class="nas6-modal-icon">
+
+                                        <i class="fa fa-pencil"></i>
+
+                                    </div>
+
+
+                                    <h5
+                                        class="nas6-modal-title"
+                                        id="nas6UpdateServiceTitle{{ service.id }}"
+                                    >
+                                        Edit Service
+                                    </h5>
+
+
+                                    <p class="nas6-modal-subtitle">
+                                        Update {{ service.service_name }}
+                                    </p>
+
+
+                                    <button
+                                        type="button"
+                                        class="nas6-modal-close"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Close"
+                                    >
+
+                                        <i class="fa fa-times"></i>
+
+                                    </button>
+
+                                </div>
+
+
+
+                                <!-- BODY -->
+
+                                <div class="nas6-modal-body">
+
+                                    <!-- IMPORTANT:
+                                         DO NOT CHANGE name="update".
+                                         Your existing view expects it.
+                                    -->
+
+                                    <form
+                                        action=""
+                                        method="POST"
+                                        enctype="multipart/form-data"
+                                    >
+
+                                        {% csrf_token %}
+
+
+                                        <!-- SERVICE NAME -->
+
+                                        <div class="nas6-form-group">
+
+                                            <label
+                                                for="nas6ServiceName{{ service.id }}"
+                                                class="nas6-form-label"
+                                            >
+
+                                                Service Name
+
+                                                <span class="nas6-required">
+                                                    *
+                                                </span>
+
+                                            </label>
+
+
+                                            <div class="nas6-input-wrap">
+
+                                                <i
+                                                    class="fa fa-tag nas6-input-icon"
+                                                ></i>
+
+                                                <input
+                                                    type="text"
+                                                    id="nas6ServiceName{{ service.id }}"
+                                                    name="service_name"
+                                                    value="{{ service.service_name }}"
+                                                    class="nas6-input"
+                                                    required
+                                                >
+
+                                            </div>
+
+                                        </div>
+
+
+
+                                        <!-- PRICE -->
+
+                                        <div class="nas6-form-group">
+
+                                            <label
+                                                for="nas6ServicePrice{{ service.id }}"
+                                                class="nas6-form-label"
+                                            >
+
+                                                Service Price
+
+                                                <span class="nas6-required">
+                                                    *
+                                                </span>
+
+                                            </label>
+
+
+                                            <div class="nas6-input-wrap">
+
+                                                <i
+                                                    class="fa fa-inr nas6-input-icon"
+                                                ></i>
+
+                                                <input
+                                                    type="number"
+                                                    id="nas6ServicePrice{{ service.id }}"
+                                                    name="price"
+                                                    value="{{ service.price }}"
+                                                    class="nas6-input"
+                                                    min="0"
+                                                    step="0.01"
+                                                    required
+                                                >
+
+                                            </div>
+
+                                        </div>
+
+
+
+                                        <!-- CURRENT IMAGE -->
+
+                                        {% if service.image %}
+
+                                        <div class="nas6-current-image">
+
+                                            <img
+                                                src="{{ service.image.url }}"
+                                                alt="{{ service.service_name }}"
+                                                class="nas6-current-image-file"
+                                            >
+
+                                            <div class="nas6-current-image-info">
+
+                                                <span class="nas6-current-image-title">
+                                                    Current service image
+                                                </span>
+
+                                                <span class="nas6-current-image-name">
+                                                    {{ service.service_name }}
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+
+                                        {% endif %}
+
+
+
+                                        <!-- NEW IMAGE -->
+
+                                        <div class="nas6-form-group">
+
+                                            <label class="nas6-form-label">
+
+                                                Service Image
+
+                                            </label>
+
+
+                                            <div class="nas6-upload-box">
+
+
+                                                <input
+                                                    type="file"
+                                                    name="image"
+                                                    class="nas6-file-input nas6-edit-file-input"
+                                                    accept="image/*"
+                                                    data-preview="nas6EditPreview{{ service.id }}"
+                                                >
+
+
+                                                <div class="nas6-upload-content">
+
+                                                    <div class="nas6-upload-icon">
+
+                                                        <i class="fa fa-cloud-upload"></i>
+
+                                                    </div>
+
+
+                                                    <p class="nas6-upload-title">
+                                                        Click to upload a new image
+                                                    </p>
+
+
+                                                    <p class="nas6-upload-text">
+                                                        JPG, PNG or WEBP
+                                                    </p>
+
+                                                </div>
+
+
+
+                                                <!-- PREVIEW -->
+
+                                                <div
+                                                    class="nas6-preview"
+                                                    id="nas6EditPreview{{ service.id }}"
+                                                >
+
+                                                    <img
+                                                        src=""
+                                                        alt="Image Preview"
+                                                        class="nas6-preview-image"
+                                                    >
+
+                                                    <div class="nas6-preview-overlay">
+
+                                                        <span class="nas6-preview-text">
+                                                            New image selected
+                                                        </span>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+
+                                        <!-- FOOTER -->
+
+                                        <div class="nas6-modal-footer">
+
+                                            <button
+                                                type="button"
+                                                class="nas6-cancel"
+                                                data-bs-dismiss="modal"
+                                            >
+
+                                                <i class="fa fa-times me-1"></i>
+
+                                                Cancel
+
+                                            </button>
+
+
+                                            <!-- =================================================
+                                                 CRITICAL:
+                                                 name="update"
+                                                 value="{{ service.id }}"
+                                                 This matches your OLD working view.
+                                                 ================================================= -->
+
+                                           <button
+    type="submit"
+    class="nas667-save"
+    name="update"
+    value="{{ service.id }}"
+>
+    <i class="fa fa-save"></i>
+    Save Changes
+</button>
+
+                                        </div>
+
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ======================================================
+                         DELETE SERVICE MODAL
+                         ====================================================== -->
+
+                    <div
+                        class="modal fade nas6-modal nas6-delete-modal"
+                        id="nas6DeleteServiceModal{{ service.id }}"
+                        tabindex="-1"
+                        aria-labelledby="nas6DeleteServiceTitle{{ service.id }}"
+                        aria-hidden="true"
+                    >
+
+                        <div class="modal-dialog modal-dialog-centered">
+
+                            <div class="modal-content">
+
+
+                                <div class="nas6-delete-body">
+
+                                    <div class="nas6-delete-icon">
+
+                                        <i class="fa fa-trash"></i>
+
+                                    </div>
+
+
+                                    <h5
+                                        class="nas6-delete-title"
+                                        id="nas6DeleteServiceTitle{{ service.id }}"
+                                    >
+                                        Delete Service?
+                                    </h5>
+
+
+                                    <p class="nas6-delete-text">
+
+                                        Are you sure you want to delete
+
+                                        <strong>
+                                            {{ service.service_name }}
+                                        </strong>
+
+                                        service?
+
+                                        This action cannot be undone.
+
+                                    </p>
+
+                                </div>
+
+
+
+                                <!-- DELETE FORM -->
+
+                                <form
+                                    action=""
+                                    method="POST"
+                                >
+
+                                    {% csrf_token %}
+
+
+                                    <input
+                                        type="hidden"
+                                        name="id"
+                                        value="{{ service.id }}"
+                                    >
+
+
+                                    <div class="nas6-delete-footer">
+
+                                        <button
+                                            type="button"
+                                            class="nas6-delete-cancel"
+                                            data-bs-dismiss="modal"
+                                        >
+
+                                            Cancel
+
+                                        </button>
+
+
+                                        <!-- IMPORTANT:
+                                             name="delete"
+                                             value="{{ service.id }}"
+                                        -->
+
+                                      <button
+    type="submit"
+    class="nasd-button"
+    name="delete"
+    value="{{ service.id }}"
+>
+    <i class="fa fa-trash"></i>
+    Delete Service
+</button>
+
+                                    </div>
+
+                                </form>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            {% else %}
+
+
+            <!-- ======================================================
+                 EMPTY STATE
+                 ====================================================== -->
+
+            <div class="nas6-empty">
+
+                <div class="nas6-empty-icon">
+
+                    <i class="fa fa-th-large"></i>
+
+                </div>
+
+
+                <h3 class="nas6-empty-title">
+                    No Services Found
+                </h3>
+
+
+                <p class="nas6-empty-text">
+
+                    Add your first home service to start building
+                    your service catalogue.
+
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </section>
+
+    </div>
+
+</div>
+
+
+
+<!-- ==============================================================
+     ADD NEW SERVICE MODAL
+     ============================================================== -->
+
+<div
+    class="modal fade nas6-modal"
+    id="nas6AddServiceModal"
+    tabindex="-1"
+    aria-labelledby="nas6AddServiceTitle"
+    aria-hidden="true"
+>
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content">
+
+
+            <!-- HEADER -->
+
+            <div class="nas6-modal-header">
+
+                <div class="nas6-modal-icon">
+
+                    <i class="fa fa-plus"></i>
+
+                </div>
+
+
+                <h5
+                    class="nas6-modal-title"
+                    id="nas6AddServiceTitle"
+                >
+                    Add New Service
+                </h5>
+
+
+                <p class="nas6-modal-subtitle">
+
+                    Create a new service for your Noah's Ark catalogue.
+
+                </p>
+
+
+                <button
+                    type="button"
+                    class="nas6-modal-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                >
+
+                    <i class="fa fa-times"></i>
+
+                </button>
+
+            </div>
+
+
+
+            <!-- BODY -->
+
+            <div class="nas6-modal-body">
+
+                <form
+                    action=""
+                    method="POST"
+                    enctype="multipart/form-data"
+                    id="nas6AddServiceForm"
+                >
+
+                    {% csrf_token %}
+
+
+
+                    <!-- SERVICE NAME -->
+
+                    <div class="nas6-form-group">
+
+                        <label
+                            for="nas6AddServiceName"
+                            class="nas6-form-label"
+                        >
+
+                            Service Name
+
+                            <span class="nas6-required">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <div class="nas6-input-wrap">
+
+                            <i
+                                class="fa fa-tag nas6-input-icon"
+                            ></i>
+
+                            <input
+                                type="text"
+                                id="nas6AddServiceName"
+                                name="service_name"
+                                class="nas6-input"
+                                placeholder="Enter service name"
+                                autocomplete="off"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PRICE -->
+
+                    <div class="nas6-form-group">
+
+                        <label
+                            for="nas6AddServicePrice"
+                            class="nas6-form-label"
+                        >
+
+                            Service Price
+
+                            <span class="nas6-required">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <div class="nas6-input-wrap">
+
+                            <i
+                                class="fa fa-inr nas6-input-icon"
+                            ></i>
+
+                            <input
+                                type="number"
+                                id="nas6AddServicePrice"
+                                name="price"
+                                class="nas6-input"
+                                placeholder="Enter price"
+                                min="0"
+                                step="0.01"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- IMAGE -->
+
+                    <div class="nas6-form-group">
+
+                        <label class="nas6-form-label">
+
+                            Service Image
+
+                            <span class="nas6-required">
+                                *
+                            </span>
+
+                        </label>
+
+
+                        <div class="nas6-upload-box">
+
+
+                            <input
+                                type="file"
+                                name="image"
+                                id="nas6AddImageInput"
+                                class="nas6-file-input"
+                                accept="image/*"
+                                required
+                            >
+
+
+                            <div
+                                class="nas6-upload-content"
+                                id="nas6AddUploadContent"
+                            >
+
+                                <div class="nas6-upload-icon">
+
+                                    <i class="fa fa-cloud-upload"></i>
+
+                                </div>
+
+
+                                <p class="nas6-upload-title">
+
+                                    Click to upload service image
+
+                                </p>
+
+
+                                <p class="nas6-upload-text">
+
+                                    JPG, PNG or WEBP
+
+                                </p>
+
+                            </div>
+
+
+
+                            <!-- PREVIEW -->
+
+                            <div
+                                class="nas6-preview"
+                                id="nas6AddImagePreview"
+                            >
+
+                                <img
+                                    src=""
+                                    alt="Service image preview"
+                                    class="nas6-preview-image"
+                                    id="nas6AddPreviewImage"
+                                >
+
+
+                                <div class="nas6-preview-overlay">
+
+                                    <span
+                                        class="nas6-preview-text"
+                                        id="nas6AddPreviewText"
+                                    >
+                                        Image selected
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- FOOTER -->
+
+                    <div class="nas6-modal-footer">
+
+                        <button
+                            type="button"
+                            class="nas6-cancel"
+                            data-bs-dismiss="modal"
+                        >
+
+                            <i class="fa fa-times me-1"></i>
+
+                            Cancel
+
+                        </button>
+
+
+                        <!-- IMPORTANT:
+                             name="save"
+                             matches your old view.
+                        -->
+
+                       <button type="submit"
+        name="save"
+        value="1">
+    Save Service
+</button>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ==============================================================
+     IMAGE PREVIEW JAVASCRIPT
+     ============================================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* ============================================================
+       ADD SERVICE IMAGE
+       ============================================================ */
+
+    const nas6AddInput =
+        document.getElementById("nas6AddImageInput");
+
+    const nas6AddPreview =
+        document.getElementById("nas6AddImagePreview");
+
+    const nas6AddPreviewImage =
+        document.getElementById("nas6AddPreviewImage");
+
+    const nas6AddPreviewText =
+        document.getElementById("nas6AddPreviewText");
+
+
+    if (nas6AddInput) {
+
+        nas6AddInput.addEventListener(
+            "change",
+            function (event) {
+
+                const nas6File =
+                    event.target.files[0];
+
+
+                if (!nas6File) {
+
+                    nas6AddPreview.style.display = "none";
+
+                    return;
+
+                }
+
+
+                if (!nas6File.type.startsWith("image/")) {
+
+                    nas6AddInput.value = "";
+
+                    nas6AddPreview.style.display = "none";
+
+                    return;
+
+                }
+
+
+                const nas6Reader =
+                    new FileReader();
+
+
+                nas6Reader.onload =
+                    function (readerEvent) {
+
+                        nas6AddPreviewImage.src =
+                            readerEvent.target.result;
+
+                        nas6AddPreviewText.textContent =
+                            nas6File.name;
+
+                        nas6AddPreview.style.display =
+                            "block";
+
+                    };
+
+
+                nas6Reader.readAsDataURL(nas6File);
+
+            }
+        );
+
+    }
+
+
+
+    /* ============================================================
+       EDIT SERVICE IMAGE PREVIEWS
+       ============================================================ */
+
+    const nas6EditInputs =
+        document.querySelectorAll(
+            ".nas6-edit-file-input"
+        );
+
+
+    nas6EditInputs.forEach(
+        function (nas6Input) {
+
+            nas6Input.addEventListener(
+                "change",
+                function (event) {
+
+                    const nas6File =
+                        event.target.files[0];
+
+
+                    if (!nas6File) {
+                        return;
+                    }
+
+
+                    if (!nas6File.type.startsWith("image/")) {
+
+                        nas6Input.value = "";
+
+                        return;
+
+                    }
+
+
+                    const nas6PreviewId =
+                        nas6Input.getAttribute(
+                            "data-preview"
+                        );
+
+
+                    const nas6Preview =
+                        document.getElementById(
+                            nas6PreviewId
+                        );
+
+
+                    if (!nas6Preview) {
+                        return;
+                    }
+
+
+                    const nas6PreviewImage =
+                        nas6Preview.querySelector(
+                            ".nas6-preview-image"
+                        );
+
+
+                    const nas6Reader =
+                        new FileReader();
+
+
+                    nas6Reader.onload =
+                        function (readerEvent) {
+
+                            nas6PreviewImage.src =
+                                readerEvent.target.result;
+
+                            nas6Preview.style.display =
+                                "block";
+
+                        };
+
+
+                    nas6Reader.readAsDataURL(nas6File);
+
+                }
+            );
+
+        }
+    );
+
+
+});
+
+</script>
+
+{% endblock %}

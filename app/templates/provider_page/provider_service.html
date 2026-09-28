@@ -1,0 +1,251 @@
+{% extends 'provider_page/base.html' %}
+
+{% block title %}Services - Noah's Ark Services{% endblock %}
+
+{% block content %}
+
+<div class="main-panel">
+
+    <div class="content-wrapper p-0">
+
+        <div class="nps601-page">
+
+
+            <section class="nps602-header">
+
+                <div class="row align-items-center g-3">
+
+                    <div class="col-lg-8 col-md-8 col-12">
+
+                        <div class="nps603-kicker">
+
+                            <i class="fa fa-home"></i>
+
+                            Home Services
+
+                        </div>
+
+
+                        <h1 class="nps604-title">
+                            Professional Services
+                        </h1>
+
+
+                        <p class="nps605-description">
+                            Discover reliable home services delivered by
+                            experienced professionals. Browse your available
+                            services and pricing below.
+                        </p>
+
+                    </div>
+
+
+                    <div class="col-lg-4 col-md-4 col-12">
+
+                        <div class="nps606-count">
+
+                            <div class="nps607-count-icon">
+
+                                <i class="fa fa-th-large"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <span class="nps608-count-label">
+                                    Available Services
+                                </span>
+
+                                <span class="nps609-count-number">
+                                    {{ services|length }}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 SERVICES
+                 ================================================= -->
+
+            <section class="nps610-section">
+
+
+                <div class="nps611-section-header">
+
+                    <h2 class="nps612-section-title">
+
+                        <i class="fa fa-star"></i>
+
+                        Featured Services
+
+                    </h2>
+
+
+                    <p class="nps613-section-subtitle">
+                        Professional solutions for your customers' homes.
+                    </p>
+
+                </div>
+
+
+                {% if services %}
+
+                <div class="row g-3 g-lg-4">
+
+
+                    {% for service in services %}
+
+                    <div class="col-12 col-sm-6 col-lg-4">
+
+
+                        <article class="nps614-card">
+
+
+                            <!-- IMAGE -->
+
+                            <div class="nps615-image">
+
+
+                                <div class="nps617-badge">
+
+                                    <i class="fa fa-check-circle"></i>
+
+                                    Professional
+
+                                </div>
+
+
+                                {% if service.image %}
+
+                                <img
+                                    src="{{ service.image.url }}"
+                                    alt="{{ service.service_name }}"
+                                    class="nps616-service-image"
+                                    loading="lazy"
+                                >
+
+                                {% else %}
+
+                                <div class="nps627-no-image">
+
+                                    <i class="fa fa-picture-o"></i>
+
+                                    <span>
+                                        Image unavailable
+                                    </span>
+
+                                </div>
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <!-- CONTENT -->
+
+                            <div class="nps618-content">
+
+
+                                <h3 class="nps619-service-name">
+                                    {{ service.service_name }}
+                                </h3>
+
+
+                                <div class="nps620-divider"></div>
+
+
+                                <div class="nps621-price-label">
+                                    Service Price
+                                </div>
+
+
+                                <div class="nps622-price">
+
+                                    ₹{{ service.price }}
+
+                                    <small>
+                                        onwards
+                                    </small>
+
+                                </div>
+
+
+                                <div class="nps623-footer">
+
+
+                                    <div class="nps624-status">
+
+                                        <span class="nps625-status-dot"></span>
+
+                                        Available Service
+
+                                    </div>
+
+
+                                    <div class="nps626-arrow">
+
+                                        <i class="fa fa-arrow-right"></i>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+                {% else %}
+
+
+                <!-- EMPTY STATE -->
+
+                <div class="nps628-empty">
+
+                    <div class="nps629-empty-icon">
+
+                        <i class="fa fa-home"></i>
+
+                    </div>
+
+
+                    <h3 class="nps630-empty-title">
+                        No Services Available
+                    </h3>
+
+
+                    <p class="nps631-empty-text">
+                        There are currently no services available.
+                    </p>
+
+                </div>
+
+
+                {% endif %}
+
+            </section>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
