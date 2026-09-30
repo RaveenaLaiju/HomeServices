@@ -2,287 +2,555 @@
 {% load static %}
 
 {% block content %}
+{% if messages %}
+
+<div class="nha246-message-area">
+
+    {% for message in messages %}
+
+    <div
+        class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show nha247-message"
+        role="alert"
+    >
+
+        {{ message }}
+
+        <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close">
+        </button>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
 
 
-<section class="nhs101-register-page">
 
-    <!-- Django Messages -->
-    {% if messages %}
-        <div class="nhs131-message-container">
-            {% for message in messages %}
-                <div class="alert alert-info nhs132-message" role="alert">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
+<section class="nha201-register-screen">
+
+    <div class="container-fluid px-2 px-sm-3 px-xl-4">
+
+        <div class="nha202-register-shell">
+
+            <div class="nha203-register-card">
+
+                <div class="row g-0 align-items-stretch">
 
 
-    <div class="container-fluid nhs104-register-wrapper">
 
-        <div class="row g-0 nhs105-register-card">
+                    <div class="col-lg-6">
 
-            <!-- =================================================
-                 LEFT PREMIUM VISUAL AREA
-                 ================================================= -->
+                        <div class="nha204-visual-side">
 
-            <div class="col-lg-6 nhs106-visual-panel">
-
-                <div class="nhs108-visual-content">
-
-                    <div class="nhs109-brand-badge">
-                        <span class="nhs110-brand-dot"></span>
-                        Trusted Home Services
-                    </div>
-
-                    <h1 class="nhs111-main-heading">
-                        Welcome to
-                        <span>Noah's Ark</span>
-                    </h1>
-
-                    <p class="nhs113-main-description">
-                        Reliable professionals for the services your home
-                        needs. Create your account and discover a simpler,
-                        smarter way to take care of your home.
-                    </p>
-
-                    <div class="nhs114-feature-list">
-
-                        <div class="nhs115-feature-item">
-                            <span class="nhs116-feature-icon">✓</span>
-                            Verified Professionals
-                        </div>
-
-                        <div class="nhs115-feature-item">
-                            <span class="nhs116-feature-icon">✓</span>
-                            Easy Booking
-                        </div>
-
-                        <div class="nhs115-feature-item">
-                            <span class="nhs116-feature-icon">✓</span>
-                            Quality Services
-                        </div>
-
-                        <div class="nhs115-feature-item">
-                            <span class="nhs116-feature-icon">✓</span>
-                            Trusted Support
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
+                            <div class="nha205-glow-one"></div>
+                            <div class="nha206-glow-two"></div>
 
 
-            <!-- =================================================
-                 RIGHT REGISTRATION FORM
-                 ================================================= -->
-
-            <div class="col-lg-6 nhs117-form-panel">
-
-                <div class="nhs118-form-content">
-
-                    <h2 class="nhs120-form-title">
-                        Create Account
-                    </h2>
-
-                    <p class="nhs121-form-subtitle">
-                        Join Noah's Ark and make your home service
-                        experience effortless.
-                    </p>
+                            <div class="nha207-visual-content">
 
 
-                    <form method="POST" action="{% url 'register' %}">
+                                <!-- BRAND -->
 
-                        {% csrf_token %}
+                                <div class="nha208-brand-chip">
+
+                                    <span class="nha209-brand-indicator"></span>
+
+                                    Noah's Ark Services
+
+                                </div>
 
 
-                        <!-- First + Last Name -->
-                        <div class="row g-3">
+                                <!-- HERO -->
 
-                            <div class="col-sm-6">
+                                <h1 class="nha210-visual-heading">
 
-                                <div class="nhs122-field-group mb-0">
+                                    Your home deserves
+                                    <span class="nha211-heading-highlight">
+                                        better care.
+                                    </span>
 
-                                    <label
-                                        class="nhs119-form-label"
-                                        for="nhs101-first-name">
-                                        First Name
-                                    </label>
+                                </h1>
 
-                                    <input
-                                        id="nhs101-first-name"
-                                        type="text"
-                                        class="nhs123-input"
-                                        placeholder="First name"
-                                        name="fname"
-                                        autocomplete="given-name"
-                                        required
+
+                                <p class="nha212-visual-description">
+
+                                    Connect with trusted professionals for
+                                    reliable, convenient and quality home
+                                    services — all from one place.
+
+                                </p>
+
+
+                                <!-- IMAGE -->
+
+                                <div class="nha213-image-box">
+
+                                    <img
+                                        src="{% static 'customer_page/img/Picture1.jpg' %}"
+                                        class="nha214-service-photo"
+                                        alt="Professional home services"
                                     >
+
+                                    <div class="nha215-photo-shade"></div>
+
+                                    <div class="nha216-photo-caption">
+
+                                        <p class="nha217-photo-title">
+                                            Quality service. Trusted people.
+                                        </p>
+
+                                        <p class="nha218-photo-subtitle">
+                                            Simple solutions for a better home.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- FEATURES -->
+
+                                <div class="row g-2 nha219-feature-grid">
+
+                                    <div class="col-6">
+
+                                        <div class="nha220-feature-card">
+
+                                            <div class="nha221-feature-icon">
+                                                <i class="bi bi-patch-check"></i>
+                                            </div>
+
+                                            <p class="nha222-feature-title">
+                                                Verified Professionals
+                                            </p>
+
+                                            <p class="nha223-feature-text">
+                                                Trusted service providers
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="col-6">
+
+                                        <div class="nha220-feature-card">
+
+                                            <div class="nha221-feature-icon">
+                                                <i class="bi bi-calendar2-check"></i>
+                                            </div>
+
+                                            <p class="nha222-feature-title">
+                                                Easy Booking
+                                            </p>
+
+                                            <p class="nha223-feature-text">
+                                                Book services effortlessly
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="col-6">
+
+                                        <div class="nha220-feature-card">
+
+                                            <div class="nha221-feature-icon">
+                                                <i class="bi bi-stars"></i>
+                                            </div>
+
+                                            <p class="nha222-feature-title">
+                                                Quality Services
+                                            </p>
+
+                                            <p class="nha223-feature-text">
+                                                Professionals you can trust
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="col-6">
+
+                                        <div class="nha220-feature-card">
+
+                                            <div class="nha221-feature-icon">
+                                                <i class="bi bi-headset"></i>
+                                            </div>
+
+                                            <p class="nha222-feature-title">
+                                                Trusted Support
+                                            </p>
+
+                                            <p class="nha223-feature-text">
+                                                We're here when you need us
+                                            </p>
+
+                                        </div>
+
+                                    </div>
 
                                 </div>
 
                             </div>
 
+                        </div>
 
-                            <div class="col-sm-6">
+                    </div>
 
-                                <div class="nhs122-field-group mb-0">
 
-                                    <label
-                                        class="nhs119-form-label"
-                                        for="nhs102-last-name">
-                                        Last Name
-                                    </label>
+                    <!-- =================================================
+                         REGISTRATION FORM
+                         ================================================= -->
 
-                                    <input
-                                        id="nhs102-last-name"
-                                        type="text"
-                                        class="nhs123-input"
-                                        placeholder="Last name"
-                                        name="lname"
-                                        autocomplete="family-name"
-                                        required
-                                    >
+                    <div class="col-lg-6">
+
+                        <div class="nha224-form-side">
+
+                            <div class="nha225-form-inner">
+
+
+                                <!-- FORM BADGE -->
+
+                                <div class="nha226-form-badge">
+
+                                    <span class="nha227-badge-icon"></span>
+
+                                    Secure Customer Registration
 
                                 </div>
 
-                            </div>
 
-                        </div>
+                                <!-- FORM HEADER -->
 
+                                <h2 class="nha228-form-heading">
+                                    Create your account
+                                </h2>
 
-                        <!-- Username -->
-                        <div class="nhs122-field-group mt-3">
+                                <p class="nha229-form-description">
 
-                            <label
-                                class="nhs119-form-label"
-                                for="nhs103-username">
-                                Username
-                            </label>
+                                    Join Noah's Ark and get access to
+                                    reliable professionals for all your
+                                    home-service needs.
 
-                            <input
-                                id="nhs103-username"
-                                type="text"
-                                class="nhs123-input"
-                                placeholder="Choose a username"
-                                name="username"
-                                autocomplete="username"
-                                required
-                            >
-
-                        </div>
+                                </p>
 
 
-                        <!-- Email -->
-                        <div class="nhs122-field-group">
+                                <!-- =================================================
+                                     FORM
+                                     ================================================= -->
 
-                            <label
-                                class="nhs119-form-label"
-                                for="nhs104-email">
-                                Email Address
-                            </label>
-
-                            <input
-                                id="nhs104-email"
-                                type="email"
-                                class="nhs123-input"
-                                pattern="[a-z].*[a-z0-9]@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-                                placeholder="you@example.com"
-                                title="Please enter a valid email address"
-                                name="email"
-                                autocomplete="email"
-                                required
-                            >
-
-                        </div>
-
-
-                        <!-- Phone -->
-                        <div class="nhs122-field-group">
-
-                            <label
-                                class="nhs119-form-label"
-                                for="nhs105-phone">
-                                Phone Number
-                            </label>
-
-                            <input
-                                id="nhs105-phone"
-                                type="tel"
-                                class="nhs123-input"
-                                placeholder="+xx xxxx xxxxxx"
-                                pattern="\+[0-9]{2} [0-9]{4} [0-9]{6}"
-                                title="Please enter your phone number in the format: +xx xxxx xxxxxx"
-                                name="phone"
-                                autocomplete="tel"
-                                required
-                            >
-
-                        </div>
-
-
-                        <!-- Password -->
-                        <div class="nhs122-field-group">
-
-                            <label
-                                class="nhs119-form-label"
-                                for="nhs106-password">
-                                Password
-                            </label>
-
-                            <div class="nhs124-password-wrap">
-
-                                <input
-                                    id="nhs106-password"
-                                    type="password"
-                                    class="nhs123-input pe-5"
-                                    placeholder="Create a password"
-                                    name="password"
-                                    autocomplete="new-password"
-                                    required
+                                <form
+                                    method="POST"
+                                    action="{% url 'register' %}"
                                 >
 
-                                <button
-                                    type="button"
-                                    class="nhs125-password-toggle"
-                                    id="nhs107-password-toggle"
-                                    aria-label="Show password">
-                                    👁
-                                </button>
+                                    {% csrf_token %}
+
+
+                                    <!-- NAME -->
+
+                                    <div class="row g-3">
+
+                                        <div class="col-sm-6">
+
+                                            <div class="nha230-field">
+
+                                                <label
+                                                    for="nha248-first-name"
+                                                    class="nha231-label"
+                                                >
+                                                    First Name
+                                                </label>
+
+                                                <div class="nha232-input-wrap">
+
+                                                    <span class="nha233-input-icon">
+                                                        <i class="bi bi-person"></i>
+                                                    </span>
+
+                                                    <input
+                                                        id="nha248-first-name"
+                                                        type="text"
+                                                        name="fname"
+                                                        class="nha234-input"
+                                                        placeholder="First name"
+                                                        autocomplete="given-name"
+                                                        required
+                                                    >
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="col-sm-6">
+
+                                            <div class="nha230-field">
+
+                                                <label
+                                                    for="nha249-last-name"
+                                                    class="nha231-label"
+                                                >
+                                                    Last Name
+                                                </label>
+
+                                                <div class="nha232-input-wrap">
+
+                                                    <span class="nha233-input-icon">
+                                                        <i class="bi bi-person"></i>
+                                                    </span>
+
+                                                    <input
+                                                        id="nha249-last-name"
+                                                        type="text"
+                                                        name="lname"
+                                                        class="nha234-input"
+                                                        placeholder="Last name"
+                                                        autocomplete="family-name"
+                                                        required
+                                                    >
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- USERNAME -->
+
+                                    <div class="nha230-field">
+
+                                        <label
+                                            for="nha250-username"
+                                            class="nha231-label"
+                                        >
+                                            Username
+                                        </label>
+
+                                        <div class="nha232-input-wrap">
+
+                                            <span class="nha233-input-icon">
+                                                <i class="bi bi-at"></i>
+                                            </span>
+
+                                            <input
+                                                id="nha250-username"
+                                                type="text"
+                                                name="username"
+                                                class="nha234-input"
+                                                placeholder="Choose a username"
+                                                autocomplete="username"
+                                                required
+                                            >
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- EMAIL -->
+
+                                    <div class="nha230-field">
+
+                                        <label
+                                            for="nha251-email"
+                                            class="nha231-label"
+                                        >
+                                            Email Address
+                                        </label>
+
+                                        <div class="nha232-input-wrap">
+
+                                            <span class="nha233-input-icon">
+                                                <i class="bi bi-envelope"></i>
+                                            </span>
+
+                                            <input
+                                                id="nha251-email"
+                                                type="email"
+                                                name="email"
+                                                class="nha234-input"
+                                                placeholder="you@example.com"
+                                                autocomplete="email"
+                                                required
+                                            >
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- PHONE -->
+
+                                    <div class="nha230-field">
+
+                                        <label
+                                            for="nha252-phone"
+                                            class="nha231-label"
+                                        >
+                                            Phone Number
+                                        </label>
+
+                                        <div class="nha232-input-wrap">
+
+                                            <span class="nha233-input-icon">
+                                                <i class="bi bi-telephone"></i>
+                                            </span>
+
+                                            <input
+                                                id="nha252-phone"
+                                                type="tel"
+                                                name="phone"
+                                                class="nha234-input"
+                                                placeholder="+xx xxxx xxxxxx"
+                                                pattern="\+[0-9]{2} [0-9]{4} [0-9]{6}"
+                                                title="Please enter your phone number in the format: +xx xxxx xxxxxx"
+                                                autocomplete="tel"
+                                                required
+                                            >
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- PASSWORD -->
+
+                                    <div class="nha230-field">
+
+                                        <label
+                                            for="nha253-password"
+                                            class="nha231-label"
+                                        >
+                                            Password
+                                        </label>
+
+                                        <div class="nha232-input-wrap">
+
+                                            <span class="nha233-input-icon">
+                                                <i class="bi bi-lock"></i>
+                                            </span>
+
+                                            <input
+                                                id="nha253-password"
+                                                type="password"
+                                                name="password"
+                                                class="nha234-input pe-5"
+                                                placeholder="Create a password"
+                                                autocomplete="new-password"
+                                                required
+                                            >
+
+                                            <button
+                                                type="button"
+                                                id="nha254-password-toggle"
+                                                class="nha235-password-button"
+                                                aria-label="Show password"
+                                            >
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- TERMS -->
+
+                                    <div class="nha236-terms-row">
+
+                                        <input
+                                            type="checkbox"
+                                            id="nha255-terms"
+                                            class="nha237-terms-checkbox"
+                                            required
+                                        >
+
+                                        <label
+                                            for="nha255-terms"
+                                            class="nha238-terms-text"
+                                        >
+                                            I agree to the terms of service
+                                            and understand that my information
+                                            will be securely handled.
+                                        </label>
+
+                                    </div>
+
+
+                                    <!-- SUBMIT -->
+
+                                    <button
+                                        type="submit"
+                                        class="nha239-submit"
+                                    >
+
+                                        Create My Account
+
+                                        <span class="nha240-submit-arrow">
+                                            <i class="bi bi-arrow-right"></i>
+                                        </span>
+
+                                    </button>
+
+
+                                </form>
+
+
+                                <!-- LOGIN -->
+
+                                <div class="nha241-login-box">
+
+                                    <p class="nha242-login-text">
+
+                                        Already have an account?
+
+                                        <a
+                                            href="{% url 'login' %}"
+                                            class="nha243-login-link"
+                                        >
+                                            Sign in
+                                        </a>
+
+                                    </p>
+
+                                </div>
+
+
+                                <!-- SECURITY -->
+
+                                <div class="nha244-security">
+
+                                    <i class="bi bi-shield-check nha245-security-icon"></i>
+
+                                    Your information is securely protected
+
+                                </div>
+
 
                             </div>
 
                         </div>
 
-
-                        <!-- Submit -->
-                        <button
-                            type="submit"
-                            class="nhs126-submit-button">
-                            Create My Account
-                        </button>
-
-                    </form>
-
-
-                    <!-- Login -->
-                    <div class="nhs127-login-divider">
-                        Already registered?
                     </div>
 
-                    <a
-                        href="{% url 'login' %}"
-                        class="nhs128-login-link">
-                        <b>Sign in to your account →</b>
-                    </a>
-
-
-                    <div class="nhs129-security-note">
-                        <span class="nhs130-security-icon">🔒</span>
-                        Your information is securely protected
-                    </div>
 
                 </div>
 
@@ -295,65 +563,98 @@
 </section>
 
 
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
 
-        const passwordInput =
-            document.getElementById("nhs106-password");
-
-        const passwordToggle =
-            document.getElementById("nhs107-password-toggle");
-
-        if (passwordInput && passwordToggle) {
-
-            passwordToggle.addEventListener("click", function () {
-
-                const isPassword =
-                    passwordInput.type === "password";
-
-                passwordInput.type =
-                    isPassword ? "text" : "password";
-
-                passwordToggle.textContent =
-                    isPassword ? "🙈" : "👁";
-
-                passwordToggle.setAttribute(
-                    "aria-label",
-                    isPassword
-                        ? "Hide password"
-                        : "Show password"
-                );
-
-            });
-
-        }
+document.addEventListener("DOMContentLoaded", function () {
 
 
-        /* Automatically hide Django messages */
-        const messageContainer =
-            document.querySelector(".nhs131-message-container");
+    /* =====================================================
+       PASSWORD TOGGLE
+       ===================================================== */
 
-        if (messageContainer) {
+    const nhaPassword =
+        document.getElementById("nha253-password");
+
+    const nhaPasswordButton =
+        document.getElementById("nha254-password-toggle");
+
+
+    if (nhaPassword && nhaPasswordButton) {
+
+        nhaPasswordButton.addEventListener(
+            "click",
+            function () {
+
+                const icon =
+                    nhaPasswordButton.querySelector("i");
+
+                if (nhaPassword.type === "password") {
+
+                    nhaPassword.type = "text";
+
+                    icon.classList.remove("bi-eye");
+                    icon.classList.add("bi-eye-slash");
+
+                    nhaPasswordButton.setAttribute(
+                        "aria-label",
+                        "Hide password"
+                    );
+
+                } else {
+
+                    nhaPassword.type = "password";
+
+                    icon.classList.remove("bi-eye-slash");
+                    icon.classList.add("bi-eye");
+
+                    nhaPasswordButton.setAttribute(
+                        "aria-label",
+                        "Show password"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       DJANGO MESSAGE AUTO HIDE
+       ===================================================== */
+
+    const nhaMessages =
+        document.querySelector(".nha246-message-area");
+
+
+    if (nhaMessages) {
+
+        setTimeout(function () {
+
+            nhaMessages.style.transition =
+                "opacity .5s ease, transform .5s ease";
+
+            nhaMessages.style.opacity = "0";
+            nhaMessages.style.transform =
+                "translateY(-15px)";
 
             setTimeout(function () {
 
-                messageContainer.style.transition =
-                    "opacity 0.5s ease, transform 0.5s ease";
+                nhaMessages.remove();
 
-                messageContainer.style.opacity = "0";
-                messageContainer.style.transform =
-                    "translateY(-15px)";
+            }, 500);
 
-                setTimeout(function () {
-                    messageContainer.remove();
-                }, 500);
+        }, 4500);
 
-            }, 4000);
+    }
 
-        }
+});
 
-    });
 </script>
 
 {% endblock %}
-

@@ -5,227 +5,465 @@
 
 
 {% if messages %}
-{% for message in messages %} <div class="container-fluid px-3 pt-3"> <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show hs136-message-box" role="alert">
-{{ message }} <button type="button"
-                     class="btn-close"
-                     data-bs-dismiss="alert"
-                     aria-label="Close"></button> </div> </div>
-{% endfor %}
+
+<div class="nal248-alert-container">
+
+    {% for message in messages %}
+
+    <div
+        class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show nal249-alert"
+        role="alert"
+    >
+
+        {{ message }}
+
+        <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+        ></button>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
 {% endif %}
 
-<section class="hs101-login-page hs102-login-page hs103-login-page">
 
 
-<div class="container-fluid px-2 px-sm-3 px-lg-4">
+<section class="nal201-login-screen">
 
-    <div class="hs104-wrapper">
+    <div class="container-fluid px-2 px-sm-3 px-xl-4">
 
-        <div class="hs105-main-card">
+        <div class="nal202-login-container">
 
-            <div class="row g-0 align-items-stretch">
+            <div class="nal203-login-card">
 
-                <!-- =================================================
-                     PREMIUM BRAND / SERVICE PANEL
-                     ================================================= -->
-
-                <div class="col-lg-6">
-
-                    <div class="hs106-brand-panel">
-
-                        <div class="hs108-mini-brand">
-                            <span class="hs109-brand-dot"></span>
-                            Noah's Ark Services
-                        </div>
-
-                        <div class="hs110-copy-area">
-
-                            <h1 class="hs111-main-heading">
-                                Welcome back to
-                                <span class="hs112-highlight">
-                                    Noah's Ark.
-                                </span>
-                            </h1>
-
-                            <p class="hs113-description">
-                                Your trusted destination for reliable,
-                                professional and convenient home services.
-                                Sign in and continue managing everything
-                                with ease.
-                            </p>
-
-                            <div class="hs114-image-frame">
-
-                                <img
-                                    src="{% static 'customer_page/img/Picture1.jpg' %}"
-                                    class="hs115-service-image"
-                                    alt="Professional home service"
-                                >
-
-                                <div class="hs116-image-overlay">
-
-                                    <p class="hs117-image-title">
-                                        Quality service. Trusted professionals.
-                                    </p>
-
-                                    <p class="hs118-image-subtitle">
-                                        Making your home care experience simpler.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
+                <div class="row g-0 align-items-stretch">
 
 
-                <!-- =================================================
-                     LOGIN FORM PANEL
-                     ================================================= -->
 
-                <div class="col-lg-6">
+                    <div class="col-lg-6">
 
-                    <div class="hs119-form-panel">
+                        <div class="nal204-brand-section">
 
-                        <div class="hs120-form-wrapper">
+                            <div class="nal205-background-glow-one"></div>
 
-                            <div class="hs121-form-badge">
-                                <span class="hs122-badge-dot"></span>
-                                Secure Customer Login
-                            </div>
-
-                            <h2 class="hs123-form-heading">
-                                Login to your account
-                            </h2>
-
-                            <p class="hs124-form-description">
-                                Enter your account details below to access
-                                your Noah's Ark customer dashboard.
-                            </p>
+                            <div class="nal206-background-glow-two"></div>
 
 
-                            <form method="POST" action="{% url 'login' %}">
-
-                                {% csrf_token %}
+                            <div class="nal207-brand-content">
 
 
-                                <!-- USERNAME -->
+                                <!-- BRAND -->
 
-                                <div class="hs125-input-group">
+                                <div class="nal208-brand-chip">
 
-                                    <label
-                                        for="hs137Username"
-                                        class="hs126-input-label"
-                                    >
-                                        Username
-                                    </label>
+                                    <span class="nal209-brand-status"></span>
 
-                                    <div class="hs127-input-shell">
-
-                                        <span class="hs128-input-icon">
-                                            <i class="bi bi-person"></i>
-                                        </span>
-
-                                        <input
-                                            type="text"
-                                            id="hs137Username"
-                                            class="hs129-login-input"
-                                            placeholder="Enter your username"
-                                            name="username"
-                                            autocomplete="username"
-                                            required
-                                        >
-
-                                    </div>
+                                    Noah's Ark Services
 
                                 </div>
 
 
-                                <!-- PASSWORD -->
+                                <!-- HEADING -->
 
-                                <div class="hs125-input-group">
+                                <h1 class="nal210-brand-heading">
 
-                                    <label
-                                        for="hs138Password"
-                                        class="hs126-input-label"
-                                    >
-                                        Password
-                                    </label>
+                                    Welcome back to
 
-                                    <div class="hs127-input-shell">
-
-                                        <span class="hs128-input-icon">
-                                            <i class="bi bi-lock"></i>
-                                        </span>
-
-                                        <input
-                                            type="password"
-                                            id="hs138Password"
-                                            class="hs129-login-input"
-                                            placeholder="Enter your password"
-                                            name="password"
-                                            autocomplete="current-password"
-                                            required
-                                        >
-
-                                    </div>
-
-                                </div>
-
-
-                                <!-- LOGIN BUTTON -->
-
-                                <button
-                                    type="submit"
-                                    class="hs130-login-button"
-                                >
-                                    Login to Account
-
-                                    <span class="hs131-button-arrow">
-                                        <i class="bi bi-arrow-right"></i>
+                                    <span class="nal211-heading-accent">
+                                        Noah's Ark.
                                     </span>
 
-                                </button>
-
-                            </form>
+                                </h1>
 
 
-                            <!-- REGISTER -->
+                                <!-- DESCRIPTION -->
 
-                            <div class="hs132-register-area">
+                                <p class="nal212-brand-description">
 
-                                <p class="hs133-register-text">
-
-                                    Don't have an account?
-
-                                    <a
-                                        href="{% url 'register' %}"
-                                        class="hs134-register-link"
-                                    >
-                                        Create one
-                                    </a>
+                                    Your trusted destination for reliable,
+                                    professional and convenient home services.
+                                    Sign in and continue taking care of your
+                                    home with confidence.
 
                                 </p>
 
-                            </div>
+
+                                <!-- IMAGE -->
+
+                                <div class="nal213-image-frame">
+
+                                    <img
+                                        src="{% static 'customer_page/img/Picture1.jpg' %}"
+                                        class="nal214-service-image"
+                                        alt="Professional home service"
+                                    >
+
+                                    <div class="nal215-image-gradient"></div>
+
+                                    <div class="nal216-image-caption">
+
+                                        <p class="nal217-image-title">
+
+                                            Quality service.
+                                            Trusted professionals.
+
+                                        </p>
+
+                                        <p class="nal218-image-subtitle">
+
+                                            Making your home care experience
+                                            simpler.
+
+                                        </p>
+
+                                    </div>
+
+                                </div>
 
 
-                            <!-- SECURITY -->
+                                <!-- =================================================
+                                     TRUST FEATURES
+                                     ================================================= -->
 
-                            <div class="hs135-security-note">
+                                <div class="row g-2 nal219-trust-grid">
 
-                                <i class="bi bi-shield-check"></i>
 
-                                Your login information is securely handled.
+                                    <!-- FEATURE 1 -->
+
+                                    <div class="col-6">
+
+                                        <div class="nal220-trust-card">
+
+                                            <div class="nal221-trust-icon">
+
+                                                <i class="bi bi-patch-check"></i>
+
+                                            </div>
+
+                                            <p class="nal222-trust-title">
+                                                Verified Professionals
+                                            </p>
+
+                                            <p class="nal223-trust-description">
+                                                Reliable service providers
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- FEATURE 2 -->
+
+                                    <div class="col-6">
+
+                                        <div class="nal220-trust-card">
+
+                                            <div class="nal221-trust-icon">
+
+                                                <i class="bi bi-calendar2-check"></i>
+
+                                            </div>
+
+                                            <p class="nal222-trust-title">
+                                                Easy Booking
+                                            </p>
+
+                                            <p class="nal223-trust-description">
+                                                Simple service scheduling
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- FEATURE 3 -->
+
+                                    <div class="col-6">
+
+                                        <div class="nal220-trust-card">
+
+                                            <div class="nal221-trust-icon">
+
+                                                <i class="bi bi-stars"></i>
+
+                                            </div>
+
+                                            <p class="nal222-trust-title">
+                                                Quality Services
+                                            </p>
+
+                                            <p class="nal223-trust-description">
+                                                Home care made easier
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- FEATURE 4 -->
+
+                                    <div class="col-6">
+
+                                        <div class="nal220-trust-card">
+
+                                            <div class="nal221-trust-icon">
+
+                                                <i class="bi bi-headset"></i>
+
+                                            </div>
+
+                                            <p class="nal222-trust-title">
+                                                Trusted Support
+                                            </p>
+
+                                            <p class="nal223-trust-description">
+                                                Help when you need it
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
 
                             </div>
 
                         </div>
 
                     </div>
+
+
+                    <!-- =================================================
+                         LOGIN FORM AREA
+                         ================================================= -->
+
+                    <div class="col-lg-6">
+
+                        <div class="nal224-login-section">
+
+                            <div class="nal225-login-content">
+
+
+                                <!-- BADGE -->
+
+                                <div class="nal226-login-badge">
+
+                                    <span class="nal227-badge-status"></span>
+
+                                    Secure Customer Login
+
+                                </div>
+
+
+                                <!-- HEADING -->
+
+                                <h2 class="nal228-login-heading">
+
+                                    Login to your account
+
+                                </h2>
+
+
+                                <p class="nal229-login-description">
+
+                                    Enter your account details below to access
+                                    your Noah's Ark customer dashboard.
+
+                                </p>
+
+
+                                <!-- =================================================
+                                     LOGIN FORM
+                                     ================================================= -->
+
+                                <form
+                                    method="POST"
+                                    action="{% url 'login' %}"
+                                >
+
+                                    {% csrf_token %}
+
+
+                                    <!-- USERNAME -->
+
+                                    <div class="nal230-field">
+
+                                        <label
+                                            for="nal250-username"
+                                            class="nal231-field-label"
+                                        >
+                                            Username
+                                        </label>
+
+                                        <div class="nal232-input-container">
+
+                                            <span class="nal233-input-symbol">
+
+                                                <i class="bi bi-person"></i>
+
+                                            </span>
+
+                                            <input
+                                                type="text"
+                                                id="nal250-username"
+                                                class="nal234-login-input"
+                                                placeholder="Enter your username"
+                                                name="username"
+                                                autocomplete="username"
+                                                required
+                                            >
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- PASSWORD -->
+
+                                    <div class="nal230-field">
+
+                                        <label
+                                            for="nal251-password"
+                                            class="nal231-field-label"
+                                        >
+                                            Password
+                                        </label>
+
+                                        <div class="nal232-input-container">
+
+                                            <span class="nal233-input-symbol">
+
+                                                <i class="bi bi-lock"></i>
+
+                                            </span>
+
+                                            <input
+                                                type="password"
+                                                id="nal251-password"
+                                                class="nal234-login-input pe-5"
+                                                placeholder="Enter your password"
+                                                name="password"
+                                                autocomplete="current-password"
+                                                required
+                                            >
+
+                                            <button
+                                                type="button"
+                                                id="nal252-password-toggle"
+                                                class="nal235-password-toggle"
+                                                aria-label="Show password"
+                                            >
+
+                                                <i class="bi bi-eye"></i>
+
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- OPTIONS -->
+
+                                    <div class="nal236-form-options">
+
+                                        <div class="nal237-remember-box">
+
+                                            <input
+                                                type="checkbox"
+                                                id="nal253-remember"
+                                                class="nal238-remember-checkbox"
+                                            >
+
+                                            <label
+                                                for="nal253-remember"
+                                                class="nal239-remember-label"
+                                            >
+                                                Remember me
+                                            </label>
+
+                                        </div>
+
+
+                                        <a
+                                            href="#"
+                                            class="nal240-forgot-link"
+                                        >
+                                            Forgot password?
+                                        </a>
+
+                                    </div>
+
+
+                                    <!-- LOGIN BUTTON -->
+
+                                    <button
+                                        type="submit"
+                                        class="nal241-login-button"
+                                    >
+
+                                        Login to Account
+
+                                        <span class="nal242-button-arrow">
+
+                                            <i class="bi bi-arrow-right"></i>
+
+                                        </span>
+
+                                    </button>
+
+                                </form>
+
+
+                                <!-- REGISTER -->
+
+                                <div class="nal243-register-panel">
+
+                                    <p class="nal244-register-text">
+
+                                        Don't have an account?
+
+                                        <a
+                                            href="{% url 'register' %}"
+                                            class="nal245-register-link"
+                                        >
+                                            Create one
+                                        </a>
+
+                                    </p>
+
+                                </div>
+
+
+                                <!-- SECURITY -->
+
+                                <div class="nal246-security-message">
+
+                                    <i
+                                        class="bi bi-shield-check nal247-security-icon"
+                                    ></i>
+
+                                    Your login information is securely handled.
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
 
                 </div>
 
@@ -235,9 +473,117 @@
 
     </div>
 
-</div>
-
-
 </section>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* =====================================================
+       PASSWORD SHOW / HIDE
+       ===================================================== */
+
+    const nalPassword =
+        document.getElementById("nal251-password");
+
+    const nalToggle =
+        document.getElementById("nal252-password-toggle");
+
+
+    if (nalPassword && nalToggle) {
+
+        nalToggle.addEventListener(
+            "click",
+            function () {
+
+                const nalIcon =
+                    nalToggle.querySelector("i");
+
+
+                if (nalPassword.type === "password") {
+
+                    nalPassword.type = "text";
+
+                    nalIcon.classList.remove(
+                        "bi-eye"
+                    );
+
+                    nalIcon.classList.add(
+                        "bi-eye-slash"
+                    );
+
+                    nalToggle.setAttribute(
+                        "aria-label",
+                        "Hide password"
+                    );
+
+                } else {
+
+                    nalPassword.type = "password";
+
+                    nalIcon.classList.remove(
+                        "bi-eye-slash"
+                    );
+
+                    nalIcon.classList.add(
+                        "bi-eye"
+                    );
+
+                    nalToggle.setAttribute(
+                        "aria-label",
+                        "Show password"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       DJANGO MESSAGE AUTO DISMISS
+       ===================================================== */
+
+    const nalAlerts =
+        document.querySelector(
+            ".nal248-alert-container"
+        );
+
+
+    if (nalAlerts) {
+
+        setTimeout(function () {
+
+            nalAlerts.style.transition =
+                "opacity .5s ease, transform .5s ease";
+
+            nalAlerts.style.opacity = "0";
+
+            nalAlerts.style.transform =
+                "translateY(-15px)";
+
+
+            setTimeout(function () {
+
+                nalAlerts.remove();
+
+            }, 500);
+
+        }, 4500);
+
+    }
+
+});
+
+</script>
+
 
 {% endblock %}

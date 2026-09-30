@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY
 SECRET_KEY = 'django-insecure-6i#!a)-d*2zi*ei$f(v1&09&c2mq4s$w1nsr8ull=*m(4=81t7'
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost", "ca585bbd9a0c.ngrok-free.app"]
 CSRF_TRUSTED_ORIGINS = ["https://ca585bbd9a0c.ngrok-free.app"]
@@ -87,13 +87,16 @@ USE_I18N = True
 USE_TZ = True
 
 # ---------------------- STATIC & MEDIA ----------------------
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'HomeServices']
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'app' / 'static',
+]
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
 # ---------------------- EMAIL SETTINGS ----------------------
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
