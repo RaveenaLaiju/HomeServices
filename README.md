@@ -82,7 +82,7 @@ Integrated Razorpay for online customer payments during the service booking proc
 
 
 ## Live Demo
-https://homeservices.pythonanywhere.com/`
+https://homeservices.pythonanywhere.com/
 
 ## GitHub Repository
 https://github.com/RaveenaLaiju/HomeServices.git
