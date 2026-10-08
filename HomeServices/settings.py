@@ -1,10 +1,14 @@
 from pathlib import Path
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY
-SECRET_KEY = 'django-insecure-6i#!a)-d*2zi*ei$f(v1&09&c2mq4s$w1nsr8ull=*m(4=81t7'
+SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost", "ca585bbd9a0c.ngrok-free.app"]
@@ -19,8 +23,31 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app.apps.AppConfig',
+    'rest_framework',
+    'django_filters',
+    'drf_spectacular',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+    ],
+
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5,
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': "Noah's Ark Services API",
+    'VERSION': '1.0.0',
+
+    'SERVE_AUTHENTICATION': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+}
 # ---------------------- MIDDLEWARE ----------------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -103,11 +130,11 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'raveenalaiju@gmail.com'
-EMAIL_HOST_PASSWORD = 'gsvo qhev rmds yvdx'  # App password
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  # App password
 
 # ---------------------- OTHER ----------------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Razorpay test credentials
-RAZORPAY_KEY_ID = 'rzp_test_oH81YjMTp7hBJ6'
-RAZORPAY_KEY_SECRET = 's0arLNs5t9N0s2jRdKAAfAOv'
+RAZORPAY_KEY_ID = os.getenv('RAZORPAY_KEY_ID')
+RAZORPAY_KEY_SECRET = os.getenv('RAZORPAY_KEY_SECRET')

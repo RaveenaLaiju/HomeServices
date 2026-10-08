@@ -1,5 +1,14 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+from rest_framework.routers import DefaultRouter
+from .views import ServiceViewSet, ProviderViewSet, BookingRequestViewSet
+
+router = DefaultRouter()
+router.register(r'services', ServiceViewSet, basename='service')
+router.register(r'providers', ProviderViewSet, basename='provider')
+router.register(r'booking-requests', BookingRequestViewSet, basename='booking-request')
+
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 urlpatterns = [
     path('',views.index,name='index'),
@@ -47,8 +56,9 @@ urlpatterns = [
     path('admin_reviews/', views.review_list, name='review_list'),
     path('provider_service/',views.provider_service, name='provider_service'),
     path('provider_review/',views.provider_review, name='provider_review'),
-
-
+    path('api/', include(router.urls)),
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
 
 
 

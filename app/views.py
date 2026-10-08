@@ -18,6 +18,9 @@ from django.utils import timezone
 from django.db.models import Sum
 from .models import *
 from .forms import *
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, BasePermission
+from .serializers import ServiceSerializer, ProviderSerializer, BookingRequestSerializer
 
 
 @login_required(login_url="admin_login")
@@ -1496,3 +1499,66 @@ def provider_review(request):
         'provider': provider,
     }
     return render(request, 'provider_page/provider_review.html', context)
+
+
+class ServiceViewSet(viewsets.ModelViewSet):
+    queryset = Service.objects.all().order_by('id')
+    serializer_class = ServiceSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    search_fields = ['service_name']
+
+class ProviderViewSet(viewsets.ModelViewSet):
+    queryset = Provider.objects.all().order_by('id')
+    serializer_class = ProviderSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    search_fields = ['location']
+
+class IsBookingCustomer(BasePermission):
+
+    def has_object_permission(self, request, view, obj):
+        return obj.customer.user_profile.user == request.user
+
+
+class BookingRequestViewSet(viewsets.ModelViewSet):
+    queryset = Booking_Request.objects.select_related(
+        'customer',
+        'provider',
+        'service'
+    ).all().order_by('id')
+
+    serializer_class = BookingRequestSerializer
+
+    permission_classes = [
+        IsAuthenticatedOrReadOnly,
+        IsBookingCustomer
+    ]
+
+    filterset_fields = [
+        'status',
+        'type',
+        'is_rework'
+    ]
+
+    search_fields = ['location']
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        if self.request.user.is_authenticated:
+            return queryset.filter(
+                customer__user_profile__user=self.request.user
+            )
+
+        return queryset.none()
+
+    def perform_create(self, serializer):
+        profile = UserProfile.objects.get(
+            user=self.request.user,
+            role='customer'
+        )
+
+        customer = Customer.objects.get(
+            user_profile=profile
+        )
+
+        serializer.save(customer=customer)
