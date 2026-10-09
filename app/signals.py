@@ -4,13 +4,16 @@ from django.utils import timezone
 from .models import UserProfile, Customer, Provider, Booking_Request, Booking
 
 
+
 @receiver(post_save, sender=UserProfile)
-def create_profile_related_records(sender, instance, created, **kwargs):
-    # create Customer or Provider automatically
+def create_profile_related_records(sender, instance, created, raw=False, **kwargs):
+    if raw:
+        return
     if created and instance.role == 'customer':
-        Customer.objects.create(user_profile=instance)
-    if created and instance.role == 'provider':
-        Provider.objects.create(user_profile=instance)
+        Customer.objects.get_or_create(user_profile=instance)
+    elif created and instance.role == 'provider':
+        Provider.objects.get_or_create(user_profile=instance)
+
 
 
 @receiver(post_save, sender=Booking_Request)
