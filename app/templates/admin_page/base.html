@@ -89,7 +89,139 @@
     >
 
 
-    {% block extra_css %}{% endblock %}
+   <style>
+    
+/* ============================================================
+   NAAD SCROLL FIX — RESPONSIVE ADMIN PANEL
+   Add at the END of admin_style4.css
+   ============================================================ */
+
+/* Allow the document to scroll naturally */
+html {
+    min-height: 100%;
+    height: auto;
+    overflow-x: clip;
+    overflow-y: auto;
+    scroll-behavior: auto;
+}
+
+body {
+    min-height: 100%;
+    height: auto;
+    overflow-x: clip;
+    overflow-y: auto;
+}
+
+/* Do not trap vertical scrolling inside the application wrapper */
+.naad-201-admin-wrapper {
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: auto;
+    overflow-x: clip;
+    overflow-y: visible;
+}
+
+/* Let the main layout grow with its content */
+.naad-901-main-wrapper {
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: auto;
+    overflow: visible;
+}
+
+/* Allow the content area to expand vertically */
+.naad-1701-content {
+    flex: 1 0 auto;
+    min-width: 0;
+    min-height: 0;
+    height: auto;
+    overflow: visible;
+}
+
+/* Do not clip dashboard content */
+.naad-1702-content-container {
+    min-width: 0;
+    height: auto;
+    overflow: visible;
+}
+
+.nhs201-page {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+}
+
+/* Keep the footer accessible after the dashboard content */
+.naad-1901-footer {
+    flex-shrink: 0;
+}
+
+/* Keep sidebar scrolling independent of page scrolling */
+.naad-301-sidebar {
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100dvh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Responsive scrolling */
+@media (max-width: 991.98px) {
+
+    .naad-201-admin-wrapper {
+        overflow-x: clip;
+        overflow-y: visible;
+    }
+
+    .naad-901-main-wrapper {
+        width: 100%;
+        min-height: 100vh;
+        min-height: 100dvh;
+        margin-left: 0;
+        overflow: visible;
+    }
+
+    .naad-1701-content {
+        flex: 1 0 auto;
+        overflow: visible;
+        padding-bottom: 25px;
+    }
+
+    .naad-301-sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        height: 100vh;
+        height: 100dvh;
+        max-height: 100dvh;
+        overflow-y: auto;
+        overscroll-behavior-y: contain;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .naad-2001-sidebar-overlay {
+        position: fixed;
+        inset: 0;
+        touch-action: pan-y;
+    }
+}
+
+/* Short mobile screens */
+@media (max-width: 575.98px) {
+
+    .naad-1701-content {
+        min-height: 0;
+        padding-bottom: 25px;
+    }
+
+    .naad-1901-footer {
+        margin-top: auto;
+    }
+}
+
+   </style>
 
 </head>
 

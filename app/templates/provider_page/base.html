@@ -42,9 +42,53 @@
         href="{% static 'provider_page/css/provider_style.css' %}"
     >
 
+<style>
+    /* =========================================================
+   NPS901 — FIX MOBILE SIDEBAR SCROLLING
+   ========================================================= */
 
-    {% block extra_css %}
-    {% endblock %}
+#nps901MobileMenu {
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+
+    overflow: hidden !important;
+    overscroll-behavior: contain;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#nps901MobileMenu .nps901-mobile-header {
+    flex: 0 0 72px;
+}
+
+#nps901MobileMenu .nps901-mobile-body {
+    flex: 1 1 auto;
+    min-height: 0;
+
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+
+    touch-action: pan-y;
+    padding-bottom: 30px;
+}
+
+/* Keep the desktop sidebar independently scrollable */
+@media (min-width: 992px) {
+    .nps901-sidebar {
+        height: 100vh;
+        height: 100dvh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: contain;
+    }
+}
+</style>
 
 </head>
 

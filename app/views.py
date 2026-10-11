@@ -386,25 +386,56 @@ def register(request):
 
 
 
+
 def login(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+        identifier = request.POST.get('username', '').strip()
+        password = request.POST.get('password', '')
 
-        user = authenticate(request, username=username, password=password)
+        # Allow login using either username or email
+        username = identifier
+
+        if '@' in identifier:
+            customer = User.objects.filter(
+                email__iexact=identifier,
+                userprofile__role='customer'
+            ).first()
+
+            if customer:
+                username = customer.username
+
+        user = authenticate(
+            request,
+            username=username,
+            password=password
+        )
+
         if user is not None:
-            # Check if the user is a customer (not staff, not provider)
-            profile = getattr(user, 'userprofile', None)
-            if profile and profile.role == 'customer':
+            profile = UserProfile.objects.filter(
+                user=user,
+                role='customer'
+            ).first()
+
+            if profile:
                 auth_login(request, user)
-                messages.success(request, f"Welcome back, {user.username}!")
+                messages.success(
+                    request,
+                    f"Welcome back, {user.username}!"
+                )
                 return redirect('index')
-            else:
-                messages.error(request, "Invalid login for this portal.")
+
+            messages.error(
+                request,
+                "This account is not registered for the customer portal."
+            )
         else:
-            messages.error(request, "Invalid credentials.")
+            messages.error(
+                request,
+                "Invalid username/email or password. Please try again."
+            )
 
     return render(request, 'customer_page/login.html')
+
 
 
 def logout(request):
